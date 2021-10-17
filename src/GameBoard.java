@@ -32,7 +32,7 @@ public class GameBoard {
      * @param price int
      */
     private void createProperty(String name, int rent, int price, int position){
-        Property newProperty = new Property(name, rent, price);
+        Property newProperty = new Property(name, rent, price, false);
         propertyLayout.put(position, newProperty);
     }
 
@@ -60,8 +60,7 @@ public class GameBoard {
      * @return int
      */
     public int rollDice() {
-        int diceNumber = new Random().nextInt(12) + 1;
-        return diceNumber;
+        return new Random().nextInt(12) + 1;
     }
 
     /**
@@ -70,7 +69,7 @@ public class GameBoard {
      * @param player Player
      */
     public void playerMovement(Player player) {
-        int newPosition = (player.getPosition() + rollDice()) % 22;
+    int newPosition = (player.getPosition() + rollDice()) % 22;
 
         player.setPosition(newPosition);
     }
@@ -80,5 +79,11 @@ public class GameBoard {
      */
     public void play(){
 
+    }
+
+    public static void main(String[] args) {
+        GameBoard game = new GameBoard();
+
+        game.play();
     }
 }
