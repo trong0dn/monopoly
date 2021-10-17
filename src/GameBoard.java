@@ -14,15 +14,15 @@ public class GameBoard {
         this.players = new ArrayList<>();
     }
 
-//    /**
-//     * Get the position of the player
-//     *
-//     * @param player Player
-//     * @return int
-//     */
-//    public int getPosition(Player player){
-//        return player.getPosition();
-//    }
+    /**
+     * Get the position of the player
+     *
+     * @param player Player
+     * @return int
+     */
+    public int getPosition(Player player){
+        return player.getPosition();
+    }
 
     /**
      * Create a new property to be added to propertyLayout
@@ -63,16 +63,16 @@ public class GameBoard {
         return new Random().nextInt(12) + 1;
     }
 
-//    /**
-//     * Change the player's position
-//     *
-//     * @param player Player
-//     */
-//    public void playerMovement(Player player) {
-//    int newPosition = (player.getPosition() + rollDice()) % 22;
+    /**
+     * Change the player's position
+     *
+     * @param player Player
+     */
+    public void playerMovement(Player player) {
+    int newPosition = (player.getPosition() + rollDice()) % 22;
 
-//        player.setPosition(newPosition);
-//    }
+        player.setPosition(newPosition);
+    }
 
     /**
      * The text-based playable version of Monopoly. You can buy and sell properties, pay rent and become bankrupt
