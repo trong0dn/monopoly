@@ -37,7 +37,7 @@ public class Inactive implements Square {
     }
 
     @Override
-    public int rent(int val) {
+    public int rent(int value) {
         return 0;
     }
 
