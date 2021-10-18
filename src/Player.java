@@ -53,11 +53,49 @@ public class Player{
         this.bankrupt = bankrupt;
     }
 
+    public void printPropertiesOwned(){
+        for (Property p: propertiesOwned){
+            System.out.println(p.getPropertyName());
+        }
+    }
 
-    public void buyProperty(Property newProperty, int price){
-        playerBalance =- price;
-        propertiesOwned.add(newProperty);
+    public void buyProperty(Property newProperty){
+        if (playerBalance - newProperty.getPrice() < 0){
+            System.out.println("cannot purchase this property, current balance: $" + playerBalance + ". Price of property: $" + newProperty.getPrice());
+        }
+        else if (playerBalance - newProperty.getPrice() == 0){
+            bankrupt = true;
+        }
+        else{
+            playerBalance -= newProperty.getPrice();
+            propertiesOwned.add(newProperty);
+        }
+    }
 
+
+
+    public void sellProperty(Property property){
+        playerBalance += property.getPrice();
+        propertiesOwned.remove(property);
+    }
+
+
+
+    public void payRent(Property property){
+        if (playerBalance - property.getRent() < 0){
+            System.out.println("cannot pay rent on this property, current balance: $" + playerBalance + ". Property rent: $" + property.getRent());
+        }
+        else if (playerBalance - property.getRent() == 0){
+            bankrupt = true;
+        }
+        else{
+            playerBalance -= property.getRent();
+        }
+    }
+
+
+    public void receiveRent(Property property){
+        playerBalance += property.getRent();
     }
 
 }
