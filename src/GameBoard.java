@@ -105,6 +105,22 @@ public class GameBoard {
         return new Inactive(position, "Chance");
     }
 
+    public Square incomeTax(int position) {
+        return new Taxes(position, "Income Tax");
+    }
+
+    public Square superTax(int position) {
+        return new Taxes(position,"Super Tax");
+    }
+
+    public Square electricCompany(int position) {
+        return new Utility(position, "Electric Company");
+    }
+
+    public Square waterWorks(int position) {
+        return new Utility(position, "Water Works");
+    }
+
     public Square kingsCross(int position) {
         return new Railroad(position, "Kings Cross Station");
     }
