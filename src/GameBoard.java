@@ -162,7 +162,98 @@ public class GameBoard {
         int hotel = 250;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(position, "Old Kent Road", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+        return new Property(position, "Old Kent Road",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    public Square whitechapel(int position) {
+        int rent = 4;
+        int oneHouse = 20;
+        int twoHouse = 60;
+        int threeHouse = 180;
+        int fourHouse = 320;
+        int hotel = 450;
+        int propertyCost = 60;
+        int houses = 50;
+        return new Property(position, "Whitechapel Road",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square theAngelIslington(int position) {
+        int rent = 6;
+        int oneHouse = 30;
+        int twoHouse = 90;
+        int threeHouse = 270;
+        int fourHouse = 400;
+        int hotel = 550;
+        int propertyCost = 100;
+        int houses = 50;
+        return new Property(position, "The Angel, Islington",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square euston(int position) {
+        int rent = 6;
+        int oneHouse = 30;
+        int twoHouse = 90;
+        int threeHouse = 270;
+        int fourHouse = 400;
+        int hotel = 550;
+        int propertyCost = 100;
+        int houses = 50;
+        return new Property(position, "Euston Road",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square pentonville(int position) {
+        int rent = 6;
+        int oneHouse = 30;
+        int twoHouse = 90;
+        int threeHouse = 270;
+        int fourHouse = 400;
+        int hotel = 550;
+        int propertyCost = 120;
+        int houses = 50;
+        return new Property(position, "Pentonville Road",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square pallMall(int position) {
+        int rent = 6;
+        int oneHouse = 30;
+        int twoHouse = 90;
+        int threeHouse = 270;
+        int fourHouse = 400;
+        int hotel = 550;
+        int propertyCost = 140;
+        int houses = 50;
+        return new Property(position, "Pall Mall",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square whitehall(int position) {
+        int rent = 6;
+        int oneHouse = 30;
+        int twoHouse = 90;
+        int threeHouse = 270;
+        int fourHouse = 400;
+        int hotel = 550;
+        int propertyCost = 140;
+        int houses = 50;
+        return new Property(position, "Whitehall",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square northumrld(int position) {
+        int rent = 6;
+        int oneHouse = 30;
+        int twoHouse = 90;
+        int threeHouse = 270;
+        int fourHouse = 400;
+        int hotel = 550;
+        int propertyCost = 160;
+        int houses = 50;
+        return new Property(position, "Northumrl'd Avenue",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
 }
