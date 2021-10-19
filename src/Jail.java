@@ -35,7 +35,7 @@ public class Jail implements Square {
     }
 
     @Override
-    public void purchase(Player player) {
+    public void purchase(HumanPlayer player) {
     }
 
     @Override
@@ -44,7 +44,7 @@ public class Jail implements Square {
     }
 
     @Override
-    public Player owner() {
+    public HumanPlayer owner() {
         return null;
     }
 
