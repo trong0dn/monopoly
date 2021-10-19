@@ -219,41 +219,223 @@ public class GameBoard {
     }
 
     public Square pallMall(int position) {
-        int rent = 6;
-        int oneHouse = 30;
-        int twoHouse = 90;
-        int threeHouse = 270;
-        int fourHouse = 400;
-        int hotel = 550;
+        int rent = 10;
+        int oneHouse = 50;
+        int twoHouse = 150;
+        int threeHouse = 450;
+        int fourHouse = 625;
+        int hotel = 750;
         int propertyCost = 140;
-        int houses = 50;
+        int houses = 100;
         return new Property(position, "Pall Mall",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     public Square whitehall(int position) {
-        int rent = 6;
-        int oneHouse = 30;
-        int twoHouse = 90;
-        int threeHouse = 270;
-        int fourHouse = 400;
-        int hotel = 550;
+        int rent = 10;
+        int oneHouse = 50;
+        int twoHouse = 150;
+        int threeHouse = 450;
+        int fourHouse = 625;
+        int hotel = 750;
         int propertyCost = 140;
-        int houses = 50;
+        int houses = 100;
         return new Property(position, "Whitehall",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     public Square northumrld(int position) {
-        int rent = 6;
-        int oneHouse = 30;
-        int twoHouse = 90;
-        int threeHouse = 270;
-        int fourHouse = 400;
-        int hotel = 550;
+        int rent = 10;
+        int oneHouse = 50;
+        int twoHouse = 150;
+        int threeHouse = 450;
+        int fourHouse = 625;
+        int hotel = 750;
         int propertyCost = 160;
-        int houses = 50;
+        int houses = 100;
         return new Property(position, "Northumrl'd Avenue",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square bow(int position) {
+        int rent = 14;
+        int oneHouse = 70;
+        int twoHouse = 200;
+        int threeHouse = 550;
+        int fourHouse = 750;
+        int hotel = 750;
+        int propertyCost = 180;
+        int houses = 100;
+        return new Property(position, "Bow Street",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square marlborough(int position) {
+        int rent = 14;
+        int oneHouse = 70;
+        int twoHouse = 200;
+        int threeHouse = 550;
+        int fourHouse = 750;
+        int hotel = 950;
+        int propertyCost = 180;
+        int houses = 100;
+        return new Property(position, "Marlborough Street",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square vine(int position) {
+        int rent = 16;
+        int oneHouse = 80;
+        int twoHouse = 220;
+        int threeHouse = 600;
+        int fourHouse = 800;
+        int hotel = 1000;
+        int propertyCost = 200;
+        int houses = 100;
+        return new Property(position, "Vine Street",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square strand(int position) {
+        int rent = 18;
+        int oneHouse = 90;
+        int twoHouse = 250;
+        int threeHouse = 700;
+        int fourHouse = 875;
+        int hotel = 1050;
+        int propertyCost = 220;
+        int houses = 150;
+        return new Property(position, "Strand",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square fleet(int position) {
+        int rent = 18;
+        int oneHouse = 90;
+        int twoHouse = 250;
+        int threeHouse = 700;
+        int fourHouse = 875;
+        int hotel = 1050;
+        int propertyCost = 220;
+        int houses = 150;
+        return new Property(position, "Fleet Street",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square trafalgar(int position) {
+        int rent = 20;
+        int oneHouse = 100;
+        int twoHouse = 300;
+        int threeHouse = 750;
+        int fourHouse = 925;
+        int hotel = 1100;
+        int propertyCost = 260;
+        int houses = 150;
+        return new Property(position, "Trafalgar Square",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square leicester(int position) {
+        int rent = 22;
+        int oneHouse = 110;
+        int twoHouse = 330;
+        int threeHouse = 800;
+        int fourHouse = 975;
+        int hotel = 1150;
+        int propertyCost = 260;
+        int houses = 150;
+        return new Property(position, "Leicester",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square conventry(int position) {
+        int rent = 22;
+        int oneHouse = 110;
+        int twoHouse = 330;
+        int threeHouse = 800;
+        int fourHouse = 975;
+        int hotel = 1150;
+        int propertyCost = 280;
+        int houses = 150;
+        return new Property(position, "Conventry Street",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square piccadilly(int position) {
+        int rent = 24;
+        int oneHouse = 120;
+        int twoHouse = 360;
+        int threeHouse = 850;
+        int fourHouse = 1025;
+        int hotel = 1200;
+        int propertyCost = 280;
+        int houses = 150;
+        return new Property(position, "Piccadilly",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square regent(int position) {
+        int rent = 26;
+        int oneHouse = 130;
+        int twoHouse = 390;
+        int threeHouse = 900;
+        int fourHouse = 1100;
+        int hotel = 1250;
+        int propertyCost = 300;
+        int houses = 200;
+        return new Property(position, "Regent Street",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square oxford(int position) {
+        int rent = 26;
+        int oneHouse = 130;
+        int twoHouse = 390;
+        int threeHouse = 900;
+        int fourHouse = 1100;
+        int hotel = 1275;
+        int propertyCost = 300;
+        int houses = 200;
+        return new Property(position, "Oxford Street",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square bond(int position) {
+        int rent = 26;
+        int oneHouse = 130;
+        int twoHouse = 390;
+        int threeHouse = 900;
+        int fourHouse = 1100;
+        int hotel = 1275;
+        int propertyCost = 320;
+        int houses = 200;
+        return new Property(position, "Bond Street",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square park(int position) {
+        int rent = 35;
+        int oneHouse = 175;
+        int twoHouse = 500;
+        int threeHouse = 1100;
+        int fourHouse = 1500;
+        int hotel = 1500;
+        int propertyCost = 350;
+        int houses = 200;
+        return new Property(position, "Park Lane",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    public Square mayfair(int position) {
+        int rent = 35;
+        int oneHouse = 175;
+        int twoHouse = 500;
+        int threeHouse = 1100;
+        int fourHouse = 1300;
+        int hotel = 1500;
+        int propertyCost = 400;
+        int houses = 200;
+        return new Property(position, "Mayfair",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 }
