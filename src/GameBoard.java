@@ -153,4 +153,16 @@ public class GameBoard {
         return new Jail(position, "Just Visiting", Jail.JailType.JUST_VISITING);
     }
 
+    public Square oldKent(int position) {
+        int rent = 2;
+        int oneHouse = 10;
+        int twoHouse = 30;
+        int threeHouse = 90;
+        int fourHouse = 160;
+        int hotel = 250;
+        int propertyCost = 60;
+        int houses = 50;
+        return new Property(position, "Old Kent Road", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
 }

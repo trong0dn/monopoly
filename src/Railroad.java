@@ -66,7 +66,7 @@ public class Railroad implements Square {
     }
 
     @Override
-    public HumanPlayer owner() {
+    public Player owner() {
         return owner;
     }
 }

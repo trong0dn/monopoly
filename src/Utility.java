@@ -71,7 +71,7 @@ public class Utility implements Square {
     }
 
     @Override
-    public HumanPlayer owner() {
+    public Player owner() {
         return owner;
     }
 }

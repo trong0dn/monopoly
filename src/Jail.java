@@ -44,7 +44,7 @@ public class Jail implements Square {
     }
 
     @Override
-    public HumanPlayer owner() {
+    public Player owner() {
         return null;
     }
 

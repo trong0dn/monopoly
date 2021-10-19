@@ -9,6 +9,6 @@ public interface Square {
     int cost();
     void purchase(HumanPlayer player);
     int rent(int value);
-    HumanPlayer owner();
+    Player owner();
     String toString();
 }
