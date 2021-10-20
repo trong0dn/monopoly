@@ -32,18 +32,6 @@ public class Property implements Square{
         owned = false;
     }
 
-    public boolean isMonopoly() {
-        return this.monopoly;
-    }
-
-    public int getHouses() {
-        return this.houses;
-    }
-
-    public int getCost() {
-        return this.propertyCost;
-    }
-
     @Override
     public int position() {
         return this.position;
@@ -85,4 +73,17 @@ public class Property implements Square{
     public Player owner() {
         return this.owner;
     }
+
+    public boolean isMonopoly() {
+        return this.monopoly;
+    }
+
+    public int getHouses() {
+        return this.houses;
+    }
+
+    public int getCost() {
+        return this.propertyCost;
+    }
 }
+

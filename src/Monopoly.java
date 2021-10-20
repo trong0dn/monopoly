@@ -4,5 +4,7 @@ public class Monopoly {
         RollDice rollDice = new RollDice();
         System.out.println(rollDice.rollDice().value);
         System.out.println(rollDice.rollDice().isDouble);
+
+
     }
 }
