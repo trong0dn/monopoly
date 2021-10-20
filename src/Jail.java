@@ -3,8 +3,8 @@
  */
 public class Jail implements Square {
     private final int position;
-    private final JailType type;
     private final String name;
+    private final JailType type;
 
     public Jail(int position, String name, JailType type) {
         this.position = position;

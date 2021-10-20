@@ -17,14 +17,6 @@ public class Utility implements Square {
         this.dice = new RollDice();
     }
 
-    /**
-     * Set the other utility.
-     * @param other     Utility
-     */
-    public void setOther(Utility other) {
-        this.other = other;
-    }
-
     @Override
     public int position() {
         return this.position;
@@ -80,5 +72,13 @@ public class Utility implements Square {
     @Override
     public Player owner() {
         return owner;
+    }
+
+    /**
+     * Set the other utility.
+     * @param other     Utility
+     */
+    public void setOther(Utility other) {
+        this.other = other;
     }
 }

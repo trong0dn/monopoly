@@ -16,14 +16,6 @@ public class Taxes implements Square {
         }
     }
 
-    /**
-     * Get the tax.
-     * @return  int
-     */
-    public int tax() {
-        return this.tax;
-    }
-
     @Override
     public int position() {
         return this.position;
@@ -62,5 +54,13 @@ public class Taxes implements Square {
     @Override
     public Player owner() {
         return null;
+    }
+
+    /**
+     * Get the tax.
+     * @return  int
+     */
+    public int tax() {
+        return this.tax;
     }
 }
