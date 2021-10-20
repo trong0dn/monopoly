@@ -60,7 +60,7 @@ public class Taxes implements Square {
      * Get the tax.
      * @return  int
      */
-    public int tax() {
+    public int getTax() {
         return this.tax;
     }
 }
