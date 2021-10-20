@@ -5,22 +5,25 @@
 public interface Dice {
 
     /**
-     * Get number of dice.
+     * Get the number of dice.
+     * @return  int
      */
     int getNumDice();
 
     /**
-     * Get number of sides per die.
+     * Get the number of sides per dice.
+     * @return  int
      */
     int getNumSides();
 
     /**
-     * Roll dice method.
+     * Method invoked when dice are rolled.
+     * @return  Roll
      */
     Roll rollDice();
 
     /**
-     * Class represents rolling two dice.
+     * Represents a dice roll.
      */
     class Roll {
         public int value;
