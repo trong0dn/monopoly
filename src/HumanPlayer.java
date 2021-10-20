@@ -1,11 +1,13 @@
 import java.util.*;
 
+/**
+ * This class representation of a human player of this game.
+ */
 public class HumanPlayer implements Player {
     private final Collection<Square> properties;
     private final String playerName;
     private int money;
     private int position;
-
 
     public HumanPlayer(String playerName) {
         this.properties = new LinkedList<>();
@@ -38,7 +40,7 @@ public class HumanPlayer implements Player {
     }
 
     @Override
-    public Queue<Square> properties() {
+    public Collection<Square> properties() {
         return new LinkedList<>(properties);
     }
 

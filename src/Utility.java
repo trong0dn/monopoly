@@ -1,7 +1,7 @@
 public class Utility implements Square {
     private final int COST = 150;
-    private final String name;
     private final int position;
+    private final String name;
     private Utility other;
     private int numOwned;
     private Player owner;
