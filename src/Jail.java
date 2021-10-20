@@ -1,3 +1,6 @@
+/**
+ * This class represents the jail square tile on the board game.
+ */
 public class Jail implements Square {
     private final int position;
     private final JailType type;

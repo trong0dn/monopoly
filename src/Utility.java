@@ -1,3 +1,6 @@
+/**
+ * This class represents all the utility square tiles on the game board.
+ */
 public class Utility implements Square {
     private final int COST = 150;
     private final int position;
@@ -14,6 +17,10 @@ public class Utility implements Square {
         this.dice = new RollDice();
     }
 
+    /**
+     * Set the other utility.
+     * @param other     Utility
+     */
     public void setOther(Utility other) {
         this.other = other;
     }

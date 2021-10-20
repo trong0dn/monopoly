@@ -1,3 +1,6 @@
+/**
+ * This class represents the tax square tiles on the game board.
+ */
 public class Taxes implements Square {
     private final int position;
     private final String name;
@@ -13,6 +16,10 @@ public class Taxes implements Square {
         }
     }
 
+    /**
+     * Get the tax.
+     * @return  int
+     */
     public int tax() {
         return this.tax;
     }

@@ -1,7 +1,10 @@
+/**
+ * This class represents all the railroad square tiles on the game board.
+ */
 public class Railroad implements Square {
     private final int COST = 200;
-    private final String name;
     private final int position;
+    private final String name;
     private final Railroad[] others;
     private int numOwned;
     private Player owner;
@@ -13,12 +16,21 @@ public class Railroad implements Square {
         this.others = new Railroad[3];
     }
 
+    /**
+     * Create railroad groupings.
+     * @param r1    Railroad
+     * @param r2    Railroad
+     * @param r3    Railroad
+     */
     public void makeGroup(Railroad r1, Railroad r2, Railroad r3) {
         others[0] = r1;
         others[1] = r2;
         others[2] = r3;
     }
 
+    /**
+     * Updates the number of owned railroads.
+     */
     private void updateOwners() {
         numOwned = 1;
         for (Railroad r : others) {
