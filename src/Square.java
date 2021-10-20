@@ -7,7 +7,7 @@ public interface Square {
     boolean isOwnable();
     boolean isOwned();
     int cost();
-    void purchase(HumanPlayer player);
+    void purchase(Player player);
     int rent(int value);
     Player owner();
     String toString();

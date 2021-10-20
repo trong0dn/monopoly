@@ -70,7 +70,7 @@ public class Property implements Square{
     }
 
     @Override
-    public void purchase(HumanPlayer player) {
+    public void purchase(Player player) {
         owned = true;
         owner = player;
         //updateMonopoly(player);

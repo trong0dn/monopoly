@@ -4,7 +4,7 @@ public class Utility implements Square {
     private final int position;
     private Utility other;
     private int numOwned;
-    private HumanPlayer owner;
+    private Player owner;
     private boolean owned;
     private final RollDice dice;
 
@@ -44,7 +44,7 @@ public class Utility implements Square {
     }
 
     @Override
-    public void purchase(HumanPlayer player) {
+    public void purchase(Player player) {
         owned = true;
         owner = player;
         numOwned = 1;
