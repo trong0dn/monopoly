@@ -2,7 +2,7 @@ public class Railroad implements Square {
     private final int COST = 200;
     private final String name;
     private final int position;
-    private final Railroad[] others = new Railroad[3];
+    private final Railroad[] others;
     private int numOwned;
     private Player owner;
     private boolean owned;
@@ -10,6 +10,13 @@ public class Railroad implements Square {
     public Railroad(int position, String name) {
         this.position = position;
         this.name = name;
+        this.others = new Railroad[3];
+    }
+
+    public void makeGroup(Railroad r1, Railroad r2, Railroad r3) {
+        others[0] = r1;
+        others[1] = r2;
+        others[2] = r3;
     }
 
     private void updateOwners() {
@@ -38,7 +45,7 @@ public class Railroad implements Square {
 
     @Override
     public boolean isOwned() {
-        return false;
+        return owned;
     }
 
     @Override
