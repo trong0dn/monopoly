@@ -4,7 +4,7 @@ public class Railroad implements Square {
     private final int position;
     private final Railroad[] others = new Railroad[3];
     private int numOwned;
-    private HumanPlayer owner;
+    private Player owner;
     private boolean owned;
 
     public Railroad(int position, String name) {
@@ -47,7 +47,7 @@ public class Railroad implements Square {
     }
 
     @Override
-    public void purchase(HumanPlayer player) {
+    public void purchase(Player player) {
         owned = true;
         owner = player;
         updateOwners();
