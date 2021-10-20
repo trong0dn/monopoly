@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class HumanPlayer implements Player {
-    private final Queue<Square> properties;
+    private final Collection<Square> properties;
     private final String playerName;
     private int money;
     private int position;
@@ -20,14 +20,14 @@ public class HumanPlayer implements Player {
         int BOARD_SIZE = 40;
         if (position >= BOARD_SIZE) {
             position -= BOARD_SIZE;
-            collectMoney(200);
+            addMoney(200);
         }
     }
 
     @Override
     public void moveTo(int newPosition) {
         if (newPosition < position) {
-            collectMoney(200);
+            addMoney(200);
         }
         position = newPosition;
     }
@@ -53,7 +53,7 @@ public class HumanPlayer implements Player {
     }
 
     @Override
-    public void collectMoney(int money) {
+    public void addMoney(int money) {
         this.money += money;
     }
 
@@ -70,6 +70,5 @@ public class HumanPlayer implements Player {
     @Override
     public void sellProperty(Square square) {
         properties.remove(square);
-        //gain money
     }
 }
