@@ -1,3 +1,6 @@
+/**
+ * This class represents an inactive square tile on the board game.
+ */
 public class Inactive implements Square {
     private final int position;
     private final String name;
@@ -42,7 +45,7 @@ public class Inactive implements Square {
     }
 
     @Override
-    public HumanPlayer owner() {
+    public Player owner() {
         return null;
     }
 }
