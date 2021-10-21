@@ -4,6 +4,9 @@ public class GameBoard {
 
     public GameBoard() {
         this.board = new Square[NUM_TILES];
+        groupProperties();
+        groupRailroads();
+        groupUtilities();
     }
 
     public int size() {
@@ -150,7 +153,7 @@ public class GameBoard {
 
     }
 
-    private void groupRailroad() {
+    private void groupRailroads() {
         Railroad a = (Railroad) square(5);
         Railroad b = (Railroad) square(15);
         Railroad c = (Railroad) square(25);
