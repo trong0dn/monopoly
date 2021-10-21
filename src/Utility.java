@@ -86,7 +86,7 @@ public class Utility implements Square {
      * Set the other utility.
      * @param other     Utility
      */
-    public void setOther(Utility other) {
+    public void setGroup(Utility other) {
         this.other = other;
     }
 }
