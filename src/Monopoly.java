@@ -2,14 +2,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Monopoly {
-
     private final ArrayList<Player> playerList;
     private final boolean success;
+    private GameBoard gameBoard;
+    private Input userInput;
 
 
     public Monopoly(boolean success) {
-        playerList = new ArrayList<>();
+        this.playerList = new ArrayList<>();
         this.success = success;
+        this.gameBoard = new GameBoard();
+        this.userInput = new Input();
     }
 
     /**
@@ -37,6 +40,11 @@ public class Monopoly {
             }
         }while (!success);*/
 
+        Input userInput = new Input();
+        int num = userInput.numOfPlayers();
+
+        Scanner input = new Scanner(System.in);
+        /*
         Scanner input = new Scanner(System.in);
         System.out.print("How many players would like to play (min 2, max 8): ");
         int num = input.nextInt();
@@ -45,9 +53,11 @@ public class Monopoly {
             System.out.println("Try Again! You must have a min of 2 and max of 8 players: ");
             num = input.nextInt();
         }
+
+         */
        // System.out.println("there are: " + num + " players");
         String newPlayerName;
-        input.nextLine();
+        //input.nextLine();
         for (int i =1; i<num+1; i++){
             System.out.print("Player #" + i + ", enter your username: ");
             newPlayerName = input.nextLine();
@@ -65,8 +75,8 @@ public class Monopoly {
 
 
     /**
-     * @param player
-     * @param square
+     * @param player Player
+     * @param square Square
      */
     public void handleSquare(Player player, Square square){
         //another player owns this, you must pay rent
@@ -88,10 +98,24 @@ public class Monopoly {
         //
     }
 
+    public void gamePlay(){
+        numOfPlayers();
 
+        for(int i = 0; i < playerList.size(); i++){
+            System.out.println(playerList.get(i).name() + "'s Turn");
 
+            // show position of player at the beginning of their turn
+            int position = playerList.get(i).getPosition();
 
+            gameBoard.makeSquare(position);
+            Square square = gameBoard.square(position);
 
+            //System.out.println(square.name()); // when uncommented it is showing a null pointer exception
+
+            userInput.playerTurn();
+        }
+
+    }
 
     public static void main(String[] args) {
         RollDice rollDice = new RollDice();
@@ -99,9 +123,8 @@ public class Monopoly {
         System.out.println(rollDice.rollDice().isDouble);
 
         Monopoly m = new Monopoly(true);
-        m.numOfPlayers();
 
-
+        m.gamePlay();
 
     }
 }
