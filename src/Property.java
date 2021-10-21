@@ -10,6 +10,7 @@ public class Property implements Square{
     private final String name;
     private Player owner;
     private boolean owned;
+    private final Property[] others;
     private final int propertyCost; // cost to purchase the property
     private final int houseCost; // cost to purchase one house on the property
     private int buildings; // number of buildings on property
@@ -27,9 +28,10 @@ public class Property implements Square{
         this.hotel = hotel;
         this.propertyCost = propertyCost;
         this.houseCost = houseCost;
-        buildings = 0;
-        monopoly = false;
-        owned = false;
+        this.others = new Property[2];
+        this.buildings = 0;
+        this.monopoly = false;
+        this.owned = false;
     }
 
     @Override
@@ -91,8 +93,16 @@ public class Property implements Square{
     }
 
     public int getPropertyCost() {
-        return propertyCost;
+        return this.propertyCost;
     }
 
+    public void setGroup(Property propertyA) {
+        this.setGroup(propertyA, null);
+    }
+
+    public void setGroup(Property propertyA, Property propertyB) {
+        this.others[0] = propertyA;
+        this.others[1] = propertyB;
+    }
 }
 

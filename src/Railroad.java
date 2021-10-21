@@ -75,14 +75,14 @@ public class Railroad implements Square {
 
     /**
      * Create railroad groupings.
-     * @param r1    Railroad
-     * @param r2    Railroad
-     * @param r3    Railroad
+     * @param a    Railroad
+     * @param b    Railroad
+     * @param c    Railroad
      */
-    public void setOthers(Railroad r1, Railroad r2, Railroad r3) {
-        others[0] = r1;
-        others[1] = r2;
-        others[2] = r3;
+    public void setGroup(Railroad a, Railroad b, Railroad c) {
+        this.others[0] = a;
+        this.others[1] = b;
+        this.others[2] = c;
     }
 
     /**

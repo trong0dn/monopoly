@@ -1,172 +1,249 @@
+public class GameBoard {
+    private final int NUM_TILES = 41;
+    private final Square[] board; // representation of the game board
 
-    public class GameBoard {
-        private final int NUM_TILES = 41;
-        private final Square[] board; // representation of the game board
+    public GameBoard() {
+        this.board = new Square[NUM_TILES];
+        groupProperties();
+        groupRailroads();
+        groupUtilities();
+    }
 
-        public GameBoard() {
-            this.board = new Square[NUM_TILES];
-        }
+    public int size() {
+        return this.NUM_TILES;
+    }
 
-        public int size() {
-            return this.NUM_TILES;
-        }
+    /**
+     * Get the board.
+     * @return  Square[], representation of the board game
+     */
+    public Square[] getBoard() {
+        return this.board;
+    }
 
-        /**
-         * Get the board.
-         * @return  Square[], representation of the board game
-         */
-        public Square[] getBoard() {
-            return this.board;
-        }
+    /**
+     * Get board position from square position.
+     * @param position  int, index of the postion
+     * @return          Square
+     */
+    public Square square(int position) {
+        return board[position];
+    }
 
-        /**
-         * Get board position from square position.
-         * @param position  int, index of the postion
-         * @return          Square
-         */
-        public Square square(int position) {
-            return board[position];
-        }
-
-        /**
-         * Downcast all square that is a property.
-         * @param name  String, property name
-         * @return      Property
-         */
-        private Property property(String name) {
-            for (Square sq : board) {
-                if (sq instanceof Property && sq.name().equals(name)) {
-                    return (Property) sq;
-                }
+    /**
+     * Downcast all square that is a property.
+     * @param name  String, property name
+     * @return      Property
+     */
+    private Property property(String name) {
+        for (Square sq : board) {
+            if (sq instanceof Property && sq.name().equals(name)) {
+                return (Property) sq;
             }
-            return null;
         }
+        return null;
+    }
 
-        /**
-         * Create the square if the position is being occupied.
-         * @param position  int, index of the position
-         * @return          Square
-         */
-        public Square makeSquare(int position) {
-            return switch (position) {
-                case 0 -> go(position);
-                case 1 -> oldKent(position);
-                case 2 -> community(position);
-                case 3 -> whitechapel(position);
-                case 4 -> incomeTax(position);
-                case 5 -> kingsCross(position);
-                case 6 -> theAngelIslington(position);
-                case 7 -> chance(position);
-                case 8 -> euston(position);
-                case 9 -> pentonville(position);
-                case 10 -> justVisiting(position);
-                case 11 -> pallMall(position);
-                case 12 -> electricCompany(position);
-                case 13 -> whitehall(position);
-                case 14 -> northumrld(position);
-                case 15 -> marylebone(position);
-                case 16 -> bow(position);
-                case 17 -> community(position);
-                case 18 -> marlborough(position);
-                case 19 -> vine(position);
-                case 20 -> freeParking(position);
-                case 21 -> strand(position);
-                case 22 -> chance(position);
-                case 23 -> fleet(position);
-                case 24 -> trafalgar(position);
-                case 25 -> fenchurch(position);
-                case 26 -> leicester(position);
-                case 27 -> conventry(position);
-                case 28 -> waterWorks(position);
-                case 29 -> piccadilly(position);
-                case 30 -> goToJail(position);
-                case 31 -> regent(position);
-                case 32 -> oxford(position);
-                case 33 -> community(position);
-                case 34 -> bond(position);
-                case 35 -> liverpool(position);
-                case 36 -> chance(position);
-                case 37 -> park(position);
-                case 38 -> superTax(position);
-                case 39 -> mayfair(position);
-                case 40 -> inJail(position);
-                default -> null;
-            };
-        }
+    /**
+     * Create the square if the position is being occupied.
+     * @param position  int, index of the position
+     * @return          Square
+     */
+    private Square makeSquare(int position) {
+        return switch (position) {
+            case 0 -> go(position);
+            case 1 -> oldKent(position);
+            case 2 -> community(position);
+            case 3 -> whitechapel(position);
+            case 4 -> incomeTax(position);
+            case 5 -> kingsCross(position);
+            case 6 -> theAngelIslington(position);
+            case 7 -> chance(position);
+            case 8 -> euston(position);
+            case 9 -> pentonville(position);
+            case 10 -> justVisiting(position);
+            case 11 -> pallMall(position);
+            case 12 -> electricCompany(position);
+            case 13 -> whitehall(position);
+            case 14 -> northumrld(position);
+            case 15 -> marylebone(position);
+            case 16 -> bow(position);
+            case 17 -> community(position);
+            case 18 -> marlborough(position);
+            case 19 -> vine(position);
+            case 20 -> freeParking(position);
+            case 21 -> strand(position);
+            case 22 -> chance(position);
+            case 23 -> fleet(position);
+            case 24 -> trafalgar(position);
+            case 25 -> fenchurch(position);
+            case 26 -> leicester(position);
+            case 27 -> conventry(position);
+            case 28 -> waterWorks(position);
+            case 29 -> piccadilly(position);
+            case 30 -> goToJail(position);
+            case 31 -> regent(position);
+            case 32 -> oxford(position);
+            case 33 -> community(position);
+            case 34 -> bond(position);
+            case 35 -> liverpool(position);
+            case 36 -> chance(position);
+            case 37 -> park(position);
+            case 38 -> superTax(position);
+            case 39 -> mayfair(position);
+            case 40 -> inJail(position);
+            default -> null;
+        };
+    }
 
-        public Square go(int position) {
-            return new Inactive(position, "Go");
-        }
+    private void groupProperties() {
+        Property brownA = (Property) square(1);
+        Property brownB = (Property) square(3);
+        Property skyA = (Property) square(6);
+        Property skyB = (Property) square(8);
+        Property skyC = (Property) square(9);
+        Property pinkA = (Property) square(11);
+        Property pinkB = (Property) square(13);
+        Property pinkC = (Property) square(14);
+        Property orangeA = (Property) square(16);
+        Property orangeB = (Property) square(18);
+        Property orangeC = (Property) square(19);
+        Property redA = (Property) square(21);
+        Property redB = (Property) square(23);
+        Property redC = (Property) square(24);
+        Property yellowA = (Property) square(26);
+        Property yellowB = (Property) square(27);
+        Property yellowC = (Property) square(29);
+        Property greenA = (Property) square(31);
+        Property greenB = (Property) square(32);
+        Property greenC = (Property) square(24);
+        Property blueA = (Property) square(37);
+        Property blueB = (Property) square(29);
 
-        public Square community(int position) {
-            return new Inactive(position, "Community Chest");
-        }
+        // Brown property group
+        brownA.setGroup(brownB);
+        brownB.setGroup(brownA);
+        // Sky-blue property group
+        skyA.setGroup(skyB, skyC);
+        skyB.setGroup(skyA, skyC);
+        skyC.setGroup(skyA, skyB);
+        // Pink property group
+        pinkA.setGroup(pinkB, pinkC);
+        pinkB.setGroup(pinkA, pinkC);
+        pinkC.setGroup(pinkA, pinkB);
+        // Orange property group
+        orangeA.setGroup(orangeB, orangeC);
+        orangeB.setGroup(orangeA, orangeC);
+        orangeC.setGroup(orangeA, orangeB);
+        // Red property group
+        redA.setGroup(redB, redC);
+        redB.setGroup(redA, redC);
+        redC.setGroup(redA, redB);
+        // Yellow property group
+        yellowA.setGroup(yellowB, yellowC);
+        yellowB.setGroup(yellowA, yellowC);
+        yellowC.setGroup(yellowA, yellowB);
+        // Green property group
+        greenA.setGroup(greenB, greenC);
+        greenB.setGroup(greenA, greenC);
+        greenC.setGroup(greenA, greenB);
+        // Blue property group
+        blueA.setGroup(blueB);
+        blueB.setGroup(blueA);
+    }
 
-        public Square chance(int position) {
-            return new Inactive(position, "Chance");
-        }
+    private void groupRailroads() {
+        Railroad a = (Railroad) square(5);
+        Railroad b = (Railroad) square(15);
+        Railroad c = (Railroad) square(25);
+        Railroad d = (Railroad) square(35);
 
-        public Square incomeTax(int position) {
-            return new Taxes(position, "Income Tax");
-        }
+        a.setGroup(b, c, d);
+        b.setGroup(a, c, d);
+        c.setGroup(a, b, d);
+        d.setGroup(a, b, c);
+    }
 
-        public Square superTax(int position) {
-            return new Taxes(position,"Super Tax");
-        }
+    private void groupUtilities() {
+        Utility a = (Utility) square(12);
+        Utility b = (Utility) square(28);
 
-        public Square electricCompany(int position) {
-            return new Utility(position, "Electric Company");
-        }
+        a.setGroup(b);
+        b.setGroup(a);
+    }
 
-        public Square waterWorks(int position) {
-            return new Utility(position, "Water Works");
-        }
+    public Square go(int position) {
+        return new Inactive(position, "Go");
+    }
 
-        public Square kingsCross(int position) {
-            return new Railroad(position, "Kings Cross Station");
-        }
+    public Square community(int position) {
+        return new Inactive(position, "Community Chest");
+    }
 
-        public Square marylebone(int position) {
-            return new Railroad(position, "Marylebone Station");
-        }
+    public Square chance(int position) {
+        return new Inactive(position, "Chance");
+    }
 
-        public Square fenchurch(int position) {
-            return new Railroad(position, "Fenchurch St. Station");
-        }
+    public Square incomeTax(int position) {
+        return new Taxes(position, "Income Tax");
+    }
 
-        public Square liverpool(int position) {
-            return new Railroad(position, "Liverpool St. Station");
-        }
+    public Square superTax(int position) {
+        return new Taxes(position,"Super Tax");
+    }
 
-        public Square freeParking(int position) {
-            return new Inactive(position, "Free Parking");
-        }
+    public Square electricCompany(int position) {
+        return new Utility(position, "Electric Company");
+    }
 
-        public Square goToJail(int position) {
-            return new Jail(position, "Go to Jail", Jail.JailType.GOTO_JAIL);
-        }
+    public Square waterWorks(int position) {
+        return new Utility(position, "Water Works");
+    }
 
-        public Square inJail(int position) {
-            return new Jail(position, "In Jail", Jail.JailType.IN_JAIL);
-        }
+    public Square kingsCross(int position) {
+        return new Railroad(position, "Kings Cross Station");
+    }
 
-        public Square justVisiting(int position) {
-            return new Jail(position, "Just Visiting", Jail.JailType.JUST_VISITING);
-        }
+    public Square marylebone(int position) {
+        return new Railroad(position, "Marylebone Station");
+    }
 
-        public Square oldKent(int position) {
-            int rent = 2;
-            int oneHouse = 10;
-            int twoHouse = 30;
-            int threeHouse = 90;
-            int fourHouse = 160;
-            int hotel = 250;
-            int propertyCost = 60;
-            int houses = 50;
-            return new Property(position, "Old Kent Road", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
-        }
+    public Square fenchurch(int position) {
+        return new Railroad(position, "Fenchurch St. Station");
+    }
 
+    public Square liverpool(int position) {
+        return new Railroad(position, "Liverpool St. Station");
+    }
 
+    public Square freeParking(int position) {
+        return new Inactive(position, "Free Parking");
+    }
+
+    public Square goToJail(int position) {
+        return new Jail(position, "Go to Jail", Jail.JailType.GOTO_JAIL);
+    }
+
+    public Square inJail(int position) {
+        return new Jail(position, "In Jail", Jail.JailType.IN_JAIL);
+    }
+
+    public Square justVisiting(int position) {
+        return new Jail(position, "Just Visiting", Jail.JailType.JUST_VISITING);
+    }
+
+    public Square oldKent(int position) {
+        int rent = 2;
+        int oneHouse = 10;
+        int twoHouse = 30;
+        int threeHouse = 90;
+        int fourHouse = 160;
+        int hotel = 250;
+        int propertyCost = 60;
+        int houses = 50;
+        return new Property(position, "Old Kent Road",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
 
     public Square whitechapel(int position) {
         int rent = 4;

@@ -1,18 +1,19 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Monopoly {
-    private final ArrayList<Player> playerList;
-    private final boolean success;
-    private GameBoard gameBoard;
-    private Input userInput;
+    private RollDice rollDice;
+    private GameState gameState;
+    private boolean isBankrupt;
 
-
-    public Monopoly(boolean success) {
-        this.playerList = new ArrayList<>();
-        this.success = success;
-        this.gameBoard = new GameBoard();
-        this.userInput = new Input();
+    public Monopoly() {
+        this.rollDice = new RollDice();
+        this.isBankrupt = false;
+        this.gameState = new GameState();
+        gameState.players = new LinkedList<>();
+        gameState.decisionState = DecisionState.NONE;
+        gameState.gameBoard = new GameBoard();
+        gameState.currentPlayer = null;
+        initialize();
     }
 
     /**
@@ -22,109 +23,66 @@ public class Monopoly {
         NONE, BUY_HOUSE, BUY_PROPERTY, SELL_PROPERTY, SELL_HOUSE, FUNDS, PAY_RENT, RECEIVE_RENT
     }
 
-
     /**
-     * @return the number of player
-     * adds new players to a list.
+     * Track the game state.
      */
-    public int numOfPlayers (){
-        /*do {
-            System.out.print("How many players would like to play (min 2): ");
+    public class GameState {
+        public DecisionState decisionState;
+        public Queue<Player> players;
+        public GameBoard gameBoard;
+        public Player currentPlayer;
+        public int counter = 0;
+    }
+
+    public void play() {
+        while (gameState.players.size() > 1) {
             try {
-                num = input.nextInt();
-                success = true;
-            } catch (Exception e) {
-                System.out.println("Wrong input type (only integers)");
-                success = false;
-                input.next();
+                gameState.currentPlayer = gameState.players.remove();
+                turn();
+                if (!isBankrupt) {
+                    gameState.players.add(gameState.currentPlayer);
+                }
+                isBankrupt = false;
+            } catch (NoSuchElementException e) {
+                System.err.println("Game failed to be initialized");
+                return;
+            } finally {
+                printState();
             }
-        }while (!success);*/
-
-        Input userInput = new Input();
-        int num = userInput.numOfPlayers();
-
-        Scanner input = new Scanner(System.in);
-        /*
-        Scanner input = new Scanner(System.in);
-        System.out.print("How many players would like to play (min 2, max 8): ");
-        int num = input.nextInt();
-
-        while (num < 2 || num > 8) {
-            System.out.println("Try Again! You must have a min of 2 and max of 8 players: ");
-            num = input.nextInt();
         }
+        Player winner = gameState.players.remove();
+        System.out.println("Monopoly winner: " + winner.name());
+    }
 
-         */
-       // System.out.println("there are: " + num + " players");
-        String newPlayerName;
-        //input.nextLine();
-        for (int i =1; i<num+1; i++){
-            System.out.print("Player #" + i + ", enter your username: ");
-            newPlayerName = input.nextLine();
-            HumanPlayer newPlayer = new HumanPlayer(newPlayerName);
-            playerList.add(newPlayer);
+    public void initialize() {
 
-        }
-        System.out.println("\nthere are: " + num+" players, with the usernames: ");
-        for (Player p: playerList){
-            System.out.println(p.name());
-        }
-
-        return num;
+    public void turn() {
+        // Roll Dice
+        // Move
+        // handleSquare
+        // addition
     }
 
 
-    /**
-     * @param player Player
-     * @param square Square
-     */
-    public void handleSquare(Player player, Square square){
-        //another player owns this, you must pay rent
-        if (square.isOwned()){
-            player.payRent(square);
-            //make player that owns it receive rent
-        }
-        else if (square.isOwnable()){
-            player.buyProperty(square);
-        }
+    public void printState() {
+
     }
 
+    public void handleSquare(Player player, Square square, int roll) {
+        boolean owned = square.isOwned();
+        boolean ownable = square.isOwnable();
 
-    /**
-     * pay rent
-     * buy houses
-     */
-    public void handleSquare(){
-        //
-    }
-
-    public void gamePlay(){
-        numOfPlayers();
-
-        for(int i = 0; i < playerList.size(); i++){
-            System.out.println(playerList.get(i).name() + "'s Turn");
-
-            // show position of player at the beginning of their turn
-            int position = playerList.get(i).getPosition();
-
-            gameBoard.makeSquare(position);
-            Square square = gameBoard.square(position);
-
-            //System.out.println(square.name()); // when uncommented it is showing a null pointer exception
-
-            userInput.playerTurn();
+        if (!owned && ownable) {
+            //unowned(player, square);
+        } else if (square instanceof Taxes) {
+            //payTax
+        } else if (square instanceof  Jail) {
+            // jail
         }
-
     }
 
     public static void main(String[] args) {
-        RollDice rollDice = new RollDice();
-        System.out.println(rollDice.rollDice().value);
-        System.out.println(rollDice.rollDice().isDouble);
-
-        Monopoly m = new Monopoly(true);
-
-        m.gamePlay();
-
+        Monopoly monopoly = new Monopoly();
+        monopoly.play();
     }
 }
