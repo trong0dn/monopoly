@@ -56,6 +56,8 @@ public class Monopoly {
 
     public void initialize() {
 
+    }
+
     public void turn() {
         // Roll Dice
         // Move
