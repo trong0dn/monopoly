@@ -47,7 +47,7 @@
          * @param position  int, index of the position
          * @return          Square
          */
-        private Square makeSquare(int position) {
+        public Square makeSquare(int position) {
             return switch (position) {
                 case 0 -> go(position);
                 case 1 -> oldKent(position);
