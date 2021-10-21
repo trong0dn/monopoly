@@ -94,5 +94,8 @@ public class Property implements Square{
         return this.propertyCost;
     }
 
+    public void setGroup(Property p1, Property p2, Property p3) {
+
+    }
 }
 

@@ -79,7 +79,7 @@ public class Railroad implements Square {
      * @param r2    Railroad
      * @param r3    Railroad
      */
-    public void setOthers(Railroad r1, Railroad r2, Railroad r3) {
+    public void setGroup(Railroad r1, Railroad r2, Railroad r3) {
         others[0] = r1;
         others[1] = r2;
         others[2] = r3;

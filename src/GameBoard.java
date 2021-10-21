@@ -93,6 +93,30 @@ public class GameBoard {
         };
     }
 
+    private void groupProperties() {
+
+    }
+
+    private void groupRailroad() {
+        Railroad r1 = (Railroad) square(5);
+        Railroad r2 = (Railroad) square(15);
+        Railroad r3 = (Railroad) square(25);
+        Railroad r4 = (Railroad) square(35);
+
+        r1.setGroup(r2, r3, r4);
+        r2.setGroup(r1, r3, r4);
+        r3.setGroup(r1, r2, r4);
+        r4.setGroup(r1, r2, r3);
+    }
+
+    private void groupUtilities() {
+        Utility u1 = (Utility) square(12);
+        Utility u2 = (Utility) square(28);
+
+        u1.setGroup(u2);
+        u2.setGroup(u1);
+    }
+
     public Square go(int position) {
         return new Inactive(position, "Go");
     }
