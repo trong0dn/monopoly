@@ -85,5 +85,14 @@ public class Property implements Square{
     public int getCost() {
         return this.propertyCost;
     }
+
+    public int getRent() {
+        return this.rent;
+    }
+
+    public int getPropertyCost() {
+        return propertyCost;
+    }
+
 }
 

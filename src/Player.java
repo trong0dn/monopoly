@@ -58,4 +58,10 @@ public interface Player {
      * @param square    Square
      */
     void sellProperty(Square square);
+
+    /**
+     * @param square
+     * method to charge rent to a player
+     */
+    void payRent(Square square);
 }
