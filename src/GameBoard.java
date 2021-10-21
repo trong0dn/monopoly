@@ -4,6 +4,9 @@ public class GameBoard {
 
     public GameBoard() {
         this.board = new Square[NUM_TILES];
+        for (int i = 0; i < NUM_TILES; i++) {
+            board[i] = makeSquare(i);
+        }
         groupProperties();
         groupRailroads();
         groupUtilities();
