@@ -150,7 +150,6 @@ public class GameBoard {
         // Blue property group
         blueA.setGroup(blueB);
         blueB.setGroup(blueA);
-
     }
 
     private void groupRailroads() {
@@ -242,7 +241,8 @@ public class GameBoard {
         int hotel = 250;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(position, "Old Kent Road", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+        return new Property(position, "Old Kent Road",
+                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     public Square whitechapel(int position) {
