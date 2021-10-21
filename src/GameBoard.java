@@ -94,27 +94,80 @@ public class GameBoard {
     }
 
     private void groupProperties() {
+        Property brownA = (Property) square(1);
+        Property brownB = (Property) square(3);
+        Property skyA = (Property) square(6);
+        Property skyB = (Property) square(8);
+        Property skyC = (Property) square(9);
+        Property pinkA = (Property) square(11);
+        Property pinkB = (Property) square(13);
+        Property pinkC = (Property) square(14);
+        Property orangeA = (Property) square(16);
+        Property orangeB = (Property) square(18);
+        Property orangeC = (Property) square(19);
+        Property redA = (Property) square(21);
+        Property redB = (Property) square(23);
+        Property redC = (Property) square(24);
+        Property yellowA = (Property) square(26);
+        Property yellowB = (Property) square(27);
+        Property yellowC = (Property) square(29);
+        Property greenA = (Property) square(31);
+        Property greenB = (Property) square(32);
+        Property greenC = (Property) square(24);
+        Property blueA = (Property) square(37);
+        Property blueB = (Property) square(29);
+
+        // Brown property group
+        brownA.setGroup(brownB);
+        brownB.setGroup(brownA);
+        // Sky-blue property group
+        skyA.setGroup(skyB, skyC);
+        skyB.setGroup(skyA, skyC);
+        skyC.setGroup(skyA, skyB);
+        // Pink property group
+        pinkA.setGroup(pinkB, pinkC);
+        pinkB.setGroup(pinkA, pinkC);
+        pinkC.setGroup(pinkA, pinkB);
+        // Orange property group
+        orangeA.setGroup(orangeB, orangeC);
+        orangeB.setGroup(orangeA, orangeC);
+        orangeC.setGroup(orangeA, orangeB);
+        // Red property group
+        redA.setGroup(redB, redC);
+        redB.setGroup(redA, redC);
+        redC.setGroup(redA, redB);
+        // Yellow property group
+        yellowA.setGroup(yellowB, yellowC);
+        yellowB.setGroup(yellowA, yellowC);
+        yellowC.setGroup(yellowA, yellowB);
+        // Green property group
+        greenA.setGroup(greenB, greenC);
+        greenB.setGroup(greenA, greenC);
+        greenC.setGroup(greenA, greenB);
+        // Blue property group
+        blueA.setGroup(blueB);
+        blueB.setGroup(blueA);
 
     }
 
     private void groupRailroad() {
-        Railroad r1 = (Railroad) square(5);
-        Railroad r2 = (Railroad) square(15);
-        Railroad r3 = (Railroad) square(25);
-        Railroad r4 = (Railroad) square(35);
+        Railroad a = (Railroad) square(5);
+        Railroad b = (Railroad) square(15);
+        Railroad c = (Railroad) square(25);
+        Railroad d = (Railroad) square(35);
 
-        r1.setGroup(r2, r3, r4);
-        r2.setGroup(r1, r3, r4);
-        r3.setGroup(r1, r2, r4);
-        r4.setGroup(r1, r2, r3);
+        a.setGroup(b, c, d);
+        b.setGroup(a, c, d);
+        c.setGroup(a, b, d);
+        d.setGroup(a, b, c);
     }
 
     private void groupUtilities() {
-        Utility u1 = (Utility) square(12);
-        Utility u2 = (Utility) square(28);
+        Utility a = (Utility) square(12);
+        Utility b = (Utility) square(28);
 
-        u1.setGroup(u2);
-        u2.setGroup(u1);
+        a.setGroup(b);
+        b.setGroup(a);
     }
 
     public Square go(int position) {
