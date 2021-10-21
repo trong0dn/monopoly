@@ -6,17 +6,17 @@ public class Property implements Square{
     private final int fourHouse;
     private final int hotel;
 
-    private final int propertyCost; // cost to purchase the property
-    private final int houses; // cost to purchase one house on the property
     private final int position;
     private final String name;
-    private int buildings; // property building status
-    private boolean monopoly; // does a player own all property set?
-    private boolean owned;
     private Player owner;
+    private boolean owned;
+    private final int propertyCost; // cost to purchase the property
+    private final int houseCost; // cost to purchase one house on the property
+    private int buildings; // number of buildings on property
+    private boolean monopoly; // player may own all property set
 
     public Property(int position, String name, int rent, int oneHouse, int twoHouse, int threeHouse, int fourHouse,
-                    int hotel, int propertyCost, int houses) {
+                    int hotel, int propertyCost, int houseCost) {
         this.position = position;
         this.name = name;
         this.rent = rent;
@@ -26,7 +26,7 @@ public class Property implements Square{
         this.fourHouse = fourHouse;
         this.hotel = hotel;
         this.propertyCost = propertyCost;
-        this.houses = houses;
+        this.houseCost = houseCost;
         buildings = 0;
         monopoly = false;
         owned = false;
@@ -78,10 +78,10 @@ public class Property implements Square{
         return this.monopoly;
     }
 
-    public int getHouses() {
-        return this.houses;
-    }
-
+    public int getHouseCost() {
+        return this.houseCost;
+    }  
+    
     public int getCost() {
         return this.propertyCost;
     }
