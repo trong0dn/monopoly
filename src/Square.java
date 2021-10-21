@@ -57,4 +57,8 @@ public interface Square {
      * @return  String
      */
     String toString();
+
+    int getRent();
+
+    int getPropertyCost();
 }

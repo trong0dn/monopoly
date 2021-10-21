@@ -6,6 +6,7 @@ public class Property implements Square{
     private final int fourHouse;
     private final int hotel;
 
+
     private final int propertyCost; // cost to purchase the property
     private final int houses; // cost to purchase one house on the property
     private final int position;
@@ -85,5 +86,14 @@ public class Property implements Square{
     public int getCost() {
         return this.propertyCost;
     }
+
+    public int getRent() {
+        return this.rent;
+    }
+
+    public int getPropertyCost() {
+        return propertyCost;
+    }
+
 }
 
