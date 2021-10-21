@@ -51,6 +51,8 @@ public class Monopoly {
                 printState();
             }
         }
+        Player winner = gameState.players.remove();
+        System.out.println("Monopoly winner: " + winner.name());
     }
 
     public void initialize() {
