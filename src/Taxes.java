@@ -56,6 +56,14 @@ public class Taxes implements Square {
         return null;
     }
 
+    public int getRent() {
+        return 0;
+    }
+
+    public int getPropertyCost() {
+        return 0;
+    }
+
     /**
      * Get the tax.
      * @return  int
