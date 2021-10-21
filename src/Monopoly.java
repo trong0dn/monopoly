@@ -60,16 +60,31 @@ public class Monopoly {
     }
 
     public void turn() {
-
+        // Roll Dice
+        // Move
+        // handleSquare
+        // addition
     }
 
     public void printState() {
 
     }
 
+    public void handleSquare(Player player, Square square, int roll) {
+        boolean owned = square.isOwned();
+        boolean ownable = square.isOwnable();
+
+        if (!owned && ownable) {
+            //unowned(player, square);
+        } else if (square instanceof Taxes) {
+            //payTax
+        } else if (square instanceof  Jail) {
+            // jail
+        }
+    }
+
     public static void main(String[] args) {
         Monopoly monopoly = new Monopoly();
         monopoly.play();
-
     }
 }
