@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Monopoly {
-
+    private final RollDice rollDice;
+    private final DecisionState decisionState;
     private final ArrayList<Player> playerList;
     private final boolean success;
 
@@ -10,6 +12,8 @@ public class Monopoly {
     public Monopoly(boolean success) {
         playerList = new ArrayList<>();
         this.success = success;
+        rollDice = new RollDice();
+        decisionState = DecisionState.NONE;
     }
 
     /**
@@ -17,6 +21,17 @@ public class Monopoly {
      */
     public enum DecisionState {
         NONE, BUY_HOUSE, BUY_PROPERTY, SELL_PROPERTY, SELL_HOUSE, FUNDS, PAY_RENT, RECEIVE_RENT
+    }
+
+    /**
+     * Track the game state.
+     */
+    public class GameState {
+        public DecisionState decisionState;
+        public Queue<Player> players;
+        public GameBoard gameBoard;
+        public Player currentPlayer;
+        public int counter = 0;
     }
 
 
@@ -65,8 +80,8 @@ public class Monopoly {
 
 
     /**
-     * @param player
-     * @param square
+     * @param player    Player
+     * @param square    Square
      */
     public void handleSquare(Player player, Square square){
         //another player owns this, you must pay rent
