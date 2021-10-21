@@ -5,7 +5,6 @@ public class Monopoly {
     private GameState gameState;
     private boolean isBankrupt;
 
-
     public Monopoly() {
         this.rollDice = new RollDice();
         this.isBankrupt = false;
@@ -57,14 +56,13 @@ public class Monopoly {
 
     public void initialize() {
 
-    }
-
     public void turn() {
         // Roll Dice
         // Move
         // handleSquare
         // addition
     }
+
 
     public void printState() {
 
