@@ -91,7 +91,7 @@ public class Property implements Square{
     }
 
     public int getPropertyCost() {
-        return propertyCost;
+        return this.propertyCost;
     }
 
 }
