@@ -80,9 +80,10 @@ public class Property implements Square{
 
     public int getHouseCost() {
         return this.houseCost;
-    }
-
+    }  
+    
     public int getCost() {
         return this.propertyCost;
     }
 }
+
