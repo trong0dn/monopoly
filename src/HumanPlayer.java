@@ -74,7 +74,7 @@ public class HumanPlayer implements Player {
     @Override
     public void removeProperty(Square square) {
         properties.remove(square);
-        money += square.getPropertyCost();
+        money += square.cost();
     }
 
     /**
