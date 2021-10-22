@@ -54,7 +54,36 @@ public class Monopoly {
         System.out.println("Monopoly winner: " + winner.name());
     }
 
+    /**
+     * initiliazes the start of the games
+     * gets the number of players participating
+     * gets the name of the players
+     * prints them out at the end
+     */
     public void initialize() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("How many players would like to play (min 2, max 8): ");
+        int num = input.nextInt();
+
+        while (num < 2 || num > 8) {
+            System.out.println("Try Again! You must have a min of 2 and max of 8 players: ");
+            num = input.nextInt();
+        }
+        // System.out.println("there are: " + num + " players");
+        String newPlayerName;
+        input.nextLine();
+        for (int i =1; i<num+1; i++){
+            System.out.print("Player #" + i + ", enter your username: ");
+            newPlayerName = input.nextLine();
+            HumanPlayer newPlayer = new HumanPlayer(newPlayerName);
+            gameState.players.add(newPlayer);
+
+        }
+        //print all the player names
+        System.out.println("\nthere are: " + num+" players, with the usernames: ");
+        for (Player p: gameState.players){
+            System.out.println(p.name());
+        }
 
     }
 
@@ -66,21 +95,51 @@ public class Monopoly {
     }
 
 
+    /**
+     * prints the  players name, current balance and their properties owned
+     */
     public void printState() {
+        Player player = gameState.currentPlayer;
+
+        System.out.println("Player name: " + player.name());
+        System.out.println("Current balance: $" + player.getMoney());
+        System.out.println("Current position: " + player.getPosition()); //not sure if this will work
+        System.out.println("Properties owned: ");
+
+        for (Square s: player.properties()){
+            System.out.println(s.name());
+        }
+        //add info about houses, jail, etc later
 
     }
 
+    /**
+     * @param player the player
+     * @param square the square (property)
+     * @param roll the roll (will use later)
+     */
     public void handleSquare(Player player, Square square, int roll) {
         boolean owned = square.isOwned();
         boolean ownable = square.isOwnable();
 
+        //empty purchasable square
         if (!owned && ownable) {
-            //unowned(player, square);
-        } else if (square instanceof Taxes) {
+            player.buyProperty(square);
+        }
+
+        else if (owned){
+            player.payRent(square);
+            square.owner().addMoney(square.getRent());
+        }
+
+        else if (square instanceof Taxes) {
             //payTax
-        } else if (square instanceof  Jail) {
+        }
+
+        else if (square instanceof  Jail) {
             // jail
         }
+        //might need to add cases for utilities and railroads?
     }
 
     public static void main(String[] args) {
