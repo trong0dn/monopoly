@@ -51,13 +51,13 @@ public interface Player {
      * Method when a player buys a property.
      * @param square    Square
      */
-    void buyProperty(Square square);
+    void addProperty(Square square);
 
     /**
      * Method when a player sells a property.
      * @param square    Square
      */
-    void sellProperty(Square square);
+    void removeProperty(Square square);
 
     /**
      * @param square

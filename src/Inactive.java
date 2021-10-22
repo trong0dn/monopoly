@@ -48,12 +48,4 @@ public class Inactive implements Square {
     public Player owner() {
         return null;
     }
-
-    public int getRent() {
-        return 0;
-    }
-
-    public int getPropertyCost() {
-        return 0;
-    }
 }

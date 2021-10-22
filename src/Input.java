@@ -1,58 +1,79 @@
 import java.util.Scanner;
 
+/**
+ * This class defines all the methods to handle user inputs.
+ */
 public class Input {
-    Scanner sc = new Scanner(System.in);
-    String userInput;
-    int numInput;
+    private final Scanner scanner;
 
-    /**
-     * Initialize Input.
-     */
     public Input() {
-        this.userInput = "";
-        this.numInput = 2;
+        this.scanner = new Scanner(System.in);
     }
 
     /**
-     * Get the action of the player through user input
-     *
+     * Handle String inputs.
+     * @return  String
      */
-    public void playerTurn(){
-        System.out.println("Type a command (None, Buy House, Buy Property, Sell Property, Sell House, Funds, Pay Rent: ");
-        userInput = sc.nextLine();
-        switch(userInput) {
-            case "None":
-                break;
-            case "Buy House":
-                break;
-            case "Buy Property":
-                break;
-            case"Sell Property":
-                break;
-            case "Sell House":
-                break;
-            case "Funds":
-                break;
-            case "Pay Rent":
-                break;
-            default:
-                System.out.println("Not an action. Try again");
+    public String inputString() {
+        return this.scanner.nextLine();
+    }
+
+    /**
+     * Handle boolean inputs.
+     * @param choices   String[]
+     * @return  boolean
+     */
+    public boolean inputBool(String[] choices) {
+        while (true) {
+            String input = inputString();
+            for (int i = 0; i < choices.length; i++) {
+                if (input.equalsIgnoreCase(choices[i]) || input.equalsIgnoreCase(choices[i].substring(0, 1))) {
+                    return i == 0;
+                }
+            }
+            System.out.println("Please enter a valid choice.");
         }
     }
 
     /**
-     * Get the number of players through user input.
-     *
-     * @return int
+     * Handle integer inputs.
+     * @return  int
      */
-    public int numOfPlayers() {
-        System.out.println("How many players? You can choose from 2 to 8 players: ");
-        numInput = sc.nextInt();
-        while(numInput < 2 || numInput > 8){
-            System.out.println("You need a number of 2 to 8 player. Try again.");
-            numInput = sc.nextInt();
+    public int inputInt() {
+        while (true) {
+            int value;
+            try {
+                value = Integer.parseInt(inputString());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid integer.");
+                continue;
+            }
+            return value;
         }
-        return numInput;
     }
 
+    /**
+     * Handle player name input upon game initialization.
+     * @param players   Interable<Player>
+     * @param notPlayable   Player
+     * @return  Player
+     */
+    public Player inputPlayer(Iterable<Player> players, Player notPlayable) {
+        Player player = null;
+        do {
+            String playerName = inputString();
+            for (Player p : players) {
+                if (playerName.equals(p.name())) {
+                    player = p;
+                }
+            }
+            if (player == null) {
+                System.out.println("Invalid player. Please enter another name.");
+            } else if (notPlayable != null && player.name().equals(notPlayable.name())) {
+                System.out.println("Not allowed to choose this player. Select another.");
+                player = null;
+            }
+        } while (player == null);
+        return player;
+    }
 }

@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Property implements Square{
     private final int rent;
     private final int oneHouse;
@@ -63,12 +66,13 @@ public class Property implements Square{
     public void purchase(Player player) {
         owned = true;
         owner = player;
-        //updateMonopoly(player);
+        updateMonopoly(player);
     }
 
     @Override
     public int rent(int value) {
-        return 0;
+        // Dependent on the number value of houses owned.
+        return this.rent;
     }
 
     @Override
@@ -80,20 +84,55 @@ public class Property implements Square{
         return this.monopoly;
     }
 
+    public boolean setMonopoly() {
+        return this.monopoly = true;
+    }
+
+    public boolean breakMonopoly() {
+        return this.monopoly = false;
+    }
+
+    public void updateMonopoly(Player player) {
+        boolean setA = false;
+        boolean setB = false;
+
+        if (others[1] == null) {
+            setB = true;
+        }
+        Queue<Property> properties = new LinkedList<>();
+        // Check if the square owned by a player is a property
+        for (Square square : player.properties()) {
+            if (square instanceof Property) {
+                properties.add((Property) square);
+            }
+        }
+        // Check if property owned by each player is part of a set
+        for (Property property : properties) {
+            if (property.name().equals(others[0].name())) {
+                setA = true;
+            }
+            if (others[1] != null && property.name().equals(others[1].name())) {
+                setB = true;
+            }
+        }
+        // Set monopoly if both properties are part of the same set
+        if (setA && setB) {
+            setMonopoly();
+            others[0].setMonopoly();
+            if (others[1] != null) {
+                others[1].setMonopoly();
+            }
+        } else {
+            breakMonopoly();
+            others[0].breakMonopoly();
+            if (others[1] != null) {
+                others[1].breakMonopoly();
+            }
+        }
+    }
+
     public int getHouseCost() {
         return this.houseCost;
-    }  
-    
-    public int getCost() {
-        return this.propertyCost;
-    }
-
-    public int getRent() {
-        return this.rent;
-    }
-
-    public int getPropertyCost() {
-        return this.propertyCost;
     }
 
     public void setGroup(Property propertyA) {
