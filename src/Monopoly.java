@@ -63,27 +63,23 @@ public class Monopoly {
     public void initialize(Input input) {
         System.out.print("How many players would like to play?");
         int numPlayers = input.inputInt();
-
         while (numPlayers < 2 || numPlayers > 8) {
             System.out.println("Try Again! You must have a min of 2 and max of 8 players: ");
             numPlayers = input.inputInt();
         }
-        // System.out.println("there are: " + num + " players");
-        String playerName;
-        input.inputPlayer();
-        for (int i =1; i<numPlayers+1; i++){
-            System.out.print("Player #" + i + ", enter your username: ");
-            playerName = input.nextLine();
-            HumanPlayer newPlayer = new HumanPlayer(newPlayerName);
+
+        for (int i = 0; i< numPlayers; i++) {
+            System.out.print("Player #" + i + ": Enter your character name: ");
+            String playerName = input.inputString();
+            HumanPlayer newPlayer = new HumanPlayer(playerName);
             gameState.players.add(newPlayer);
 
         }
-        //print all the player names
-        System.out.println("\nthere are: " + num+" players, with the usernames: ");
-        for (Player p: gameState.players){
+        // Print all the player names
+        System.out.println("\n There are: " + numPlayers + " players, with the usernames: ");
+        for (Player p: gameState.players) {
             System.out.println(p.name());
         }
-
     }
 
     public void turn() {
