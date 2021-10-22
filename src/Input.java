@@ -54,7 +54,7 @@ public class Input {
 
     /**
      * Handle player name input upon game initialization.
-     * @param players   Interable<Player>
+     * @param players   Iterable<Player>
      * @param notPlayable   Player
      * @return  Player
      */
