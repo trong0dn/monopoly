@@ -66,11 +66,12 @@ public class Property implements Square{
     public void purchase(Player player) {
         owned = true;
         owner = player;
-        //updateMonopoly(player);
+        updateMonopoly(player);
     }
 
     @Override
     public int rent(int value) {
+        // Dependent on the number value of houses owned.
         return 0;
     }
 
@@ -132,18 +133,6 @@ public class Property implements Square{
 
     public int getHouseCost() {
         return this.houseCost;
-    }  
-    
-    public int getCost() {
-        return this.propertyCost;
-    }
-
-    public int getRent() {
-        return this.rent;
-    }
-
-    public int getPropertyCost() {
-        return this.propertyCost;
     }
 
     public void setGroup(Property propertyA) {
