@@ -1,3 +1,6 @@
+/**
+ * This class represents the game board.
+ */
 public class GameBoard {
     private final int NUM_TILES = 41;
     private final Square[] board; // representation of the game board
@@ -12,6 +15,10 @@ public class GameBoard {
         groupUtilities();
     }
 
+    /**
+     * Get the size of the number of square tiles on the game board.
+     * @return  int
+     */
     public int size() {
         return this.NUM_TILES;
     }
@@ -99,6 +106,9 @@ public class GameBoard {
         };
     }
 
+    /**
+     * Group properties by color set.
+     */
     private void groupProperties() {
         Property brownA = (Property) square(1);
         Property brownB = (Property) square(3);
@@ -155,6 +165,9 @@ public class GameBoard {
         blueB.setGroup(blueA);
     }
 
+    /**
+     * Group railroads.
+     */
     private void groupRailroads() {
         Railroad a = (Railroad) square(5);
         Railroad b = (Railroad) square(15);
@@ -167,6 +180,9 @@ public class GameBoard {
         d.setGroup(a, b, c);
     }
 
+    /**
+     * Group utilities.
+     */
     private void groupUtilities() {
         Utility a = (Utility) square(12);
         Utility b = (Utility) square(28);
