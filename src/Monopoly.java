@@ -84,7 +84,7 @@ public class Monopoly {
     }
 
     public void turn() {
-        // Roll Dice
+        //TODO Roll Dice
         // Move
         // handleSquare
         // addition
@@ -98,13 +98,13 @@ public class Monopoly {
 
         System.out.println("Player name: " + player.name());
         System.out.println("Current balance: $" + player.getMoney());
-        System.out.println("Current position: " + player.getPosition()); // Fix this to get square tile name position
+        System.out.println("Current position: " + player.getPosition()); //TODO Fix this to get square tile name position
         System.out.println("Properties owned: ");
 
         for (Square s: player.properties()){
             System.out.println(s.name());
         }
-        // More additional information about houses, jail, etc., later
+        //TODO More additional information about houses, jail, etc., later
     }
 
     /**
@@ -133,10 +133,24 @@ public class Monopoly {
         }
     }
 
+    /**
+     * Landing on an unowned square, the player may choose to buy the square.
+     * @param player    Player
+     * @param square    Square
+     */
     private void unowned(Player player, Square square) {
         int cost = square.cost();
+
+
     }
 
+
+    /**
+     * Landing on an owned square, the player must pay rent.
+     * @param player    Player
+     * @param square    Square
+     * @param roll      int
+     */
     private void owned(Player player, Square square, int roll) {
         int rent = square.rent(roll);
         if (square instanceof Utility) {
@@ -169,17 +183,6 @@ public class Monopoly {
         player.addProperty(square);
         square.purchase(player);
     }
-
-//    public void payRent(Square square){
-//        Property property = (Property) square;
-//        if (pla- property.rent(0) < 0){
-//            System.out.println("cannot pay rent on this property, current balance: $" + money + ". Property rent: $" + property.rent(0));
-//        }
-//        else{
-//            money -= property.rent(0);
-//        }
-//    }
-
 
     public static void main(String[] args) {
         Monopoly monopoly = new Monopoly();
