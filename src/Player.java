@@ -63,7 +63,7 @@ public interface Player {
 
     int inputInt(Monopoly.GameState state);
 
-    int inputDecision(Monopoly.GameState state);
+    int inputDecision(Monopoly.GameState state, String[] choices);
 
     Player inputPlayer(Monopoly.GameState state, Player notPlayable);
 
