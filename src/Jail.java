@@ -51,6 +51,9 @@ public class Jail implements Square {
         return null;
     }
 
+    /**
+     * The various Jail type states.
+     */
     public enum JailType {
         JUST_VISITING, IN_JAIL, GOTO_JAIL
     }

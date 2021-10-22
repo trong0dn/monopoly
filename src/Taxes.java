@@ -43,7 +43,6 @@ public class Taxes implements Square {
 
     @Override
     public void purchase(Player player) {
-
     }
 
     @Override
@@ -54,14 +53,6 @@ public class Taxes implements Square {
     @Override
     public Player owner() {
         return null;
-    }
-
-    public int getRent() {
-        return 0;
-    }
-
-    public int getPropertyCost() {
-        return 0;
     }
 
     /**
