@@ -67,7 +67,6 @@ public class HumanPlayer implements Player {
         } else {
             properties.add(square);
             square.purchase(this);
-            money =- property.cost();
         }
     }
 
@@ -76,20 +75,4 @@ public class HumanPlayer implements Player {
         properties.remove(square);
         money += square.cost();
     }
-
-    /**
-     * @param square
-     *  pays rent
-     */
-    public void payRent(Square square){
-        Property property = (Property) square;
-        if (money - property.rent(0) < 0){
-            System.out.println("cannot pay rent on this property, current balance: $" + money + ". Property rent: $" + property.rent(0));
-        }
-        else{
-            money -= property.rent(0);
-        }
-    }
-
-
 }

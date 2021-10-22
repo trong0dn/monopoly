@@ -142,6 +142,22 @@ public class Monopoly {
         //might need to add cases for utilities and railroads?
     }
 
+
+    /**
+     * @param square
+     *  pays rent
+     */
+    public void payRent(Square square){
+        Property property = (Property) square;
+        if (money - property.rent(0) < 0){
+            System.out.println("cannot pay rent on this property, current balance: $" + money + ". Property rent: $" + property.rent(0));
+        }
+        else{
+            money -= property.rent(0);
+        }
+    }
+
+
     public static void main(String[] args) {
         Monopoly monopoly = new Monopoly();
         monopoly.play();
