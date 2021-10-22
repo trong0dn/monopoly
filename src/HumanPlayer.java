@@ -4,12 +4,14 @@ import java.util.*;
  * This class representation of a human player of this game.
  */
 public class HumanPlayer implements Player {
+    private final Input input;
     private final Collection<Square> properties;
     private final String playerName;
     private int money;
     private int position;
 
     public HumanPlayer(String playerName) {
+        this.input = new Input();
         this.properties = new LinkedList<>();
         this.playerName = playerName;
         this.money = 1500;
@@ -74,5 +76,9 @@ public class HumanPlayer implements Player {
     public void removeProperty(Square square) {
         properties.remove(square);
         money += square.cost();
+    }
+
+    public boolean inputBool(Monopoly.DecisionState state) {
+        return this.input.inputBool();
     }
 }

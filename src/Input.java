@@ -20,15 +20,23 @@ public class Input {
 
     /**
      * Handle boolean inputs.
-     * @param choices   String[]
      * @return  boolean
      */
-    public boolean inputBool(String[] choices) {
+    public boolean inputBool() {
+        return inputDecision(new String[] {"Yes", "No"}) == 0;
+    }
+
+    /**
+     * Handle decision between two choices.
+     * @param choices   String[]
+     * @return          int
+     */
+    public int inputDecision(String[] choices) {
         while (true) {
             String input = inputString();
             for (int i = 0; i < choices.length; i++) {
                 if (input.equalsIgnoreCase(choices[i]) || input.equalsIgnoreCase(choices[i].substring(0, 1))) {
-                    return i == 0;
+                    return i;
                 }
             }
             System.out.println("Please enter a valid choice.");

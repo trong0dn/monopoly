@@ -21,7 +21,7 @@ public class Monopoly {
      * Different decision states during a player's turn.
      */
     public enum DecisionState {
-        NONE, BUY_HOUSE, BUY_PROPERTY, SELL_PROPERTY, SELL_HOUSE, FUNDS
+        NONE, BUY_PROPERTY, SELL_PROPERTY,BUY_HOUSE, SELL_HOUSE, FUNDS
     }
 
     /**
@@ -144,6 +144,15 @@ public class Monopoly {
         if (player.getMoney() < cost) { //TODO create method to get total value player of available assets
             System.out.println(" You can not afford to purchase " + square.name());
         }
+
+        boolean noMoney = false;
+        System.out.println("Would you like to purchase " + square.name() + " for " + cost + " (Yes/No)?");
+        gameState.decisionState = DecisionState.BUY_HOUSE;
+        if (player.getMoney() < cost) {
+            noMoney = true;
+            System.out.println("You do not have sufficient funds for this transaction");
+        }
+
     }
 
 
@@ -169,7 +178,7 @@ public class Monopoly {
         System.out.println("You have landed on the " + square.name() + " and must pay" + rent + " in rent.");
         if (player.getMoney() < rent) {
             noMoney = true;
-            System.out.println("You do not have sufficient funds for this payment");
+            System.out.println("You do not have sufficient funds for this transaction");
         }
         if (!noMoney) {
             player.exchangeMoney(-1 * rent);
