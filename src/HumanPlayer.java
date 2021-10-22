@@ -78,7 +78,19 @@ public class HumanPlayer implements Player {
         money += square.cost();
     }
 
-    public boolean inputBool(Monopoly.DecisionState state) {
+    public boolean inputBool(Monopoly.GameState state) {
         return this.input.inputBool();
+    }
+
+    public int inputInt(Monopoly.GameState state) {
+        return this.input.inputInt();
+    }
+
+    public int inputDecision(Monopoly.GameState state, String[] choices) {
+        return this.input.inputDecision(choices);
+    }
+
+    public Player inputPlayer(Monopoly.GameState state, Player notPlayable) {
+        return this.input.inputPlayer(state.players, notPlayable);
     }
 }
