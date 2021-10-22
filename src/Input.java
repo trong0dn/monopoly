@@ -18,8 +18,11 @@ public class Input {
         return this.scanner.nextLine();
     }
 
-    //Input input = new Input();
-    //input.inputBool(new String[]{"Yes", "No"});
+    /**
+     * Handle boolean inputs.
+     * @param choices   String[]
+     * @return  boolean
+     */
     public boolean inputBool(String[] choices) {
         while (true) {
             String input = inputString();
