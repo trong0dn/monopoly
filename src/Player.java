@@ -58,4 +58,13 @@ public interface Player {
      * @param square    Square
      */
     void removeProperty(Square square);
+
+    boolean inputBool(Monopoly.GameState state);
+
+    int inputInt(Monopoly.GameState state);
+
+    int inputDecision(Monopoly.GameState state);
+
+    Player inputPlayer(Monopoly.GameState state, Player notPlayable);
+
 }
