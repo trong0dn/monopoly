@@ -113,17 +113,33 @@ public class Monopoly {
 
     }
 
+    /**
+     * @param player the player
+     * @param square the square (property)
+     * @param roll the roll (will use later)
+     */
     public void handleSquare(Player player, Square square, int roll) {
         boolean owned = square.isOwned();
         boolean ownable = square.isOwnable();
 
+        //empty purchasable square
         if (!owned && ownable) {
-            //unowned(player, square);
-        } else if (square instanceof Taxes) {
+            player.buyProperty(square);
+        }
+
+        else if (owned){
+            player.payRent(square);
+            square.owner().addMoney(square.getRent());
+        }
+
+        else if (square instanceof Taxes) {
             //payTax
-        } else if (square instanceof  Jail) {
+        }
+
+        else if (square instanceof  Jail) {
             // jail
         }
+        //might need to add cases for utilities and railroads?
     }
 
     public static void main(String[] args) {
