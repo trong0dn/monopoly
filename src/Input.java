@@ -1,6 +1,8 @@
-import javax.swing.plaf.IconUIResource;
 import java.util.Scanner;
 
+/**
+ * This class defines all the methods to handle user inputs.
+ */
 public class Input {
     private final Scanner scanner;
 
@@ -8,6 +10,10 @@ public class Input {
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * Handle String inputs.
+     * @return  String
+     */
     public String inputString() {
         return this.scanner.nextLine();
     }
@@ -26,6 +32,10 @@ public class Input {
         }
     }
 
+    /**
+     * Handle integer inputs.
+     * @return  int
+     */
     public int inputInt() {
         while (true) {
             int value;
@@ -39,6 +49,12 @@ public class Input {
         }
     }
 
+    /**
+     * Handle player name input upon game initialization.
+     * @param players   Interable<Player>
+     * @param notPlayable   Player
+     * @return  Player
+     */
     public Player inputPlayer(Iterable<Player> players, Player notPlayable) {
         Player player = null;
         do {
