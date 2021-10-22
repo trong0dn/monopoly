@@ -54,6 +54,12 @@ public class Monopoly {
         System.out.println("Monopoly winner: " + winner.name());
     }
 
+    /**
+     * initiliazes the start of the games
+     * gets the number of players participating
+     * gets the name of the players
+     * prints them out at the end
+     */
     public void initialize() {
         Scanner input = new Scanner(System.in);
         System.out.print("How many players would like to play (min 2, max 8): ");
@@ -89,7 +95,21 @@ public class Monopoly {
     }
 
 
+    /**
+     * prints the  players name, current balance and their properties owned
+     */
     public void printState() {
+        Player player = gameState.currentPlayer;
+
+        System.out.println("Player name: " + player.name());
+        System.out.println("Current balance: $" + player.getMoney());
+        System.out.println("Current position: " + player.getPosition()); //not sure if this will work
+        System.out.println("Properties owned: ");
+
+        for (Square s: player.properties()){
+            System.out.println(s.name());
+        }
+        //add info about houses, jail, etc later
 
     }
 
