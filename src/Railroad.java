@@ -41,14 +41,6 @@ public class Railroad implements Square {
         return this.COST;
     }
 
-    public int getRent() {
-        return 0;
-    }
-
-    public int getPropertyCost() {
-        return this.COST;
-    }
-
     @Override
     public void purchase(Player player) {
         owned = true;
