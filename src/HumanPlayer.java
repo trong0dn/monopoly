@@ -61,12 +61,13 @@ public class HumanPlayer implements Player {
 
     @Override
     public void buyProperty(Square square) {
+        Property property = (Property) square;
         if (!square.isOwnable()) {
             throw new IllegalArgumentException("This property can not be purchased");
         } else {
             properties.add(square);
             square.purchase(this);
-            money =- square.getPropertyCost();
+            money =- property.getPropertyCost();
         }
     }
 
@@ -80,11 +81,12 @@ public class HumanPlayer implements Player {
      *  pays rent
      */
     public void payRent(Square square){
-        if (money - square.getRent() < 0){
-            System.out.println("cannot pay rent on this property, current balance: $" + money + ". Property rent: $" + square.getRent());
+        Property property = (Property) square;
+        if (money - property.getRent() < 0){
+            System.out.println("cannot pay rent on this property, current balance: $" + money + ". Property rent: $" + property.getRent());
         }
         else{
-            money -= square.getRent();
+            money -= property.getRent();
         }
     }
 
