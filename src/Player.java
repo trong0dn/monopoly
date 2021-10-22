@@ -45,7 +45,7 @@ public interface Player {
      * Method for player to collect addition money.
      * @param money int
      */
-    void addMoney(int money);
+    void exchangeMoney(int money);
 
     /**
      * Method when a player buys a property.

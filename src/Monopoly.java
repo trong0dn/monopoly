@@ -55,26 +55,25 @@ public class Monopoly {
     }
 
     /**
-     * initiliazes the start of the games
+     * Initializes game starting conditions
      * gets the number of players participating
      * gets the name of the players
      * prints them out at the end
      */
-    public void initialize() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("How many players would like to play (min 2, max 8): ");
-        int num = input.nextInt();
+    public void initialize(Input input) {
+        System.out.print("How many players would like to play?");
+        int numPlayers = input.inputInt();
 
-        while (num < 2 || num > 8) {
+        while (numPlayers < 2 || numPlayers > 8) {
             System.out.println("Try Again! You must have a min of 2 and max of 8 players: ");
-            num = input.nextInt();
+            numPlayers = input.inputInt();
         }
         // System.out.println("there are: " + num + " players");
-        String newPlayerName;
-        input.nextLine();
-        for (int i =1; i<num+1; i++){
+        String playerName;
+        input.inputPlayer();
+        for (int i =1; i<numPlayers+1; i++){
             System.out.print("Player #" + i + ", enter your username: ");
-            newPlayerName = input.nextLine();
+            playerName = input.nextLine();
             HumanPlayer newPlayer = new HumanPlayer(newPlayerName);
             gameState.players.add(newPlayer);
 
@@ -124,12 +123,12 @@ public class Monopoly {
 
         //empty purchasable square
         if (!owned && ownable) {
-            player.buyProperty(square);
+            player.addProperty(square);
         }
 
-        else if (owned){
-            player.payRent(square);
-            square.owner().addMoney(square.getRent());
+        else if (owned) {
+            payRent(square);
+            square.owner().exchangeMoney(square.rent(0));
         }
 
         else if (square instanceof Taxes) {
@@ -142,20 +141,22 @@ public class Monopoly {
         //might need to add cases for utilities and railroads?
     }
 
-
-    /**
-     * @param square
-     *  pays rent
-     */
-    public void payRent(Square square){
-        Property property = (Property) square;
-        if (money - property.rent(0) < 0){
-            System.out.println("cannot pay rent on this property, current balance: $" + money + ". Property rent: $" + property.rent(0));
-        }
-        else{
-            money -= property.rent(0);
-        }
+    private void buyProperty(Player player, Square square) {
+        if (player == null || square == null) return;
+        if (!square.isOwnable()) return;
+        player.addProperty(square);
+        square.purchase(player);
     }
+
+//    public void payRent(Square square){
+//        Property property = (Property) square;
+//        if (pla- property.rent(0) < 0){
+//            System.out.println("cannot pay rent on this property, current balance: $" + money + ". Property rent: $" + property.rent(0));
+//        }
+//        else{
+//            money -= property.rent(0);
+//        }
+//    }
 
 
     public static void main(String[] args) {

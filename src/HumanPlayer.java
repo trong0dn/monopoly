@@ -22,14 +22,14 @@ public class HumanPlayer implements Player {
         int BOARD_SIZE = 40;
         if (position >= BOARD_SIZE) {
             position -= BOARD_SIZE;
-            addMoney(200);
+            exchangeMoney(200);
         }
     }
 
     @Override
     public void moveTo(int newPosition) {
         if (newPosition < position) {
-            addMoney(200);
+            exchangeMoney(200);
         }
         position = newPosition;
     }
@@ -55,7 +55,7 @@ public class HumanPlayer implements Player {
     }
 
     @Override
-    public void addMoney(int money) {
+    public void exchangeMoney(int money) {
         this.money += money;
     }
 
