@@ -60,7 +60,7 @@ public class HumanPlayer implements Player {
     }
 
     @Override
-    public void buyProperty(Square square) {
+    public void addProperty(Square square) {
         Property property = (Property) square;
         if (!square.isOwnable()) {
             throw new IllegalArgumentException("This property can not be purchased");
@@ -72,7 +72,7 @@ public class HumanPlayer implements Player {
     }
 
     @Override
-    public void sellProperty(Square square) {
+    public void removeProperty(Square square) {
         properties.remove(square);
     }
 
