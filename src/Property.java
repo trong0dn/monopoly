@@ -1,6 +1,9 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * This class represents the way properties are structured in the game.
+ */
 public class Property implements Square{
     private final int rent;
     private final int oneHouse;
