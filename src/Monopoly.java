@@ -21,7 +21,7 @@ public class Monopoly {
      * Different decision states during a player's turn.
      */
     public enum DecisionState {
-        NONE, BUY_PROPERTY, SELL_PROPERTY,BUY_HOUSE, SELL_HOUSE, FUNDS
+        NONE, BUY_PROPERTY, SELL_PROPERTY, BUY_HOUSE, SELL_HOUSE, FUNDS
     }
 
     /**
@@ -83,10 +83,18 @@ public class Monopoly {
     }
 
     public void turn() {
-        //TODO Roll Dice
-        // Move
-        // handleSquare
-        // addition
+        System.out.println("It's" + gameState.currentPlayer.name() + "'s turn");
+        int countRollDoubles = 0;
+        while (true) {
+            //TODO If player is in jail
+            Dice.Roll roll = rollDice.rollDice();
+            if (roll.isDouble) {
+                countRollDoubles++;
+            }
+            //TODO Player can leave jail if they roll doubles
+            //TODO If countRollDoubles == 3, player gets set to jail
+            System.out.println("You rolled " + );
+        }
     }
 
     /**
@@ -104,7 +112,7 @@ public class Monopoly {
         for (Square s: player.properties()){
             System.out.println(s.name());
         }
-        //TODO More additional information about houses, jail, etc., later
+        //TODO Additional information about houses, jail, etc., later
     }
 
     /**
@@ -124,12 +132,10 @@ public class Monopoly {
             owned(player, square, roll);
         }
         else if (square instanceof Taxes) {
-            //TODO
-            // Deal with Tax squares
+            //TODO Deal with Tax squares
         }
         else if (square instanceof  Jail) {
-            //TODO
-            // Deal with Jail square
+            //TODO Deal with Jail square
         }
     }
 
@@ -141,13 +147,13 @@ public class Monopoly {
     private void unowned(Player player, Square square) {
         int cost = square.cost();
 
-        if (player.getMoney() < cost) { //TODO create method to get total value player of available assets
+        if (player.getMoney() < cost) { //TODO Create method to get total value player of available assets
             System.out.println(" You can not afford to purchase " + square.name());
         }
 
         boolean noMoney = false;
         System.out.println("Would you like to purchase " + square.name() + " for " + cost + " (Yes/No)?");
-        gameState.decisionState = DecisionState.BUY_HOUSE;
+        gameState.decisionState = DecisionState.BUY_PROPERTY;
         if (player.getMoney() < cost) {
             noMoney = true;
             System.out.println("You do not have sufficient funds for this transaction");
@@ -186,7 +192,7 @@ public class Monopoly {
             rent = square.rent(roll);
         }
         else if (square instanceof Railroad) {
-            //TODO check rules on railroad rent
+            //TODO Check rules on railroad rent
             rent *= 2;
         }
         Player owner = square.owner();
