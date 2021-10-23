@@ -71,8 +71,23 @@ public class Property implements Square{
 
     @Override
     public int rent(int value) {
-        //TODO Dependent on the number value of houses owned.
-        return this.rent;
+        if (!owned) {
+            return 0;
+        }
+        switch (buildings) {
+            case 0:
+                if (this.monopoly) {
+                    return 2 * this.rent;
+                } else {
+                    return this.rent;
+                }
+            case 1: return oneHouse;
+            case 2: return twoHouse;
+            case 3: return threeHouse;
+            case 4: return fourHouse;
+            case 5: return hotel;
+            default: return 0;
+        }
     }
 
     @Override
