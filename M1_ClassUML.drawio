@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-10-23T18:24:57.279Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="sHrx90hoesBey_hQs7nH" version="15.5.7" type="github">
+<mxfile host="app.diagrams.net" modified="2021-10-23T18:29:43.742Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="JImlSrbIgwBU-fIBEct0" version="15.5.7" type="github">
   <diagram id="mIdWcuVjI4xpF6q1rHtD" name="Page-1">
-    <mxGraphModel dx="2491" dy="365" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2846" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -283,7 +283,7 @@
         <mxCell id="ZxXYfscIAA8OzIRm0PE7-117" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-105" vertex="1">
           <mxGeometry y="450" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ZxXYfscIAA8OzIRm0PE7-138" value="+ setOther(other: Utility): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-105" vertex="1">
+        <mxCell id="ZxXYfscIAA8OzIRm0PE7-138" value="+ setGroup(other: Utility): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-105" vertex="1">
           <mxGeometry y="476" width="210" height="26" as="geometry" />
         </mxCell>
         <mxCell id="ZxXYfscIAA8OzIRm0PE7-139" value="Taxes" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
@@ -328,7 +328,7 @@
         <mxCell id="ZxXYfscIAA8OzIRm0PE7-151" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-139" vertex="1">
           <mxGeometry y="320" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ZxXYfscIAA8OzIRm0PE7-153" value="+ tax(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-139" vertex="1">
+        <mxCell id="ZxXYfscIAA8OzIRm0PE7-153" value="+ getTax(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-139" vertex="1">
           <mxGeometry y="346" width="210" height="26" as="geometry" />
         </mxCell>
         <mxCell id="ZxXYfscIAA8OzIRm0PE7-154" value="Railroad" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
@@ -385,7 +385,7 @@
         <mxCell id="ZxXYfscIAA8OzIRm0PE7-173" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-154" vertex="1">
           <mxGeometry y="424" width="320" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ZxXYfscIAA8OzIRm0PE7-165" value="+ makeGroup(r1: Railroad, r2: Railroad, r3: Railroad): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-154" vertex="1">
+        <mxCell id="ZxXYfscIAA8OzIRm0PE7-165" value="+ setGroup(a: Railroad, b: Railroad, c: Railroad): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-154" vertex="1">
           <mxGeometry y="450" width="320" height="26" as="geometry" />
         </mxCell>
         <mxCell id="ZxXYfscIAA8OzIRm0PE7-175" value="+ updateOwners(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="ZxXYfscIAA8OzIRm0PE7-154" vertex="1">
