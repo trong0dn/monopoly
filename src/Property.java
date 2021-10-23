@@ -71,7 +71,7 @@ public class Property implements Square{
 
     @Override
     public int rent(int value) {
-        // Dependent on the number value of houses owned.
+        //TODO Dependent on the number value of houses owned.
         return this.rent;
     }
 
