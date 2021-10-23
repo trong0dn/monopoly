@@ -26,6 +26,8 @@ public interface Dice {
      * Represents a dice roll.
      */
     class Roll {
+        public int dieValue1;
+        public int dieValue2;
         public int value;
         public boolean isDouble;
     }

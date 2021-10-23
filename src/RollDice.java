@@ -28,6 +28,8 @@ public class RollDice implements Dice {
         Roll roll = new Roll();
         int die1 = new Random().nextInt(this.NUM_SIDES) + 1;
         int die2 = new Random().nextInt(this.NUM_SIDES) + 1;
+        roll.dieValue1 = die1;
+        roll.dieValue2 = die2;
         roll.value = die1 + die2;
         roll.isDouble = die1 == die2;
         return roll;
