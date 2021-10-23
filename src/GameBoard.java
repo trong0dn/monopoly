@@ -251,6 +251,11 @@ public class GameBoard {
         return new Jail(position, "Just Visiting", Jail.JailType.JUST_VISITING);
     }
 
+    /**
+     *
+     * @param int position
+     * @return Property(position, " Old Kent Road " rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square oldKent(int position) {
         int rent = 2;
         int oneHouse = 10;
