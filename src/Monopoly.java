@@ -14,7 +14,7 @@ public class Monopoly {
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
         Input input = new Input();
-        initialize(input);
+        initializePlayers(input);
     }
 
     /**
@@ -35,7 +35,7 @@ public class Monopoly {
     }
 
     /**
-     * Play loop that requests for user inputs.
+     * Play loop that requests for user inputs until there is a winner.
      */
     public void play() {
         while (gameState.players.size() > 1) {
@@ -58,23 +58,22 @@ public class Monopoly {
     }
 
     /**
-     * Initializes game starting conditions.
+     * Initializes game starting conditions with players.
      */
-    public void initialize(Input input) {
+    public void initializePlayers(Input input) {
         // Ask user for number of players participating
-        System.out.print("How many players would like to play?");
+        System.out.println("How many players would like to play?");
         int numPlayers = input.inputInt();
         while (numPlayers < 2 || numPlayers > 8) {
             System.out.println("Try Again! You must have a min of 2 and max of 8 players: ");
             numPlayers = input.inputInt();
         }
         // Ask user to input name of players
-        for (int i = 0; i< numPlayers; i++) {
+        for (int i = 0; i < numPlayers; i++) {
             System.out.print("Player #" + i + ": Enter your character name: ");
             String playerName = input.inputString();
             HumanPlayer newPlayer = new HumanPlayer(playerName);
             gameState.players.add(newPlayer);
-
         }
         // Print all the player names
         System.out.println("\n There are: " + numPlayers + " players, with the usernames: ");
@@ -98,7 +97,8 @@ public class Monopoly {
 
         System.out.println("Player name: " + player.name());
         System.out.println("Current balance: $" + player.getMoney());
-        System.out.println("Current position: " + player.getPosition()); //TODO Fix this to get square tile name position
+        System.out.println("Current position: " + player.getPosition());
+        //TODO Fix this to get square tile name position maybe using toString
         System.out.println("Properties owned: ");
 
         for (Square s: player.properties()){
@@ -153,10 +153,25 @@ public class Monopoly {
             System.out.println("You do not have sufficient funds for this transaction");
         }
         if (player.inputBool(gameState)) {
-            //TODO
+            if (!noMoney) {
+                player.exchangeMoney(-1 * cost);
+                buyProperty(player, square);
+            }
+            //TODO else trade assets for money
         }
     }
 
+    /**
+     * Add property to player's hand and change owner of the property.
+     * @param player    Player
+     * @param square    Square
+     */
+    private void buyProperty(Player player, Square square) {
+        if (player == null || square == null) return;
+        if (!square.isOwnable()) return;
+        player.addProperty(square);
+        square.purchase(player);
+    }
 
     /**
      * Landing on an owned square, the player must pay rent.
@@ -167,7 +182,8 @@ public class Monopoly {
     private void owned(Player player, Square square, int roll) {
         int rent = square.rent(roll);
         if (square instanceof Utility) {
-            //TODO increase rent depends on roll value
+            // Increase rent depends on roll value
+            rent = square.rent(roll);
         }
         else if (square instanceof Railroad) {
             //TODO check rules on railroad rent
@@ -185,16 +201,8 @@ public class Monopoly {
         if (!noMoney) {
             player.exchangeMoney(-1 * rent);
             owner.exchangeMoney(rent);
-        } else {
-            //TODO trade assets for money
         }
-    }
-
-    private void buyProperty(Player player, Square square) {
-        if (player == null || square == null) return;
-        if (!square.isOwnable()) return;
-        player.addProperty(square);
-        square.purchase(player);
+        //TODO else trade assets for money
     }
 
     public static void main(String[] args) {
