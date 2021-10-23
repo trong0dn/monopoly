@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Monopoly {
-    private RollDice rollDice;
+    private final RollDice rollDice;
     private GameState gameState;
     private boolean isBankrupt;
 
@@ -21,7 +21,7 @@ public class Monopoly {
      * Different decision states during a player's turn.
      */
     public enum DecisionState {
-        NONE, BUY_PROPERTY, SELL_PROPERTY, BUY_HOUSE, SELL_HOUSE, FUNDS, TURN_ACTION
+        NONE, BUY_PROPERTY, SELL_PROPERTY, BUY_HOUSE, SELL_HOUSE, TURN_ACTION
     }
 
     /**
@@ -76,32 +76,35 @@ public class Monopoly {
             gameState.players.add(newPlayer);
         }
         // Print all the player names
-        System.out.println("\n There are: " + numPlayers + " players, with the usernames: ");
+        System.out.println("\nThere are: " + numPlayers + " players, with the usernames: ");
         for (Player p: gameState.players) {
-            System.out.println(p.name());
+            System.out.println(">>> " + p.name());
         }
     }
 
     public void turn() {
-        System.out.println("It's" + gameState.currentPlayer.name() + "'s turn");
+        System.out.println("It's " + gameState.currentPlayer.name() + "'s turn");
         int countRollDoubles = 0;
         while (true) {
-            //TODO If player is in jail
+            //TODO If player is in jail, they have to try to get out
             Dice.Roll roll = rollDice.rollDice();
             if (roll.isDouble) {
                 countRollDoubles++;
+                //TODO Check rules on rolling doubles
             }
             //TODO Player can leave jail if they roll doubles
-            //TODO If countRollDoubles == 3, player gets set to jail
+            if (countRollDoubles == 3) {
+                //TODO Goto_Jail
+                break;
+            }
             System.out.print("You rolled a [" + roll.dieValue1 + "][" + roll.dieValue2 + "]");
             if (roll.isDouble) {
                 System.out.println(" (double)");
             }
             Square[] square = gameState.gameBoard.getBoard();
-            System.out.println("and landed on " + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name());
+            System.out.println(" and landed on " + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name());
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
-            break;
             }
         boolean playerAction = true;
         while (playerAction && !isBankrupt) {
@@ -112,12 +115,11 @@ public class Monopoly {
             gameState.decisionState = DecisionState.TURN_ACTION;
             int choice = gameState.currentPlayer.inputInt(gameState);
 
-            switch (choice) {
-                case 1:
-                    playerAction = false;
-                    break;
-                default:
-                    System.out.println("Please choose a valid option.");
+            //TODO Switch-case for more additional player options
+            if (choice == 1) {
+                playerAction = false;
+            } else {
+                System.out.println("Please choose a valid option.");
             }
         }
         System.out.println();
@@ -157,12 +159,10 @@ public class Monopoly {
         else if (owned) {
             owned(player, square, roll);
         }
-        else if (square instanceof Taxes) {
+        //else if (square instanceof Taxes) { }
             //TODO Deal with Tax squares
-        }
-        else if (square instanceof  Jail) {
+        //else if (square instanceof  Jail) { }
             //TODO Deal with Jail square
-        }
     }
 
     /**

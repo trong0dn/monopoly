@@ -59,12 +59,33 @@ public interface Player {
      */
     void removeProperty(Square square);
 
+    /**
+     * Player inputs a boolean response.
+     * @param state     Monopoly.GameState
+     * @return          boolean
+     */
     boolean inputBool(Monopoly.GameState state);
 
+    /**
+     * Player inputs an integer response.
+     * @param state     Monopoly.GameState
+     * @return          int
+     */
     int inputInt(Monopoly.GameState state);
 
+    /**
+     * Player inputs a two choice decision.
+     * @param state     Monopoly.GameState
+     * @param choices   String[]
+     * @return          int
+     */
     int inputDecision(Monopoly.GameState state, String[] choices);
 
+    /**
+     * Player selects another player in the game.
+     * @param state     Monopoly.GameState
+     * @param notPlayable   Player
+     * @return          Player
+     */
     Player inputPlayer(Monopoly.GameState state, Player notPlayable);
-
 }
