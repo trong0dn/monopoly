@@ -4,12 +4,14 @@ import java.util.*;
  * This class representation of a human player of this game.
  */
 public class HumanPlayer implements Player {
+    private final Input input;
     private final Collection<Square> properties;
     private final String playerName;
     private int money;
     private int position;
 
     public HumanPlayer(String playerName) {
+        this.input = new Input();
         this.properties = new LinkedList<>();
         this.playerName = playerName;
         this.money = 1500;
@@ -22,14 +24,14 @@ public class HumanPlayer implements Player {
         int BOARD_SIZE = 40;
         if (position >= BOARD_SIZE) {
             position -= BOARD_SIZE;
-            addMoney(200);
+            exchangeMoney(200);
         }
     }
 
     @Override
     public void moveTo(int newPosition) {
         if (newPosition < position) {
-            addMoney(200);
+            exchangeMoney(200);
         }
         position = newPosition;
     }
@@ -55,7 +57,7 @@ public class HumanPlayer implements Player {
     }
 
     @Override
-    public void addMoney(int money) {
+    public void exchangeMoney(int money) {
         this.money += money;
     }
 
@@ -67,29 +69,32 @@ public class HumanPlayer implements Player {
         } else {
             properties.add(square);
             square.purchase(this);
-            money =- property.cost();
         }
     }
 
     @Override
     public void removeProperty(Square square) {
         properties.remove(square);
-        money += square.getPropertyCost();
+        money += square.cost();
     }
 
-    /**
-     * @param square
-     *  pays rent
-     */
-    public void payRent(Square square){
-        Property property = (Property) square;
-        if (money - property.rent(0) < 0){
-            System.out.println("cannot pay rent on this property, current balance: $" + money + ". Property rent: $" + property.rent(0));
-        }
-        else{
-            money -= property.rent(0);
-        }
+    @Override
+    public boolean inputBool(Monopoly.GameState state) {
+        return this.input.inputBool();
     }
 
+    @Override
+    public int inputInt(Monopoly.GameState state) {
+        return this.input.inputInt();
+    }
 
+    @Override
+    public int inputDecision(Monopoly.GameState state, String[] choices) {
+        return this.input.inputDecision(choices);
+    }
+
+    @Override
+    public Player inputPlayer(Monopoly.GameState state, Player notPlayable) {
+        return this.input.inputPlayer(state.players, notPlayable);
+    }
 }
