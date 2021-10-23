@@ -91,9 +91,4 @@ public class HumanPlayer implements Player {
     public int inputDecision(Monopoly.GameState state, String[] choices) {
         return this.input.inputDecision(choices);
     }
-
-    @Override
-    public Player inputPlayer(Monopoly.GameState state, Player notPlayable) {
-        return this.input.inputPlayer(state.players, notPlayable);
-    }
 }

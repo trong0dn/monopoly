@@ -80,12 +80,4 @@ public interface Player {
      * @return          int
      */
     int inputDecision(Monopoly.GameState state, String[] choices);
-
-    /**
-     * Player selects another player in the game.
-     * @param state     Monopoly.GameState
-     * @param notPlayable   Player
-     * @return          Player
-     */
-    Player inputPlayer(Monopoly.GameState state, Player notPlayable);
 }
