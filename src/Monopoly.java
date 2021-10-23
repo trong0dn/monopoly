@@ -50,7 +50,7 @@ public class Monopoly {
                 System.err.println("Game failed to be initialized");
                 return;
             } finally {
-                printState();
+                //printState();
             }
         }
         Player winner = gameState.players.remove();
@@ -83,7 +83,7 @@ public class Monopoly {
     }
 
     public void turn() {
-        System.out.println("It's " + gameState.currentPlayer.name() + "'s turn");
+        System.out.println("\n----It's " + gameState.currentPlayer.name() + "'s turn----");
         int countRollDoubles = 0;
         while (true) {
             //TODO If player is in jail, they have to try to get out
@@ -102,7 +102,7 @@ public class Monopoly {
                 System.out.println(" (double)");
             }
             Square[] square = gameState.gameBoard.getBoard();
-            System.out.println(" and landed on " + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name());
+            System.out.println(" and landed on [" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "]");
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
             if(!roll.isDouble){
@@ -114,15 +114,21 @@ public class Monopoly {
             System.out.println("Would you like to perform any additional actions this turn?");
             System.out.println("Select the number of one of the following options:");
             //TODO Buy/Sell houses
-            System.out.println("1) Pass my turn.");
+            System.out.println("1) Pass my turn.\n2) Player Statistics");
             gameState.decisionState = DecisionState.TURN_ACTION;
             int choice = gameState.currentPlayer.inputInt(gameState);
 
-            //TODO Switch-case for more additional player options
-            if (choice == 1) {
-                playerAction = false;
-            } else {
-                System.out.println("Please choose a valid option.");
+            // Switch-case for more additional player options
+            switch (choice){
+                case(1):
+                    playerAction = false;
+                    break;
+                case(2):
+                    printState();
+                    break;
+                default:
+                    System.out.println("Please choose a valid option.");
+                    break;
             }
         }
         System.out.println();
@@ -141,7 +147,7 @@ public class Monopoly {
         System.out.println("Properties owned: ");
 
         for (Square s: player.properties()){
-            System.out.println("-" + s.name());
+            System.out.println("- " + s.name());
         }
         //TODO Additional information about houses, jail, etc., later
     }
@@ -181,11 +187,11 @@ public class Monopoly {
         }
 
         boolean noMoney = false;
-        System.out.println("Would you like to purchase " + square.name() + " for " + cost + " (Yes/No)?");
+        System.out.println("Would you like to purchase " + square.name() + " for $" + cost + " (Yes/No)?");
         gameState.decisionState = DecisionState.BUY_PROPERTY;
         if (player.getMoney() < cost) {
             noMoney = true;
-            System.out.println("You do not have sufficient funds for this transaction");
+            System.out.println("You do not have sufficient funds for this transaction. You currently have $" + gameState.currentPlayer.getMoney());
         }
         if (player.inputBool(gameState)) {
             if (!noMoney) {
