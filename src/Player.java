@@ -6,13 +6,13 @@ import java.util.Collection;
 public interface Player {
 
     /**
-     * Movement of square tiles a player.
+     * Movement of square tiles for a player.
      * @param numTiles  int
      */
     void move(int numTiles);
 
     /**
-     * Movement position of a player.
+     * Movement to a different position on the board.
      * @param position  int
      */
     void moveTo(int position);
