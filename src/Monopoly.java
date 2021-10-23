@@ -153,7 +153,7 @@ public class Monopoly {
             System.out.println("You do not have sufficient funds for this transaction");
         }
         if (player.inputBool(gameState)) {
-
+            //TODO
         }
     }
 
