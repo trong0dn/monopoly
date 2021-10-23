@@ -59,29 +59,4 @@ public class Input {
             return value;
         }
     }
-
-    /**
-     * Handle player name input upon game initialization.
-     * @param players   Iterable<Player>
-     * @param notPlayable   Player
-     * @return  Player
-     */
-    public Player inputPlayer(Iterable<Player> players, Player notPlayable) {
-        Player player = null;
-        do {
-            String playerName = inputString();
-            for (Player p : players) {
-                if (playerName.equals(p.name())) {
-                    player = p;
-                }
-            }
-            if (player == null) {
-                System.out.println("Invalid player. Please enter another name.");
-            } else if (notPlayable != null && player.name().equals(notPlayable.name())) {
-                System.out.println("Not allowed to choose this player. Select another.");
-                player = null;
-            }
-        } while (player == null);
-        return player;
-    }
 }
