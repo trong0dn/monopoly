@@ -21,7 +21,7 @@ public class Monopoly {
      * Different decision states during a player's turn.
      */
     public enum DecisionState {
-        NONE, BUY_PROPERTY, SELL_PROPERTY, BUY_HOUSE, SELL_HOUSE, FUNDS
+        NONE, BUY_PROPERTY, SELL_PROPERTY, BUY_HOUSE, SELL_HOUSE, FUNDS, TURN_ACTION
     }
 
     /**
@@ -93,8 +93,34 @@ public class Monopoly {
             }
             //TODO Player can leave jail if they roll doubles
             //TODO If countRollDoubles == 3, player gets set to jail
-            System.out.println("You rolled " + );
+            System.out.print("You rolled a [" + roll.dieValue1 + "][" + roll.dieValue2 + "]");
+            if (roll.isDouble) {
+                System.out.println(" (double)");
+            }
+            Square[] square = gameState.gameBoard.getBoard();
+            System.out.println("and landed on " + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name());
+            gameState.currentPlayer.move(roll.value);
+            handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
+            break;
+            }
+        boolean playerAction = true;
+        while (playerAction && !isBankrupt) {
+            System.out.println("Would you like to perform any additional actions this turn?");
+            System.out.println("Select one of the following options:");
+            //TODO Buy/Sell houses
+            System.out.println("1) Pass my turn.");
+            gameState.decisionState = DecisionState.TURN_ACTION;
+            int choice = gameState.currentPlayer.inputInt(gameState);
+
+            switch (choice) {
+                case 1:
+                    playerAction = false;
+                    break;
+                default:
+                    System.out.println("Please choose a valid option.");
+            }
         }
+        System.out.println();
     }
 
     /**
