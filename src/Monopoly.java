@@ -70,7 +70,7 @@ public class Monopoly {
         }
         // Ask user to input name of players
         for (int i = 0; i < numPlayers; i++) {
-            System.out.print("Player #" + i + ": Enter your character name: ");
+            System.out.print("Player #" + (i+1) + ": Enter your character name: ");
             String playerName = input.inputString();
             HumanPlayer newPlayer = new HumanPlayer(playerName);
             gameState.players.add(newPlayer);
@@ -105,11 +105,14 @@ public class Monopoly {
             System.out.println(" and landed on " + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name());
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
+            if(!roll.isDouble){
+                break;
+            }
             }
         boolean playerAction = true;
         while (playerAction && !isBankrupt) {
             System.out.println("Would you like to perform any additional actions this turn?");
-            System.out.println("Select one of the following options:");
+            System.out.println("Select the number of one of the following options:");
             //TODO Buy/Sell houses
             System.out.println("1) Pass my turn.");
             gameState.decisionState = DecisionState.TURN_ACTION;
@@ -133,12 +136,12 @@ public class Monopoly {
 
         System.out.println("Player name: " + player.name());
         System.out.println("Current balance: $" + player.getMoney());
-        System.out.println("Current position: " + player.getPosition());
+        System.out.println("Current position: " + player.getPosition() + "th square " + gameState.gameBoard.square(player.getPosition()).name());
         //TODO Fix this to get square tile name position maybe using toString
         System.out.println("Properties owned: ");
 
         for (Square s: player.properties()){
-            System.out.println(s.name());
+            System.out.println("-" + s.name());
         }
         //TODO Additional information about houses, jail, etc., later
     }
@@ -225,7 +228,7 @@ public class Monopoly {
         if (player.name().equals(owner.name())) { return; }
 
         boolean noMoney = false;
-        System.out.println("You have landed on the " + square.name() + " and must pay" + rent + " in rent.");
+        System.out.println("You have landed on the " + square.name() + " and must pay $" + rent + " in rent.");
         if (player.getMoney() < rent) {
             noMoney = true;
             System.out.println("You do not have sufficient funds for this transaction");
