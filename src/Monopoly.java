@@ -246,6 +246,7 @@ public class Monopoly {
         if (player.getMoney() < rent) {
             noMoney = true;
             System.out.println("You do not have sufficient funds for this transaction");
+            isBankrupt = true;
         }
         if (!noMoney) {
             player.exchangeMoney(-1 * rent);
