@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-24T17:04:07.330Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="6mMSXW4YrNXwI9tes1Qi" version="15.5.9" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2021-10-24T17:08:03.694Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="5MfignQKJqvB_k5bVBGQ" version="15.5.9" type="github" pages="5">
   <diagram id="mIdWcuVjI4xpF6q1rHtD" name="Class UML">
     <mxGraphModel dx="9520" dy="2963" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -1011,10 +1011,16 @@
     </mxGraphModel>
   </diagram>
   <diagram id="a4N7FD9EYvDYjhfroIhU" name="SequenceUML_4">
-    <mxGraphModel dx="1662" dy="767" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="5542" dy="-63" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="x5cyTKKl2xjhJoclOuf3-0" />
         <mxCell id="x5cyTKKl2xjhJoclOuf3-1" parent="x5cyTKKl2xjhJoclOuf3-0" />
+        <mxCell id="yplSrfjX4VrIWxTSH_WL-0" value="&lt;b&gt;SYSC 3110 - Milestone 1&lt;/b&gt;&lt;br&gt;&lt;b&gt;Group 17&lt;/b&gt;&lt;br&gt;&lt;b&gt;Members:&lt;/b&gt;&lt;br&gt;Trong Nguyen 100848232 &lt;br&gt;Francisco De Grano 101147447 &lt;br&gt;Ibrahim Almalki 101142978 &lt;br&gt;Elisha Catherasoo&lt;br&gt;&lt;b&gt;Date: &lt;/b&gt;Oct. 25, 2021" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="x5cyTKKl2xjhJoclOuf3-1">
+          <mxGeometry x="-3370" y="2050" width="200" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="yplSrfjX4VrIWxTSH_WL-1" value="&lt;b&gt;Milestone 1&lt;br&gt;Monopoly Project&lt;br&gt;Sequence UML Diagram&lt;br&gt;Paying Rent for Property&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="x5cyTKKl2xjhJoclOuf3-1">
+          <mxGeometry x="-3055" y="1120" width="160" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
