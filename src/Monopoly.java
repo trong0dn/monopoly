@@ -103,13 +103,13 @@ public class Monopoly {
                 //TODO Goto_Jail
                 break;
             }
-            //print the roll number and current position
+            // Print the roll number and current position
             System.out.print("You rolled a [" + roll.dieValue1 + "][" + roll.dieValue2 + "]");
             if (roll.isDouble) {
                 System.out.print(" (double)");
             }
             Square[] square = gameState.gameBoard.getBoard();
-            System.out.println(" and landed on [" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "]");
+            System.out.println(" and landed on '" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "'");
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
             if(!roll.isDouble) {
