@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 /**
  * This is a class representation of a human player of this game.
  */

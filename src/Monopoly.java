@@ -1,12 +1,15 @@
 import java.util.*;
 
+/**
+ * This class represents the user interface for the Monopoly board game.
+ */
 public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
     private boolean isBankrupt;
 
     /**
-     * Initialize Monopoly.
+     * Constructor for Monopoly.
      */
     public Monopoly() {
         this.rollDice = new RollDice();
@@ -124,16 +127,10 @@ public class Monopoly {
             int choice = gameState.currentPlayer.inputInt(gameState);
 
             // Switch-case for more additional player options
-            switch (choice){
-                case(1):
-                    playerAction = false;
-                    break;
-                case(2):
-                    printState();
-                    break;
-                default:
-                    System.out.println("Please choose a valid option.");
-                    break;
+            switch (choice) {
+                case (1) -> playerAction = false;
+                case (2) -> printState();
+                default -> System.out.println("Please choose a valid option.");
             }
         }
         System.out.println();

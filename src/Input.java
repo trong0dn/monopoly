@@ -7,7 +7,7 @@ public class Input {
     private final Scanner scanner;
 
     /**
-     * Initialize Input.
+     * Constructor for Input.
      */
     public Input() {
         this.scanner = new Scanner(System.in);
