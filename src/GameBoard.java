@@ -1,3 +1,11 @@
+
+/*
+// TO DO
+ - GUI Jframe (M2)
+ - Create Robot Player (M3)
+ - Special Square Properties (M3)
+ */
+
 /**
  * This class represents the game board.
  */
