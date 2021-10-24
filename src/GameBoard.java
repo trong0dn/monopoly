@@ -6,7 +6,7 @@ public class GameBoard {
     private final Square[] board; // representation of the game board
 
     /**
-     * Initialize GameBoard.
+     * Constructor for GameBoard.
      */
     public GameBoard() {
         this.board = new Square[NUM_TILES];
