@@ -337,9 +337,9 @@ public class GameBoard {
     }
 
     /**
-     * oldKent Property
-     * @param position - int
-     * @return Property(position, " Old Kent Road " rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "OLD KENT ROAD" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square oldKent(int position) {
         int rent = 2;
@@ -350,14 +350,14 @@ public class GameBoard {
         int hotel = 250;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(position, "Old Kent Road",
+        return new Property(position, "OLD KENT ROAD",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * White Chapel Property
-     * @param position - int
-     * @return Property(position, " Whitechapel Road ",rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "WHITECHAPEL ROAD" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square whitechapel(int position) {
         int rent = 4;
@@ -368,14 +368,14 @@ public class GameBoard {
         int hotel = 450;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(position, "Whitechapel Road",
+        return new Property(position, "WHITECHAPEL ROAD",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * The Angel Islington Property
-     * @param position - int
-     * @return Property(position, " The Angel, Islington ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "THE ANGEL, ISLINGTON" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square theAngelIslington(int position) {
         int rent = 6;
@@ -386,14 +386,14 @@ public class GameBoard {
         int hotel = 550;
         int propertyCost = 100;
         int houses = 50;
-        return new Property(position, "The Angel, Islington",
+        return new Property(position, "THE ANGEL, ISLINGTON",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Euston Property
-     * @param position - int
-     * @return Property(position, " Euston Road ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "EUSTON ROAD" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square euston(int position) {
         int rent = 6;
@@ -404,14 +404,14 @@ public class GameBoard {
         int hotel = 550;
         int propertyCost = 100;
         int houses = 50;
-        return new Property(position, "Euston Road",
+        return new Property(position, "EUSTON ROAD",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Penton Ville Property
-     * @param position - int
-     * @return Property(position, " Pentonville Road ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "PENTONVILLE ROAD" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square pentonville(int position) {
         int rent = 6;
@@ -422,14 +422,14 @@ public class GameBoard {
         int hotel = 550;
         int propertyCost = 120;
         int houses = 50;
-        return new Property(position, "Pentonville Road",
+        return new Property(position, "PENTONVILLE ROAD",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Pall Mall Property
-     * @param position - int
-     * @return Property(position, " Pall Mall ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "PALL MALL" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square pallMall(int position) {
         int rent = 10;
@@ -440,14 +440,14 @@ public class GameBoard {
         int hotel = 750;
         int propertyCost = 140;
         int houses = 100;
-        return new Property(position, "Pall Mall",
+        return new Property(position, "PALL MALL",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * White Hall Property
-     * @param position - int
-     * @return Property(position, " Whitehall ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "WHITEHALL" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square whitehall(int position) {
         int rent = 10;
@@ -458,14 +458,14 @@ public class GameBoard {
         int hotel = 750;
         int propertyCost = 140;
         int houses = 100;
-        return new Property(position, "Whitehall",
+        return new Property(position, "WHITEHALL",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Northumrld Property
-     * @param position - int
-     * @return Property(position, " Northumrl ' d Avenue ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "NORTHUMRL'D AVENUE" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square northumrld(int position) {
         int rent = 10;
@@ -476,14 +476,14 @@ public class GameBoard {
         int hotel = 750;
         int propertyCost = 160;
         int houses = 100;
-        return new Property(position, "Northumrl'd Avenue",
+        return new Property(position, "NORTHUMRL'D AVENUE",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Bow Property
-     * @param position - int
-     * @return Property(position, " Bow Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "BOW STREET" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square bow(int position) {
         int rent = 14;
@@ -494,14 +494,14 @@ public class GameBoard {
         int hotel = 750;
         int propertyCost = 180;
         int houses = 100;
-        return new Property(position, "Bow Street",
+        return new Property(position, "BOW STREET",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Marborough Property
-     * @param position - int
-     * @return Property(position, " Marlborough Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "MARLBOROUGH STREET" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square marlborough(int position) {
         int rent = 14;
@@ -512,14 +512,14 @@ public class GameBoard {
         int hotel = 950;
         int propertyCost = 180;
         int houses = 100;
-        return new Property(position, "Marlborough Street",
+        return new Property(position, "MARLBOROUGH STREET",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Vine Property
-     * @param position - int
-     * @return Property(position, " Vine Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "VINE STREET" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square vine(int position) {
         int rent = 16;
@@ -530,14 +530,14 @@ public class GameBoard {
         int hotel = 1000;
         int propertyCost = 200;
         int houses = 100;
-        return new Property(position, "Vine Street",
+        return new Property(position, "VINE STREET",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Strand Property
-     * @param position - int
-     * @return Property(position, " Strand ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "STRAND" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square strand(int position) {
         int rent = 18;
@@ -548,14 +548,14 @@ public class GameBoard {
         int hotel = 1050;
         int propertyCost = 220;
         int houses = 150;
-        return new Property(position, "Strand",
+        return new Property(position, "STRAND",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Fleet Property
-     * @param position - int
-     * @return Property(position, " Fleet Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "FLEET STREET" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square fleet(int position) {
         int rent = 18;
@@ -566,14 +566,14 @@ public class GameBoard {
         int hotel = 1050;
         int propertyCost = 220;
         int houses = 150;
-        return new Property(position, "Fleet Street",
+        return new Property(position, "FLEET STREET",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Trafalgar Property
-     * @param position - int
-     * @return Property(position, " Trafalgar Square ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "TRAFALGAR SQUARE" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square trafalgar(int position) {
         int rent = 20;
@@ -584,14 +584,14 @@ public class GameBoard {
         int hotel = 1100;
         int propertyCost = 260;
         int houses = 150;
-        return new Property(position, "Trafalgar Square",
+        return new Property(position, "TRAFALGAR SQUARE",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Leicaster Property
-     * @param position - int
-     * @return Property(position, " Leicester ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "LEICESTER" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square leicester(int position) {
         int rent = 22;
@@ -602,14 +602,14 @@ public class GameBoard {
         int hotel = 1150;
         int propertyCost = 260;
         int houses = 150;
-        return new Property(position, "Leicester",
+        return new Property(position, "LEICESTER",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Coventry Property
-     * @param position - int
-     * @return Property(position, " Conventry Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "CONVENTRY STREET" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square conventry(int position) {
         int rent = 22;
@@ -620,14 +620,14 @@ public class GameBoard {
         int hotel = 1150;
         int propertyCost = 280;
         int houses = 150;
-        return new Property(position, "Conventry Street",
+        return new Property(position, "CONVENTRY STREET",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Piccadilly Property
-     * @param position - int
-     * @return Property(position, " Piccadilly ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "PICCADILLY" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square piccadilly(int position) {
         int rent = 24;
@@ -638,14 +638,14 @@ public class GameBoard {
         int hotel = 1200;
         int propertyCost = 280;
         int houses = 150;
-        return new Property(position, "Piccadilly",
+        return new Property(position, "PICCADILLY",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Regent Property
-     * @param position - int
-     * @return Property(position, " Regent Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "REGENT STREET" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square regent(int position) {
         int rent = 26;
@@ -656,14 +656,14 @@ public class GameBoard {
         int hotel = 1250;
         int propertyCost = 300;
         int houses = 200;
-        return new Property(position, "Regent Street",
+        return new Property(position, "REGENT STREET",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Oxford Property
-     * @param position - int
-     * @return Property(position, " Oxford Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "OXFORD STREET" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square oxford(int position) {
         int rent = 26;
@@ -674,14 +674,14 @@ public class GameBoard {
         int hotel = 1275;
         int propertyCost = 300;
         int houses = 200;
-        return new Property(position, "Oxford Street",
+        return new Property(position, "OXFORD STREET",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Bond Property
-     * @param position - int
-     * @return Property(position, " Bond Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "BOND STREET" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square bond(int position) {
         int rent = 26;
@@ -692,14 +692,14 @@ public class GameBoard {
         int hotel = 1275;
         int propertyCost = 320;
         int houses = 200;
-        return new Property(position, "Bond Street",
+        return new Property(position, "BOND STREET",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Park Property
-     * @param position - int
-     * @return Property(position, " Park Lane ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "PARK LANE" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square park(int position) {
         int rent = 35;
@@ -710,14 +710,14 @@ public class GameBoard {
         int hotel = 1500;
         int propertyCost = 350;
         int houses = 200;
-        return new Property(position, "Park Lane",
+        return new Property(position, "PARK LANE",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Mayfair Property
-     * @param position - int
-     * @return Property(position, " Mayfair ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     * Setup "MAYFAIR" square tile on the board.
+     * @param position  int
+     * @return  Square
      */
     public Square mayfair(int position) {
         int rent = 35;
@@ -728,7 +728,7 @@ public class GameBoard {
         int hotel = 1500;
         int propertyCost = 400;
         int houses = 200;
-        return new Property(position, "Mayfair",
+        return new Property(position, "MAYFAIR",
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 }
