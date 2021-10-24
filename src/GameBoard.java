@@ -129,9 +129,9 @@ public class GameBoard {
         Property yellowC = (Property) square(29);
         Property greenA = (Property) square(31);
         Property greenB = (Property) square(32);
-        Property greenC = (Property) square(24);
+        Property greenC = (Property) square(34);
         Property blueA = (Property) square(37);
-        Property blueB = (Property) square(29);
+        Property blueB = (Property) square(39);
 
         // Brown property group
         brownA.setGroup(brownB);

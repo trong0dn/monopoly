@@ -83,7 +83,7 @@ public class Monopoly {
     }
 
     public void turn() {
-        System.out.println("\n----It's " + gameState.currentPlayer.name() + "'s turn----");
+        System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
         int countRollDoubles = 0;
         while (true) {
             //TODO If player is in jail, they have to try to get out
@@ -108,7 +108,7 @@ public class Monopoly {
             if(!roll.isDouble){
                 break;
             }
-            }
+        }
         boolean playerAction = true;
         while (playerAction && !isBankrupt) {
             System.out.println("Would you like to perform any additional actions this turn?");
@@ -184,6 +184,7 @@ public class Monopoly {
 
         if (player.getMoney() < cost) { //TODO Create method to get total value player of available assets
             System.out.println(" You can not afford to purchase " + square.name());
+            return;
         }
 
         boolean noMoney = false;
@@ -191,7 +192,7 @@ public class Monopoly {
         gameState.decisionState = DecisionState.BUY_PROPERTY;
         if (player.getMoney() < cost) {
             noMoney = true;
-            System.out.println("You do not have sufficient funds for this transaction. You currently have $" + gameState.currentPlayer.getMoney());
+            System.out.println("You do not have sufficient funds for this transaction.\n You currently have $" + gameState.currentPlayer.getMoney());
         }
         if (player.inputBool(gameState)) {
             if (!noMoney) {
@@ -231,7 +232,10 @@ public class Monopoly {
             rent *= 2;
         }
         Player owner = square.owner();
-        if (player.name().equals(owner.name())) { return; }
+        if (player.name().equals(owner.name())) {
+            System.out.println("You own " + square.name());
+            return;
+        }
 
         boolean noMoney = false;
         System.out.println("You have landed on the " + square.name() + " and must pay $" + rent + " in rent.");
