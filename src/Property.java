@@ -13,7 +13,7 @@ public class Property implements Square{
     private final String name;
     private Player owner;
     private boolean owned;
-    private final Property[] others;
+    private final Property[] others; //
     private final int propertyCost; // cost to purchase the property
     private final int houseCost; // cost to purchase one house on the property
     private int buildings; // number of buildings on property
@@ -95,18 +95,34 @@ public class Property implements Square{
         return this.owner;
     }
 
+    /**
+     * Get the monopoly status of the property.
+     * @return boolean
+     */
     public boolean isMonopoly() {
         return this.monopoly;
     }
 
+    /**
+     * Set the monopoly status to true for a property.
+     * @return boolean
+     */
     public boolean setMonopoly() {
         return this.monopoly = true;
     }
 
+    /**
+     * Set the monopoly status to false for a property.
+     * @return boolean
+     */
     public boolean breakMonopoly() {
         return this.monopoly = false;
     }
 
+    /**
+     * Set monopoly to true if player has a set or false if they do not.
+     * @param player Player
+     */
     public void updateMonopoly(Player player) {
         boolean setA = false;
         boolean setB = false;
@@ -146,14 +162,27 @@ public class Property implements Square{
         }
     }
 
+    /**
+     * Get the cost of a house.
+     * @return int
+     */
     public int getHouseCost() {
         return this.houseCost;
     }
 
+    /**
+     * Set a group of properties.
+     * @param propertyA Property
+     */
     public void setGroup(Property propertyA) {
         this.setGroup(propertyA, null);
     }
 
+    /**
+     * Set a group of properties.
+     * @param propertyA
+     * @param propertyB
+     */
     public void setGroup(Property propertyA, Property propertyB) {
         this.others[0] = propertyA;
         this.others[1] = propertyB;

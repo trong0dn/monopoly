@@ -10,6 +10,10 @@ public class HumanPlayer implements Player {
     private int money;
     private int position;
 
+    /**
+     * Initialize HumanPlayer.
+     * @param playerName String
+     */
     public HumanPlayer(String playerName) {
         this.input = new Input();
         this.properties = new LinkedList<>();

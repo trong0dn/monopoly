@@ -5,6 +5,9 @@ public class Monopoly {
     private GameState gameState;
     private boolean isBankrupt;
 
+    /**
+     * Initialize Monopoly.
+     */
     public Monopoly() {
         this.rollDice = new RollDice();
         this.isBankrupt = false;
@@ -50,7 +53,7 @@ public class Monopoly {
                 System.err.println("Game failed to be initialized");
                 return;
             } finally {
-                printState();
+                //printState();
             }
         }
         Player winner = gameState.players.remove();
@@ -70,7 +73,7 @@ public class Monopoly {
         }
         // Ask user to input name of players
         for (int i = 0; i < numPlayers; i++) {
-            System.out.print("Player #" + i + ": Enter your character name: ");
+            System.out.print("Player #" + (i+1) + ": Enter your character name: ");
             String playerName = input.inputString();
             HumanPlayer newPlayer = new HumanPlayer(playerName);
             gameState.players.add(newPlayer);
@@ -83,7 +86,7 @@ public class Monopoly {
     }
 
     public void turn() {
-        System.out.println("It's " + gameState.currentPlayer.name() + "'s turn");
+        System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
         int countRollDoubles = 0;
         while (true) {
             //TODO If player is in jail, they have to try to get out
@@ -97,29 +100,39 @@ public class Monopoly {
                 //TODO Goto_Jail
                 break;
             }
+            //print the roll number and current position
             System.out.print("You rolled a [" + roll.dieValue1 + "][" + roll.dieValue2 + "]");
             if (roll.isDouble) {
-                System.out.println(" (double)");
+                System.out.print(" (double)");
             }
             Square[] square = gameState.gameBoard.getBoard();
-            System.out.println(" and landed on " + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name());
+            System.out.println(" and landed on [" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "]");
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
+            if(!roll.isDouble){
+                break;
             }
+        }
         boolean playerAction = true;
         while (playerAction && !isBankrupt) {
             System.out.println("Would you like to perform any additional actions this turn?");
-            System.out.println("Select one of the following options:");
+            System.out.println("Select the number of one of the following options:");
             //TODO Buy/Sell houses
-            System.out.println("1) Pass my turn.");
+            System.out.println("1) Pass my turn.\n2) Player Statistics");
             gameState.decisionState = DecisionState.TURN_ACTION;
             int choice = gameState.currentPlayer.inputInt(gameState);
 
-            //TODO Switch-case for more additional player options
-            if (choice == 1) {
-                playerAction = false;
-            } else {
-                System.out.println("Please choose a valid option.");
+            // Switch-case for more additional player options
+            switch (choice){
+                case(1):
+                    playerAction = false;
+                    break;
+                case(2):
+                    printState();
+                    break;
+                default:
+                    System.out.println("Please choose a valid option.");
+                    break;
             }
         }
         System.out.println();
@@ -131,16 +144,17 @@ public class Monopoly {
     public void printState() {
         Player player = gameState.currentPlayer;
 
+        System.out.println("-----------------------------------------------");
         System.out.println("Player name: " + player.name());
         System.out.println("Current balance: $" + player.getMoney());
-        System.out.println("Current position: " + player.getPosition());
-        //TODO Fix this to get square tile name position maybe using toString
+        System.out.println("Current position: " + gameState.gameBoard.square(player.getPosition()).name());
         System.out.println("Properties owned: ");
 
         for (Square s: player.properties()){
-            System.out.println(s.name());
+            System.out.println("- " + s.name());
         }
         //TODO Additional information about houses, jail, etc., later
+        System.out.println("-----------------------------------------------");
     }
 
     /**
@@ -175,14 +189,16 @@ public class Monopoly {
 
         if (player.getMoney() < cost) { //TODO Create method to get total value player of available assets
             System.out.println(" You can not afford to purchase " + square.name());
+            return;
         }
 
         boolean noMoney = false;
-        System.out.println("Would you like to purchase " + square.name() + " for " + cost + " (Yes/No)?");
+        System.out.println("Would you like to purchase " + square.name() + " for $" + cost + " (Yes/No)?");
         gameState.decisionState = DecisionState.BUY_PROPERTY;
         if (player.getMoney() < cost) {
             noMoney = true;
-            System.out.println("You do not have sufficient funds for this transaction");
+            System.out.println("You do not have sufficient funds for this transaction.\n You currently have $"
+                    + gameState.currentPlayer.getMoney());
         }
         if (player.inputBool(gameState)) {
             if (!noMoney) {
@@ -222,10 +238,13 @@ public class Monopoly {
             rent *= 2;
         }
         Player owner = square.owner();
-        if (player.name().equals(owner.name())) { return; }
+        if (player.name().equals(owner.name())) {
+            System.out.println("You own " + square.name());
+            return;
+        }
 
         boolean noMoney = false;
-        System.out.println("You have landed on the " + square.name() + " and must pay" + rent + " in rent.");
+        System.out.println("You have landed on the " + square.name() + " and must pay $" + rent + " in rent.");
         if (player.getMoney() < rent) {
             noMoney = true;
             System.out.println("You do not have sufficient funds for this transaction");
@@ -238,7 +257,10 @@ public class Monopoly {
     }
 
     public static void main(String[] args) {
+        System.out.println("~~~Welcome to MONOPOLY~~~\n");
+
         Monopoly monopoly = new Monopoly();
+
         monopoly.play();
     }
 }
