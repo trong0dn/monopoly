@@ -1,11 +1,3 @@
-
-/*
-// TO DO
- - GUI Jframe (M2)
- - Create Robot Player (M3)
- - Special Square Properties (M3)
- */
-
 /**
  * This class represents the game board.
  */
@@ -202,71 +194,146 @@ public class GameBoard {
      * Group utilities.
      */
     private void groupUtilities() {
-        Utility a = (Utility) square(12);
-        Utility b = (Utility) square(28);
+        Utility a = (Utility) square(12); // Utilities on square 12
+        Utility b = (Utility) square(28); // Utilities on square 28
 
         a.setGroup(b);
         b.setGroup(a);
     }
 
+    /**
+     * Setup "GO" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square go(int position) {
-        return new Inactive(position, "Go");
+        return new Inactive(position, "GO");
     }
 
+    /**
+     * Setup "COMMUNITY CHEST" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square community(int position) {
-        return new Inactive(position, "Community Chest");
+        return new Inactive(position, "COMMUNITY CHEST");
     }
 
+    /**
+     * Setup "CHANCE" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square chance(int position) {
-        return new Inactive(position, "Chance");
+        return new Inactive(position, "CHANCE");
     }
 
+    /**
+     * Setup "INCOME TAX" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square incomeTax(int position) {
-        return new Taxes(position, "Income Tax");
+        return new Taxes(position, "INCOME TAX");
     }
 
+    /**
+     * Setup "SUPER TAX" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square superTax(int position) {
-        return new Taxes(position,"Super Tax");
+        return new Taxes(position,"SUPER TAX");
     }
 
+    /**
+     * Setup "ELECTRIC COMPANY" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square electricCompany(int position) {
-        return new Utility(position, "Electric Company");
+        return new Utility(position, "ELECTRIC COMPANY");
     }
 
+    /**
+     * Setup "WATER WORKS" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square waterWorks(int position) {
-        return new Utility(position, "Water Works");
+        return new Utility(position, "WATER WORKS");
     }
 
+    /**
+     * Setup "KINGS CROSS STATION" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square kingsCross(int position) {
-        return new Railroad(position, "Kings Cross Station");
+        return new Railroad(position, "KINGS CROSS STATION");
     }
 
+    /**
+     * Setup "MARYLEBONE STATION" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square marylebone(int position) {
-        return new Railroad(position, "Marylebone Station");
+        return new Railroad(position, "MARYLEBONE STATION");
     }
 
+    /**
+     * Setup "FENCHURCH ST. STATION" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square fenchurch(int position) {
-        return new Railroad(position, "Fenchurch St. Station");
+        return new Railroad(position, "FENCHURCH ST. STATION");
     }
 
+    /**
+     * Setup "LIVERPOOL ST. STATION" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square liverpool(int position) {
-        return new Railroad(position, "Liverpool St. Station");
+        return new Railroad(position, "LIVERPOOL ST. STATION");
     }
 
+    /**
+     * Setup "FREE PARKING" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square freeParking(int position) {
-        return new Inactive(position, "Free Parking");
+        return new Inactive(position, "FREE PARKING");
     }
 
+    /**
+     * Setup "GO TO JAIL" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square goToJail(int position) {
-        return new Jail(position, "Go to Jail", Jail.JailType.GOTO_JAIL);
+        return new Jail(position, "GO TO JAIL", Jail.JailType.GOTO_JAIL);
     }
 
+    /**
+     * Setup "IN JAIL" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square inJail(int position) {
-        return new Jail(position, "In Jail", Jail.JailType.IN_JAIL);
+        return new Jail(position, "IN JAIL", Jail.JailType.IN_JAIL);
     }
 
+    /**
+     * Setup "JUST VISITING" square tile on the board.
+     * @param position  int
+     * @return  Square
+     */
     public Square justVisiting(int position) {
-        return new Jail(position, "Just Visiting", Jail.JailType.JUST_VISITING);
+        return new Jail(position, "JUST VISITING", Jail.JailType.JUST_VISITING);
     }
 
     /**
