@@ -5,6 +5,11 @@ public class Inactive implements Square {
     private final int position;
     private final String name;
 
+    /**
+     * Initialize Inactive squares.
+     * @param position int
+     * @param name     String
+     */
     public Inactive(int position, String name) {
         this.position = position;
         this.name = name;

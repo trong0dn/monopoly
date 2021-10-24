@@ -6,6 +6,11 @@ public class Taxes implements Square {
     private final String name;
     private final int tax;
 
+    /**
+     * Initialize Taxes.
+     * @param position int
+     * @param name     String
+     */
     public Taxes(int position, String name) {
         this.position = position;
         this.name = name;

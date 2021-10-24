@@ -11,6 +11,11 @@ public class Utility implements Square {
     private boolean owned;
     private final RollDice dice;
 
+    /**
+     * Initialize Utility.
+     * @param position int
+     * @param name     String
+     */
     public Utility(int position, String name) {
         this.position = position;
         this.name = name;

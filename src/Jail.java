@@ -6,6 +6,12 @@ public class Jail implements Square {
     private final String name;
     private final JailType type;
 
+    /**
+     * Initialize Jail,
+     * @param position int
+     * @param name     String
+     * @param type     JailType
+     */
     public Jail(int position, String name, JailType type) {
         this.position = position;
         this.name = name;
