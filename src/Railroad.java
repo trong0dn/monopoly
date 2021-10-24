@@ -72,9 +72,9 @@ public class Railroad implements Square {
 
     /**
      * Create railroad groupings.
-     * @param a    Railroad
-     * @param b    Railroad
-     * @param c    Railroad
+     * @param a   - Railroad
+     * @param b   - Railroad
+     * @param c   - Railroad
      */
     public void setGroup(Railroad a, Railroad b, Railroad c) {
         this.others[0] = a;

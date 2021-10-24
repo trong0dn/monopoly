@@ -1,7 +1,8 @@
 import java.util.*;
 
+
 /**
- * This class representation of a human player of this game.
+ * This is a class representation of a human player of this game.
  */
 public class HumanPlayer implements Player {
     private final Input input;
@@ -74,7 +75,6 @@ public class HumanPlayer implements Player {
             square.purchase(this);
         }
     }
-
     @Override
     public void removeProperty(Square square) {
         properties.remove(square);

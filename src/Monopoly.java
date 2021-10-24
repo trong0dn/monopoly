@@ -52,8 +52,6 @@ public class Monopoly {
             } catch (NoSuchElementException e) {
                 System.err.println("Game failed to be initialized");
                 return;
-            } finally {
-                //printState();
             }
         }
         Player winner = gameState.players.remove();
@@ -66,6 +64,7 @@ public class Monopoly {
     public void initializePlayers(Input input) {
         // Ask user for number of players participating
         System.out.println("How many players would like to play?");
+
         int numPlayers = input.inputInt();
         while (numPlayers < 2 || numPlayers > 8) {
             System.out.println("Try Again! You must have a min of 2 and max of 8 players: ");
@@ -80,6 +79,7 @@ public class Monopoly {
         }
         // Print all the player names
         System.out.println("\nThere are: " + numPlayers + " players, with the usernames: ");
+
         for (Player p: gameState.players) {
             System.out.println(">>> " + p.name());
         }
@@ -109,7 +109,7 @@ public class Monopoly {
             System.out.println(" and landed on [" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "]");
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
-            if(!roll.isDouble){
+            if(!roll.isDouble) {
                 break;
             }
         }
@@ -118,7 +118,8 @@ public class Monopoly {
             System.out.println("Would you like to perform any additional actions this turn?");
             System.out.println("Select the number of one of the following options:");
             //TODO Buy/Sell houses
-            System.out.println("1) Pass my turn.\n2) Player Statistics");
+            System.out.println("1) Pass my turn.");
+            System.out.println("2) Player Statistics.");
             gameState.decisionState = DecisionState.TURN_ACTION;
             int choice = gameState.currentPlayer.inputInt(gameState);
 
@@ -151,7 +152,7 @@ public class Monopoly {
         System.out.println("Properties owned: ");
 
         for (Square s: player.properties()){
-            System.out.println("- " + s.name());
+            System.out.println(">>> " + s.name());
         }
         //TODO Additional information about houses, jail, etc., later
         System.out.println("-----------------------------------------------");
@@ -188,7 +189,7 @@ public class Monopoly {
         int cost = square.cost();
 
         if (player.getMoney() < cost) { //TODO Create method to get total value player of available assets
-            System.out.println(" You can not afford to purchase " + square.name());
+            System.out.println("You can not afford to purchase " + square.name());
             return;
         }
 
@@ -258,9 +259,7 @@ public class Monopoly {
 
     public static void main(String[] args) {
         System.out.println("~~~Welcome to MONOPOLY~~~\n");
-
         Monopoly monopoly = new Monopoly();
-
         monopoly.play();
     }
 }

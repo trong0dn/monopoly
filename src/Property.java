@@ -1,6 +1,9 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * This class represents the way properties are structured in the game.
+ */
 public class Property implements Square{
     private final int rent;
     private final int oneHouse;
@@ -13,7 +16,7 @@ public class Property implements Square{
     private final String name;
     private Player owner;
     private boolean owned;
-    private final Property[] others; //
+    private final Property[] others; // collection of player's property
     private final int propertyCost; // cost to purchase the property
     private final int houseCost; // cost to purchase one house on the property
     private int buildings; // number of buildings on property
@@ -163,6 +166,7 @@ public class Property implements Square{
     }
 
     /**
+
      * Get the cost of a house.
      * @return int
      */
@@ -172,7 +176,7 @@ public class Property implements Square{
 
     /**
      * Set a group of properties.
-     * @param propertyA Property
+     * @param propertyA  Property
      */
     public void setGroup(Property propertyA) {
         this.setGroup(propertyA, null);
@@ -180,8 +184,8 @@ public class Property implements Square{
 
     /**
      * Set a group of properties.
-     * @param propertyA
-     * @param propertyB
+     * @param propertyA  Property
+     * @param propertyB  Property
      */
     public void setGroup(Property propertyA, Property propertyB) {
         this.others[0] = propertyA;

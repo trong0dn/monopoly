@@ -1,3 +1,11 @@
+
+/*
+// TO DO
+ - GUI Jframe (M2)
+ - Create Robot Player (M3)
+ - Special Square Properties (M3)
+ */
+
 /**
  * This class represents the game board.
  */
@@ -63,7 +71,7 @@ public class GameBoard {
      * @return          Square
      */
     private Square makeSquare(int position) {
-        return switch (position) {
+        return switch (position) { // Using cases to represent individual squares on board. Clockwise.
             case 0 -> go(position);
             case 1 -> oldKent(position);
             case 2 -> community(position);
@@ -113,7 +121,7 @@ public class GameBoard {
      * Group properties by color set.
      */
     private void groupProperties() {
-        Property brownA = (Property) square(1);
+        Property brownA = (Property) square(1); // Properties associated with cases. ie case 1.
         Property brownB = (Property) square(3);
         Property skyA = (Property) square(6);
         Property skyB = (Property) square(8);
@@ -136,34 +144,41 @@ public class GameBoard {
         Property blueA = (Property) square(37);
         Property blueB = (Property) square(39);
 
-        // Brown property group
+        // BROWN property group
         brownA.setGroup(brownB);
         brownB.setGroup(brownA);
-        // Sky-blue property group
+
+        // SKY-BLUE property group
         skyA.setGroup(skyB, skyC);
         skyB.setGroup(skyA, skyC);
         skyC.setGroup(skyA, skyB);
-        // Pink property group
+
+        // PINK property group
         pinkA.setGroup(pinkB, pinkC);
         pinkB.setGroup(pinkA, pinkC);
         pinkC.setGroup(pinkA, pinkB);
-        // Orange property group
+
+        // ORANGE property group
         orangeA.setGroup(orangeB, orangeC);
         orangeB.setGroup(orangeA, orangeC);
         orangeC.setGroup(orangeA, orangeB);
-        // Red property group
+
+        // RED property group
         redA.setGroup(redB, redC);
         redB.setGroup(redA, redC);
         redC.setGroup(redA, redB);
-        // Yellow property group
+
+        // YELLOW property group
         yellowA.setGroup(yellowB, yellowC);
         yellowB.setGroup(yellowA, yellowC);
         yellowC.setGroup(yellowA, yellowB);
-        // Green property group
+
+        // GREEN property group
         greenA.setGroup(greenB, greenC);
         greenB.setGroup(greenA, greenC);
         greenC.setGroup(greenA, greenB);
-        // Blue property group
+
+        // BLUE property group
         blueA.setGroup(blueB);
         blueB.setGroup(blueA);
     }
@@ -172,10 +187,10 @@ public class GameBoard {
      * Group railroads.
      */
     private void groupRailroads() {
-        Railroad a = (Railroad) square(5);
-        Railroad b = (Railroad) square(15);
-        Railroad c = (Railroad) square(25);
-        Railroad d = (Railroad) square(35);
+        Railroad a = (Railroad) square(5);  // Railroad on square 5
+        Railroad b = (Railroad) square(15); // Railroad on square 15
+        Railroad c = (Railroad) square(25); // Railroad on square 25
+        Railroad d = (Railroad) square(35); // Railroad on square 35
 
         a.setGroup(b, c, d);
         b.setGroup(a, c, d);
@@ -254,6 +269,11 @@ public class GameBoard {
         return new Jail(position, "Just Visiting", Jail.JailType.JUST_VISITING);
     }
 
+    /**
+     * oldKent Property
+     * @param position - int
+     * @return Property(position, " Old Kent Road " rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square oldKent(int position) {
         int rent = 2;
         int oneHouse = 10;
@@ -267,6 +287,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * White Chapel Property
+     * @param position - int
+     * @return Property(position, " Whitechapel Road ",rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square whitechapel(int position) {
         int rent = 4;
         int oneHouse = 20;
@@ -280,6 +305,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * The Angel Islington Property
+     * @param position - int
+     * @return Property(position, " The Angel, Islington ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square theAngelIslington(int position) {
         int rent = 6;
         int oneHouse = 30;
@@ -293,6 +323,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Euston Property
+     * @param position - int
+     * @return Property(position, " Euston Road ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square euston(int position) {
         int rent = 6;
         int oneHouse = 30;
@@ -306,6 +341,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Penton Ville Property
+     * @param position - int
+     * @return Property(position, " Pentonville Road ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square pentonville(int position) {
         int rent = 6;
         int oneHouse = 30;
@@ -319,6 +359,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Pall Mall Property
+     * @param position - int
+     * @return Property(position, " Pall Mall ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square pallMall(int position) {
         int rent = 10;
         int oneHouse = 50;
@@ -332,6 +377,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * White Hall Property
+     * @param position - int
+     * @return Property(position, " Whitehall ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square whitehall(int position) {
         int rent = 10;
         int oneHouse = 50;
@@ -345,6 +395,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Northumrld Property
+     * @param position - int
+     * @return Property(position, " Northumrl ' d Avenue ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square northumrld(int position) {
         int rent = 10;
         int oneHouse = 50;
@@ -358,6 +413,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Bow Property
+     * @param position - int
+     * @return Property(position, " Bow Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square bow(int position) {
         int rent = 14;
         int oneHouse = 70;
@@ -371,6 +431,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Marborough Property
+     * @param position - int
+     * @return Property(position, " Marlborough Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square marlborough(int position) {
         int rent = 14;
         int oneHouse = 70;
@@ -384,6 +449,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Vine Property
+     * @param position - int
+     * @return Property(position, " Vine Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square vine(int position) {
         int rent = 16;
         int oneHouse = 80;
@@ -397,6 +467,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Strand Property
+     * @param position - int
+     * @return Property(position, " Strand ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square strand(int position) {
         int rent = 18;
         int oneHouse = 90;
@@ -410,6 +485,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Fleet Property
+     * @param position - int
+     * @return Property(position, " Fleet Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square fleet(int position) {
         int rent = 18;
         int oneHouse = 90;
@@ -423,6 +503,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Trafalgar Property
+     * @param position - int
+     * @return Property(position, " Trafalgar Square ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square trafalgar(int position) {
         int rent = 20;
         int oneHouse = 100;
@@ -436,6 +521,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Leicaster Property
+     * @param position - int
+     * @return Property(position, " Leicester ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square leicester(int position) {
         int rent = 22;
         int oneHouse = 110;
@@ -449,6 +539,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Coventry Property
+     * @param position - int
+     * @return Property(position, " Conventry Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square conventry(int position) {
         int rent = 22;
         int oneHouse = 110;
@@ -462,6 +557,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Piccadilly Property
+     * @param position - int
+     * @return Property(position, " Piccadilly ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square piccadilly(int position) {
         int rent = 24;
         int oneHouse = 120;
@@ -475,6 +575,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Regent Property
+     * @param position - int
+     * @return Property(position, " Regent Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square regent(int position) {
         int rent = 26;
         int oneHouse = 130;
@@ -488,6 +593,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Oxford Property
+     * @param position - int
+     * @return Property(position, " Oxford Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square oxford(int position) {
         int rent = 26;
         int oneHouse = 130;
@@ -501,6 +611,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Bond Property
+     * @param position - int
+     * @return Property(position, " Bond Street ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square bond(int position) {
         int rent = 26;
         int oneHouse = 130;
@@ -514,6 +629,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Park Property
+     * @param position - int
+     * @return Property(position, " Park Lane ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square park(int position) {
         int rent = 35;
         int oneHouse = 175;
@@ -527,6 +647,11 @@ public class GameBoard {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
+    /**
+     * Mayfair Property
+     * @param position - int
+     * @return Property(position, " Mayfair ", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses)
+     */
     public Square mayfair(int position) {
         int rent = 35;
         int oneHouse = 175;
