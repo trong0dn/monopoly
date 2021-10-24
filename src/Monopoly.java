@@ -99,7 +99,7 @@ public class Monopoly {
             }
             System.out.print("You rolled a [" + roll.dieValue1 + "][" + roll.dieValue2 + "]");
             if (roll.isDouble) {
-                System.out.println(" (double)");
+                System.out.print(" (double)");
             }
             Square[] square = gameState.gameBoard.getBoard();
             System.out.println(" and landed on [" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "]");
@@ -142,7 +142,7 @@ public class Monopoly {
 
         System.out.println("Player name: " + player.name());
         System.out.println("Current balance: $" + player.getMoney());
-        System.out.println("Current position: " + player.getPosition() + "th square " + gameState.gameBoard.square(player.getPosition()).name());
+        System.out.println("Current position: Square " + player.getPosition() + " --> " + gameState.gameBoard.square(player.getPosition()).name());
         //TODO Fix this to get square tile name position maybe using toString
         System.out.println("Properties owned: ");
 
@@ -247,7 +247,10 @@ public class Monopoly {
     }
 
     public static void main(String[] args) {
+        System.out.println("~~~Welcome to MONOPOLY~~~\n");
+
         Monopoly monopoly = new Monopoly();
+
         monopoly.play();
     }
 }
