@@ -6,6 +6,9 @@ import java.util.Scanner;
 public class Input {
     private final Scanner scanner;
 
+    /**
+     * Initialize Input.
+     */
     public Input() {
         this.scanner = new Scanner(System.in);
     }

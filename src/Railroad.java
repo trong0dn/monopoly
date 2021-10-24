@@ -10,6 +10,11 @@ public class Railroad implements Square {
     private Player owner;
     private boolean owned;
 
+    /**
+     * Initialize Railroad.
+     * @param position int
+     * @param name     String
+     */
     public Railroad(int position, String name) {
         this.position = position;
         this.name = name;

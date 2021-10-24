@@ -8,6 +8,9 @@ public class RollDice implements Dice {
     private final int NUM_DICE; // number of dice
     private final int NUM_SIDES; // number of sides per die
 
+    /**
+     * Initialize RollDice.
+     */
     public RollDice() {
         this.NUM_DICE = 2;
         this.NUM_SIDES = 6;

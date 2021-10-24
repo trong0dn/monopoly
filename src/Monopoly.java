@@ -5,6 +5,9 @@ public class Monopoly {
     private GameState gameState;
     private boolean isBankrupt;
 
+    /**
+     * Initialize Monopoly.
+     */
     public Monopoly() {
         this.rollDice = new RollDice();
         this.isBankrupt = false;
@@ -97,6 +100,7 @@ public class Monopoly {
                 //TODO Goto_Jail
                 break;
             }
+            //print the roll number and current position
             System.out.print("You rolled a [" + roll.dieValue1 + "][" + roll.dieValue2 + "]");
             if (roll.isDouble) {
                 System.out.print(" (double)");
@@ -140,16 +144,17 @@ public class Monopoly {
     public void printState() {
         Player player = gameState.currentPlayer;
 
+        System.out.println("-----------------------------------------------");
         System.out.println("Player name: " + player.name());
         System.out.println("Current balance: $" + player.getMoney());
-        System.out.println("Current position: Square " + player.getPosition() + " --> " + gameState.gameBoard.square(player.getPosition()).name());
-        //TODO Fix this to get square tile name position maybe using toString
+        System.out.println("Current position: " + gameState.gameBoard.square(player.getPosition()).name());
         System.out.println("Properties owned: ");
 
         for (Square s: player.properties()){
             System.out.println("- " + s.name());
         }
         //TODO Additional information about houses, jail, etc., later
+        System.out.println("-----------------------------------------------");
     }
 
     /**
@@ -192,7 +197,8 @@ public class Monopoly {
         gameState.decisionState = DecisionState.BUY_PROPERTY;
         if (player.getMoney() < cost) {
             noMoney = true;
-            System.out.println("You do not have sufficient funds for this transaction.\n You currently have $" + gameState.currentPlayer.getMoney());
+            System.out.println("You do not have sufficient funds for this transaction.\n You currently have $"
+                    + gameState.currentPlayer.getMoney());
         }
         if (player.inputBool(gameState)) {
             if (!noMoney) {
