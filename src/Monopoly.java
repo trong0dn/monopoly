@@ -63,6 +63,7 @@ public class Monopoly {
     public void initializePlayers(Input input) {
         // Ask user for number of players participating
         System.out.println("How many players would like to play?");
+
         int numPlayers = input.inputInt();
         while (numPlayers < 2 || numPlayers > 8) {
             System.out.println("Try Again! You must have a min of 2 and max of 8 players: ");
@@ -77,6 +78,7 @@ public class Monopoly {
         }
         // Print all the player names
         System.out.println("\nThere are: " + numPlayers + " players, with the usernames: ");
+
         for (Player p: gameState.players) {
             System.out.println(">>> " + p.name());
         }
@@ -84,6 +86,7 @@ public class Monopoly {
 
     public void turn() {
         System.out.println("It's " + gameState.currentPlayer.name() + "'s turn");
+
         int countRollDoubles = 0;
         while (true) {
             //TODO If player is in jail, they have to try to get out

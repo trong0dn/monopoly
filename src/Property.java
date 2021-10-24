@@ -149,14 +149,27 @@ public class Property implements Square{
         }
     }
 
+    /**
+     * Getter method for cost of house in game.
+     * @return houseCost
+     */
     public int getHouseCost() {
         return this.houseCost;
     }
 
+    /**
+     * Method used for setting objects into groups
+     * @param propertyA - propertyA, propertyB:null
+     */
     public void setGroup(Property propertyA) {
         this.setGroup(propertyA, null);
     }
 
+    /**
+     *  Method used in railroad method for setting railroads in game
+     * @param propertyA - Railroad
+     * @param propertyB - Railroad
+     */
     public void setGroup(Property propertyA, Property propertyB) {
         this.others[0] = propertyA;
         this.others[1] = propertyB;
