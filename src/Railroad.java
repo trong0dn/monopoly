@@ -21,31 +21,60 @@ public class Railroad implements Square {
         this.others = new Railroad[3];
     }
 
+
+    /**
+     * Get the position of the square tile.
+     * @return  int
+     */
     @Override
     public int position() {
         return this.position;
     }
 
+
+    /**
+     * Get the name of the square tile.
+     * @return  String
+     */
     @Override
     public String name() {
         return this.name;
     }
 
+
+    /**
+     * If the square tile can be owned or not.
+     * @return  boolean
+     */
     @Override
     public boolean isOwnable() {
         return true;
     }
 
+
+    /**
+     * If the square tile is owned.
+     * @return  boolean
+     */
     @Override
     public boolean isOwned() {
         return owned;
     }
 
+
+    /**
+     * Get the cost of the square tile.
+     * @return  int
+     */
     @Override
     public int cost() {
         return this.COST;
     }
 
+    /**
+     * Method invoked when a square tile is being purchased.
+     * @param player    Player
+     */
     @Override
     public void purchase(Player player) {
         owned = true;
@@ -53,6 +82,11 @@ public class Railroad implements Square {
         updateOwners();
     }
 
+    /**
+     * Rent value of the square tile.
+     * @param value     int
+     * @return  int
+     */
     @Override
     public int rent(int value) {
         updateOwners();
@@ -65,6 +99,10 @@ public class Railroad implements Square {
         };
     }
 
+    /**
+     * Return owner of the square tile.
+     * @return  Player
+     */
     @Override
     public Player owner() {
         return owner;

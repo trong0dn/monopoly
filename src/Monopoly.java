@@ -1,3 +1,21 @@
+/*
+
+Milestone 1
+
+Group 17:
+Trong Nguyen 100848232
+Francisco De Grano 101147447
+Ibrahim Almalki 101142978
+Elisha Catherasoo 101148507
+
+Professor: Babak Esfandiari
+TA: Michael Vezina
+
+Due: 10/25/2021
+
+ */
+
+
 import java.util.*;
 
 /**
@@ -88,6 +106,10 @@ public class Monopoly {
         }
     }
 
+    /**
+     * the turn function
+     * handles each players turns
+     */
     public void turn() {
         System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
         int countRollDoubles = 0;
