@@ -16,16 +16,29 @@ public class RollDice implements Dice {
         this.NUM_SIDES = 6;
     }
 
+    /**
+     * Get the number of dice.
+     * @return  int
+     */
     @Override
     public int getNumDice() {
         return this.NUM_DICE;
     }
 
+
+    /**
+     * Get the number of sides per dice.
+     * @return  int
+     */
     @Override
     public int getNumSides() {
         return this.NUM_SIDES;
     }
 
+    /**
+     * Method invoked when dice are rolled.
+     * @return  Roll
+     */
     @Override
     public Roll rollDice() {
         Roll roll = new Roll();
