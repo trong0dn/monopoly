@@ -1,5 +1,6 @@
 /**
  * This class represents the tax square tiles on the game board.
+ * @author Trong Nguyen
  */
 public class Taxes implements Square {
     private final int position;

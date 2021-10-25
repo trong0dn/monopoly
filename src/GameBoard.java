@@ -1,5 +1,6 @@
 /**
  * This class represents the game board.
+ * @author Elisha Catherasoo & Trong Nguyen
  */
 public class GameBoard {
     private final int NUM_TILES = 41;

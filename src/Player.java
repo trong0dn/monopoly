@@ -2,7 +2,7 @@ import java.util.Collection;
 
 /**
  * Interface for the players on a monopoly board.
- * author: Trong + Francisco
+ * @author Francisco De Grano & Trong Nguyen
  */
 public interface Player {
 

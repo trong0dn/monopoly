@@ -2,6 +2,7 @@ import java.util.*;
 
 /**
  * This is a class representation of a human player of this game.
+ * @author Francisco De Grano & Ibrahim Almalki
  */
 public class HumanPlayer implements Player {
     private final Input input;
@@ -38,7 +39,7 @@ public class HumanPlayer implements Player {
 
     /**
      * passing the go tile giving the player $200
-     * @param newPosition
+     * @param newPosition   int
      */
     @Override
     public void moveTo(int newPosition) {

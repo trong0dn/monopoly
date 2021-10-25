@@ -1,5 +1,6 @@
 /**
  * This class represents an inactive square tile on the board game.
+ * @author Trong Nguyen
  */
 public class Inactive implements Square {
     private final int position;

@@ -1,5 +1,6 @@
 /**
  * This class represents all the railroad square tiles on the game board.
+ * @author Trong Nguyen
  */
 public class Railroad implements Square {
     private final int COST = 200;

@@ -1,5 +1,6 @@
 /**
  * Interface for the square tiles on a monopoly board.
+ * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public interface Square {
 

@@ -20,6 +20,7 @@ import java.util.*;
 
 /**
  * This class represents the user interface for the Monopoly board game.
+ * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class Monopoly {
     private final RollDice rollDice;

@@ -3,6 +3,7 @@ import java.util.Queue;
 
 /**
  * This class represents the way properties are structured in the game.
+ * @author Ibrahim Almalki & Trong Nguyen
  */
 public class Property implements Square{
     private final int rent;

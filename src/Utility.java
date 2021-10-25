@@ -1,5 +1,6 @@
 /**
  * This class represents all the utility square tiles on the game board.
+ * @author Trong Nguyen
  */
 public class Utility implements Square {
     private final int COST = 150;
