@@ -16,6 +16,12 @@ Due: 10/25/2021
  */
 
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.*;
 
 /**
@@ -26,6 +32,12 @@ public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
     private boolean isBankrupt;
+    private JFrame frame; // used for testing buttons
+    private JPanel playerInit; // used to test buttons
+    private JPanel start; // used to test buttons
+    private JPanel monopolyPanel;
+    private JPanel switchPanels;
+    private Container container;
 
     /**
      * Constructor for Monopoly.
@@ -39,7 +51,8 @@ public class Monopoly {
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
         Input input = new Input();
-        initializePlayers(input);
+        //initializePlayers(input);
+        initGUI();
     }
 
     /**
@@ -58,6 +71,41 @@ public class Monopoly {
         public GameBoard gameBoard;
         public Player currentPlayer;
     }
+
+    private void initGUI(){
+        this.frame = new JFrame(); // used for testing buttons
+        this.playerInit = new JPanel();
+        this.start = new JPanel();
+        this.monopolyPanel = new JPanel();
+        this.switchPanels = new JPanel(new CardLayout());
+        this. container = frame.getContentPane();
+    }
+
+    private JButton startButton(){
+        JButton button = new JButton("Start Game");
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //CardLayout cl = (CardLayout) (switchPanels.getLayout());
+                //cl.next(container);
+            }
+        });
+        return button;
+    }
+
+    public JButton rollButton(){
+        JButton button = new JButton("Roll Dice");
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Dice.Roll roll = rollDice.rollDice();
+            }
+        });
+        return button;
+    }
+
 
     /**
      * Play loop that requests for user inputs until there is a winner.
@@ -195,9 +243,9 @@ public class Monopoly {
             owned(player, square, roll);
         }
         //else if (square instanceof Taxes) { }
-            //TODO Deal with Tax squares
+        //TODO Deal with Tax squares
         //else if (square instanceof  Jail) { }
-            //TODO Deal with Jail square
+        //TODO Deal with Jail square
     }
 
     /**
@@ -278,9 +326,59 @@ public class Monopoly {
         //TODO else trade assets for money
     }
 
+    /**
+     * The Monopoly GUI
+     */
+    public void displayGUI() { // used for testing buttons
+        JFrame frame = new JFrame("MONOPOLY");
+        JLabel playerInitLabel = new JLabel("This is the Panel for creating the players");
+        JLabel monopolyLabel = new JLabel("This is the Panel for the game");
+
+        start.setPreferredSize(new Dimension(250, 250));
+        start.setBackground(Color.white);
+
+        playerInit.setPreferredSize(new Dimension(250, 250));
+        playerInit.setBackground(Color.white);
+
+        // used GridBagLayout so that the button is in the middle of the screen
+        GridBagConstraints gbagContraintStartButton = new GridBagConstraints();
+        gbagContraintStartButton.gridx = 1;
+        gbagContraintStartButton.gridy = 1;
+
+        // add the buttons and panels to the frame
+        start.add(startButton(), gbagContraintStartButton);
+
+        playerInit.add(playerInitLabel, gbagContraintStartButton);
+
+        monopolyPanel.add(monopolyLabel, gbagContraintStartButton);
+
+        switchPanels.add(start);
+        switchPanels.add(playerInit);
+        switchPanels.add(monopolyPanel);
+
+        frame.add(start);
+
+        // frame doesn't close immediately when trying to quit
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent we) {
+                if (JOptionPane.showConfirmDialog(frame, "Are you sure you want to quit?")
+                        == JOptionPane.OK_OPTION) {
+                    frame.setVisible(false);
+                    frame.dispose();
+                }
+            }
+        });
+
+        frame.pack();
+        frame.setVisible(true);
+    }
+
     public static void main(String[] args) {
         System.out.println("~~~Welcome to MONOPOLY~~~\n");
         Monopoly monopoly = new Monopoly();
-        monopoly.play();
+        monopoly.displayGUI();
+        //monopoly.play();
     }
 }
