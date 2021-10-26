@@ -12,13 +12,16 @@ Oct. 25, 2021
 ## CONTACT INFORMATION
 
 
-Contact Name:		
-Trong Nguyen - 100848232
-Francisco De Grano - 101147447
-Ibrahim Almalki - 101142978
-Elisha Catherasoo - 101148507
+#### Contact Name:
+<ul>
+<li>Trong Nguyen - 100848232
+<li>Francisco De Grano - 101147447
+<li>Ibrahim Almalki - 101142978
+<li>Elisha Catherasoo - 101148507
+</ul>
 
-Affiliation: 		Carleton University - Systems and Computer Engineering
+#### Affiliation: 
+Carleton University - Systems and Computer Engineering
 SYSC 3110 - Software Development Project
 
 ------------------------------------------------------------------------------
