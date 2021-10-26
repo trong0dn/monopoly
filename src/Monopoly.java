@@ -82,19 +82,27 @@ public class Monopoly {
         this. container = frame.getContentPane();
     }
 
+    /**
+     * The Start Button will change to the player initialization panel
+     * @return button
+     */
     private JButton startButton(){
         JButton button = new JButton("Start Game");
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //CardLayout cl = (CardLayout) (switchPanels.getLayout());
-                //cl.next(container);
+                CardLayout cl = (CardLayout) (switchPanels.getLayout());
+                cl.show(switchPanels, "PlayerPanel");
             }
         });
         return button;
     }
 
+    /**
+     * Roll the dice when button is pressed
+     * @return button
+     */
     public JButton rollButton(){
         JButton button = new JButton("Roll Dice");
 
@@ -353,11 +361,11 @@ public class Monopoly {
 
         monopolyPanel.add(monopolyLabel, gbagContraintStartButton);
 
-        switchPanels.add(start);
-        switchPanels.add(playerInit);
-        switchPanels.add(monopolyPanel);
+        switchPanels.add(start, "StartPanel");
+        switchPanels.add(playerInit, "PlayerPanel");
+        switchPanels.add(monopolyPanel, "MonopolyPanel");
 
-        frame.add(start);
+        frame.add(switchPanels);
 
         // frame doesn't close immediately when trying to quit
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
