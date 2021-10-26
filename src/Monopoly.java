@@ -369,10 +369,6 @@ public class Monopoly {
         playerInit.setPreferredSize(new Dimension(250, 250));
         playerInit.setBackground(Color.white);
 
-        // used GridBagLayout so that the button is in the middle of the screen
-        //GridBagConstraints gbagContraintStartButton = new GridBagConstraints();
-        //gbagContraintStartButton.gridx = 1;
-        //gbagContraintStartButton.gridy = 1;
 
         // add the buttons and panels to the frame
         start.add(startButton());
