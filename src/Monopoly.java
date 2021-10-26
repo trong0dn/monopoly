@@ -73,6 +73,9 @@ public class Monopoly {
         public Player currentPlayer;
     }
 
+    /**
+     * Initialize all the GUI components.
+     */
     private void initGUI(){
         this.frame = new JFrame(); // used for testing buttons
         this.playerInit = new JPanel();
@@ -83,7 +86,7 @@ public class Monopoly {
     }
 
     /**
-     * The Start Button will change to the player initialization panel
+     * This will change to the player initialization panel
      * @return button
      */
     private JButton startButton(){
@@ -94,6 +97,23 @@ public class Monopoly {
             public void actionPerformed(ActionEvent e) {
                 CardLayout cl = (CardLayout) (switchPanels.getLayout());
                 cl.show(switchPanels, "PlayerPanel");
+            }
+        });
+        return button;
+    }
+
+    /**
+     * Play the game after making all the players.
+     * @return button
+     */
+    private JButton playButton(){
+        JButton button = new JButton("Play The Game");
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout) (switchPanels.getLayout());
+                cl.show(switchPanels, "MonopolyPanel");
             }
         });
         return button;
@@ -340,8 +360,8 @@ public class Monopoly {
      */
     public void displayGUI() { // used for testing buttons
         JFrame frame = new JFrame("MONOPOLY");
-        JLabel playerInitLabel = new JLabel("This is the Panel for creating the players");
-        JLabel monopolyLabel = new JLabel("This is the Panel for the game");
+        JLabel playerInitLabel = new JLabel("This is the panel for creating the players");
+        JLabel monopolyLabel = new JLabel("This is the panel for the game");
 
         start.setPreferredSize(new Dimension(250, 250));
         start.setBackground(Color.white);
@@ -350,16 +370,17 @@ public class Monopoly {
         playerInit.setBackground(Color.white);
 
         // used GridBagLayout so that the button is in the middle of the screen
-        GridBagConstraints gbagContraintStartButton = new GridBagConstraints();
-        gbagContraintStartButton.gridx = 1;
-        gbagContraintStartButton.gridy = 1;
+        //GridBagConstraints gbagContraintStartButton = new GridBagConstraints();
+        //gbagContraintStartButton.gridx = 1;
+        //gbagContraintStartButton.gridy = 1;
 
         // add the buttons and panels to the frame
-        start.add(startButton(), gbagContraintStartButton);
+        start.add(startButton());
 
-        playerInit.add(playerInitLabel, gbagContraintStartButton);
+        playerInit.add(playerInitLabel);
+        playerInit.add(playButton());
 
-        monopolyPanel.add(monopolyLabel, gbagContraintStartButton);
+        monopolyPanel.add(monopolyLabel);
 
         switchPanels.add(start, "StartPanel");
         switchPanels.add(playerInit, "PlayerPanel");
