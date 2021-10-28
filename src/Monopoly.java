@@ -118,10 +118,27 @@ public class Monopoly {
     }
 
     /**
+     * Buy the property the player has landed on.
+     * @return button
+     */
+    private JButton buyButton() {
+        JButton button = new JButton("Buy");
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Square[] square = gameState.gameBoard.getBoard();
+                buyProperty(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()]);
+            }
+        });
+        return button;
+    }
+
+    /**
      * Roll the dice when button is pressed
      * @return button
      */
-    public JButton rollButton(){
+    public JButton rollButton(){ // Not Finished
         JButton button = new JButton("Roll Dice");
 
         button.addActionListener(new ActionListener() {
