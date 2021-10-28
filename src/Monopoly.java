@@ -35,10 +35,9 @@ public class Monopoly {
     private boolean isBankrupt;
     private JFrame frame; // used for testing buttons
     private JPanel playerInit; // used to test buttons
-    private JPanel start; // used to test buttons
-    private JPanel monopolyPanel;
-    private JPanel switchPanels;
-    private Container container;
+    private JPanel startPanel; // Panel for the main starting page
+    private JPanel monopolyPanel; // Panel for the actual Monopoly game
+    private JPanel switchPanels; // Used for switching the panels
 
     /**
      * Constructor for Monopoly.
@@ -79,10 +78,9 @@ public class Monopoly {
     private void initGUI(){
         this.frame = new JFrame(); // used for testing buttons
         this.playerInit = new JPanel();
-        this.start = new JPanel();
+        this.startPanel = new JPanel();
         this.monopolyPanel = new JPanel();
         this.switchPanels = new JPanel(new CardLayout());
-        this. container = frame.getContentPane();
     }
 
     /**
@@ -363,22 +361,22 @@ public class Monopoly {
         JLabel playerInitLabel = new JLabel("This is the panel for creating the players");
         JLabel monopolyLabel = new JLabel("This is the panel for the game");
 
-        start.setPreferredSize(new Dimension(250, 250));
-        start.setBackground(Color.white);
+        startPanel.setPreferredSize(new Dimension(250, 250));
+        startPanel.setBackground(Color.white);
 
         playerInit.setPreferredSize(new Dimension(250, 250));
         playerInit.setBackground(Color.white);
 
 
         // add the buttons and panels to the frame
-        start.add(startButton());
+        startPanel.add(startButton());
 
         playerInit.add(playerInitLabel);
         playerInit.add(playButton());
 
         monopolyPanel.add(monopolyLabel);
 
-        switchPanels.add(start, "StartPanel");
+        switchPanels.add(startPanel, "StartPanel");
         switchPanels.add(playerInit, "PlayerPanel");
         switchPanels.add(monopolyPanel, "MonopolyPanel");
 
