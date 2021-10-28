@@ -90,12 +90,9 @@ public class Monopoly {
     private JButton startButton(){
         JButton button = new JButton("Start Game");
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout) (switchPanels.getLayout());
-                cl.show(switchPanels, "PlayerInitializePanel");
-            }
+        button.addActionListener(e -> {
+            CardLayout cl = (CardLayout) (switchPanels.getLayout());
+            cl.show(switchPanels, "PlayerInitializePanel");
         });
         return button;
     }
@@ -107,12 +104,9 @@ public class Monopoly {
     private JButton playButton(){
         JButton button = new JButton("Play The Game");
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout) (switchPanels.getLayout());
-                cl.show(switchPanels, "MonopolyPanel");
-            }
+        button.addActionListener(e -> {
+            CardLayout cl = (CardLayout) (switchPanels.getLayout());
+            cl.show(switchPanels, "MonopolyPanel");
         });
         return button;
     }
@@ -124,12 +118,9 @@ public class Monopoly {
     private JButton buyButton() {
         JButton button = new JButton("Buy");
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Square[] square = gameState.gameBoard.getBoard();
-                buyProperty(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()]);
-            }
+        button.addActionListener(e -> {
+            Square[] square = gameState.gameBoard.getBoard();
+            buyProperty(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()]);
         });
         return button;
     }
@@ -144,12 +135,12 @@ public class Monopoly {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                turn();
+                // TODO Roll dice and move player to the right square
+                //turn();
             }
         });
         return button;
     }
-
 
     /**
      * Play loop that requests for user inputs until there is a winner.
@@ -378,6 +369,12 @@ public class Monopoly {
         JLabel playerInitLabel = new JLabel("This is the panel for creating the players");
         JLabel monopolyLabel = new JLabel("This is the panel for the game");
 
+        JButton playerInfoButton = new JButton("Player Info");
+        Player player = gameState.currentPlayer;
+
+        playerInfoButton.setToolTipText("Player name: "); //+ player.name()
+                //+ "\nCurrent balance: $" + player.getMoney());
+
         startPanel.setPreferredSize(new Dimension(250, 250));
         startPanel.setBackground(Color.white);
 
@@ -393,6 +390,7 @@ public class Monopoly {
 
         monopolyPanel.add(monopolyLabel);
         monopolyPanel.add(rollButton());
+        monopolyPanel.add(playerInfoButton);
 
         switchPanels.add(startPanel, "StartPanel");
         switchPanels.add(playerInit, "PlayerInitializePanel");
