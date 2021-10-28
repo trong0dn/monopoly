@@ -19,10 +19,7 @@ Due: 10/25/2021
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.*;
 
 /**
@@ -369,18 +366,11 @@ public class Monopoly {
         JLabel playerInitLabel = new JLabel("This is the panel for creating the players");
         JLabel monopolyLabel = new JLabel("This is the panel for the game");
 
-        JButton playerInfoButton = new JButton("Player Info");
-        Player player = gameState.currentPlayer;
-
-        playerInfoButton.setToolTipText("Player name: "); //+ player.name()
-                //+ "\nCurrent balance: $" + player.getMoney());
-
         startPanel.setPreferredSize(new Dimension(250, 250));
         startPanel.setBackground(Color.white);
 
         playerInit.setPreferredSize(new Dimension(250, 250));
         playerInit.setBackground(Color.white);
-
 
         // add the buttons and panels to the frame
         startPanel.add(startButton());
@@ -390,7 +380,6 @@ public class Monopoly {
 
         monopolyPanel.add(monopolyLabel);
         monopolyPanel.add(rollButton());
-        monopolyPanel.add(playerInfoButton);
 
         switchPanels.add(startPanel, "StartPanel");
         switchPanels.add(playerInit, "PlayerInitializePanel");
