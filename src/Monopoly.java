@@ -51,7 +51,7 @@ public class Monopoly {
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
         Input input = new Input();
-        //initializePlayers(input);
+        initializePlayers(input);
         initGUI();
     }
 
@@ -94,7 +94,7 @@ public class Monopoly {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CardLayout cl = (CardLayout) (switchPanels.getLayout());
-                cl.show(switchPanels, "PlayerPanel");
+                cl.show(switchPanels, "PlayerInitializePanel");
             }
         });
         return button;
@@ -138,13 +138,13 @@ public class Monopoly {
      * Roll the dice when button is pressed
      * @return button
      */
-    public JButton rollButton(){ // Not Finished
+    public JButton rollButton(){
         JButton button = new JButton("Roll Dice");
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Dice.Roll roll = rollDice.rollDice();
+                turn();
             }
         });
         return button;
@@ -227,7 +227,7 @@ public class Monopoly {
             System.out.println(" and landed on '" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "'");
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
-            if(!roll.isDouble) {
+            if(countRollDoubles == 0) {
                 break;
             }
         }
@@ -392,9 +392,10 @@ public class Monopoly {
         playerInit.add(playButton());
 
         monopolyPanel.add(monopolyLabel);
+        monopolyPanel.add(rollButton());
 
         switchPanels.add(startPanel, "StartPanel");
-        switchPanels.add(playerInit, "PlayerPanel");
+        switchPanels.add(playerInit, "PlayerInitializePanel");
         switchPanels.add(monopolyPanel, "MonopolyPanel");
 
         frame.add(switchPanels);
