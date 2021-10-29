@@ -84,6 +84,7 @@ public class Monopoly {
      * Initializes game starting conditions with players.
      */
     public void initializePlayers(Input input) {
+        System.out.println("~~~Welcome to MONOPOLY!~~~");
         // Ask user for number of players participating
         System.out.println("How many players would like to play?");
 
@@ -276,11 +277,5 @@ public class Monopoly {
             owner.exchangeMoney(rent);
         }
         //TODO else trade assets for money
-    }
-
-    public static void main(String[] args) {
-        System.out.println("~~~Welcome to MONOPOLY~~~\n");
-        Monopoly monopoly = new Monopoly();
-        monopoly.play();
     }
 }

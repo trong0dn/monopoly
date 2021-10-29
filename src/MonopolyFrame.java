@@ -10,13 +10,33 @@ public class MonopolyFrame extends JFrame {
     public MonopolyFrame() {
         super();
         this.mainFrame = new JFrame("Monopoly!");
-        this.model = new Monopoly();
+        //this.model = new Monopoly();
     }
 
-    public boolean displayGUI() {
-        this.setLayout(new BorderLayout());
-        this.setSize(new Dimension(800,800));
+    public void displayGUI() {
+        this.mainFrame.setLayout(new BorderLayout());
+        this.mainFrame.setPreferredSize(new Dimension(800,800));
 
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu fileMenu = new JMenu("File");
+        JMenuItem newGameItem = new JMenuItem("New Game");
+        JMenuItem loadGameItem = new JMenuItem("Load Game");
+        JMenuItem exitGameItem = new JMenuItem("Exit Game");
+        fileMenu.add(newGameItem);
+        fileMenu.add(loadGameItem);
+        fileMenu.add(exitGameItem);
+
+        JMenu settingsMenu = new JMenu("Settings");
+        JMenu aboutMenu = new JMenu("About");
+        JMenu helpMenu = new JMenu("Help");
+
+        menuBar.add(fileMenu);
+        menuBar.add(settingsMenu);
+        menuBar.add(aboutMenu);
+        menuBar.add(helpMenu);
+
+        this.mainFrame.setJMenuBar(menuBar);
         this.mainFrame.pack();
 
         this.mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -31,7 +51,6 @@ public class MonopolyFrame extends JFrame {
             }
         });
         this.mainFrame.setVisible(true);
-        return true;
     }
 
     public static void main(String[] args) {
