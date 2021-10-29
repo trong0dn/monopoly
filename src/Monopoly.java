@@ -15,11 +15,10 @@ Due: 10/25/2021
 
  */
 
-// DON'T MERGE YET
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.*;
 
 /**
@@ -30,11 +29,7 @@ public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
     private boolean isBankrupt;
-    private JFrame frame; // used for testing buttons
-    private JPanel playerInit; // used to test buttons
-    private JPanel startPanel; // Panel for the main starting page
-    private JPanel monopolyPanel; // Panel for the actual Monopoly game
-    private JPanel switchPanels; // Used for switching the panels
+    private MonopolyController controllers;
 
     /**
      * Constructor for Monopoly.
@@ -49,7 +44,7 @@ public class Monopoly {
         gameState.currentPlayer = null;
         Input input = new Input();
         initializePlayers(input);
-        initGUI();
+        this.controllers = new MonopolyController();
     }
 
     /**
@@ -69,74 +64,8 @@ public class Monopoly {
         public Player currentPlayer;
     }
 
-    /**
-     * Initialize all the GUI components.
-     */
-    private void initGUI(){
-        this.frame = new JFrame(); // used for testing buttons
-        this.playerInit = new JPanel();
-        this.startPanel = new JPanel();
-        this.monopolyPanel = new JPanel();
-        this.switchPanels = new JPanel(new CardLayout());
-    }
-
-    /**
-     * This will change to the player initialization panel
-     * @return button
-     */
-    private JButton startButton(){
-        JButton button = new JButton("Start Game");
-
-        button.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (switchPanels.getLayout());
-            cl.show(switchPanels, "PlayerInitializePanel");
-        });
-        return button;
-    }
-
-    /**
-     * Play the game after making all the players.
-     * @return button
-     */
-    private JButton playButton(){
-        JButton button = new JButton("Play The Game");
-
-        button.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (switchPanels.getLayout());
-            cl.show(switchPanels, "MonopolyPanel");
-        });
-        return button;
-    }
-
-    /**
-     * Buy the property the player has landed on.
-     * @return button
-     */
-    private JButton buyButton() {
-        JButton button = new JButton("Buy");
-
-        button.addActionListener(e -> {
-            Square[] square = gameState.gameBoard.getBoard();
-            buyProperty(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()]);
-        });
-        return button;
-    }
-
-    /**
-     * Roll the dice when button is pressed
-     * @return button
-     */
-    public JButton rollButton(){
-        JButton button = new JButton("Roll Dice");
-
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Roll dice and move player to the right square
-                //turn();
-            }
-        });
-        return button;
+    public GameState getGameState() {
+        return this.gameState;
     }
 
     /**
@@ -366,26 +295,26 @@ public class Monopoly {
         JLabel playerInitLabel = new JLabel("This is the panel for creating the players");
         JLabel monopolyLabel = new JLabel("This is the panel for the game");
 
-        startPanel.setPreferredSize(new Dimension(250, 250));
-        startPanel.setBackground(Color.white);
+        controllers.getStartPanel().setPreferredSize(new Dimension(250, 250));
+        controllers.getStartPanel().setBackground(Color.white);
 
-        playerInit.setPreferredSize(new Dimension(250, 250));
-        playerInit.setBackground(Color.white);
+        controllers.getPlayerInitPanel().setPreferredSize(new Dimension(250, 250));
+        controllers.getPlayerInitPanel().setBackground(Color.white);
 
         // add the buttons and panels to the frame
-        startPanel.add(startButton());
+        controllers.getStartPanel().add(controllers.startButton());
 
-        playerInit.add(playerInitLabel);
-        playerInit.add(playButton());
+        controllers.getPlayerInitPanel().add(playerInitLabel);
+        controllers.getPlayerInitPanel().add(controllers.playButton());
 
-        monopolyPanel.add(monopolyLabel);
-        monopolyPanel.add(rollButton());
+        controllers.getMonopolyPanel().add(monopolyLabel);
+        controllers.getMonopolyPanel().add(controllers.rollButton());
 
-        switchPanels.add(startPanel, "StartPanel");
-        switchPanels.add(playerInit, "PlayerInitializePanel");
-        switchPanels.add(monopolyPanel, "MonopolyPanel");
+        controllers.getSwitchPanels().add(controllers.getStartPanel(), "StartPanel");
+        controllers.getSwitchPanels().add(controllers.getPlayerInitPanel(), "PlayerInitializePanel");
+        controllers.getSwitchPanels().add(controllers.getMonopolyPanel(), "MonopolyPanel");
 
-        frame.add(switchPanels);
+        frame.add(controllers.getSwitchPanels());
 
         // frame doesn't close immediately when trying to quit
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
