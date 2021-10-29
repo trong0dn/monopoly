@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-10-25T13:50:23.930Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="66tfzYd5-VeHKwX8-cIJ" version="15.5.9" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2021-10-29T22:00:00.282Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="fwFl8zkyTr_T6f5BJ_rr" version="15.5.9" type="github" pages="5">
   <diagram id="mIdWcuVjI4xpF6q1rHtD" name="Class UML">
-    <mxGraphModel dx="8755" dy="2593" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3954" dy="256" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -613,7 +613,7 @@
         <mxCell id="KdBzGCH8AwDXqr2-iXCs-22" value="uses" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="-2590" y="1098" width="40" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="KdBzGCH8AwDXqr2-iXCs-50" value="&lt;&lt;enumeration&gt;&gt;&#xa;Dice" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+        <mxCell id="KdBzGCH8AwDXqr2-iXCs-50" value="&lt;&lt;enumeration&gt;&gt;&#xa;JailType" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="-840" y="1321" width="140" height="118" as="geometry" />
         </mxCell>
         <mxCell id="KdBzGCH8AwDXqr2-iXCs-51" value="JUST_VISITING" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="KdBzGCH8AwDXqr2-iXCs-50" vertex="1">
