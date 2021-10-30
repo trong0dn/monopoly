@@ -53,7 +53,7 @@ public class MonopolyFrame extends JFrame {
         }
 
         @Override
-        public void write(int b) throws IOException {
+        public void write(int b) {
             // redirects data to the text area
             textArea.append(String.valueOf((char)b));
             // scrolls the text area to the end of data
@@ -64,7 +64,7 @@ public class MonopolyFrame extends JFrame {
     }
 
     private JTextArea printLog() {
-        JTextArea textArea = new JTextArea(50, 40);
+        JTextArea textArea = new JTextArea(45, 45);
         PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
         System.setOut(printStream);
         System.setErr(printStream);
