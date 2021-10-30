@@ -15,10 +15,6 @@ Due: 10/25/2021
 
  */
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.*;
 
 /**
@@ -29,7 +25,6 @@ public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
     private boolean isBankrupt;
-    private MonopolyController controllers;
 
     /**
      * Constructor for Monopoly.
@@ -44,7 +39,6 @@ public class Monopoly {
         gameState.currentPlayer = null;
         Input input = new Input();
         initializePlayers(input);
-        this.controllers = new MonopolyController();
     }
 
     /**
@@ -62,10 +56,6 @@ public class Monopoly {
         public Queue<Player> players;
         public GameBoard gameBoard;
         public Player currentPlayer;
-    }
-
-    public GameState getGameState() {
-        return this.gameState;
     }
 
     /**
@@ -285,19 +275,5 @@ public class Monopoly {
             owner.exchangeMoney(rent);
         }
         //TODO else trade assets for money
-    }
-
-    /**
-     * The Monopoly GUI
-     */
-    public void displayGUI() { // used for testing buttons
-        controllers.displayGUI();
-    }
-
-    public static void main(String[] args) {
-        System.out.println("~~~Welcome to MONOPOLY~~~\n");
-        Monopoly monopoly = new Monopoly();
-        monopoly.displayGUI();
-        //monopoly.play();
     }
 }
