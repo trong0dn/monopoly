@@ -108,8 +108,7 @@ public class Monopoly {
     }
 
     /**
-     * the turn function
-     * handles each players turns
+     * Game logic for when it is a player's turn.
      */
     public void turn() {
         System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
@@ -135,7 +134,7 @@ public class Monopoly {
             System.out.println(" and landed on '" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "'");
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
-            if(countRollDoubles == 0) {
+            if (!roll.isDouble) {
                 break;
             }
         }

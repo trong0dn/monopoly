@@ -165,18 +165,6 @@ public class MonopolyController {
     }
 
     /**
-     * Add property to player's hand and change owner of the property.
-     * @param player    Player
-     * @param square    Square
-     */
-    public void buyProperty(Player player, Square square) {
-        if (player == null || square == null) return;
-        if (!square.isOwnable()) return;
-        player.addProperty(square);
-        square.purchase(player);
-    }
-
-    /**
      * The Monopoly GUI
      */
     public void displayGUI() { // used for testing buttons

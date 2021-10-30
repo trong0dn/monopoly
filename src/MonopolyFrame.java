@@ -22,7 +22,6 @@ public class MonopolyFrame extends JFrame {
         displayGUI();
         model = new Monopoly();
         model.play();
-
     }
 
     private ArrayList<JLabel> grabImages() {
@@ -45,7 +44,7 @@ public class MonopolyFrame extends JFrame {
         return imageSquareList;
     }
 
-    private class CustomOutputStream extends OutputStream {
+    public class CustomOutputStream extends OutputStream {
         private JTextArea textArea;
 
         public CustomOutputStream(JTextArea textArea) {
