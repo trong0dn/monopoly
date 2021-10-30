@@ -94,7 +94,7 @@ public class Monopoly {
         }
         // Ask user to input name of players
         for (int i = 0; i < numPlayers; i++) {
-            System.out.print("Player #" + (i+1) + ": Enter your character name: ");
+            System.out.print("Player #" + (i+1) + ": Enter your character name: \n");
             String playerName = input.inputString();
             HumanPlayer newPlayer = new HumanPlayer(playerName);
             gameState.players.add(newPlayer);

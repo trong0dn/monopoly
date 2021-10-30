@@ -5,6 +5,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -17,6 +19,9 @@ public class MonopolyFrame extends JFrame {
     public MonopolyFrame() {
         super();
         this.mainFrame = new JFrame("Monopoly!");
+        displayGUI();
+        model = new Monopoly();
+        model.play();
 
     }
 
@@ -38,6 +43,33 @@ public class MonopolyFrame extends JFrame {
             imageSquareList.add(imageLabel);
         }
         return imageSquareList;
+    }
+
+    private class CustomOutputStream extends OutputStream {
+        private JTextArea textArea;
+
+        public CustomOutputStream(JTextArea textArea) {
+            this.textArea = textArea;
+            this.textArea.setEditable(false);
+        }
+
+        @Override
+        public void write(int b) throws IOException {
+            // redirects data to the text area
+            textArea.append(String.valueOf((char)b));
+            // scrolls the text area to the end of data
+            textArea.setCaretPosition(textArea.getDocument().getLength());
+            // keeps the textArea up to date
+            textArea.update(textArea.getGraphics());
+        }
+    }
+
+    private JTextArea printLog() {
+        JTextArea textArea = new JTextArea(50, 40);
+        PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+        System.setOut(printStream);
+        System.setErr(printStream);
+        return textArea;
     }
 
     public void displayGUI() {
@@ -64,7 +96,7 @@ public class MonopolyFrame extends JFrame {
         menuBar.add(aboutMenu);
         menuBar.add(helpMenu);
 
-        //Boarder layout
+        //Body Panel
         JPanel bodyPanel = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -91,7 +123,12 @@ public class MonopolyFrame extends JFrame {
             }
         }
 
+        // East Panel
+        JPanel eastPanel = new JPanel();
+        eastPanel.add(new JScrollPane(printLog()));
+
         this.mainFrame.add(bodyPanel, BorderLayout.CENTER);
+        this.mainFrame.add(eastPanel, BorderLayout.EAST);
 
 
         this.mainFrame.setJMenuBar(menuBar);
