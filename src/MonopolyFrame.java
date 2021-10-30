@@ -1,22 +1,60 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class MonopolyFrame extends JFrame {
     private JFrame mainFrame;
     private Monopoly model;
+    private GameBoard gameBoard = new GameBoard();
+    private ArrayList<JLabel> squareLabels = new ArrayList<>();
 
     public MonopolyFrame() {
         super();
         this.mainFrame = new JFrame("Monopoly!");
-        //this.model = new Monopoly();
+
+    }
+
+    private ArrayList<JLabel> grabImages() {
+        ArrayList<JLabel> imageSquareList = new ArrayList<>();
+        for (int i = 0; i < gameBoard.size()-1; i++) {
+            String s = Integer.toString(i);
+            BufferedImage image = null;
+            try {
+                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/" + s + ".jpg")));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            assert image != null;
+            int imageWidth = image.getWidth();
+            int imageHeight = image.getHeight();
+            Image scaledImage = image.getScaledInstance(60, 60, Image.SCALE_DEFAULT);
+            JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
+            imageSquareList.add(imageLabel);
+        }
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/centre.jpg")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assert image != null;
+        Image scaledImage = image.getScaledInstance(500, 500, Image.SCALE_DEFAULT);
+        JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
+        imageSquareList.add(imageLabel);
+        return imageSquareList;
     }
 
     public void displayGUI() {
         this.mainFrame.setLayout(new BorderLayout());
-        this.mainFrame.setPreferredSize(new Dimension(800,800));
+        this.mainFrame.setPreferredSize(new Dimension(1200,820));
 
+        // JMenuBar
         JMenuBar menuBar = new JMenuBar();
 
         JMenu fileMenu = new JMenu("File");
@@ -35,6 +73,36 @@ public class MonopolyFrame extends JFrame {
         menuBar.add(settingsMenu);
         menuBar.add(aboutMenu);
         menuBar.add(helpMenu);
+
+        //Boarder layout
+        JPanel bodyPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        for (int i = 0; i < gameBoard.size(); i++) {
+            if (i <= 10) {
+                c.gridx = 10-i;
+                c.gridy = 10;
+                bodyPanel.add(grabImages().get(i), c);
+            }
+            else if (i <= 20) {
+                c.gridx = 0;
+                c.gridy = 20-i;
+                bodyPanel.add(grabImages().get(i), c);
+            }
+            else if (i <= 30) {
+                c.gridx = i-20;
+                c.gridy = 0;
+                bodyPanel.add(grabImages().get(i), c);
+            }
+            else if (i < 40) {
+                c.gridx = 10;
+                c.gridy = i-30;
+                bodyPanel.add(grabImages().get(i), c);
+            }
+        }
+
+        this.mainFrame.add(bodyPanel, BorderLayout.CENTER);
+
 
         this.mainFrame.setJMenuBar(menuBar);
         this.mainFrame.pack();
