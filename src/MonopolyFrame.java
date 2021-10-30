@@ -78,7 +78,7 @@ public class MonopolyFrame extends JFrame {
         int screenHeight = (int) screenSize.getHeight();
         this.mainFrame.setPreferredSize(new Dimension(screenWidth,screenHeight));
 
-        // JMenuBar
+        // Create JMenuBar
         JMenuBar menuBar = new JMenuBar();
 
         JMenu fileMenu = new JMenu("File");
@@ -98,7 +98,7 @@ public class MonopolyFrame extends JFrame {
         menuBar.add(aboutMenu);
         menuBar.add(helpMenu);
 
-        //Body Panel
+        // Create body panel
         JPanel bodyPanel = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -125,10 +125,11 @@ public class MonopolyFrame extends JFrame {
             }
         }
 
-        // East Panel
+        // Create east panel
         JPanel eastPanel = new JPanel();
         eastPanel.add(new JScrollPane(printLog()));
 
+        // Add sub-panels to main frame
         this.mainFrame.add(bodyPanel, BorderLayout.CENTER);
         this.mainFrame.add(eastPanel, BorderLayout.EAST);
 
