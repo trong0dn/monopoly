@@ -73,7 +73,10 @@ public class MonopolyFrame extends JFrame {
 
     public void displayGUI() {
         this.mainFrame.setLayout(new BorderLayout());
-        this.mainFrame.setPreferredSize(new Dimension(1200,820));
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenWidth = (int) screenSize.getWidth();
+        int screenHeight = (int) screenSize.getHeight();
+        this.mainFrame.setPreferredSize(new Dimension(screenWidth,screenHeight));
 
         // JMenuBar
         JMenuBar menuBar = new JMenuBar();
