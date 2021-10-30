@@ -291,46 +291,7 @@ public class Monopoly {
      * The Monopoly GUI
      */
     public void displayGUI() { // used for testing buttons
-        JFrame frame = new JFrame("MONOPOLY");
-        JLabel playerInitLabel = new JLabel("This is the panel for creating the players");
-        JLabel monopolyLabel = new JLabel("This is the panel for the game");
-
-        controllers.getStartPanel().setPreferredSize(new Dimension(250, 250));
-        controllers.getStartPanel().setBackground(Color.white);
-
-        controllers.getPlayerInitPanel().setPreferredSize(new Dimension(250, 250));
-        controllers.getPlayerInitPanel().setBackground(Color.white);
-
-        // add the buttons and panels to the frame
-        controllers.getStartPanel().add(controllers.startButton());
-
-        controllers.getPlayerInitPanel().add(playerInitLabel);
-        controllers.getPlayerInitPanel().add(controllers.playButton());
-
-        controllers.getMonopolyPanel().add(monopolyLabel);
-        controllers.getMonopolyPanel().add(controllers.rollButton());
-
-        controllers.getSwitchPanels().add(controllers.getStartPanel(), "StartPanel");
-        controllers.getSwitchPanels().add(controllers.getPlayerInitPanel(), "PlayerInitializePanel");
-        controllers.getSwitchPanels().add(controllers.getMonopolyPanel(), "MonopolyPanel");
-
-        frame.add(controllers.getSwitchPanels());
-
-        // frame doesn't close immediately when trying to quit
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we) {
-                if (JOptionPane.showConfirmDialog(frame, "Are you sure you want to quit?")
-                        == JOptionPane.OK_OPTION) {
-                    frame.setVisible(false);
-                    frame.dispose();
-                }
-            }
-        });
-
-        frame.pack();
-        frame.setVisible(true);
+        controllers.displayGUI();
     }
 
     public static void main(String[] args) {
