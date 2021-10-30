@@ -83,6 +83,7 @@ public class Monopoly {
      * Initializes game starting conditions with players.
      */
     public void initializePlayers(Input input) {
+        System.out.println("~~~Welcome to MONOPOLY!~~~");
         // Ask user for number of players participating
         System.out.println("How many players would like to play?");
 
