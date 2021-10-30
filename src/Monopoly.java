@@ -15,7 +15,6 @@ Due: 10/25/2021
 
  */
 
-
 import java.util.*;
 
 /**
@@ -135,7 +134,7 @@ public class Monopoly {
             System.out.println(" and landed on '" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "'");
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
-            if(!roll.isDouble) {
+            if(countRollDoubles == 0) {
                 break;
             }
         }
@@ -195,9 +194,9 @@ public class Monopoly {
             owned(player, square, roll);
         }
         //else if (square instanceof Taxes) { }
-            //TODO Deal with Tax squares
+        //TODO Deal with Tax squares
         //else if (square instanceof  Jail) { }
-            //TODO Deal with Jail square
+        //TODO Deal with Jail square
     }
 
     /**
@@ -276,11 +275,5 @@ public class Monopoly {
             owner.exchangeMoney(rent);
         }
         //TODO else trade assets for money
-    }
-
-    public static void main(String[] args) {
-        System.out.println("~~~Welcome to MONOPOLY~~~\n");
-        Monopoly monopoly = new Monopoly();
-        monopoly.play();
     }
 }
