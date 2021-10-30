@@ -26,27 +26,18 @@ public class MonopolyFrame extends JFrame {
             String s = Integer.toString(i);
             BufferedImage image = null;
             try {
-                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/" + s + ".jpg")));
+                image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/" + s + ".png")));
             } catch (IOException e) {
                 e.printStackTrace();
             }
             assert image != null;
-            int imageWidth = image.getWidth();
-            int imageHeight = image.getHeight();
-            Image scaledImage = image.getScaledInstance(60, 60, Image.SCALE_DEFAULT);
+            int imageWidth = (int) (image.getWidth() * 0.5);
+            int imageHeight = (int) (image.getHeight() * 0.5);
+            System.out.println(imageHeight);
+            Image scaledImage = image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_DEFAULT);
             JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
             imageSquareList.add(imageLabel);
         }
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResource("/images/centre.jpg")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert image != null;
-        Image scaledImage = image.getScaledInstance(500, 500, Image.SCALE_DEFAULT);
-        JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
-        imageSquareList.add(imageLabel);
         return imageSquareList;
     }
 
