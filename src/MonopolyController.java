@@ -130,11 +130,22 @@ public class MonopolyController {
 
     }
 
+    /**
+     * this creates the players when a new game has begun
+     * asks for number of players
+     * asks for name
+     * displays image icons for players to select from.
+     * @return void
+     */
     public void makePlayers(){
+        //TODO still need to make it possible for players to select the icon and then grey it out for the nest players
+        //get number of players
         int numPlayers = Integer.parseInt(JOptionPane.showInputDialog("Number of players: "));
+        //get player names
         for (int i=0; i<numPlayers; i++){
             String name = JOptionPane.showInputDialog("player Name: ");
 
+            //display the images
             BufferedImage [] allImages;
             File path = new File ("player_icons");
             File [] allFiles = path.listFiles();
