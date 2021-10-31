@@ -91,16 +91,19 @@ public class MonopolyGUI extends JFrame {
         players.add(player2);
         layeredPane.add(player2, Integer.valueOf(1));
 
+        // Add console log panel
         JPanel consolePanel = new JPanel();
         consolePanel.setBounds(81, 312, 246, 68);
         rightPanel.add(consolePanel);
         consolePanel.setLayout(null);
 
+        // Add player status panel
         JPanel playerAssetsPanel = new JPanel();
         playerAssetsPanel.setBounds(81, 28, 246, 189);
         rightPanel.add(playerAssetsPanel);
         playerAssetsPanel.setLayout(c1);
 
+        // Player 1 status panel
         JPanel panelPlayer1 = new JPanel();
         panelPlayer1.setBackground(Color.RED);
         playerAssetsPanel.add(panelPlayer1, "1");
@@ -135,14 +138,14 @@ public class MonopolyGUI extends JFrame {
         //updatePanelPlayer1TextArea();
         //updatePanelPlayer2TextArea();
 
-
+        // Info console log
         infoConsole = new JTextArea();
         infoConsole.setColumns(20);
         infoConsole.setRows(5);
         infoConsole.setBounds(6, 6, 234, 56);
         consolePanel.add(infoConsole);
         infoConsole.setLineWrap(true);
-        infoConsole.setText("PLayer 1 starts the game by clicking Roll Dice!");
+        infoConsole.setText("Player 1 starts the game, clicking Roll Dice!");
     }
 
     private JButton buttonRollDice() {
