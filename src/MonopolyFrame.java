@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -11,14 +12,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MonopolyFrame extends JFrame {
-    private JFrame mainFrame;
     private Monopoly model;
     private GameBoard gameBoard = new GameBoard();
-    private ArrayList<JLabel> squareLabels = new ArrayList<>();
 
     public MonopolyFrame() {
         super();
-        this.mainFrame = new JFrame("Monopoly!");
         displayGUI();
         model = new Monopoly();
         model.play();
@@ -71,12 +69,101 @@ public class MonopolyFrame extends JFrame {
         return textArea;
     }
 
+    public JPanel playerToken(int playerNumber, Color color) {
+        JPanel playerToken = new JPanel();
+        playerToken.setBackground(color);
+        JLabel numLabel = new JLabel(Integer.toString(playerNumber));
+        numLabel.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+        numLabel.setForeground(Color.WHITE);
+        playerToken.add(numLabel);
+        playerToken.setBounds(playerNumber * 30, 30, 20, 30);
+        return playerToken;
+    }
+
+    public class createDie extends JPanel {
+        RollDice rollDice = new RollDice();
+        int faceValue = rollDice.rollDice().dieValue1;
+        public createDie(int x, int y, int width, int height) {
+            setBorder(new LineBorder(Color.BLACK));
+            setBounds(x, y, width, height);
+        }
+
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            int w = 5;
+            int h = 5;
+
+            if(faceValue == 1) {
+                g.fillOval(getWidth()/2 - 5/2, getHeight()/2 - 5/2, w, h);
+            } else if(faceValue == 2) {
+                g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, w, h);
+                g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15,  w, h);
+            } else if(faceValue == 3) {
+                g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10,  w, h);
+                g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15,  w, h);
+                g.fillOval(getWidth()/2 - 5/2, getHeight()/2 - 5/2,  w, h);
+            } else if(faceValue == 4) {
+                g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10,  w, h);
+                g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15,  w, h);
+                g.fillOval(getWidth()/2 - 15, getHeight()/2 - 15,  w, h);
+                g.fillOval(getWidth()/2 + 10, getHeight()/2 + 10,  w, h);
+            } else if(faceValue == 5) {
+                g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10,  w, h);
+                g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15,  w, h);
+                g.fillOval(getWidth()/2 - 15, getHeight()/2 - 15, w, h);
+                g.fillOval(getWidth()/2 + 10, getHeight()/2 + 10,  w, h);
+                g.fillOval(getWidth()/2 - 5/2, getHeight()/2 - 5/2, w, h);
+            } else {
+                g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10,  w, h);
+                g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15,  w, h);
+                g.fillOval(getWidth()/2 - 15, getHeight()/2 - 15,  w, h);
+                g.fillOval(getWidth()/2 + 10, getHeight()/2 + 10,  w, h);
+                g.fillOval(getWidth()/2 - 15, getHeight()/2 - 5/2,  w, h);
+                g.fillOval(getWidth()/2 + 10, getHeight()/2 - 5/2,  w, h);
+            }
+        }
+
+        public void setRollDice() {
+            faceValue = rollDice.rollDice().dieValue1;
+            repaint();
+        }
+    }
+
+    public JPanel createBoard() {
+        JPanel boardPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        for (int i = 0; i < gameBoard.size(); i++) {
+            if (i <= 10) {
+                c.gridx = 10-i;
+                c.gridy = 10;
+                boardPanel.add(grabImages().get(i), c);
+            }
+            else if (i <= 20) {
+                c.gridx = 0;
+                c.gridy = 20-i;
+                boardPanel.add(grabImages().get(i), c);
+            }
+            else if (i <= 30) {
+                c.gridx = i-20;
+                c.gridy = 0;
+                boardPanel.add(grabImages().get(i), c);
+            }
+            else if (i < 40) {
+                c.gridx = 10;
+                c.gridy = i-30;
+                boardPanel.add(grabImages().get(i), c);
+            }
+        }
+        return boardPanel;
+    }
+
     public void displayGUI() {
-        this.mainFrame.setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
-        this.mainFrame.setPreferredSize(new Dimension(screenWidth,screenHeight));
+        this.setPreferredSize(new Dimension(screenWidth,screenHeight));
 
         // Create JMenuBar
         JMenuBar menuBar = new JMenuBar();
@@ -98,57 +185,42 @@ public class MonopolyFrame extends JFrame {
         menuBar.add(aboutMenu);
         menuBar.add(helpMenu);
 
-        // Create body panel
-        JPanel bodyPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+        JPanel bodyPanel = new JPanel();
+        JLayeredPane layeredPane = new JLayeredPane();
 
-        for (int i = 0; i < gameBoard.size(); i++) {
-            if (i <= 10) {
-                c.gridx = 10-i;
-                c.gridy = 10;
-                bodyPanel.add(grabImages().get(i), c);
-            }
-            else if (i <= 20) {
-                c.gridx = 0;
-                c.gridy = 20-i;
-                bodyPanel.add(grabImages().get(i), c);
-            }
-            else if (i <= 30) {
-                c.gridx = i-20;
-                c.gridy = 0;
-                bodyPanel.add(grabImages().get(i), c);
-            }
-            else if (i < 40) {
-                c.gridx = 10;
-                c.gridy = i-30;
-                bodyPanel.add(grabImages().get(i), c);
-            }
-        }
+        bodyPanel.add(layeredPane);
+
+        // Create body panel
+        JPanel board = createBoard();
+
+        layeredPane.add(board, String.valueOf(0));
 
         // Create east panel
         JPanel eastPanel = new JPanel();
         eastPanel.add(new JScrollPane(printLog()));
 
         // Add sub-panels to main frame
-        this.mainFrame.add(bodyPanel, BorderLayout.CENTER);
-        this.mainFrame.add(eastPanel, BorderLayout.EAST);
+        this.add(board, BorderLayout.CENTER);
+        this.add(eastPanel, BorderLayout.EAST);
 
 
-        this.mainFrame.setJMenuBar(menuBar);
-        this.mainFrame.pack();
+        this.setJMenuBar(menuBar);
+        this.pack();
 
-        this.mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.mainFrame.addWindowListener(new WindowAdapter() {
+
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we) {
-                if (JOptionPane.showConfirmDialog(mainFrame, "Are you sure you want to quit?")
+                if (JOptionPane.showConfirmDialog(MonopolyFrame.this, "Are you sure you want to quit?")
                         == JOptionPane.OK_OPTION) {
-                    mainFrame.setVisible(false);
-                    mainFrame.dispose();
+                    setVisible(false);
+                    dispose();
+                    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 }
             }
         });
-        this.mainFrame.setVisible(true);
+        this.setVisible(true);
     }
 
     public static void main(String[] args) {
