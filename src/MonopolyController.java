@@ -1,9 +1,13 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * This class represents all the controllers used in the Monopoly GUI
@@ -15,6 +19,9 @@ public class MonopolyController {
     private JPanel monopolyPanel; // Panel for the actual Monopoly game
     private JPanel switchPanels; // Used for switching the panels
     private Monopoly.GameState gameState;
+    private JLabel playerName;
+
+
 
     /**
      * Initialize MonopolyController
@@ -25,6 +32,7 @@ public class MonopolyController {
         this.startPanel = new JPanel();
         this.monopolyPanel = new JPanel();
         this.switchPanels = new JPanel(new CardLayout());
+        this.playerName = new JLabel();
     }
 
     /**
@@ -119,7 +127,38 @@ public class MonopolyController {
             cl.show(switchPanels, "PlayerInitializePanel");
         });
         return button;
+
     }
+
+    public void makePlayers(){
+        int numPlayers = Integer.parseInt(JOptionPane.showInputDialog("Number of players: "));
+        for (int i=0; i<numPlayers; i++){
+            String name = JOptionPane.showInputDialog("player Name: ");
+
+            BufferedImage [] allImages;
+            File path = new File ("player_icons");
+            File [] allFiles = path.listFiles();
+            allImages = new BufferedImage[allFiles.length];
+            JFrame window = new JFrame ();
+            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            window.setLayout(new GridLayout(2,4));
+            JLabel label[] = new JLabel[allFiles.length];
+            for (int j =0; j< allFiles.length; j++){
+                try{
+                    allImages[j] = ImageIO.read((allFiles[j]));
+                    label[j] = new JLabel();
+                    ImageIcon icon = new ImageIcon(allImages[j]);
+                    label[j].setIcon(icon);
+                    window.add(label[j]);
+                }catch(IOException e){
+
+                }
+            }
+            window.pack();
+            window.setVisible(true);
+        }
+    }
+
 
     /**
      * Play the game after making all the players.
@@ -133,6 +172,7 @@ public class MonopolyController {
             cl.show(switchPanels, "MonopolyPanel");
         });
         return button;
+
     }
 
     /**
