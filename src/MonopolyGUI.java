@@ -14,8 +14,6 @@ public class MonopolyGUI extends JFrame {
     ArrayList<PlayerGUI> players = new ArrayList<>();
     DiceGUI die1;
     DiceGUI die2;
-    Boolean doubleDiceForPlayer1 = false;
-    Boolean doubleDiceForPlayer2 = false;
     PlayerGUI player1;
     PlayerGUI player2;
     CardLayout c1 = new CardLayout();
@@ -27,6 +25,8 @@ public class MonopolyGUI extends JFrame {
     JButton buttonNextTurn;
     JButton buttonPayRent;
     JButton buttonBuy;
+    Boolean doubleDiceForPlayer1 = false;
+    Boolean doubleDiceForPlayer2 = false;
 
     public MonopolyGUI() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -153,8 +153,34 @@ public class MonopolyGUI extends JFrame {
         buttonRollDice.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                die1.rollDice();
-                die2.rollDice();
+                buttonNextTurn.setEnabled(true);
+                if (nowPlaying == 0) {
+                    die1.rollDice();
+                    die2.rollDice();
+                    doubleDiceForPlayer1 = die1.getFaceValue() == die2.getFaceValue();
+                    int diceValue = die1.getFaceValue() + die2.getFaceValue();
+                    player1.move(diceValue);
+                }
+                else {
+                    die1.rollDice();
+                    die2.rollDice();
+                    doubleDiceForPlayer2 = die1.getFaceValue() == die2.getFaceValue();
+                    int diceValue = die1.getFaceValue() + die2.getFaceValue();
+                    player2.move(diceValue);
+
+                }
+
+                buttonRollDice.setEnabled(false);
+                if(doubleDiceForPlayer1 || doubleDiceForPlayer2) {
+                    infoConsole.setText("Click Next Turn to allow player "+ (nowPlaying==0 ? 1 : 2) +" to Roll Dice!");
+                } else {
+                    infoConsole.setText("Click Next Turn to allow player "+ (nowPlaying==0 ? 2 : 1) +" to Roll Dice!");
+                }
+                layeredPane.remove(gameBoard);
+                layeredPane.add(gameBoard, Integer.valueOf(0));
+
+                //updatePanelPlayer1TextArea();
+                //updatePanelPlayer2TextArea();
             }
         });
         return buttonRollDice;
@@ -166,6 +192,20 @@ public class MonopolyGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 infoConsole.setText("Next Turn!");
+                buttonRollDice.setEnabled(true);
+                if(nowPlaying == 0 && doubleDiceForPlayer1) {
+                    doubleDiceForPlayer1 = false;
+                } else if(nowPlaying == 1 && doubleDiceForPlayer2) {
+                    doubleDiceForPlayer2 = false;
+                } else if(!doubleDiceForPlayer1 && !doubleDiceForPlayer2) {
+                    nowPlaying = (nowPlaying + 1) % 2;
+                }
+                buttonNextTurn.setEnabled(false);
+
+                //c1.show(playerAssetsPanel, ""+(nowPlaying==0 ? 1 : 2)); // maps 0 to 1 and 1 to 2
+                //updatePanelPlayer1TextArea();
+                //updatePanelPlayer2TextArea();
+                infoConsole.setText("It's now player "+(nowPlaying==0 ? 1 : 2)+"'s turn!");
             }
         });
         return buttonNextTurn;

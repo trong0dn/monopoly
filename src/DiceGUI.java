@@ -53,4 +53,8 @@ public class DiceGUI extends JPanel {
         this.faceValue = rollDice.rollDice().dieValue1;
         repaint();
     }
+
+    public int getFaceValue() {
+        return this.faceValue;
+    }
 }

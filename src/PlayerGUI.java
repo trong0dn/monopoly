@@ -59,12 +59,6 @@ public class PlayerGUI extends JPanel {
         }
     }
 
-    public PlayerGUI(int x, int y, int width, int height) {
-        this.setBorder(new LineBorder(new Color(0, 0, 0)));
-        this.setBounds(x, y, 20, 20);
-        this.setLayout(null);
-    }
-
     public PlayerGUI(int playerNumber, Color color) {
         // TODO Auto-generated constructor stub
         this.playerNumber = playerNumber;
@@ -73,7 +67,7 @@ public class PlayerGUI extends JPanel {
         lblPlayerNumber.setFont(new Font("Lucida Grande", Font.BOLD, 15));
         lblPlayerNumber.setForeground(Color.WHITE);
         this.add(lblPlayerNumber);
-        this.setBounds(playerNumber*30, 33, 20, 28); // need to fix here for adjustable player numbers
+        this.setBounds(playerNumber*20 + 590, 620, 18, 28); // need to fix here for adjustable player numbers
         totalPlayers++;
     }
 
@@ -103,11 +97,14 @@ public class PlayerGUI extends JPanel {
             433, 333, 233, 133};
 
 
-    public void move(int dicesTotal) {
-        if(currentSquareNumber + dicesTotal > 19) {
-            depositToWallet(200);
+    public void move(int diceValue) {
+        GameBoard gameBoard = new GameBoard();
+        int size = gameBoard.size();
+
+        if(currentSquareNumber + diceValue > size) {
+            // Pass go
         }
-        int targetSquare = (currentSquareNumber + dicesTotal) % 20;
+        int targetSquare = (currentSquareNumber + diceValue) % size;
         currentSquareNumber = targetSquare;
 
         if(MonopolyGUI.nowPlaying == 0) {
@@ -115,10 +112,5 @@ public class PlayerGUI extends JPanel {
         } else {
             this.setLocation(xLocationsOfPlayer2[targetSquare], yLocationsOfPlayer2[targetSquare]);
         }
-
-        if(ledger.containsKey(this.getCurrentSquareNumber())) {
-            MonopolyGUI.infoConsole.setText("This property belongs to player "+ledger.get(this.getCurrentSquareNumber()));
-        }
-        //ledger.put(this.getCurrentSquareNumber(), this.getPlayerNumber());
     }
 }
