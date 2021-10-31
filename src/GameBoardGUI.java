@@ -5,10 +5,7 @@ import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 public class GameBoardGUI extends JPanel {
-    private ArrayList<SquareGUI> squareGUIs = new ArrayList<>();
     private GameBoard gameBoard;
-    private int WIDTH = 80;
-    private int HEIGHT = 80;
 
     public GameBoardGUI(int x, int y, int width, int height) {
         this.setBorder(new LineBorder(Color.BLACK));
