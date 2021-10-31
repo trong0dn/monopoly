@@ -4,9 +4,8 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 
 public class SquareGUI extends JPanel {
-    private String squareName;
-    private JLabel labelName;
-    private int squareNum;
+    private final String squareName;
+    private final int squareNum;
     static int total = 0;
 
     public SquareGUI(int x, int y, int width, int height, String squareName, int rotationDegree) {
@@ -20,8 +19,9 @@ public class SquareGUI extends JPanel {
     }
 
     private void rotation(int degree) {
+        JLabel labelName;
         if (degree == 0) {
-            this.labelName = new JLabel(squareName);
+            labelName = new JLabel(squareName);
         } else {
             // Rotate the square
             labelName = new JLabel(squareName) {

@@ -5,17 +5,17 @@ import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 public class GameBoardGUI extends JPanel {
-    private GameBoard gameBoard;
+    private final GameBoard gameBoard;
 
     public GameBoardGUI(int x, int y, int width, int height) {
         this.setBorder(new LineBorder(Color.BLACK));
         this.setBounds(x, y, width, height);
         this.gameBoard = new GameBoard();
         this.setLayout(null);
-        initializeSquarePanels(width, height);
+        initializeSquarePanels();
     }
 
-    private void initializeSquarePanels(int width, int height) {
+    private void initializeSquarePanels() {
         ArrayList<String> squareNames = new ArrayList<>();
         for (Square sq : gameBoard.getBoard()) {
             squareNames.add(sq.name());
