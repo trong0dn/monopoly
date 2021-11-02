@@ -7,12 +7,12 @@ import java.util.HashMap;
 public class PlayerGUI extends JPanel {
 
     private int playerNumber;
-    JLabel lblPlayerNumber;
-    static int totalPlayers = 0; // we might need this number later on
+    JLabel labelPlayerNumber;
+    static int totalPlayers = 0;
     static HashMap<Integer, Integer> ledger= new HashMap<>();
 
-    private int currentSquareNumber = 0; // where player is currently located on (0 - 19). initially zero
-    private ArrayList<Integer> titleDeeds = new ArrayList<Integer>(); // squares that the player has
+    private int currentSquareNumber = 0;
+    private ArrayList<Integer> titleDeeds = new ArrayList<>(); // squares that the player has
     private int wallet = 3200; // initial money
 
     public ArrayList<Integer> getTitleDeeds() {
@@ -46,7 +46,7 @@ public class PlayerGUI extends JPanel {
     }
 
     public boolean hasTitleDeed(int squareNumber) {
-        return titleDeeds.contains(squareNumber) ? true : false;
+        return titleDeeds.contains(squareNumber);
     }
 
     public void buyTitleDeed(int squareNumber) {
@@ -60,14 +60,13 @@ public class PlayerGUI extends JPanel {
     }
 
     public PlayerGUI(int playerNumber, Color color) {
-        // TODO Auto-generated constructor stub
         this.playerNumber = playerNumber;
         this.setBackground(color);
-        lblPlayerNumber = new JLabel(""+playerNumber);
-        lblPlayerNumber.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-        lblPlayerNumber.setForeground(Color.WHITE);
-        this.add(lblPlayerNumber);
-        this.setBounds(playerNumber*20 + 590, 620, 18, 28); // need to fix here for adjustable player numbers
+        labelPlayerNumber = new JLabel(""+playerNumber);
+        labelPlayerNumber.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+        labelPlayerNumber.setForeground(Color.WHITE);
+        this.add(labelPlayerNumber);
+        this.setBounds((this.playerNumber*20+xLocationsOfPlayer[0]), yLocationsOfPlayer[0], 18, 28);
         totalPlayers++;
     }
 
@@ -75,42 +74,26 @@ public class PlayerGUI extends JPanel {
         super.paintComponent(g);
     }
 
+    int[] xLocationsOfPlayer = {550, 495, 445, 395, 345, 295, 245, 195, 145, 95, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 95, 145, 195, 245, 295, 345, 395, 445, 495, 550,
+            550, 550, 550, 550, 550, 550, 550, 550, 550};
 
-    int[] xLocationsOfPlayer1 = {31, 131, 231, 331, 431, 531,
-            531, 531, 531, 531, 531,
-            431, 331, 231, 131, 31,
-            31, 31, 31, 31};
-
-    int[] yLocationsOfPlayer1 = {33, 33, 33, 33, 33, 33,
-            133, 233, 333, 433, 533,
-            533, 533, 533, 533, 533,
-            433, 333, 233, 133};
-
-    int[] xLocationsOfPlayer2 = {61, 191, 291, 361, 461, 561,
-            561, 561, 561, 561, 561,
-            461, 361, 261, 161, 61,
-            61, 61, 61, 61};
-
-    int[] yLocationsOfPlayer2 = {33, 33, 33, 33, 33, 33,
-            133, 233, 333, 433, 533,
-            533, 533, 533, 533, 533,
-            433, 333, 233, 133};
-
+    int[] yLocationsOfPlayer = {620, 620, 620, 620, 620, 620, 620, 620, 620, 620, 620,
+            525, 475, 425, 375, 325, 275, 225, 175, 125,
+            20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+            125, 175, 225, 275, 325, 375, 425, 475, 525};
 
     public void move(int diceValue) {
         GameBoard gameBoard = new GameBoard();
-        int size = gameBoard.size();
+        int size = gameBoard.size()-1;
 
-        if(currentSquareNumber + diceValue > size) {
-            // Pass go
+        if (currentSquareNumber + diceValue > size) {
+            // Pass go, collect 200.
         }
         int targetSquare = (currentSquareNumber + diceValue) % size;
         currentSquareNumber = targetSquare;
 
-        if(MonopolyGUI.nowPlaying == 0) {
-            this.setLocation(xLocationsOfPlayer1[targetSquare], yLocationsOfPlayer1[targetSquare]);
-        } else {
-            this.setLocation(xLocationsOfPlayer2[targetSquare], yLocationsOfPlayer2[targetSquare]);
-        }
+        this.setLocation((this.playerNumber*20+xLocationsOfPlayer[targetSquare]), yLocationsOfPlayer[targetSquare]);
     }
 }

@@ -10,15 +10,13 @@ public class MonopolyGUI extends JFrame {
     private GameBoardGUI gameBoard;
     static JTextArea infoConsole;
     static int nowPlaying = 0;
-    JPanel playerAssetsPanel;
+    private JPanel playerAssetsPanel;
     ArrayList<PlayerGUI> players = new ArrayList<>();
-    DiceGUI die1;
-    DiceGUI die2;
+    private DiceGUI die1;
+    private DiceGUI die2;
     PlayerGUI player1;
     PlayerGUI player2;
     CardLayout c1 = new CardLayout();
-    JTextArea panelPlayer1TextArea;
-    JTextArea panelPlayer2TextArea;
     JLayeredPane layeredPane;
     JPanel rightPanel;
     JButton buttonRollDice;
@@ -91,146 +89,124 @@ public class MonopolyGUI extends JFrame {
         players.add(player2);
         layeredPane.add(player2, Integer.valueOf(1));
 
-        // Add console log panel
-        JPanel consolePanel = new JPanel();
-        consolePanel.setBounds(81, 312, 246, 68);
-        rightPanel.add(consolePanel);
-        consolePanel.setLayout(null);
-
         // Add player status panel
         JPanel playerAssetsPanel = new JPanel();
-        playerAssetsPanel.setBounds(81, 28, 246, 189);
-        rightPanel.add(playerAssetsPanel);
+        playerAssetsPanel.setBounds(80, 30, 250, 190);
         playerAssetsPanel.setLayout(c1);
 
-        // Player 1 status panel
-        JPanel panelPlayer1 = new JPanel();
-        panelPlayer1.setBackground(Color.RED);
-        playerAssetsPanel.add(panelPlayer1, "1");
-        panelPlayer1.setLayout(null);
+        c1.show(playerAssetsPanel, String.valueOf(nowPlaying));
 
-        JLabel panelPlayer1Title = new JLabel("Player 1 All Wealth");
-        panelPlayer1Title.setForeground(Color.WHITE);
-        panelPlayer1Title.setHorizontalAlignment(SwingConstants.CENTER);
-        panelPlayer1Title.setBounds(0, 6, 240, 16);
-        panelPlayer1.add(panelPlayer1Title);
+        JPanel player1StatusPanel = playerStatusPanel(1, Color.RED);
+        JPanel player2StatusPanel = playerStatusPanel(2, Color.BLUE);
 
-        panelPlayer1TextArea = new JTextArea();
-        panelPlayer1TextArea.setBounds(10, 34, 230, 149);
-        panelPlayer1.add(panelPlayer1TextArea);
-
-        JPanel panelPlayer2 = new JPanel();
-        panelPlayer2.setBackground(Color.BLUE);
-        playerAssetsPanel.add(panelPlayer2, "2");
-        panelPlayer2.setLayout(null);
-        c1.show(playerAssetsPanel, ""+nowPlaying);
-
-        JLabel panelPlayer2Title = new JLabel("Player 2 All Wealth");
-        panelPlayer2Title.setForeground(Color.WHITE);
-        panelPlayer2Title.setHorizontalAlignment(SwingConstants.CENTER);
-        panelPlayer2Title.setBounds(0, 6, 240, 16);
-        panelPlayer2.add(panelPlayer2Title);
-
-        panelPlayer2TextArea = new JTextArea();
-        panelPlayer2TextArea.setBounds(10, 34, 230, 149);
-        panelPlayer2.add(panelPlayer2TextArea);
+        playerAssetsPanel.add(player1StatusPanel);
+        playerAssetsPanel.add(player2StatusPanel);
+        rightPanel.add(playerAssetsPanel);
 
         //updatePanelPlayer1TextArea();
         //updatePanelPlayer2TextArea();
 
-        // Info console log
+        // Add console log panel
+        JPanel consolePanel = new JPanel();
+        consolePanel.setBounds(80, 310, 250, 70);
+        consolePanel.setLayout(null);
+        rightPanel.add(consolePanel);
+
         infoConsole = new JTextArea();
         infoConsole.setColumns(20);
         infoConsole.setRows(5);
-        infoConsole.setBounds(6, 6, 234, 56);
-        consolePanel.add(infoConsole);
+        infoConsole.setBounds(5, 5, 240, 60);
         infoConsole.setLineWrap(true);
-        infoConsole.setText("Player 1 starts the game, clicking Roll Dice!");
+        infoConsole.setEditable(false);
+        infoConsole.setText("Player 1 starts the game! \nClicking Roll Dice!");
+        consolePanel.add(infoConsole);
     }
 
     private JButton buttonRollDice() {
         buttonRollDice = new JButton("Roll Dice");
-        buttonRollDice.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                buttonNextTurn.setEnabled(true);
-                if (nowPlaying == 0) {
-                    die1.rollDice();
-                    die2.rollDice();
-                    doubleDiceForPlayer1 = die1.getFaceValue() == die2.getFaceValue();
-                    int diceValue = die1.getFaceValue() + die2.getFaceValue();
-                    player1.move(diceValue);
-                }
-                else {
-                    die1.rollDice();
-                    die2.rollDice();
-                    doubleDiceForPlayer2 = die1.getFaceValue() == die2.getFaceValue();
-                    int diceValue = die1.getFaceValue() + die2.getFaceValue();
-                    player2.move(diceValue);
-
-                }
-
-                buttonRollDice.setEnabled(false);
-                if(doubleDiceForPlayer1 || doubleDiceForPlayer2) {
-                    infoConsole.setText("Click Next Turn to allow player "+ (nowPlaying==0 ? 1 : 2) +" to Roll Dice!");
-                } else {
-                    infoConsole.setText("Click Next Turn to allow player "+ (nowPlaying==0 ? 2 : 1) +" to Roll Dice!");
-                }
-                layeredPane.remove(gameBoard);
-                layeredPane.add(gameBoard, Integer.valueOf(0));
-
-                //updatePanelPlayer1TextArea();
-                //updatePanelPlayer2TextArea();
+        buttonRollDice.addActionListener(e -> {
+            buttonNextTurn.setEnabled(true);
+            if (nowPlaying == 0) {
+                die1.rollDice();
+                die2.rollDice();
+                doubleDiceForPlayer1 = die1.getFaceValue() == die2.getFaceValue();
+                int diceValue = die1.getFaceValue() + die2.getFaceValue();
+                player1.move(diceValue);
             }
+            else {
+                die1.rollDice();
+                die2.rollDice();
+                doubleDiceForPlayer2 = die1.getFaceValue() == die2.getFaceValue();
+                int diceValue = die1.getFaceValue() + die2.getFaceValue();
+                player2.move(diceValue);
+
+            }
+
+            buttonRollDice.setEnabled(false);
+            // Roll double, player rolls again
+            if(doubleDiceForPlayer1 || doubleDiceForPlayer2) {
+                infoConsole.setText("Click Next Turn to allow player "+ (nowPlaying==0 ? 1 : 2) +" to Roll Dice!");
+            } else {
+                infoConsole.setText("Click Next Turn to allow player "+ (nowPlaying==0 ? 2 : 1) +" to Roll Dice!");
+            }
+            layeredPane.remove(gameBoard);
+            layeredPane.add(gameBoard, Integer.valueOf(0));
+
+            //updatePanelPlayer1TextArea();
+            //updatePanelPlayer2TextArea();
         });
         return buttonRollDice;
     }
 
     private JButton buttonNextTurn() {
         buttonNextTurn = new JButton("Next Turn");
-        buttonNextTurn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                infoConsole.setText("Next Turn!");
-                buttonRollDice.setEnabled(true);
-                if(nowPlaying == 0 && doubleDiceForPlayer1) {
-                    doubleDiceForPlayer1 = false;
-                } else if(nowPlaying == 1 && doubleDiceForPlayer2) {
-                    doubleDiceForPlayer2 = false;
-                } else if(!doubleDiceForPlayer1 && !doubleDiceForPlayer2) {
-                    nowPlaying = (nowPlaying + 1) % 2;
-                }
-                buttonNextTurn.setEnabled(false);
-
-                //c1.show(playerAssetsPanel, ""+(nowPlaying==0 ? 1 : 2)); // maps 0 to 1 and 1 to 2
-                //updatePanelPlayer1TextArea();
-                //updatePanelPlayer2TextArea();
-                infoConsole.setText("It's now player "+(nowPlaying==0 ? 1 : 2)+"'s turn!");
+        buttonNextTurn.addActionListener(e -> {
+            infoConsole.setText("Next Turn!");
+            buttonRollDice.setEnabled(true);
+            if(nowPlaying == 0 && doubleDiceForPlayer1) {
+                doubleDiceForPlayer1 = false;
+            } else if(nowPlaying == 1 && doubleDiceForPlayer2) {
+                doubleDiceForPlayer2 = false;
+            } else if(!doubleDiceForPlayer1 && !doubleDiceForPlayer2) {
+                nowPlaying = (nowPlaying + 1) % 2;
             }
+            buttonNextTurn.setEnabled(false);
+
+            //c1.show(playerAssetsPanel, ""+(nowPlaying==0 ? 1 : 2)); // maps 0 to 1 and 1 to 2
+            //updatePanelPlayer1TextArea();
+            //updatePanelPlayer2TextArea();
+            infoConsole.setText("It's now player "+ (nowPlaying==0 ? 1 : 2) +"'s turn!");
         });
         return buttonNextTurn;
     }
 
     private JButton buttonBuy() {
         buttonBuy = new JButton("Buy Property");
-        buttonBuy.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                infoConsole.setText("You bought something");
-            }
-        });
+        buttonBuy.addActionListener(e -> infoConsole.setText("You bought something"));
         return buttonBuy;
     }
 
     private JButton buttonPayRent() {
         buttonPayRent = new JButton("Pay Rent");
-        buttonPayRent.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                infoConsole.setText("You paid rent!");
-            }
-        });
+        buttonPayRent.addActionListener(e -> infoConsole.setText("You paid rent!"));
         return buttonPayRent;
+    }
+
+    private JPanel playerStatusPanel(int playerNumber, Color color) {
+        JPanel panelPlayer = new JPanel();
+        panelPlayer.setBackground(color);
+        panelPlayer.setLayout(null);
+
+        JLabel panelPlayerTitle = new JLabel("Player #" + playerNumber + " Status");
+        panelPlayerTitle.setForeground(Color.WHITE);
+        panelPlayerTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        panelPlayerTitle.setBounds(0, 5, 240, 15);
+        panelPlayer.add(panelPlayerTitle);
+
+        JTextArea panelPlayerTextArea = new JTextArea();
+        panelPlayerTextArea.setBounds(10, 35, 230, 150);
+        panelPlayer.add(panelPlayerTextArea);
+        return panelPlayer;
     }
 
     public static void main(String[] args) {
