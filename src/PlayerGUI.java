@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +8,7 @@ public class PlayerGUI extends JPanel {
     private int playerNumber;
     JLabel labelPlayerNumber;
     static int totalPlayers = 0;
-    static HashMap<Integer, Integer> ledger= new HashMap<>();
+    private HashMap<Integer, Integer> ledger= new HashMap<>();
 
     private int currentSquareNumber = 0;
     private ArrayList<Integer> titleDeeds = new ArrayList<>(); // squares that the player has
@@ -62,7 +61,7 @@ public class PlayerGUI extends JPanel {
     public PlayerGUI(int playerNumber, Color color) {
         this.playerNumber = playerNumber;
         this.setBackground(color);
-        labelPlayerNumber = new JLabel(""+playerNumber);
+        labelPlayerNumber = new JLabel(String.valueOf(playerNumber));
         labelPlayerNumber.setFont(new Font("Lucida Grande", Font.BOLD, 15));
         labelPlayerNumber.setForeground(Color.WHITE);
         this.add(labelPlayerNumber);
