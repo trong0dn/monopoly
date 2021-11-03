@@ -151,19 +151,19 @@ public class MonopolyGUI extends JFrame {
     private JButton buttonRollDice() {
         buttonRollDice = new JButton("Roll Dice");
         buttonRollDice.addActionListener(e -> {
-            buttonNextTurn.setEnabled(true);
             die1.rollDice();
             die2.rollDice();
             doubleDiceForPlayer1 = die1.getFaceValue() == die2.getFaceValue();
             int diceValue = die1.getFaceValue() + die2.getFaceValue();
             players.get(currentPlayer).move(diceValue);
 
+            int tempCurrentPlayer = currentPlayer + 1;
             // Roll double, player rolls again
             if (doubleDiceForPlayer1 || doubleDiceForPlayer2) {
-                infoConsole.setText("Click Next Turn to allow player " + (currentPlayer+1) + " to Roll Dice!");
+                infoConsole.setText("Doubles! Click Roll Dice again player " + tempCurrentPlayer);
                 buttonNextTurn.setEnabled(false);
             } else {
-                infoConsole.setText("Click Next Turn to allow player " + (currentPlayer % numPlayers + 1) + " to Roll Dice!");
+                infoConsole.setText("Click Next Turn to allow player " + (tempCurrentPlayer % numPlayers + 1) + " to Roll Dice!");
                 buttonRollDice.setEnabled(false);
                 buttonNextTurn.setEnabled(true);
             }
@@ -191,7 +191,7 @@ public class MonopolyGUI extends JFrame {
             buttonNextTurn.setEnabled(false);
 
             updatePlayerStatusTextArea();
-            cardLayout.show(playerAssetsPanel,String.valueOf(currentPlayer));
+            cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayer+1));
             infoConsole.setText("Console: It's now player "+ (currentPlayer+1) +"'s turn!");
         });
         return buttonNextTurn;
