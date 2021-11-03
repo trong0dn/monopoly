@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PlayerGUI extends JPanel {
-
+    private HumanPlayer player;
     private int playerNumber;
     JLabel labelPlayerNumber;
     static int totalPlayers = 0;

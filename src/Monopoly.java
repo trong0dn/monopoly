@@ -37,8 +37,8 @@ public class Monopoly {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
-        Input input = new Input();
-        initializePlayers(input);
+        //Input input = new Input();
+        //initializePlayers(input);
     }
 
     /**
@@ -51,11 +51,15 @@ public class Monopoly {
     /**
      * Track the game state.
      */
-    public class GameState {
+    public static class GameState {
         public DecisionState decisionState;
         public Queue<Player> players;
         public GameBoard gameBoard;
         public Player currentPlayer;
+    }
+
+    public GameState getGameState() {
+        return this.gameState;
     }
 
     /**

@@ -9,43 +9,45 @@ public class DiceGUI extends JPanel {
     public DiceGUI(int x, int y, int width, int height) {
         this.setBorder(new LineBorder(new Color(0, 0, 0)));
         this.setBounds(x, y, width, height);
-        this.faceValue = rollDice.rollDice().dieValue1;;
+        this.faceValue = rollDice.rollDice().dieValue1;
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        int width = 5;
+        int height = 5;
         if (faceValue == 1) {
-            g.fillOval(getWidth()/2 - 5/2, getHeight()/2 - 5/2, 5, 5);
+            g.fillOval(getWidth()/2 - 5/2, getHeight()/2 - 5/2, width, height);
         }
         else if (faceValue == 2) {
-            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, 5, 5);
-            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, 5, 5);
+            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, width, height);
+            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, width, height);
         }
         else if (faceValue == 3) {
-            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, 5, 5);
-            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, 5, 5);
-            g.fillOval(getWidth()/2 - 5/2, getHeight()/2 - 5/2, 5, 5);
+            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, width, height);
+            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, width, height);
+            g.fillOval(getWidth()/2 - 5/2, getHeight()/2 - 5/2, width, height);
         }
         else if (faceValue == 4) {
-            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, 5, 5);
-            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, 5, 5);
-            g.fillOval(getWidth()/2 - 15, getHeight()/2 - 15, 5, 5);
-            g.fillOval(getWidth()/2 + 10, getHeight()/2 + 10, 5, 5);
+            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, width, height);
+            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, width, height);
+            g.fillOval(getWidth()/2 - 15, getHeight()/2 - 15, width, height);
+            g.fillOval(getWidth()/2 + 10, getHeight()/2 + 10, width, height);
         }
         else if (faceValue == 5) {
-            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, 5, 5);
-            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, 5, 5);
-            g.fillOval(getWidth()/2 - 15, getHeight()/2 - 15, 5, 5);
-            g.fillOval(getWidth()/2 + 10, getHeight()/2 + 10, 5, 5);
-            g.fillOval(getWidth()/2 - 5/2, getHeight()/2 - 5/2, 5, 5);
+            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, width, height);
+            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, width, height);
+            g.fillOval(getWidth()/2 - 15, getHeight()/2 - 15, width, height);
+            g.fillOval(getWidth()/2 + 10, getHeight()/2 + 10, width, height);
+            g.fillOval(getWidth()/2 - 5/2, getHeight()/2 - 5/2, width, height);
         }
         else {
-            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, 5, 5);
-            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, 5, 5);
-            g.fillOval(getWidth()/2 - 15, getHeight()/2 - 15, 5, 5);
-            g.fillOval(getWidth()/2 + 10, getHeight()/2 + 10, 5, 5);
-            g.fillOval(getWidth()/2 - 15, getHeight()/2 - 5/2, 5, 5);
-            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 5/2, 5, 5);
+            g.fillOval(getWidth()/2 - 15, getHeight()/2 + 10, width, height);
+            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 15, width, height);
+            g.fillOval(getWidth()/2 - 15, getHeight()/2 - 15, width, height);
+            g.fillOval(getWidth()/2 + 10, getHeight()/2 + 10, width, height);
+            g.fillOval(getWidth()/2 - 15, getHeight()/2 - 5/2, width, height);
+            g.fillOval(getWidth()/2 + 10, getHeight()/2 - 5/2, width, height);
         }
     }
 
