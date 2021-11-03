@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.Collection;
 
 public class PlayerGUI extends JPanel {
-    private final HumanPlayer player;
+    private HumanPlayer player;
     private final int playerNumber;
     static int totalPlayers = 0;
     private int currentSquareNumber = 0;
