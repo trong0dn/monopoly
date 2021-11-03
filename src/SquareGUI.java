@@ -18,12 +18,17 @@ public class SquareGUI extends JPanel {
         rotation(rotationDegree);
     }
 
+    public int getSquareNum() {
+        return this.squareNum;
+    }
+
     private void rotation(int degree) {
         JLabel labelName;
         if (degree == 0) {
             labelName = new JLabel(squareName);
         } else {
-            // Rotate the square
+            // Rotate labels on square
+            // Sourced https://www.daniweb.com/programming/software-development/threads/390060/rotate-jlabel-or-image-in-label
             labelName = new JLabel(squareName) {
                 protected void paintComponent(Graphics g) {
                     Graphics2D g2 = (Graphics2D) g;
@@ -54,7 +59,7 @@ public class SquareGUI extends JPanel {
         }
         if (this.squareNum == 6 || this.squareNum == 8 || this.squareNum == 9) {
             g.drawRect(0, 0, this.getWidth(), 20);
-            g.setColor(new Color(		114, 188, 212));
+            g.setColor(new Color(114, 188, 212));
             g.fillRect(0, 0, this.getWidth(), 20);
         }
         if (this.squareNum == 11 || this.squareNum == 13 || this.squareNum == 14) {

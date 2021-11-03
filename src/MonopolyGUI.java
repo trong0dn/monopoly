@@ -100,11 +100,11 @@ public class MonopolyGUI extends JFrame {
 
     private void setupPlayerToken() {
         // Add Players tokens
-        player1 = new PlayerGUI(1, Color.RED);
+        player1 = new PlayerGUI(Color.RED);
         players.add(player1);
         layeredPane.add(player1, Integer.valueOf(1));
 
-        player2 = new PlayerGUI(2, Color.BLUE);
+        player2 = new PlayerGUI(Color.BLUE);
         players.add(player2);
         layeredPane.add(player2, Integer.valueOf(1));
     }
