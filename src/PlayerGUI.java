@@ -51,6 +51,8 @@ public class PlayerGUI extends JPanel {
         return this.player.getMoney();
     }
 
+    public Player getPlayer() { return this.player; }
+
     public void exchangeMoney(int money) {
         this.player.exchangeMoney(money);
     }

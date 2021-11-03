@@ -53,13 +53,9 @@ public class Monopoly {
      */
     public static class GameState {
         public DecisionState decisionState;
-        public Queue<Player> players;
+        public LinkedList<Player> players;
         public GameBoard gameBoard;
         public Player currentPlayer;
-    }
-
-    public GameState getGameState() {
-        return this.gameState;
     }
 
     /**
