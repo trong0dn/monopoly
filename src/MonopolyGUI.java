@@ -14,6 +14,7 @@ public class MonopolyGUI extends JFrame {
     private DiceGUI die2;
     PlayerGUI player1;
     PlayerGUI player2;
+    JPanel boxPanel;
     JLayeredPane layeredPane;
     JPanel rightPanel;
     JTextArea panelPlayerTextArea;
@@ -27,14 +28,26 @@ public class MonopolyGUI extends JFrame {
     Boolean doubleDiceForPlayer2 = false;
 
     public MonopolyGUI() {
+        setupFrame();
+        setupBoard();
+        setupDice();
+        setupButtons();
+        setupPlayerToken();
+        setupPlayerStatusWindow();
+        setupConsoleLog();
+    }
+
+    private void setupFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         setSize(1080,860);
-        JPanel boxPanel = new JPanel();
+        boxPanel = new JPanel();
         boxPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(boxPanel);
         boxPanel.setLayout(null);
+    }
 
+    private void setupBoard() {
         // Add right panel
         rightPanel = new JPanel();
         rightPanel.setBackground(Color.LIGHT_GRAY);
@@ -52,14 +65,18 @@ public class MonopolyGUI extends JFrame {
         gameBoard = new GameBoardGUI(5,5,650+10,650+10);
         gameBoard.setBackground(new Color(50, 255, 155));
         layeredPane.add(gameBoard, Integer.valueOf(0));
+    }
 
+    private void setupDice() {
         // Add dice graphics
         die1 = new DiceGUI(350, 450, 40, 40);
         layeredPane.add(die1, Integer.valueOf(1));
 
         die2 = new DiceGUI(400, 450, 40, 40);
         layeredPane.add(die2, Integer.valueOf(1));
+    }
 
+    private void setupButtons() {
         // Add dice button ActionListener
         buttonRollDice = buttonRollDice();
         buttonRollDice.setBounds(80, 410, 250, 50);
@@ -79,7 +96,9 @@ public class MonopolyGUI extends JFrame {
         buttonNextTurn = buttonNextTurn();
         buttonNextTurn.setBounds(81, 519, 246, 53);
         rightPanel.add(buttonNextTurn);
+    }
 
+    private void setupPlayerToken() {
         // Add Players tokens
         player1 = new PlayerGUI(1, Color.RED);
         players.add(player1);
@@ -88,7 +107,9 @@ public class MonopolyGUI extends JFrame {
         player2 = new PlayerGUI(2, Color.BLUE);
         players.add(player2);
         layeredPane.add(player2, Integer.valueOf(1));
+    }
 
+    private void setupPlayerStatusWindow() {
         // Add player status panel
         playerAssetsPanel = new JPanel();
         playerAssetsPanel.setBounds(80, 30, 250, 190);
@@ -100,7 +121,9 @@ public class MonopolyGUI extends JFrame {
 
         playerAssetsPanel.add(player1StatusPanel, "1");
         playerAssetsPanel.add(player2StatusPanel, "2");
+    }
 
+    private void setupConsoleLog() {
         // Add console log panel
         JPanel consolePanel = new JPanel();
         consolePanel.setBounds(80, 310, 250, 70);
@@ -139,10 +162,11 @@ public class MonopolyGUI extends JFrame {
             // Roll double, player rolls again
             if (doubleDiceForPlayer1 || doubleDiceForPlayer2) {
                 infoConsole.setText("Click Next Turn to allow player "+ (nowPlaying==0 ? 1 : 2) +" to Roll Dice!");
+                buttonNextTurn.setEnabled(false);
             } else {
                 infoConsole.setText("Click Next Turn to allow player "+ (nowPlaying==0 ? 2 : 1) +" to Roll Dice!");
                 buttonRollDice.setEnabled(false);
-                buttonNextTurn.setEnabled(false);
+                buttonNextTurn.setEnabled(true);
             }
             layeredPane.remove(gameBoard);
             layeredPane.add(gameBoard, Integer.valueOf(0));
@@ -199,6 +223,7 @@ public class MonopolyGUI extends JFrame {
         this.panelPlayerTextArea = new JTextArea();
         this.panelPlayerTextArea.setBounds(10, 35, 230, 150);
         panelPlayer.add(this.panelPlayerTextArea);
+        updatePlayerStatusTextArea();
         return panelPlayer;
     }
 
@@ -211,8 +236,8 @@ public class MonopolyGUI extends JFrame {
         //for (Square sq : properties) {
          //   output.append(">>> ").append(sq.name()).append("\n");
         //}
-        String output = "Test";
-        this.panelPlayerTextArea.setText(output.toString());
+        String output = "It's now player "+ (nowPlaying==0 ? 1 : 2) +"'s turn!";
+        this.panelPlayerTextArea.setText(output);
     }
 
     public static void main(String[] args) {
