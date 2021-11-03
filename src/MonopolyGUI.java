@@ -141,7 +141,7 @@ public class MonopolyGUI extends JFrame {
         playerAssetsPanel.setLayout(cardLayout);
         rightPanel.add(playerAssetsPanel);
 
-        for (int i = 0; i < numPlayers; i++){
+        for (int i = 0; i < numPlayers; i++) {
             JPanel playerStatusPanel = playerStatusPanel(i+1, playerTokenColors[i]);
             playerAssetsPanel.add(playerStatusPanel, String.valueOf(i+1));
         }
