@@ -1,13 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Collection;
-import java.util.HashMap;
 
 public class PlayerGUI extends JPanel {
-    private HumanPlayer player;
+    private final HumanPlayer player;
     private final int playerNumber;
     static int totalPlayers = 0;
-    private HashMap<Integer, Integer> ledger = new HashMap<>();
     private int currentSquareNumber = 0;
 
     private final int[] xLocationsOfPlayer = {550, 495, 445, 395, 345, 295, 245, 195, 145, 95, 0,
@@ -20,7 +18,8 @@ public class PlayerGUI extends JPanel {
             20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
             125, 175, 225, 275, 325, 375, 425, 475, 525};
 
-    public PlayerGUI(Color color) {
+    public PlayerGUI(Color color, String playerName) {
+        player = new HumanPlayer(playerName);
         totalPlayers++;
         this.playerNumber = totalPlayers;
         this.setBackground(color);

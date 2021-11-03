@@ -9,11 +9,11 @@ public class SquareGUI extends JPanel {
     static int total = 0;
 
     public SquareGUI(int x, int y, int width, int height, String squareName, int rotationDegree) {
-        squareNum = total;
+        this.squareNum = total;
         total++;
+        this.squareName = squareName;
         this.setBorder(new LineBorder(Color.BLACK));
         this.setBounds(x, y, width, height);
-        this.squareName = squareName;
         this.setLayout(null);
         rotation(rotationDegree);
     }
@@ -45,7 +45,7 @@ public class SquareGUI extends JPanel {
             };
         }
         labelName.setBounds(0, 0, this.getWidth(), this.getHeight());
-        labelName.setFont(new Font("Lucida Grande", Font.BOLD, 8));
+        labelName.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
         labelName.setHorizontalAlignment(SwingConstants.CENTER);
         this.add(labelName);
     }
