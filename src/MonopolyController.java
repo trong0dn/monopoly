@@ -209,4 +209,9 @@ public class MonopolyController {
         frame.pack();
         frame.setVisible(true);
     }
+
+    public static void main(String[] args) {
+        MonopolyController mc = new MonopolyController();
+        mc.displayGUI();
+    }
 }
