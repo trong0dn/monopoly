@@ -36,6 +36,7 @@ public class PlayerGUI extends JPanel {
 
         if (currentSquareNumber + diceValue > size) {
            exchangeMoney(200);
+           System.out.println("Pass GO!");
         }
         int targetSquare = (currentSquareNumber + diceValue) % size;
         currentSquareNumber = targetSquare;
