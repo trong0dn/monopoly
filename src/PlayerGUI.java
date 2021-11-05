@@ -34,9 +34,9 @@ public class PlayerGUI extends JPanel {
         GameBoard gameBoard = new GameBoard();
         int size = gameBoard.size()-1;
 
-        if (currentSquareNumber + diceValue > size) {
-           exchangeMoney(200);
-           System.out.println("Pass GO!");
+        if (currentSquareNumber + diceValue >= size) {
+            this.exchangeMoney(200);
+            System.out.println("Pass GO!");
         }
         int targetSquare = (currentSquareNumber + diceValue) % size;
         currentSquareNumber = targetSquare;
@@ -48,7 +48,7 @@ public class PlayerGUI extends JPanel {
         return this.player.properties();
     }
 
-    public int getMoney() {
+    public int getPlayerMoney() {
         return this.player.getMoney();
     }
 
