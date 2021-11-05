@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import static java.lang.Math.abs;
+
 public class MonopolyGUI extends JFrame {
     private final LinkedList<Player> playersList;
     private final int numPlayers = 4;
@@ -65,7 +67,7 @@ public class MonopolyGUI extends JFrame {
     private void setupFrame() {
         setTitle("MONOPOLY!");
         setBounds(100, 100, 450, 300);
-        setSize(1080,860);
+        setSize(1080,710);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -133,19 +135,6 @@ public class MonopolyGUI extends JFrame {
         }
     }
 
-    private void setupPlayerStatusWindow() {
-        // Add player status panel
-        playerAssetsPanel = new JPanel();
-        playerAssetsPanel.setBounds(80, 40, 250, 200);
-        playerAssetsPanel.setLayout(cardLayout);
-        rightPanel.add(playerAssetsPanel);
-
-        for (int i = 0; i < numPlayers; i++) {
-            JPanel playerStatusPanel = playerStatusPanel(i+1, playerTokenColors[i]);
-            playerAssetsPanel.add(playerStatusPanel, String.valueOf(i+1));
-        }
-    }
-
     private void setupConsoleLog() {
         // Add console log panel
         JPanel consolePanel = new JPanel();
@@ -163,6 +152,55 @@ public class MonopolyGUI extends JFrame {
         consolePanel.add(infoConsole);
     }
 
+    private JPanel playerStatusPanel(int playerNumber, Color color) {
+        JPanel panelPlayer = new JPanel();
+        panelPlayer.setBackground(color);
+        panelPlayer.setLayout(null);
+        JLabel panelPlayerTitle = new JLabel("Player " + playerNumber + " Status");
+        panelPlayerTitle.setForeground(Color.WHITE);
+        panelPlayerTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        panelPlayerTitle.setBounds(0, 5, 240, 15);
+        panelPlayer.add(panelPlayerTitle);
+
+        panelPlayerTextArea = new JTextArea();
+        panelPlayerTextArea.setBounds(10, 35, 230, 150);
+        panelPlayerTextArea.setEditable(false);
+        panelPlayer.add(panelPlayerTextArea);
+        return panelPlayer;
+    }
+
+    private void setupPlayerStatusWindow() {
+        // Add player status panel
+        playerAssetsPanel = new JPanel();
+        playerAssetsPanel.setBounds(80, 40, 250, 200);
+        playerAssetsPanel.setLayout(cardLayout);
+        rightPanel.add(playerAssetsPanel);
+
+        for (int i = 0; i < numPlayers; i++) {
+            JPanel playerStatusPanel = playerStatusPanel(i+1, playerTokenColors[i]);
+            playerAssetsPanel.add(playerStatusPanel, String.valueOf(i+1));
+            updatePlayerStatusTextArea(i+1);
+        }
+    }
+
+    private void updatePlayerStatusTextArea(int playerNumber) {
+        StringBuilder output = new StringBuilder();
+        int currentPlayerIndex = abs((currentPlayerOrder - 1) % numPlayers);
+
+        PlayerGUI currentPlayer =  playersGUI.get(currentPlayerIndex);
+        int playerMoney = currentPlayer.getPlayerMoney();
+        System.out.println("Player Money: " + playerMoney);
+
+        Collection<Square> properties = currentPlayer.getProperties();
+        output.append("Current Player: ").append(playerNumber).append("\n");
+        output.append("Current Balance: ").append(playerMoney).append("\n");
+        output.append("Property titles owned:\n");
+        for (Square sq : properties) {
+            output.append(">>> ").append(sq.name()).append("\n");
+        }
+        panelPlayerTextArea.setText(output.toString());
+    }
+
     private JButton buttonRollDice() {
         buttonRollDice = new JButton("Roll Dice");
         buttonRollDice.addActionListener(e -> {
@@ -174,24 +212,22 @@ public class MonopolyGUI extends JFrame {
             currentSquareNumber = this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber();
             String currentSquareName = this.gameBoard.getGameBoard().square(currentSquareNumber).name();
 
-            int tokenNumber = currentPlayerOrder + 1;
+            int currentPlayerIndex = (currentPlayerOrder % numPlayers) + 1;
             // Roll double, player rolls again
             if (isDouble) {
                 infoConsole.setText("You landed on " + currentSquareName +
-                        "\nDoubles! Click Roll Dice again player " + tokenNumber);
+                        "\nDoubles! Click Roll Dice again player " + currentPlayerIndex);
                 buttonNextTurn.setEnabled(false);
             } else {
                 infoConsole.setText("You landed on " + currentSquareName +
-                        "\nClick Next Turn to allow player " + (tokenNumber % numPlayers + 1) + " to Roll Dice!");
+                        "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
                 buttonRollDice.setEnabled(false);
                 buttonNextTurn.setEnabled(true);
             }
             layeredPane.remove(gameBoard);
             layeredPane.add(gameBoard, Integer.valueOf(0));
-
-            updatePlayerStatusTextArea();
+            updatePlayerStatusTextArea(currentPlayerIndex);
         });
-
         return buttonRollDice;
     }
 
@@ -202,14 +238,16 @@ public class MonopolyGUI extends JFrame {
             buttonRollDice.setEnabled(true);
             if (isDouble) {
                 isDouble = false;
-            } else {
-                currentPlayerOrder = (currentPlayerOrder + 1) % numPlayers;
             }
             buttonNextTurn.setEnabled(false);
 
-            cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder+1));
-            infoConsole.setText("It's now player "+ (currentPlayerOrder+1) +"'s turn!");
-            updatePlayerStatusTextArea();
+            currentPlayerOrder = (currentPlayerOrder % numPlayers) + 1;
+            int currentPlayerIndex = (currentPlayerOrder % numPlayers) + 1;
+
+            cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerIndex));
+            infoConsole.setText("It's now player "+ (currentPlayerIndex) +"'s turn!");
+            updatePlayerStatusTextArea(currentPlayerIndex);
+            currentPlayerOrder %= numPlayers;
         });
         return buttonNextTurn;
     }
@@ -226,40 +264,6 @@ public class MonopolyGUI extends JFrame {
         return buttonPayRent;
     }
 
-    private JPanel playerStatusPanel(int playerNumber, Color color) {
-        JPanel panelPlayer = new JPanel();
-        panelPlayer.setBackground(color);
-        panelPlayer.setLayout(null);
-
-        JLabel panelPlayerTitle = new JLabel("Player " + playerNumber + " Status");
-        panelPlayerTitle.setForeground(Color.WHITE);
-        panelPlayerTitle.setHorizontalAlignment(SwingConstants.CENTER);
-        panelPlayerTitle.setBounds(0, 5, 240, 15);
-        panelPlayer.add(panelPlayerTitle);
-
-        panelPlayerTextArea = new JTextArea();
-        panelPlayerTextArea.setBounds(10, 35, 230, 150);
-        panelPlayerTextArea.setEditable(false);
-        panelPlayer.add(panelPlayerTextArea);
-        updatePlayerStatusTextArea();
-        return panelPlayer;
-    }
-
-    private void updatePlayerStatusTextArea() {
-        StringBuilder output = new StringBuilder();
-        PlayerGUI currentPlayer =  playersGUI.get(currentPlayerOrder);
-        int playerNumber = currentPlayerOrder+1;
-        int playerMoney = currentPlayer.getPlayerMoney();
-        System.out.println("Player Money: " + playerMoney + "Current Index #: " + playerNumber);
-        Collection<Square> properties = currentPlayer.getProperties();
-        output.append("Current Player: ").append(playerNumber).append("\n");
-        output.append("Current Balance: ").append(playerMoney).append("\n");
-        output.append("Property titles owned:\n");
-        for (Square sq : properties) {
-            output.append(">>> ").append(sq.name()).append("\n");
-        }
-        panelPlayerTextArea.setText(output.toString());
-    }
 
     public static void main(String[] args) {
         new MonopolyGUI();
