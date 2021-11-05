@@ -95,6 +95,8 @@ public class MonopolyFrame extends JFrame {
         menuBar.add(aboutMenu);
         menuBar.add(helpMenu);
 
+
+
         //Body Panel
         JPanel bodyPanel = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();

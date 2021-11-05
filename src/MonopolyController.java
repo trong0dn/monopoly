@@ -7,7 +7,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * This class represents all the controllers used in the Monopoly GUI
@@ -259,5 +261,11 @@ public class MonopolyController {
 
         frame.pack();
         frame.setVisible(true);
+    }
+
+
+    public static void main(String[] args) {
+        MonopolyController mc = new MonopolyController();
+        mc.displayGUI();
     }
 }
