@@ -129,8 +129,10 @@ public class MonopolyFrame extends JFrame {
         }
     }
 
+
     public JPanel createBoard() {
         JPanel boardPanel = new JPanel(new GridBagLayout());
+
         GridBagConstraints c = new GridBagConstraints();
 
         for (int i = 0; i < gameBoard.size(); i++) {
