@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import static java.lang.Math.abs;
-
 public class MonopolyGUI extends JFrame {
     private final LinkedList<Player> playersList;
     private final int numPlayers = 4;
@@ -124,6 +122,7 @@ public class MonopolyGUI extends JFrame {
         // Add next turn button
         buttonNextTurn = buttonNextTurn();
         buttonNextTurn.setBounds(80, 520, 250, 50);
+        buttonNextTurn.setEnabled(false);
         rightPanel.add(buttonNextTurn);
     }
 
@@ -164,7 +163,8 @@ public class MonopolyGUI extends JFrame {
 
         panelPlayerTextArea = new JTextArea();
         panelPlayerTextArea.setBounds(10, 35, 230, 150);
-        panelPlayerTextArea.setEditable(false);
+        panelPlayerTextArea.setEditable(true);
+        updatePlayerStatusTextArea(playerNumber);
         panelPlayer.add(panelPlayerTextArea);
         return panelPlayer;
     }
@@ -179,17 +179,22 @@ public class MonopolyGUI extends JFrame {
         for (int i = 0; i < numPlayers; i++) {
             JPanel playerStatusPanel = playerStatusPanel(i+1, playerTokenColors[i]);
             playerAssetsPanel.add(playerStatusPanel, String.valueOf(i+1));
-            updatePlayerStatusTextArea(i+1);
         }
     }
 
+    int count = 0;
     private void updatePlayerStatusTextArea(int playerNumber) {
+        count++;
         StringBuilder output = new StringBuilder();
-        int currentPlayerIndex = abs((currentPlayerOrder - 1) % numPlayers);
+        System.out.println("Player Number:" + playerNumber);
+        int currentPlayerIndex = currentPlayerOrder % numPlayers;
 
         PlayerGUI currentPlayer =  playersGUI.get(currentPlayerIndex);
         int playerMoney = currentPlayer.getPlayerMoney();
         System.out.println("Player Money: " + playerMoney);
+
+        output.append("Current count").append(count).append("\n");
+        System.out.println(count);
 
         Collection<Square> properties = currentPlayer.getProperties();
         output.append("Current Player: ").append(playerNumber).append("\n");
@@ -198,7 +203,8 @@ public class MonopolyGUI extends JFrame {
         for (Square sq : properties) {
             output.append(">>> ").append(sq.name()).append("\n");
         }
-        panelPlayerTextArea.setText(output.toString());
+        panelPlayerTextArea.setText(String.valueOf(count));
+        //panelPlayerTextArea.setText(output.toString());
     }
 
     private JButton buttonRollDice() {
