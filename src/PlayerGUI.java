@@ -27,7 +27,7 @@ public class PlayerGUI extends JPanel {
         labelPlayerNumber.setFont(new Font("Lucida Grande", Font.BOLD, 15));
         labelPlayerNumber.setForeground(Color.WHITE);
         this.add(labelPlayerNumber);
-        this.setBounds((this.playerNumber*20+xLocationsOfPlayer[0]), yLocationsOfPlayer[0], 18, 28);
+        this.setBounds((15+this.playerNumber*5+xLocationsOfPlayer[0]), yLocationsOfPlayer[0], 18, 28);
     }
 
     public void move(int diceValue) {
@@ -35,12 +35,12 @@ public class PlayerGUI extends JPanel {
         int size = gameBoard.size()-1;
 
         if (currentSquareNumber + diceValue > size) {
-            exchangeMoney(200);
+           exchangeMoney(200);
         }
         int targetSquare = (currentSquareNumber + diceValue) % size;
         currentSquareNumber = targetSquare;
 
-        this.setLocation((this.playerNumber*20+xLocationsOfPlayer[targetSquare]), yLocationsOfPlayer[targetSquare]);
+        this.setLocation((15+this.playerNumber*5+xLocationsOfPlayer[targetSquare]), yLocationsOfPlayer[targetSquare]);
     }
 
     public Collection<Square> getProperties() {

@@ -9,13 +9,14 @@ import java.util.LinkedList;
 public class MonopolyGUI extends JFrame {
     private final Monopoly.GameState gameState;
     private final LinkedList<Player> playersList;
-    private final int numPlayers = 2;
+    private final int numPlayers = 4;
     private GameBoardGUI gameBoard;
     static JTextArea infoConsole;
     private int currentPlayerOrder;
     private final ArrayList<PlayerGUI> playersGUI = new ArrayList<>();
     private DiceGUI die1;
     private DiceGUI die2;
+    private Boolean isDouble = false;
     private JPanel rightPanel;
     private JPanel playerAssetsPanel;
     private JLayeredPane layeredPane;
@@ -25,8 +26,6 @@ public class MonopolyGUI extends JFrame {
     private JButton buttonNextTurn;
     private JButton buttonPayRent;
     private JButton buttonBuy;
-    private Boolean doubleDiceForPlayer1 = false;
-    private Boolean doubleDiceForPlayer2 = false;
 
     private final Color[] playerTokenColors = {
             Color.RED,
@@ -50,6 +49,7 @@ public class MonopolyGUI extends JFrame {
         setupPlayerToken();
         setupPlayerStatusWindow();
         setupConsoleLog();
+        setVisible(true);
     }
 
     public void init() {
@@ -169,13 +169,13 @@ public class MonopolyGUI extends JFrame {
         buttonRollDice.addActionListener(e -> {
             die1.rollDice();
             die2.rollDice();
-            doubleDiceForPlayer1 = die1.getFaceValue() == die2.getFaceValue();
+            isDouble = die1.getFaceValue() == die2.getFaceValue();
             int diceValue = die1.getFaceValue() + die2.getFaceValue();
-            playersGUI.get(currentPlayerOrder).move(diceValue);
+            this.playersGUI.get(currentPlayerOrder).move(diceValue);
 
             int tempCurrentPlayer = currentPlayerOrder + 1;
             // Roll double, player rolls again
-            if (doubleDiceForPlayer1 || doubleDiceForPlayer2) {
+            if (isDouble) {
                 infoConsole.setText("Doubles! Click Roll Dice again player " + tempCurrentPlayer);
                 buttonNextTurn.setEnabled(false);
             } else {
@@ -197,18 +197,16 @@ public class MonopolyGUI extends JFrame {
         buttonNextTurn.addActionListener(e -> {
             infoConsole.setText("Next Turn!");
             buttonRollDice.setEnabled(true);
-            if (currentPlayerOrder == 0 && doubleDiceForPlayer1) {
-                doubleDiceForPlayer1 = false;
-            } else if (currentPlayerOrder == 1 && doubleDiceForPlayer2) {
-                doubleDiceForPlayer2 = false;
-            } else if(!doubleDiceForPlayer1 && !doubleDiceForPlayer2) {
+            if (isDouble) {
+                isDouble = false;
+            } else {
                 currentPlayerOrder = (currentPlayerOrder + 1) % numPlayers;
             }
             buttonNextTurn.setEnabled(false);
 
             updatePlayerStatusTextArea();
             cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder+1));
-            infoConsole.setText("Console: It's now player "+ (currentPlayerOrder+1) +"'s turn!");
+            infoConsole.setText("It's now player "+ (currentPlayerOrder+1) +"'s turn!");
         });
         return buttonNextTurn;
     }
@@ -257,7 +255,6 @@ public class MonopolyGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        MonopolyGUI frame = new MonopolyGUI();
-        frame.setVisible(true);
+        new MonopolyGUI();
     }
 }
