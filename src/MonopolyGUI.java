@@ -22,6 +22,7 @@ public class MonopolyGUI extends JFrame {
     private DiceGUI die1;
     private DiceGUI die2;
     private Boolean isDouble = false;
+    private int doubles = 0;
     private JLayeredPane rightLayeredPane;
     private JPanel playerAssetsPanel;
     private JLayeredPane leftLayeredPane;
@@ -246,6 +247,7 @@ public class MonopolyGUI extends JFrame {
      */
     private JButton buttonRollDice() {
         buttonRollDice = new JButton("Roll Dice");
+
         buttonRollDice.addActionListener(e -> {
             die1.rollDice();
             die2.rollDice();
@@ -256,22 +258,27 @@ public class MonopolyGUI extends JFrame {
             currentSquareNumber = this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber();
             int currentPlayerIndex = (currentPlayerOrder + 1) + numPlayers;
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+
             // Roll double, player rolls again
-            if (isDouble) {
+            if (isDouble && doubles < 3) {
                 infoConsole.setText("You landed on " + currentSquare.name() +
                         "\nProperty Cost: $" + currentSquare.cost() +
                         "\nDoubles! Click Roll Dice again, player " + currentPlayerIndex);
                 buttonNextTurn.setEnabled(false);
+                doubles++;
             } else {
                 infoConsole.setText("You landed on " + currentSquare.name() +
                         "\nProperty cost: $" + currentSquare.cost() +
                         "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
                 buttonRollDice.setEnabled(false);
                 buttonNextTurn.setEnabled(true);
+                doubles = 0;
             }
+
             // Swing concurrency thread correction for layeredPane flickering
             leftLayeredPane.remove(gameBoard);
             leftLayeredPane.add(gameBoard, Integer.valueOf(0));
+
             // Button logic
             if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
                 buttonBuy.setEnabled(true);
@@ -290,8 +297,7 @@ public class MonopolyGUI extends JFrame {
                     buttonRollDice.setEnabled(false);
                     buttonNextTurn.setEnabled(false);
                 }
-            }
-            else {
+            } else {
                 infoConsole.setText("You landed on a non-purchasable property: \n" + currentSquare.name() +
                         "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
                 buttonBuy.setEnabled(false);
