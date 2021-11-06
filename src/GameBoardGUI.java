@@ -19,6 +19,10 @@ public class GameBoardGUI extends JPanel {
         return this.gameBoard;
     }
 
+    public Square getSquare(int squareNumber) {
+        return this.gameBoard.square(squareNumber);
+    }
+
     private void initializeSquarePanels() {
         ArrayList<String> squareNames = new ArrayList<>();
         for (Square sq : gameBoard.getBoard()) {

@@ -6,8 +6,10 @@ import java.awt.desktop.SystemEventListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.concurrent.SynchronousQueue;
 
 public class MonopolyGUI extends JFrame {
+    private Monopoly monopoly;
     private final LinkedList<Player> playersList;
     private final int numPlayers = 4;
     private GameBoardGUI gameBoard;
@@ -40,6 +42,7 @@ public class MonopolyGUI extends JFrame {
     };
 
     public MonopolyGUI() {
+        monopoly = new Monopoly();
         playersList = new LinkedList<>();
         init();
         setupFrame();
@@ -255,7 +258,23 @@ public class MonopolyGUI extends JFrame {
 
     private JButton buttonBuy() {
         buttonBuy = new JButton("Buy Property");
-        buttonBuy.addActionListener(e -> infoConsole.setText("You bought something"));
+        buttonBuy.addActionListener(e -> {
+            PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
+            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+            int roll = die1.getFaceValue() + die2.getFaceValue();
+            monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+            System.out.println(currentSquare.isOwned());
+            if (currentSquare.isOwnable() && currentSquare.isOwned()) {
+                infoConsole.setText("You bought property:\n" + currentSquare.name() + "\n for " + currentSquare.cost());
+            } else if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
+                infoConsole.setText("You paid rent on:\n" + currentSquare.name() + "\n for " + currentSquare.rent(roll));
+            } else {
+                infoConsole.setText("You can not buy this property");
+            }
+            buttonBuy.setEnabled(false);
+            buttonPayRent.setEnabled(false);
+            updatePlayerStatusTextArea();
+        });
         return buttonBuy;
     }
 

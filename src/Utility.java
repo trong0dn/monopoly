@@ -21,6 +21,7 @@ public class Utility implements Square {
         this.position = position;
         this.name = name;
         this.dice = new RollDice();
+        this.owned = false;
     }
 
 

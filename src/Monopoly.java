@@ -220,13 +220,13 @@ public class Monopoly {
             System.out.println("You do not have sufficient funds for this transaction.\n You currently have $"
                     + gameState.currentPlayer.getMoney());
         }
-        if (player.inputBool(gameState)) {
+        //if (player.inputBool(gameState)) {
             if (!noMoney) {
                 player.exchangeMoney(-1 * cost);
                 buyProperty(player, square);
             }
             //TODO else trade assets for money
-        }
+        //}
     }
 
     /**
@@ -234,7 +234,7 @@ public class Monopoly {
      * @param player    Player
      * @param square    Square
      */
-    private void buyProperty(Player player, Square square) {
+    public void buyProperty(Player player, Square square) {
         if (player == null || square == null) return;
         if (!square.isOwnable()) return;
         player.addProperty(square);

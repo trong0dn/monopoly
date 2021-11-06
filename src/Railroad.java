@@ -20,6 +20,7 @@ public class Railroad implements Square {
         this.position = position;
         this.name = name;
         this.others = new Railroad[3];
+        this.owned = false;
     }
 
 
