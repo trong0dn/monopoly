@@ -204,7 +204,7 @@ public class Monopoly {
      * @param player    Player
      * @param square    Square
      */
-    private void unowned(Player player, Square square) {
+    public void unowned(Player player, Square square) {
         int cost = square.cost();
 
         if (player.getMoney() < cost) { //TODO Create method to get total value player of available assets
@@ -247,7 +247,7 @@ public class Monopoly {
      * @param square    Square
      * @param roll      int
      */
-    private void owned(Player player, Square square, int roll) {
+    public void owned(Player player, Square square, int roll) {
         int rent = square.rent(roll);
         if (square instanceof Utility) {
             // Increase rent depends on roll value
