@@ -106,7 +106,7 @@ public class MonopolyGUI extends JFrame {
     }
 
     private void setupButtons() {
-        // Add dice button
+        // Add roll dice button
         buttonRollDice = buttonRollDice();
         buttonRollDice.setBounds(80, 410, 250, 50);
         rightLayeredPane.add(buttonRollDice);
@@ -210,7 +210,7 @@ public class MonopolyGUI extends JFrame {
             PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
             currentPlayer.move(diceValue);
             currentSquareNumber = this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber();
-            int currentPlayerIndex = (currentPlayerOrder % numPlayers) + 1;
+            int currentPlayerIndex = (currentPlayerOrder + 1) + numPlayers;
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
             // Roll double, player rolls again
             if (isDouble) {

@@ -15,10 +15,6 @@ public class GameBoardGUI extends JPanel {
         initializeSquarePanels();
     }
 
-    public GameBoard getGameBoard() {
-        return this.gameBoard;
-    }
-
     public Square getSquare(int squareNumber) {
         return this.gameBoard.square(squareNumber);
     }
@@ -103,9 +99,5 @@ public class GameBoardGUI extends JPanel {
         centerLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
         centerLabel.setBounds(200, 280, 263, 55);
         this.add(centerLabel);
-    }
-
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
     }
 }

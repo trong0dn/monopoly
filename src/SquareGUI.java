@@ -18,10 +18,6 @@ public class SquareGUI extends JPanel {
         rotation(rotationDegree);
     }
 
-    public int getSquareNum() {
-        return this.squareNum;
-    }
-
     private void rotation(int degree) {
         JLabel labelName;
         if (degree == 0) {
