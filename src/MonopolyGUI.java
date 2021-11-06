@@ -232,7 +232,7 @@ public class MonopolyGUI extends JFrame {
         PlayerGUI currentPlayer =  playersGUI.get(currentPlayerOrder);
         int playerMoney = currentPlayer.getPlayerMoney();
         Collection<Square> properties = currentPlayer.getProperties();
-        output.append("Current Balance: ").append(playerMoney).append("\n");
+        output.append("Current Balance: $").append(playerMoney).append("\n");
         output.append("Property titles owned:\n");
         for (Square sq : properties) {
             output.append(">>> ").append(sq.name()).append("\n");
@@ -259,12 +259,12 @@ public class MonopolyGUI extends JFrame {
             // Roll double, player rolls again
             if (isDouble) {
                 infoConsole.setText("You landed on " + currentSquare.name() +
-                        "\nProperty Cost: " + currentSquare.cost() +
+                        "\nProperty Cost: $" + currentSquare.cost() +
                         "\nDoubles! Click Roll Dice again, player " + currentPlayerIndex);
                 buttonNextTurn.setEnabled(false);
             } else {
                 infoConsole.setText("You landed on " + currentSquare.name() +
-                        "\nProperty cost: " + currentSquare.cost() +
+                        "\nProperty cost: $" + currentSquare.cost() +
                         "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
                 buttonRollDice.setEnabled(false);
                 buttonNextTurn.setEnabled(true);
@@ -283,7 +283,12 @@ public class MonopolyGUI extends JFrame {
                             + "\nYou already own " + currentSquare.name() + "\nClick Next Turn to allow player "
                             + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
                 } else {
+                    infoConsole.setText("You landed on " + currentSquare.name() +
+                            "\nRent: $" + currentSquare.rent(diceValue) +
+                            "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
                     buttonPayRent.setEnabled(true);
+                    buttonRollDice.setEnabled(false);
+                    buttonNextTurn.setEnabled(false);
                 }
             }
             else {
@@ -338,7 +343,6 @@ public class MonopolyGUI extends JFrame {
             }
             monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
             buttonBuy.setEnabled(false);
-            buttonPayRent.setEnabled(false);
             updatePlayerStatusTextArea();
         });
         return buttonBuy;
@@ -359,8 +363,14 @@ public class MonopolyGUI extends JFrame {
                         "\nRent cost: " + currentSquare.rent(roll));
             }
             monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
-            buttonBuy.setEnabled(false);
             buttonPayRent.setEnabled(false);
+
+            if(isDouble){
+                buttonRollDice.setEnabled(true);
+                buttonNextTurn.setEnabled(false);
+            } else {
+                buttonNextTurn.setEnabled(true);
+            }
             updatePlayerStatusTextArea();
         });
         return buttonPayRent;
