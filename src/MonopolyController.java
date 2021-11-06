@@ -1,9 +1,15 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * This class represents all the controllers used in the Monopoly GUI
@@ -15,6 +21,9 @@ public class MonopolyController {
     private JPanel monopolyPanel; // Panel for the actual Monopoly game
     private JPanel switchPanels; // Used for switching the panels
     private Monopoly.GameState gameState;
+    private JLabel playerName;
+
+
 
     /**
      * Initialize MonopolyController
@@ -25,6 +34,7 @@ public class MonopolyController {
         this.startPanel = new JPanel();
         this.monopolyPanel = new JPanel();
         this.switchPanels = new JPanel(new CardLayout());
+        this.playerName = new JLabel();
     }
 
     /**
@@ -119,7 +129,49 @@ public class MonopolyController {
             cl.show(switchPanels, "PlayerInitializePanel");
         });
         return button;
+
     }
+
+    /**
+     * this creates the players when a new game has begun
+     * asks for number of players
+     * asks for name
+     * displays image icons for players to select from.
+     * @return void
+     */
+    public void makePlayers(){
+        //TODO still need to make it possible for players to select the icon and then grey it out for the nest players
+        //get number of players
+        int numPlayers = Integer.parseInt(JOptionPane.showInputDialog("Number of players: "));
+        //get player names
+        for (int i=0; i<numPlayers; i++){
+            String name = JOptionPane.showInputDialog("player Name: ");
+
+            //display the images
+            BufferedImage [] allImages;
+            File path = new File ("player_icons");
+            File [] allFiles = path.listFiles();
+            allImages = new BufferedImage[allFiles.length];
+            JFrame window = new JFrame ();
+            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            window.setLayout(new GridLayout(2,4));
+            JLabel label[] = new JLabel[allFiles.length];
+            for (int j =0; j< allFiles.length; j++){
+                try{
+                    allImages[j] = ImageIO.read((allFiles[j]));
+                    label[j] = new JLabel();
+                    ImageIcon icon = new ImageIcon(allImages[j]);
+                    label[j].setIcon(icon);
+                    window.add(label[j]);
+                }catch(IOException e){
+
+                }
+            }
+            window.pack();
+            window.setVisible(true);
+        }
+    }
+
 
     /**
      * Play the game after making all the players.
@@ -133,6 +185,7 @@ public class MonopolyController {
             cl.show(switchPanels, "MonopolyPanel");
         });
         return button;
+
     }
 
     /**
@@ -209,6 +262,7 @@ public class MonopolyController {
         frame.pack();
         frame.setVisible(true);
     }
+
 
     public static void main(String[] args) {
         MonopolyController mc = new MonopolyController();
