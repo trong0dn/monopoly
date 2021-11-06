@@ -13,7 +13,7 @@ public class MonopolyTest {
         Monopoly monopoly;
     }
 
-    @org.junit.Test
+    @Test
     public void turn() {
     }
 }
