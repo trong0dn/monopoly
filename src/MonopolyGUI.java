@@ -2,14 +2,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.desktop.SystemEventListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.concurrent.SynchronousQueue;
 
 public class MonopolyGUI extends JFrame {
-    private Monopoly monopoly;
+    private final Monopoly monopoly;
     private final LinkedList<Player> playersList;
     private final int numPlayers = 4;
     private GameBoardGUI gameBoard;
@@ -173,7 +171,7 @@ public class MonopolyGUI extends JFrame {
     private void setupPlayerStatusWindow() {
         // Add player status panel
         playerAssetsPanel = new JPanel();
-        playerAssetsPanel.setBounds(80, 40, 250, 200);
+        playerAssetsPanel.setBounds(80, 40, 250, 250);
         playerAssetsPanel.setLayout(cardLayout);
         rightLayeredPane.add(playerAssetsPanel, String.valueOf(1));
 
@@ -183,7 +181,7 @@ public class MonopolyGUI extends JFrame {
         }
 
         panelPlayerTextArea = new JTextArea();
-        panelPlayerTextArea.setBounds(90, 75, 230, 150);
+        panelPlayerTextArea.setBounds(90, 70, 230, 210);
         panelPlayerTextArea.setEditable(false);
         rightLayeredPane.add(panelPlayerTextArea, String.valueOf(2));
         updatePlayerStatusTextArea();
@@ -209,18 +207,20 @@ public class MonopolyGUI extends JFrame {
             die2.rollDice();
             isDouble = die1.getFaceValue() == die2.getFaceValue();
             int diceValue = die1.getFaceValue() + die2.getFaceValue();
-            this.playersGUI.get(currentPlayerOrder).move(diceValue);
+            PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
+            currentPlayer.move(diceValue);
             currentSquareNumber = this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber();
-            String currentSquareName = this.gameBoard.getGameBoard().square(currentSquareNumber).name();
-
             int currentPlayerIndex = (currentPlayerOrder % numPlayers) + 1;
+            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
             // Roll double, player rolls again
             if (isDouble) {
-                infoConsole.setText("You landed on " + currentSquareName +
-                        "\nDoubles! Click Roll Dice again player " + currentPlayerIndex);
+                infoConsole.setText("You landed on " + currentSquare.name() +
+                        "\nProperty Cost: " + currentSquare.cost() +
+                        "\nDoubles! Click Roll Dice again, player " + currentPlayerIndex);
                 buttonNextTurn.setEnabled(false);
             } else {
-                infoConsole.setText("You landed on " + currentSquareName +
+                infoConsole.setText("You landed on " + currentSquare.name() +
+                        "\nProperty cost: " + currentSquare.cost() +
                         "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
                 buttonRollDice.setEnabled(false);
                 buttonNextTurn.setEnabled(true);
@@ -228,8 +228,24 @@ public class MonopolyGUI extends JFrame {
             // Swing concurrency thread correction for layeredPane flickering
             leftLayeredPane.remove(gameBoard);
             leftLayeredPane.add(gameBoard, Integer.valueOf(0));
-            buttonBuy.setEnabled(true);
-            buttonPayRent.setEnabled(true);
+            // Button logic
+            if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
+                buttonBuy.setEnabled(true);
+            } else if (currentSquare.isOwnable()) {
+                if (currentSquare.owner().name().equals(currentPlayer.getPlayer().name())) {
+                    buttonBuy.setEnabled(false);
+                    buttonPayRent.setEnabled(false);
+                    infoConsole.setText("You already own " + currentSquare.name() +
+                            "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
+                } else {
+                    buttonPayRent.setEnabled(true);
+                }
+            } else {
+                infoConsole.setText("You landed on a non-purchasable property \n" + currentSquare.name() +
+                        "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
+                buttonBuy.setEnabled(false);
+                buttonPayRent.setEnabled(false);
+            }
             updatePlayerStatusTextArea();
         });
         return buttonRollDice;
@@ -262,15 +278,11 @@ public class MonopolyGUI extends JFrame {
             PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
             int roll = die1.getFaceValue() + die2.getFaceValue();
-            monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
-            System.out.println(currentSquare.isOwned());
-            if (currentSquare.isOwnable() && currentSquare.isOwned()) {
-                infoConsole.setText("You bought property:\n" + currentSquare.name() + "\n for " + currentSquare.cost());
-            } else if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
-                infoConsole.setText("You paid rent on:\n" + currentSquare.name() + "\n for " + currentSquare.rent(roll));
-            } else {
-                infoConsole.setText("You can not buy this property");
+            if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
+                infoConsole.setText("You bought property:\n" + currentSquare.name() +
+                        "\nPurchase cost: " + currentSquare.cost());
             }
+            monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
             buttonBuy.setEnabled(false);
             buttonPayRent.setEnabled(false);
             updatePlayerStatusTextArea();
@@ -280,7 +292,19 @@ public class MonopolyGUI extends JFrame {
 
     private JButton buttonPayRent() {
         buttonPayRent = new JButton("Pay Rent");
-        buttonPayRent.addActionListener(e -> infoConsole.setText("You paid rent!"));
+        buttonPayRent.addActionListener(e -> {
+            PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
+            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+            int roll = die1.getFaceValue() + die2.getFaceValue();
+            if (currentSquare.isOwnable() && currentSquare.isOwned()) {
+                infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
+                        "\nRent cost: " + currentSquare.rent(roll));
+            }
+            monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+            buttonBuy.setEnabled(false);
+            buttonPayRent.setEnabled(false);
+            updatePlayerStatusTextArea();
+        });
         return buttonPayRent;
     }
 
