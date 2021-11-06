@@ -182,9 +182,7 @@ public class MonopolyGUI extends JFrame {
         }
     }
 
-    int count = 0;
     private void updatePlayerStatusTextArea(int playerNumber) {
-        count++;
         StringBuilder output = new StringBuilder();
         System.out.println("Player Number:" + playerNumber);
         int currentPlayerIndex = currentPlayerOrder % numPlayers;
@@ -193,9 +191,6 @@ public class MonopolyGUI extends JFrame {
         int playerMoney = currentPlayer.getPlayerMoney();
         System.out.println("Player Money: " + playerMoney);
 
-        output.append("Current count").append(count).append("\n");
-        System.out.println(count);
-
         Collection<Square> properties = currentPlayer.getProperties();
         output.append("Current Player: ").append(playerNumber).append("\n");
         output.append("Current Balance: ").append(playerMoney).append("\n");
@@ -203,8 +198,7 @@ public class MonopolyGUI extends JFrame {
         for (Square sq : properties) {
             output.append(">>> ").append(sq.name()).append("\n");
         }
-        panelPlayerTextArea.setText(String.valueOf(count));
-        //panelPlayerTextArea.setText(output.toString());
+        panelPlayerTextArea.setText(output.toString());
     }
 
     private JButton buttonRollDice() {
