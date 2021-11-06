@@ -24,8 +24,8 @@ public class HumanPlayer implements Player {
     }
 
     /**
+     * Movement of the player.
      * @param numTiles int
-     * moves the player
      */
     @Override
     public void move(int numTiles) {
@@ -38,7 +38,7 @@ public class HumanPlayer implements Player {
     }
 
     /**
-     * passing the go tile giving the player $200
+     * Passing the "GO" square giving the player $200
      * @param newPosition   int
      */
     @Override
@@ -50,8 +50,8 @@ public class HumanPlayer implements Player {
     }
 
     /**
-     * get the posaition of the player
-     * @return the position
+     * Get the position of the player
+     * @return  int
      */
     @Override
     public int getPosition() {
@@ -109,7 +109,7 @@ public class HumanPlayer implements Player {
     }
 
     /**
-     * sell property
+     * Method when a player to sells a property.
      * @param square Square
      */
     @Override
@@ -119,6 +119,7 @@ public class HumanPlayer implements Player {
     }
 
     /**
+     * Input value for boolean entries.
      * @param state Monopoly.GameState
      * @return boolean
      */
@@ -128,6 +129,7 @@ public class HumanPlayer implements Player {
     }
 
     /**
+     * Input value for integer entries.
      * @param state Monopoly.GameState
      * @return int
      */
@@ -137,6 +139,7 @@ public class HumanPlayer implements Player {
     }
 
     /**
+     * Input value for two choices.
      * @param state   Monopoly.GameState
      * @param choices String[]
      * @return int

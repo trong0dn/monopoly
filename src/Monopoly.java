@@ -37,8 +37,8 @@ public class Monopoly {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
-        Input input = new Input();
-        initializePlayers(input);
+        //Input input = new Input();
+        //initializePlayers(input);
     }
 
     /**
@@ -51,9 +51,9 @@ public class Monopoly {
     /**
      * Track the game state.
      */
-    public class GameState {
+    public static class GameState {
         public DecisionState decisionState;
-        public Queue<Player> players;
+        public LinkedList<Player> players;
         public GameBoard gameBoard;
         public Player currentPlayer;
     }
@@ -94,7 +94,7 @@ public class Monopoly {
         }
         // Ask user to input name of players
         for (int i = 0; i < numPlayers; i++) {
-            System.out.print("Player #" + (i+1) + ": Enter your character name: ");
+            System.out.print("Player #" + (i+1) + ": Enter your character name: \n");
             String playerName = input.inputString();
             HumanPlayer newPlayer = new HumanPlayer(playerName);
             gameState.players.add(newPlayer);
@@ -108,8 +108,7 @@ public class Monopoly {
     }
 
     /**
-     * the turn function
-     * handles each players turns
+     * Game logic for when it is a player's turn.
      */
     public void turn() {
         System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
@@ -135,7 +134,7 @@ public class Monopoly {
             System.out.println(" and landed on '" + square[(gameState.currentPlayer.getPosition() + roll.value) % 40].name() + "'");
             gameState.currentPlayer.move(roll.value);
             handleSquare(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()], roll.value);
-            if(countRollDoubles == 0) {
+            if (!roll.isDouble) {
                 break;
             }
         }
