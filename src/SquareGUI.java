@@ -56,6 +56,16 @@ public class SquareGUI extends JPanel {
                 }
             };
         }
+        GameBoard gameBoard = new GameBoard();
+        // See the full name of the property, it's cost, and it's rent
+        if (gameBoard.square(squareNum) instanceof Property || gameBoard.square(squareNum) instanceof Railroad){
+            labelName.setToolTipText("<html>" + squareName + "<br>" + "Cost: $"
+                    + gameBoard.square(squareNum).cost() + "<br>" + "Rent: $"
+                    + gameBoard.square(squareNum).rent(9));
+        } else {
+            labelName.setToolTipText(squareName);
+        }
+
         labelName.setBounds(0, 0, this.getWidth(), this.getHeight());
         labelName.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
         labelName.setHorizontalAlignment(SwingConstants.CENTER);
