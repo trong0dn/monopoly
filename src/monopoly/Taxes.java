@@ -1,22 +1,27 @@
+package monopoly;
+
 /**
- * This class represents the jail square tile on the board game.
+ * This class represents the tax square tiles on the game board.
  * @author Trong Nguyen
  */
-public class Jail implements Square {
+public class Taxes implements Square {
     private final int position;
     private final String name;
-    private final JailType type;
+    private final int tax;
 
     /**
-     * Initialize Jail,
+     * Initialize monopoly.Taxes.
      * @param position int
      * @param name     String
-     * @param type     JailType
      */
-    public Jail(int position, String name, JailType type) {
+    public Taxes(int position, String name) {
         this.position = position;
         this.name = name;
-        this.type = type;
+        if (this.name.equals("Income Tax")) {
+            this.tax = 200;
+        } else {
+            this.tax = 100;
+        }
     }
 
     /**
@@ -28,6 +33,7 @@ public class Jail implements Square {
         return this.position;
     }
 
+
     /**
      * Get the name of the square tile.
      * @return  String
@@ -36,6 +42,7 @@ public class Jail implements Square {
     public String name() {
         return this.name;
     }
+
 
     /**
      * If the square tile can be owned or not.
@@ -68,11 +75,12 @@ public class Jail implements Square {
 
     /**
      * Method invoked when a square tile is being purchased.
-     * @param player    Player
+     * @param player    monopoly.Player
      */
     @Override
     public void purchase(Player player) {
     }
+
 
     /**
      * Rent value of the square tile.
@@ -86,7 +94,7 @@ public class Jail implements Square {
 
     /**
      * Return owner of the square tile.
-     * @return  Player
+     * @return  monopoly.Player
      */
     @Override
     public Player owner() {
@@ -94,9 +102,10 @@ public class Jail implements Square {
     }
 
     /**
-     * The various Jail type states.
+     * Get the tax.
+     * @return  int
      */
-    public enum JailType {
-        JUST_VISITING, IN_JAIL, GOTO_JAIL
+    public int getTax() {
+        return this.tax;
     }
 }

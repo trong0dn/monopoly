@@ -1,3 +1,5 @@
+package monopoly;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -160,12 +162,12 @@ public class MonopolyGUI extends JFrame {
         infoConsole.setBounds(5, 5, 240, 60);
         infoConsole.setLineWrap(true);
         infoConsole.setEditable(false);
-        infoConsole.setText("Player 1 starts the game! \nClicking Roll Dice!");
+        infoConsole.setText("monopoly.Player 1 starts the game! \nClicking Roll monopoly.Dice!");
         consolePanel.add(infoConsole);
     }
 
     private JButton buttonRollDice() {
-        buttonRollDice = new JButton("Roll Dice");
+        buttonRollDice = new JButton("Roll monopoly.Dice");
         buttonRollDice.addActionListener(e -> {
             die1.rollDice();
             die2.rollDice();
@@ -176,10 +178,10 @@ public class MonopolyGUI extends JFrame {
             int tempCurrentPlayer = currentPlayerOrder + 1;
             // Roll double, player rolls again
             if (doubleDiceForPlayer1 || doubleDiceForPlayer2) {
-                infoConsole.setText("Doubles! Click Roll Dice again player " + tempCurrentPlayer);
+                infoConsole.setText("Doubles! Click Roll monopoly.Dice again player " + tempCurrentPlayer);
                 buttonNextTurn.setEnabled(false);
             } else {
-                infoConsole.setText("Click Next Turn to allow player " + (tempCurrentPlayer % numPlayers + 1) + " to Roll Dice!");
+                infoConsole.setText("Click Next Turn to allow player " + (tempCurrentPlayer % numPlayers + 1) + " to Roll monopoly.Dice!");
                 buttonRollDice.setEnabled(false);
                 buttonNextTurn.setEnabled(true);
             }
@@ -214,7 +216,7 @@ public class MonopolyGUI extends JFrame {
     }
 
     private JButton buttonBuy() {
-        buttonBuy = new JButton("Buy Property");
+        buttonBuy = new JButton("Buy monopoly.Property");
         buttonBuy.addActionListener(e -> infoConsole.setText("You bought something"));
         return buttonBuy;
     }
@@ -230,7 +232,7 @@ public class MonopolyGUI extends JFrame {
         panelPlayer.setBackground(color);
         panelPlayer.setLayout(null);
 
-        JLabel panelPlayerTitle = new JLabel("Player " + playerNumber + " Status");
+        JLabel panelPlayerTitle = new JLabel("monopoly.Player " + playerNumber + " Status");
         panelPlayerTitle.setForeground(Color.WHITE);
         panelPlayerTitle.setHorizontalAlignment(SwingConstants.CENTER);
         panelPlayerTitle.setBounds(0, 5, 240, 15);
@@ -249,7 +251,7 @@ public class MonopolyGUI extends JFrame {
         int playerMoney = playersGUI.get(currentPlayerOrder).getMoney();
         Collection<Square> properties = playersGUI.get(currentPlayerOrder).getProperties();
         output.append("Current Balance: ").append(playerMoney).append("\n");
-        output.append("Property titles owned:\n");
+        output.append("monopoly.Property titles owned:\n");
         for (Square sq : properties) {
             output.append(">>> ").append(sq.name()).append("\n");
         }

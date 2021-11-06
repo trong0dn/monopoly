@@ -1,25 +1,24 @@
+package monopoly;
+
 /**
- * This class represents the tax square tiles on the game board.
+ * This class represents the jail square tile on the board game.
  * @author Trong Nguyen
  */
-public class Taxes implements Square {
+public class Jail implements Square {
     private final int position;
     private final String name;
-    private final int tax;
+    private final JailType type;
 
     /**
-     * Initialize Taxes.
+     * Initialize monopoly.Jail,
      * @param position int
      * @param name     String
+     * @param type     JailType
      */
-    public Taxes(int position, String name) {
+    public Jail(int position, String name, JailType type) {
         this.position = position;
         this.name = name;
-        if (this.name.equals("Income Tax")) {
-            this.tax = 200;
-        } else {
-            this.tax = 100;
-        }
+        this.type = type;
     }
 
     /**
@@ -31,7 +30,6 @@ public class Taxes implements Square {
         return this.position;
     }
 
-
     /**
      * Get the name of the square tile.
      * @return  String
@@ -40,7 +38,6 @@ public class Taxes implements Square {
     public String name() {
         return this.name;
     }
-
 
     /**
      * If the square tile can be owned or not.
@@ -73,12 +70,11 @@ public class Taxes implements Square {
 
     /**
      * Method invoked when a square tile is being purchased.
-     * @param player    Player
+     * @param player    monopoly.Player
      */
     @Override
     public void purchase(Player player) {
     }
-
 
     /**
      * Rent value of the square tile.
@@ -92,7 +88,7 @@ public class Taxes implements Square {
 
     /**
      * Return owner of the square tile.
-     * @return  Player
+     * @return  monopoly.Player
      */
     @Override
     public Player owner() {
@@ -100,10 +96,9 @@ public class Taxes implements Square {
     }
 
     /**
-     * Get the tax.
-     * @return  int
+     * The various monopoly.Jail type states.
      */
-    public int getTax() {
-        return this.tax;
+    public enum JailType {
+        JUST_VISITING, IN_JAIL, GOTO_JAIL
     }
 }

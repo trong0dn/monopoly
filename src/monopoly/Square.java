@@ -1,3 +1,5 @@
+package monopoly;
+
 /**
  * Interface for the square tiles on a monopoly board.
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
@@ -36,7 +38,7 @@ public interface Square {
 
     /**
      * Method invoked when a square tile is being purchased.
-     * @param player    Player
+     * @param player    monopoly.Player
      */
     void purchase(Player player);
 
@@ -49,7 +51,7 @@ public interface Square {
 
     /**
      * Return owner of the square tile.
-     * @return  Player
+     * @return  monopoly.Player
      */
     Player owner();
 

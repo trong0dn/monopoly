@@ -1,3 +1,5 @@
+package monopoly;
+
 import java.util.Random;
 
 /**
@@ -9,7 +11,7 @@ public class RollDice implements Dice {
     private final int NUM_SIDES; // number of sides per die
 
     /**
-     * Initialize RollDice.
+     * Initialize monopoly.RollDice.
      */
     public RollDice() {
         this.NUM_DICE = 2;

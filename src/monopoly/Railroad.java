@@ -1,3 +1,5 @@
+package monopoly;
+
 /**
  * This class represents all the railroad square tiles on the game board.
  * @author Trong Nguyen
@@ -12,7 +14,7 @@ public class Railroad implements Square {
     private boolean owned;
 
     /**
-     * Initialize Railroad.
+     * Initialize monopoly.Railroad.
      * @param position int
      * @param name     String
      */
@@ -74,7 +76,7 @@ public class Railroad implements Square {
 
     /**
      * Method invoked when a square tile is being purchased.
-     * @param player    Player
+     * @param player    monopoly.Player
      */
     @Override
     public void purchase(Player player) {
@@ -102,7 +104,7 @@ public class Railroad implements Square {
 
     /**
      * Return owner of the square tile.
-     * @return  Player
+     * @return  monopoly.Player
      */
     @Override
     public Player owner() {
@@ -111,9 +113,9 @@ public class Railroad implements Square {
 
     /**
      * Create railroad groupings.
-     * @param a   - Railroad
-     * @param b   - Railroad
-     * @param c   - Railroad
+     * @param a   - monopoly.Railroad
+     * @param b   - monopoly.Railroad
+     * @param c   - monopoly.Railroad
      */
     public void setGroup(Railroad a, Railroad b, Railroad c) {
         this.others[0] = a;

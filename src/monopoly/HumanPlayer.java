@@ -1,3 +1,5 @@
+package monopoly;
+
 import java.util.*;
 
 /**
@@ -12,7 +14,7 @@ public class HumanPlayer implements Player {
     private int position;
 
     /**
-     * Initialize HumanPlayer.
+     * Initialize monopoly.HumanPlayer.
      * @param playerName String
      */
     public HumanPlayer(String playerName) {
@@ -60,7 +62,7 @@ public class HumanPlayer implements Player {
 
     /**
      * Properties owned by the player.
-     * @return  Collection<Square>
+     * @return  Collection<monopoly.Square>
      */
     @Override
     public Collection<Square> properties() {
@@ -96,7 +98,7 @@ public class HumanPlayer implements Player {
 
     /**
      * Method when a player buys a property.
-     * @param square    Square
+     * @param square    monopoly.Square
      */
     @Override
     public void addProperty(Square square) {
@@ -110,7 +112,7 @@ public class HumanPlayer implements Player {
 
     /**
      * Method when a player to sells a property.
-     * @param square Square
+     * @param square monopoly.Square
      */
     @Override
     public void removeProperty(Square square) {
@@ -119,8 +121,8 @@ public class HumanPlayer implements Player {
     }
 
     /**
-     * Input value for boolean entries.
-     * @param state Monopoly.GameState
+     * monopoly.Input value for boolean entries.
+     * @param state monopoly.Monopoly.GameState
      * @return boolean
      */
     @Override
@@ -129,8 +131,8 @@ public class HumanPlayer implements Player {
     }
 
     /**
-     * Input value for integer entries.
-     * @param state Monopoly.GameState
+     * monopoly.Input value for integer entries.
+     * @param state monopoly.Monopoly.GameState
      * @return int
      */
     @Override
@@ -139,8 +141,8 @@ public class HumanPlayer implements Player {
     }
 
     /**
-     * Input value for two choices.
-     * @param state   Monopoly.GameState
+     * monopoly.Input value for two choices.
+     * @param state   monopoly.Monopoly.GameState
      * @param choices String[]
      * @return int
      */

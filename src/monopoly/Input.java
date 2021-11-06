@@ -1,3 +1,5 @@
+package monopoly;
+
 import java.util.Scanner;
 
 /**
@@ -8,7 +10,7 @@ public class Input {
     private final Scanner scanner;
 
     /**
-     * Constructor for Input.
+     * Constructor for monopoly.Input.
      */
     public Input() {
         this.scanner = new Scanner(System.in);

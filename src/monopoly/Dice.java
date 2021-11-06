@@ -1,3 +1,5 @@
+package monopoly;
+
 /**
  * Interface for dice.
  * @author Trong Nguyen

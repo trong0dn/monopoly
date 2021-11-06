@@ -1,3 +1,5 @@
+package monopoly;
+
 /**
  * This class represents the game board.
  * @author Elisha Catherasoo & Trong Nguyen
@@ -7,7 +9,7 @@ public class GameBoard {
     private final Square[] board; // representation of the game board
 
     /**
-     * Constructor for GameBoard.
+     * Constructor for monopoly.GameBoard.
      */
     public GameBoard() {
         this.board = new Square[NUM_TILES];
@@ -29,7 +31,7 @@ public class GameBoard {
 
     /**
      * Get the board.
-     * @return  Square[], representation of the board game
+     * @return  monopoly.Square[], representation of the board game
      */
     public Square[] getBoard() {
         return this.board;
@@ -38,7 +40,7 @@ public class GameBoard {
     /**
      * Get board position from square position.
      * @param position  int, index of the postion
-     * @return          Square
+     * @return          monopoly.Square
      */
     public Square square(int position) {
         return board[position];
@@ -47,7 +49,7 @@ public class GameBoard {
     /**
      * Downcast all square that is a property.
      * @param name  String, property name
-     * @return      Property
+     * @return      monopoly.Property
      */
     private Property property(String name) {
         for (Square sq : board) {
@@ -61,7 +63,7 @@ public class GameBoard {
     /**
      * Create the square if the position is being occupied.
      * @param position  int, index of the position
-     * @return          Square
+     * @return          monopoly.Square
      */
     private Square makeSquare(int position) {
         return switch (position) { // Using cases to represent individual squares on board. Clockwise.
@@ -180,10 +182,10 @@ public class GameBoard {
      * Group railroads.
      */
     private void groupRailroads() {
-        Railroad a = (Railroad) square(5);  // Railroad on square 5
-        Railroad b = (Railroad) square(15); // Railroad on square 15
-        Railroad c = (Railroad) square(25); // Railroad on square 25
-        Railroad d = (Railroad) square(35); // Railroad on square 35
+        Railroad a = (Railroad) square(5);  // monopoly.Railroad on square 5
+        Railroad b = (Railroad) square(15); // monopoly.Railroad on square 15
+        Railroad c = (Railroad) square(25); // monopoly.Railroad on square 25
+        Railroad d = (Railroad) square(35); // monopoly.Railroad on square 35
 
         a.setGroup(b, c, d);
         b.setGroup(a, c, d);
@@ -205,7 +207,7 @@ public class GameBoard {
     /**
      * Setup "GO" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square go(int position) {
         return new Inactive(position, "GO");
@@ -214,7 +216,7 @@ public class GameBoard {
     /**
      * Setup "COMMUNITY CHEST" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square community(int position) {
         return new Inactive(position, "COMMUNITY CHEST");
@@ -223,7 +225,7 @@ public class GameBoard {
     /**
      * Setup "CHANCE" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square chance(int position) {
         return new Inactive(position, "CHANCE");
@@ -232,7 +234,7 @@ public class GameBoard {
     /**
      * Setup "INCOME TAX" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square incomeTax(int position) {
         return new Taxes(position, "INCOME TAX");
@@ -241,7 +243,7 @@ public class GameBoard {
     /**
      * Setup "SUPER TAX" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square superTax(int position) {
         return new Taxes(position,"SUPER TAX");
@@ -250,7 +252,7 @@ public class GameBoard {
     /**
      * Setup "ELECTRIC COMPANY" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square electricCompany(int position) {
         return new Utility(position, "ELECTRIC COMPANY");
@@ -259,7 +261,7 @@ public class GameBoard {
     /**
      * Setup "WATER WORKS" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square waterWorks(int position) {
         return new Utility(position, "WATER WORKS");
@@ -268,7 +270,7 @@ public class GameBoard {
     /**
      * Setup "KINGS CROSS STATION" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square kingsCross(int position) {
         return new Railroad(position, "KINGS CROSS STATION");
@@ -277,7 +279,7 @@ public class GameBoard {
     /**
      * Setup "MARYLEBONE STATION" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square marylebone(int position) {
         return new Railroad(position, "MARYLEBONE STATION");
@@ -286,7 +288,7 @@ public class GameBoard {
     /**
      * Setup "FENCHURCH ST. STATION" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square fenchurch(int position) {
         return new Railroad(position, "FENCHURCH ST. STATION");
@@ -295,7 +297,7 @@ public class GameBoard {
     /**
      * Setup "LIVERPOOL ST. STATION" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square liverpool(int position) {
         return new Railroad(position, "LIVERPOOL ST. STATION");
@@ -304,7 +306,7 @@ public class GameBoard {
     /**
      * Setup "FREE PARKING" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square freeParking(int position) {
         return new Inactive(position, "FREE PARKING");
@@ -313,7 +315,7 @@ public class GameBoard {
     /**
      * Setup "GO TO JAIL" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square goToJail(int position) {
         return new Jail(position, "GO TO JAIL", Jail.JailType.GOTO_JAIL);
@@ -322,7 +324,7 @@ public class GameBoard {
     /**
      * Setup "IN JAIL" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square inJail(int position) {
         return new Jail(position, "IN JAIL", Jail.JailType.IN_JAIL);
@@ -331,7 +333,7 @@ public class GameBoard {
     /**
      * Setup "JUST VISITING" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square justVisiting(int position) {
         return new Jail(position, "JUST VISITING", Jail.JailType.JUST_VISITING);
@@ -340,7 +342,7 @@ public class GameBoard {
     /**
      * Setup "OLD KENT ROAD" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square oldKent(int position) {
         int rent = 2;
@@ -358,7 +360,7 @@ public class GameBoard {
     /**
      * Setup "WHITECHAPEL ROAD" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square whitechapel(int position) {
         int rent = 4;
@@ -376,7 +378,7 @@ public class GameBoard {
     /**
      * Setup "THE ANGEL, ISLINGTON" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square theAngelIslington(int position) {
         int rent = 6;
@@ -394,7 +396,7 @@ public class GameBoard {
     /**
      * Setup "EUSTON ROAD" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square euston(int position) {
         int rent = 6;
@@ -412,7 +414,7 @@ public class GameBoard {
     /**
      * Setup "PENTONVILLE ROAD" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square pentonville(int position) {
         int rent = 6;
@@ -430,7 +432,7 @@ public class GameBoard {
     /**
      * Setup "PALL MALL" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square pallMall(int position) {
         int rent = 10;
@@ -448,7 +450,7 @@ public class GameBoard {
     /**
      * Setup "WHITEHALL" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square whitehall(int position) {
         int rent = 10;
@@ -466,7 +468,7 @@ public class GameBoard {
     /**
      * Setup "NORTHUMRL'D AVENUE" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square northumrld(int position) {
         int rent = 10;
@@ -484,7 +486,7 @@ public class GameBoard {
     /**
      * Setup "BOW STREET" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square bow(int position) {
         int rent = 14;
@@ -502,7 +504,7 @@ public class GameBoard {
     /**
      * Setup "MARLBOROUGH STREET" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square marlborough(int position) {
         int rent = 14;
@@ -520,7 +522,7 @@ public class GameBoard {
     /**
      * Setup "VINE STREET" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square vine(int position) {
         int rent = 16;
@@ -538,7 +540,7 @@ public class GameBoard {
     /**
      * Setup "STRAND" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square strand(int position) {
         int rent = 18;
@@ -556,7 +558,7 @@ public class GameBoard {
     /**
      * Setup "FLEET STREET" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square fleet(int position) {
         int rent = 18;
@@ -574,7 +576,7 @@ public class GameBoard {
     /**
      * Setup "TRAFALGAR SQUARE" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square trafalgar(int position) {
         int rent = 20;
@@ -592,7 +594,7 @@ public class GameBoard {
     /**
      * Setup "LEICESTER" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square leicester(int position) {
         int rent = 22;
@@ -610,7 +612,7 @@ public class GameBoard {
     /**
      * Setup "CONVENTRY STREET" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square conventry(int position) {
         int rent = 22;
@@ -628,7 +630,7 @@ public class GameBoard {
     /**
      * Setup "PICCADILLY" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square piccadilly(int position) {
         int rent = 24;
@@ -646,7 +648,7 @@ public class GameBoard {
     /**
      * Setup "REGENT STREET" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square regent(int position) {
         int rent = 26;
@@ -664,7 +666,7 @@ public class GameBoard {
     /**
      * Setup "OXFORD STREET" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square oxford(int position) {
         int rent = 26;
@@ -682,7 +684,7 @@ public class GameBoard {
     /**
      * Setup "BOND STREET" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square bond(int position) {
         int rent = 26;
@@ -700,7 +702,7 @@ public class GameBoard {
     /**
      * Setup "PARK LANE" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square park(int position) {
         int rent = 35;
@@ -718,7 +720,7 @@ public class GameBoard {
     /**
      * Setup "MAYFAIR" square tile on the board.
      * @param position  int
-     * @return  Square
+     * @return  monopoly.Square
      */
     public Square mayfair(int position) {
         int rent = 35;

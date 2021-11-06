@@ -1,4 +1,4 @@
-/*
+package monopoly;/*
 
 Milestone 1
 
@@ -18,7 +18,7 @@ Due: 10/25/2021
 import java.util.*;
 
 /**
- * This class represents the user interface for the Monopoly board game.
+ * This class represents the user interface for the monopoly.Monopoly board game.
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class Monopoly {
@@ -27,7 +27,7 @@ public class Monopoly {
     private boolean isBankrupt;
 
     /**
-     * Constructor for Monopoly.
+     * Constructor for monopoly.Monopoly.
      */
     public Monopoly() {
         this.rollDice = new RollDice();
@@ -37,7 +37,7 @@ public class Monopoly {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
-        //Input input = new Input();
+        //monopoly.Input input = new monopoly.Input();
         //initializePlayers(input);
     }
 
@@ -76,7 +76,7 @@ public class Monopoly {
             }
         }
         Player winner = gameState.players.remove();
-        System.out.println("Monopoly winner: " + winner.name());
+        System.out.println("monopoly.Monopoly winner: " + winner.name());
     }
 
     /**
@@ -94,7 +94,7 @@ public class Monopoly {
         }
         // Ask user to input name of players
         for (int i = 0; i < numPlayers; i++) {
-            System.out.print("Player #" + (i+1) + ": Enter your character name: \n");
+            System.out.print("monopoly.Player #" + (i+1) + ": Enter your character name: \n");
             String playerName = input.inputString();
             HumanPlayer newPlayer = new HumanPlayer(playerName);
             gameState.players.add(newPlayer);
@@ -120,7 +120,7 @@ public class Monopoly {
                 countRollDoubles++;
                 //TODO Check rules on rolling doubles
             }
-            //TODO Player can leave jail if they roll doubles
+            //TODO monopoly.Player can leave jail if they roll doubles
             if (countRollDoubles == 3) {
                 //TODO Goto_Jail
                 break;
@@ -144,7 +144,7 @@ public class Monopoly {
             System.out.println("Select the number of one of the following options:");
             //TODO Buy/Sell houses
             System.out.println("1) Pass my turn.");
-            System.out.println("2) Player Statistics.");
+            System.out.println("2) monopoly.Player Statistics.");
             gameState.decisionState = DecisionState.TURN_ACTION;
             int choice = gameState.currentPlayer.inputInt(gameState);
 
@@ -165,7 +165,7 @@ public class Monopoly {
         Player player = gameState.currentPlayer;
 
         System.out.println("-----------------------------------------------");
-        System.out.println("Player name: " + player.name());
+        System.out.println("monopoly.Player name: " + player.name());
         System.out.println("Current balance: $" + player.getMoney());
         System.out.println("Current position: " + gameState.gameBoard.square(player.getPosition()).name());
         System.out.println("Properties owned: ");
@@ -179,8 +179,8 @@ public class Monopoly {
 
     /**
      * Handle how a player interacts with the square tile they land upon.
-     * @param player    Player
-     * @param square    Square
+     * @param player    monopoly.Player
+     * @param square    monopoly.Square
      * @param roll      int
      */
     public void handleSquare(Player player, Square square, int roll) {
@@ -193,16 +193,16 @@ public class Monopoly {
         else if (owned) {
             owned(player, square, roll);
         }
-        //else if (square instanceof Taxes) { }
+        //else if (square instanceof monopoly.Taxes) { }
         //TODO Deal with Tax squares
-        //else if (square instanceof  Jail) { }
-        //TODO Deal with Jail square
+        //else if (square instanceof  monopoly.Jail) { }
+        //TODO Deal with monopoly.Jail square
     }
 
     /**
      * Landing on an unowned square, the player may choose to buy the square.
-     * @param player    Player
-     * @param square    Square
+     * @param player    monopoly.Player
+     * @param square    monopoly.Square
      */
     private void unowned(Player player, Square square) {
         int cost = square.cost();
@@ -231,8 +231,8 @@ public class Monopoly {
 
     /**
      * Add property to player's hand and change owner of the property.
-     * @param player    Player
-     * @param square    Square
+     * @param player    monopoly.Player
+     * @param square    monopoly.Square
      */
     private void buyProperty(Player player, Square square) {
         if (player == null || square == null) return;
@@ -243,8 +243,8 @@ public class Monopoly {
 
     /**
      * Landing on an owned square, the player must pay rent.
-     * @param player    Player
-     * @param square    Square
+     * @param player    monopoly.Player
+     * @param square    monopoly.Square
      * @param roll      int
      */
     private void owned(Player player, Square square, int roll) {

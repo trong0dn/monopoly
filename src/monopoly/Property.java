@@ -1,3 +1,5 @@
+package monopoly;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -92,7 +94,7 @@ public class Property implements Square{
 
     /**
      * Method invoked when a square tile is being purchased.
-     * @param player    Player
+     * @param player    monopoly.Player
      */
     @Override
     public void purchase(Player player) {
@@ -130,7 +132,7 @@ public class Property implements Square{
 
     /**
      * Return owner of the square tile.
-     * @return  Player
+     * @return  monopoly.Player
      */
     @Override
     public Player owner() {
@@ -163,7 +165,7 @@ public class Property implements Square{
 
     /**
      * Set monopoly to true if player has a set or false if they do not.
-     * @param player Player
+     * @param player monopoly.Player
      */
     public void updateMonopoly(Player player) {
         boolean setA = false;
@@ -215,7 +217,7 @@ public class Property implements Square{
 
     /**
      * Set a group of properties.
-     * @param propertyA  Property
+     * @param propertyA  monopoly.Property
      */
     public void setGroup(Property propertyA) {
         this.setGroup(propertyA, null);
@@ -223,8 +225,8 @@ public class Property implements Square{
 
     /**
      * Set a group of properties.
-     * @param propertyA  Property
-     * @param propertyB  Property
+     * @param propertyA  monopoly.Property
+     * @param propertyB  monopoly.Property
      */
     public void setGroup(Property propertyA, Property propertyB) {
         this.others[0] = propertyA;

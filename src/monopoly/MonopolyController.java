@@ -1,24 +1,22 @@
+package monopoly;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
- * This class represents all the controllers used in the Monopoly GUI
+ * This class represents all the controllers used in the monopoly.Monopoly GUI
  */
 public class MonopolyController {
     private JFrame frame; // used for testing buttons
     private JPanel playerInitPanel; // used to test buttons
     private JPanel startPanel; // Panel for the main starting page
-    private JPanel monopolyPanel; // Panel for the actual Monopoly game
+    private JPanel monopolyPanel; // Panel for the actual monopoly.Monopoly game
     private JPanel switchPanels; // Used for switching the panels
     private Monopoly.GameState gameState;
     private JLabel playerName;
@@ -26,7 +24,7 @@ public class MonopolyController {
 
 
     /**
-     * Initialize MonopolyController
+     * Initialize monopoly.MonopolyController
      */
     public MonopolyController(){
         this.frame = new JFrame(); // used for testing buttons
@@ -197,7 +195,7 @@ public class MonopolyController {
 
         button.addActionListener(e -> {
             // TODO get the position of the current player and buy the property
-            //Square[] square = gameState.gameBoard.getBoard();
+            //monopoly.Square[] square = gameState.gameBoard.getBoard();
             //buyProperty(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()]);
         });
         return button;
@@ -208,7 +206,7 @@ public class MonopolyController {
      * @return button
      */
     public JButton rollButton(){
-        JButton button = new JButton("Roll Dice");
+        JButton button = new JButton("Roll monopoly.Dice");
 
         button.addActionListener(e -> {
             // TODO Roll dice and move player to the right square
@@ -218,7 +216,7 @@ public class MonopolyController {
     }
 
     /**
-     * The Monopoly GUI
+     * The monopoly.Monopoly GUI
      */
     public void displayGUI() { // used for testing buttons
         JFrame frame = new JFrame("MONOPOLY");

@@ -1,3 +1,5 @@
+package monopoly;
+
 import java.util.Collection;
 
 /**
@@ -26,7 +28,7 @@ public interface Player {
 
     /**
      * Properties owned by the player.
-     * @return  Collection<Square>
+     * @return  Collection<monopoly.Square>
      */
     Collection<Square> properties();
 
@@ -50,33 +52,33 @@ public interface Player {
 
     /**
      * Method when a player buys a property.
-     * @param square    Square
+     * @param square    monopoly.Square
      */
     void addProperty(Square square);
 
     /**
      * Method when a player sells a property.
-     * @param square    Square
+     * @param square    monopoly.Square
      */
     void removeProperty(Square square);
 
     /**
-     * Player inputs a boolean response.
-     * @param state     Monopoly.GameState
+     * monopoly.Player inputs a boolean response.
+     * @param state     monopoly.Monopoly.GameState
      * @return          boolean
      */
     boolean inputBool(Monopoly.GameState state);
 
     /**
-     * Player inputs an integer response.
-     * @param state     Monopoly.GameState
+     * monopoly.Player inputs an integer response.
+     * @param state     monopoly.Monopoly.GameState
      * @return          int
      */
     int inputInt(Monopoly.GameState state);
 
     /**
-     * Player inputs a two choice decision.
-     * @param state     Monopoly.GameState
+     * monopoly.Player inputs a two choice decision.
+     * @param state     monopoly.Monopoly.GameState
      * @param choices   String[]
      * @return          int
      */
