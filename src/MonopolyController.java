@@ -222,24 +222,24 @@ public class MonopolyController {
         JLabel playerInitLabel = new JLabel("This is the panel for creating the players");
         JLabel monopolyLabel = new JLabel("This is the panel for the game");
 
-        getStartPanel().setPreferredSize(new Dimension(250, 250));
-        getStartPanel().setBackground(Color.white);
+        startPanel.setPreferredSize(new Dimension(250, 250));
+        startPanel.setBackground(Color.white);
 
-        getPlayerInitPanel().setPreferredSize(new Dimension(250, 250));
-        getPlayerInitPanel().setBackground(Color.white);
+        playerInitPanel.setPreferredSize(new Dimension(250, 250));
+        playerInitPanel.setBackground(Color.white);
 
         // add the buttons and panels to the frame
-        getStartPanel().add(startButton());
+        startPanel.add(startButton());
 
-        getPlayerInitPanel().add(playerInitLabel);
-        getPlayerInitPanel().add(playButton());
+        playerInitPanel.add(playerInitLabel);
+        playerInitPanel.add(playButton());
 
-        getMonopolyPanel().add(monopolyLabel);
-        getMonopolyPanel().add(rollButton());
+        monopolyPanel.add(monopolyLabel);
+        monopolyPanel.add(rollButton());
 
-        getSwitchPanels().add(getStartPanel(), "StartPanel");
-        getSwitchPanels().add(getPlayerInitPanel(), "PlayerInitializePanel");
-        getSwitchPanels().add(getMonopolyPanel(), "MonopolyPanel");
+        getSwitchPanels().add(startPanel, "StartPanel");
+        getSwitchPanels().add(playerInitPanel, "PlayerInitializePanel");
+        getSwitchPanels().add(monopolyPanel, "MonopolyPanel");
 
         frame.add(getSwitchPanels());
 
