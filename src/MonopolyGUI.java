@@ -279,13 +279,15 @@ public class MonopolyGUI extends JFrame {
                 if (currentSquare.owner().name().equals(currentPlayer.getPlayer().name())) {
                     buttonBuy.setEnabled(false);
                     buttonPayRent.setEnabled(false);
-                    infoConsole.setText("You already own " + currentSquare.name() +
-                            "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
+                    infoConsole.setText("You landed on " + currentSquare.name()
+                            + "\nYou already own " + currentSquare.name() + "\nClick Next Turn to allow player "
+                            + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
                 } else {
                     buttonPayRent.setEnabled(true);
                 }
-            } else {
-                infoConsole.setText("You landed on a non-purchasable property \n" + currentSquare.name() +
+            }
+            else {
+                infoConsole.setText("You landed on a non-purchasable property: \n" + currentSquare.name() +
                         "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
                 buttonBuy.setEnabled(false);
                 buttonPayRent.setEnabled(false);
