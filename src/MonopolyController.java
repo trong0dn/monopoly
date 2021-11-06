@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 /**
  * This class represents all the controllers used in the Monopoly GUI
+ * @author Elisha Catherasoo & Ibrahim Almalki
  */
 public class MonopolyController {
     private JFrame frame; // used for testing buttons
@@ -22,8 +23,6 @@ public class MonopolyController {
     private JPanel switchPanels; // Used for switching the panels
     private Monopoly.GameState gameState;
     private JLabel playerName;
-
-
 
     /**
      * Initialize MonopolyController
@@ -137,7 +136,6 @@ public class MonopolyController {
      * asks for number of players
      * asks for name
      * displays image icons for players to select from.
-     * @return void
      */
     public void makePlayers(){
         //TODO still need to make it possible for players to select the icon and then grey it out for the nest players
@@ -171,7 +169,6 @@ public class MonopolyController {
             window.setVisible(true);
         }
     }
-
 
     /**
      * Play the game after making all the players.

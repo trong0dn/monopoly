@@ -3,11 +3,23 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
+/**
+ * This class every square GUI.
+ */
 public class SquareGUI extends JPanel {
     private final String squareName;
     private final int squareNum;
     static int total = 0;
 
+    /**
+     * Constructor for SquareGUI.
+     * @param x                 int, x-axis of the Square
+     * @param y                 int, y-axis of the Square
+     * @param width             int, width of the Square
+     * @param height            int, height of the Square
+     * @param squareName        String, the name of the Square
+     * @param rotationDegree    int, the rotation of the Square
+     */
     public SquareGUI(int x, int y, int width, int height, String squareName, int rotationDegree) {
         this.squareNum = total;
         total++;
@@ -18,6 +30,10 @@ public class SquareGUI extends JPanel {
         rotation(rotationDegree);
     }
 
+    /**
+     * Rotate the labels on a square.
+     * @param degree    int, the degree of rotation of the label
+     */
     private void rotation(int degree) {
         JLabel labelName;
         if (degree == 0) {
@@ -46,6 +62,10 @@ public class SquareGUI extends JPanel {
         this.add(labelName);
     }
 
+    /**
+     * Method that gives each set of properties their own color.
+     * @param g     Graphics
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (this.squareNum == 1 || this.squareNum == 3) {

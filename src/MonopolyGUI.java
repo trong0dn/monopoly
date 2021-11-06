@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
+/**
+ * This class represents the Monopoly GUI.
+ * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
+ */
 public class MonopolyGUI extends JFrame {
     private final Monopoly monopoly;
     private final LinkedList<Player> playersList;
@@ -39,6 +43,9 @@ public class MonopolyGUI extends JFrame {
             Color.PINK
     };
 
+    /**
+     * Constructor for MonopolyGUI.
+     */
     public MonopolyGUI() {
         monopoly = new Monopoly();
         playersList = new LinkedList<>();
@@ -53,6 +60,9 @@ public class MonopolyGUI extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Initialize players.
+     */
     public void init() {
         playersList.add(new HumanPlayer("Alice"));
         playersList.add(new HumanPlayer("Bert"));
@@ -64,6 +74,9 @@ public class MonopolyGUI extends JFrame {
         playersList.add(new HumanPlayer("Harry"));
     }
 
+    /**
+     * Set up the frame for Monopoly.
+     */
     private void setupFrame() {
         setTitle("MONOPOLY!");
         setBounds(100, 100, 450, 300);
@@ -71,6 +84,9 @@ public class MonopolyGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Set up the layout for the board.
+     */
     private void setupBoard() {
         JPanel boxPanel = new JPanel();
         boxPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -96,6 +112,9 @@ public class MonopolyGUI extends JFrame {
         leftLayeredPane.add(gameBoard, Integer.valueOf(0));
     }
 
+    /**
+     * Set up the dice positions.
+     */
     private void setupDice() {
         // Add dice graphics
         die1 = new DiceGUI(350, 450, 40, 40);
@@ -105,6 +124,9 @@ public class MonopolyGUI extends JFrame {
         leftLayeredPane.add(die2, Integer.valueOf(1));
     }
 
+    /**
+     * Set up the positions of the buttons.
+     */
     private void setupButtons() {
         // Add roll dice button
         buttonRollDice = buttonRollDice();
@@ -130,6 +152,9 @@ public class MonopolyGUI extends JFrame {
         rightLayeredPane.add(buttonNextTurn);
     }
 
+    /**
+     * Give each player their own color.
+     */
     private void setupPlayerToken() {
         for (int i = 0; i < numPlayers; i++) {
             PlayerGUI playerGUI = new PlayerGUI(playerTokenColors[i], playersList.get(i).name());
@@ -138,6 +163,9 @@ public class MonopolyGUI extends JFrame {
         }
     }
 
+    /**
+     * Gives the players instructions.
+     */
     private void setupConsoleLog() {
         // Add console log panel
         JPanel consolePanel = new JPanel();
@@ -156,6 +184,12 @@ public class MonopolyGUI extends JFrame {
         consolePanel.add(infoConsole);
     }
 
+    /**
+     * Displays the player information.
+     * @param playerNumber  int, the player number
+     * @param color         Color, the color of the player
+     * @return              JPanel
+     */
     private JPanel playerStatusPanel(int playerNumber, Color color) {
         JPanel panelPlayer = new JPanel();
         panelPlayer.setBackground(color);
@@ -168,6 +202,9 @@ public class MonopolyGUI extends JFrame {
         return panelPlayer;
     }
 
+    /**
+     * Gives each player their own distinct color.
+     */
     private void setupPlayerStatusWindow() {
         // Add player status panel
         playerAssetsPanel = new JPanel();
@@ -187,6 +224,9 @@ public class MonopolyGUI extends JFrame {
         updatePlayerStatusTextArea();
     }
 
+    /**
+     * Update the player information shown.
+     */
     private void updatePlayerStatusTextArea() {
         StringBuilder output = new StringBuilder();
         PlayerGUI currentPlayer =  playersGUI.get(currentPlayerOrder);
@@ -200,6 +240,10 @@ public class MonopolyGUI extends JFrame {
         panelPlayerTextArea.setText(output.toString());
     }
 
+    /**
+     * Rolls the dice.
+     * @return      JButton
+     */
     private JButton buttonRollDice() {
         buttonRollDice = new JButton("Roll Dice");
         buttonRollDice.addActionListener(e -> {
@@ -251,6 +295,10 @@ public class MonopolyGUI extends JFrame {
         return buttonRollDice;
     }
 
+    /**
+     * Gives the turn to the next player.
+     * @return      JButton
+     */
     private JButton buttonNextTurn() {
         buttonNextTurn = new JButton("Next Turn");
         buttonNextTurn.addActionListener(e -> {
@@ -272,6 +320,10 @@ public class MonopolyGUI extends JFrame {
         return buttonNextTurn;
     }
 
+    /**
+     * Buys the property that the player landed on.
+     * @return      JButton
+     */
     private JButton buttonBuy() {
         buttonBuy = new JButton("Buy Property");
         buttonBuy.addActionListener(e -> {
@@ -290,6 +342,10 @@ public class MonopolyGUI extends JFrame {
         return buttonBuy;
     }
 
+    /**
+     * Pays the rent that the player landed on.
+     * @return      JButton
+     */
     private JButton buttonPayRent() {
         buttonPayRent = new JButton("Pay Rent");
         buttonPayRent.addActionListener(e -> {
