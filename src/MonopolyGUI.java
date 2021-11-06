@@ -242,6 +242,24 @@ public class MonopolyGUI extends JFrame {
     }
 
     /**
+     * Check if the roll is a double and change the visibility of the buttons.
+     * @param currentSquare         Square, the square that the current player is in
+     * @param currentPlayerIndex    int, the index of the current player
+     */
+    public void isRollDouble(Square currentSquare, int currentPlayerIndex) {
+        if (isDouble && doubles < 3) { // A player can not have more than 3 rolls
+            infoConsole.append("\nDoubles! Click Roll Dice again, player " + currentPlayerIndex);
+            buttonNextTurn.setEnabled(false);
+            doubles++;
+        } else {
+            infoConsole.append("\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice");
+            buttonRollDice.setEnabled(false);
+            buttonNextTurn.setEnabled(true);
+            doubles = 0;
+        }
+    }
+
+    /**
      * Rolls the dice.
      * @return      JButton
      */
@@ -259,40 +277,27 @@ public class MonopolyGUI extends JFrame {
             int currentPlayerIndex = (currentPlayerOrder + 1) + numPlayers;
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
 
-            // Roll double, player rolls again
-            if (isDouble && doubles < 3) {
-                infoConsole.setText("You landed on " + currentSquare.name() +
-                        "\nProperty Cost: $" + currentSquare.cost() +
-                        "\nDoubles! Click Roll Dice again, player " + currentPlayerIndex);
-                buttonNextTurn.setEnabled(false);
-                doubles++;
-            } else {
-                infoConsole.setText("You landed on " + currentSquare.name() +
-                        "\nProperty cost: $" + currentSquare.cost() +
-                        "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
-                buttonRollDice.setEnabled(false);
-                buttonNextTurn.setEnabled(true);
-                doubles = 0;
-            }
-
             // Swing concurrency thread correction for layeredPane flickering
             leftLayeredPane.remove(gameBoard);
             leftLayeredPane.add(gameBoard, Integer.valueOf(0));
 
             // Button logic
             if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
+                infoConsole.setText("You landed on " + currentSquare.name() +
+                                "\nProperty Cost: $" + currentSquare.cost());
+                isRollDouble(currentSquare, currentPlayerIndex);
                 buttonBuy.setEnabled(true);
             } else if (currentSquare.isOwnable()) {
                 if (currentSquare.owner().name().equals(currentPlayer.getPlayer().name())) {
                     buttonBuy.setEnabled(false);
                     buttonPayRent.setEnabled(false);
                     infoConsole.setText("You landed on " + currentSquare.name()
-                            + "\nYou already own " + currentSquare.name() + "\nClick Next Turn to allow player "
-                            + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
+                            + "\nYou already own " + currentSquare.name());
+                    isRollDouble(currentSquare, currentPlayerIndex);
                 } else {
                     infoConsole.setText("You landed on " + currentSquare.name() +
-                            "\nRent: $" + currentSquare.rent(diceValue) +
-                            "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
+                            "\nRent: $" + currentSquare.rent(diceValue));
+                    isRollDouble(currentSquare, currentPlayerIndex);
                     buttonPayRent.setEnabled(true);
                     buttonRollDice.setEnabled(false);
                     buttonNextTurn.setEnabled(false);
