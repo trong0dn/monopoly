@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * This class represents all the controllers used in the Monopoly GUI
@@ -23,6 +24,8 @@ public class MonopolyController {
     private JPanel switchPanels; // Used for switching the panels
     private Monopoly.GameState gameState;
     private JLabel playerName;
+    private int numOfPlayers;
+    private LinkedList<String> playerList;
 
     /**
      * Initialize MonopolyController
@@ -34,6 +37,8 @@ public class MonopolyController {
         this.monopolyPanel = new JPanel();
         this.switchPanels = new JPanel(new CardLayout());
         this.playerName = new JLabel();
+        this.numOfPlayers = 2;
+        this.playerList = new LinkedList<>();
     }
 
     /**
@@ -138,35 +143,12 @@ public class MonopolyController {
      * displays image icons for players to select from.
      */
     public void makePlayers(){
-        //TODO still need to make it possible for players to select the icon and then grey it out for the nest players
         //get number of players
-        int numPlayers = Integer.parseInt(JOptionPane.showInputDialog("Number of players: "));
+        numOfPlayers = Integer.parseInt(JOptionPane.showInputDialog("Number of players: "));
         //get player names
-        for (int i=0; i<numPlayers; i++){
-            String name = JOptionPane.showInputDialog("player Name: ");
-
-            //display the images
-            BufferedImage [] allImages;
-            File path = new File ("player_icons");
-            File [] allFiles = path.listFiles();
-            allImages = new BufferedImage[allFiles.length];
-            JFrame window = new JFrame ();
-            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            window.setLayout(new GridLayout(2,4));
-            JLabel label[] = new JLabel[allFiles.length];
-            for (int j =0; j< allFiles.length; j++){
-                try{
-                    allImages[j] = ImageIO.read((allFiles[j]));
-                    label[j] = new JLabel();
-                    ImageIcon icon = new ImageIcon(allImages[j]);
-                    label[j].setIcon(icon);
-                    window.add(label[j]);
-                }catch(IOException e){
-
-                }
-            }
-            window.pack();
-            window.setVisible(true);
+        for (int i = 0; i<numOfPlayers; i++){
+            String name = JOptionPane.showInputDialog("Player " + i + "'s Name: ");
+            playerList.add(name);
         }
     }
 
