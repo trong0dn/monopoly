@@ -124,6 +124,10 @@ public class MonopolyController {
 
     /**
      * This will change to the player initialization panel
+     *      * this creates the players when a new game has begun
+     *      * asks for number of players
+     *      * asks for name
+     *      * displays image icons for players to select from.
      * @return button
      */
     public JButton startButton(){
@@ -132,26 +136,19 @@ public class MonopolyController {
         button.addActionListener(e -> {
             CardLayout cl = (CardLayout) (switchPanels.getLayout());
             cl.show(switchPanels, "PlayerInitializePanel");
+
+            //TODO make the text boxes in the frame rather than popups
+            //get number of players
+            numOfPlayers = Integer.parseInt(JOptionPane.showInputDialog("Number of players: "));
+
+            //get player names
+            for (int i = 0; i<numOfPlayers; i++){
+                String name = JOptionPane.showInputDialog("Player " + i + "'s Name: ");
+                playerList.add(name);
+            }
         });
         return button;
 
-    }
-
-    /**
-     * this creates the players when a new game has begun
-     * asks for number of players
-     * asks for name
-     * displays image icons for players to select from.
-     * @return void
-     */
-    public void makePlayers(){
-        //get number of players
-        numOfPlayers = Integer.parseInt(JOptionPane.showInputDialog("Number of players: "));
-        //get player names
-        for (int i = 0; i<numOfPlayers; i++){
-            String name = JOptionPane.showInputDialog("Player " + i + "'s Name: ");
-            playerList.add(name);
-        }
     }
 
 
