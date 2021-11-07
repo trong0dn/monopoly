@@ -13,8 +13,7 @@ import java.util.LinkedList;
 public class MonopolyGUI extends JPanel {
     private final Monopoly monopoly;
     private MonopolyController controller = new MonopolyController();
-    private final LinkedList<Player> playersList;
-    private final int numPlayers = 4;
+    private LinkedList<Player> playersList;
     private GameBoardGUI gameBoard;
     static JTextArea infoConsole;
     private int currentPlayerOrder;
@@ -52,6 +51,7 @@ public class MonopolyGUI extends JPanel {
     public MonopolyGUI() {
         monopoly = new Monopoly();
         playersList = new LinkedList<>();
+        playersList.add(new HumanPlayer("TempPlayer"));
         init();
         setupBoard();
         setupDice();
@@ -63,17 +63,16 @@ public class MonopolyGUI extends JPanel {
     }
 
     /**
-     * Initialize players.
+     * Initialize the players.
      */
     public void init() {
-        playersList.add(new HumanPlayer("Alice"));
-        playersList.add(new HumanPlayer("Bert"));
-        playersList.add(new HumanPlayer("Candice"));
-        playersList.add(new HumanPlayer("Donald"));
-        playersList.add(new HumanPlayer("Elenore"));
-        playersList.add(new HumanPlayer("Frank"));
-        playersList.add(new HumanPlayer("George"));
-        playersList.add(new HumanPlayer("Harry"));
+        for(int i = 0; i < controller.getPlayerList().size(); i++) {
+            if(playersList.get(0).name().equals("TempPlayer")) {
+                playersList.set(0, controller.getPlayerList().get(i));
+            } else {
+                playersList.add(controller.getPlayerList().get(i));
+            }
+        }
     }
 
     /**
@@ -147,7 +146,7 @@ public class MonopolyGUI extends JPanel {
      * Give each player their own color.
      */
     private void setupPlayerToken() {
-        for (int i = 0; i < numPlayers; i++) {
+        for (int i = 0; i < playersList.size(); i++) {
             PlayerGUI playerGUI = new PlayerGUI(playerTokenColors[i], playersList.get(i).name());
             playersGUI.add(playerGUI);
             leftLayeredPane.add(playerGUI, Integer.valueOf(1));
@@ -181,6 +180,7 @@ public class MonopolyGUI extends JPanel {
     private void initController() {
         controller.setMonopolyPanel(boxPanel);
         controller.displayGUI();
+        //init();
     }
 
     /**
@@ -193,7 +193,7 @@ public class MonopolyGUI extends JPanel {
         JPanel panelPlayer = new JPanel();
         panelPlayer.setBackground(color);
         panelPlayer.setLayout(null);
-        JLabel panelPlayerTitle = new JLabel("Player " + playerNumber + " Status");
+        JLabel panelPlayerTitle = new JLabel("Player " + playersList.get(playerNumber-1).name() + " Status");
         panelPlayerTitle.setForeground(Color.WHITE);
         panelPlayerTitle.setHorizontalAlignment(SwingConstants.CENTER);
         panelPlayerTitle.setBounds(0, 5, 240, 15);
@@ -211,7 +211,7 @@ public class MonopolyGUI extends JPanel {
         playerAssetsPanel.setLayout(cardLayout);
         rightLayeredPane.add(playerAssetsPanel, String.valueOf(1));
 
-        for (int i = 0; i < numPlayers; i++) {
+        for (int i = 0; i < playersList.size(); i++) {
             JPanel playerStatusPanel = playerStatusPanel(i+1, playerTokenColors[i]);
             playerAssetsPanel.add(playerStatusPanel, String.valueOf(i));
         }
@@ -250,7 +250,7 @@ public class MonopolyGUI extends JPanel {
             buttonNextTurn.setEnabled(false);
             doubles++;
         } else {
-            infoConsole.append("\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice");
+            infoConsole.append("\nClick Next Turn to allow player " + (currentPlayerIndex % playersList.size() + 1) + " to Roll Dice");
             buttonRollDice.setEnabled(false);
             buttonNextTurn.setEnabled(true);
             doubles = 0;
@@ -272,7 +272,7 @@ public class MonopolyGUI extends JPanel {
             PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
             currentPlayer.move(diceValue);
             currentSquareNumber = this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber();
-            int currentPlayerIndex = (currentPlayerOrder + 1) + numPlayers;
+            int currentPlayerIndex = (currentPlayerOrder + 1) + playersList.size();
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
 
             // Swing concurrency thread correction for layeredPane flickering
@@ -322,9 +322,9 @@ public class MonopolyGUI extends JPanel {
             if (isDouble) {
                 isDouble = false;
             }
-            currentPlayerOrder = (currentPlayerOrder % numPlayers) + 1;
-            int currentPlayerIndex = (currentPlayerOrder % numPlayers) + 1;
-            currentPlayerOrder %= numPlayers;
+            currentPlayerOrder = (currentPlayerOrder % playersList.size()) + 1;
+            int currentPlayerIndex = (currentPlayerOrder % playersList.size()) + 1;
+            currentPlayerOrder %= playersList.size();
             cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
             infoConsole.setText("It's now player "+ (currentPlayerIndex) +"'s turn!");
             buttonRollDice.setEnabled(true);
