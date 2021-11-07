@@ -4,10 +4,14 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
-
+/**
+ * JPanel for Game board
+ */
 public class GameBoardGUI extends JPanel {
+
     private final GameBoard gameBoard;
 
+    // Setting Border + Bounds
     public GameBoardGUI(int x, int y, int width, int height) {
         this.setBorder(new LineBorder(Color.BLACK));
         this.setBounds(x, y, width, height);
@@ -16,15 +20,27 @@ public class GameBoardGUI extends JPanel {
         initializeSquarePanels();
     }
 
+    /**
+     * Get total number of squares in game board
+     * @param squareNumber int
+     * @return gameBoard.square(SquareNumber)
+     */
     public Square getSquare(int squareNumber) {
         return this.gameBoard.square(squareNumber);
     }
 
+    /**
+     * An arraylist that formats the game board squares.
+     */
     private void initializeSquarePanels() {
         ArrayList<String> squareNames = new ArrayList<>();
         for (Square sq : gameBoard.getBoard()) {
             squareNames.add(sq.name());
         }
+
+        /*
+        Square/Tile Formatting
+         */
 
         SquareGUI square;
         int xOffset = 5;
@@ -33,6 +49,7 @@ public class GameBoardGUI extends JPanel {
         int maxY = 550;
         int x = xOffset + maxX;
         int y = yOffset + maxY;
+
 
         // Create right-bottom corner square: "GO"
         square = new SquareGUI(x, y,100,100, squareNames.get(0),-45);
@@ -78,7 +95,8 @@ public class GameBoardGUI extends JPanel {
             this.add(square);
         }
 
-        // Create center of the game board
+
+        // BIG MONOPOLY LABEL
         JLabel centerLabel = new JLabel("MONOPOLY"){
             protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D)g;
