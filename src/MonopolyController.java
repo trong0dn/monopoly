@@ -10,8 +10,8 @@ import java.util.LinkedList;
  * @author Elisha Catherasoo & Ibrahim Almalki
  */
 public class MonopolyController{
-    private JFrame frame; // used for testing buttons
-    private JPanel playerInitPanel; // used to test buttons
+    private JFrame frame;
+    private JPanel playerInitPanel; // Panel for making the players
     private JPanel startPanel; // Panel for the main starting page
     private JPanel monopolyPanel; // Panel for the actual Monopoly game
     private JPanel switchPanels; // Used for switching the panels
@@ -173,10 +173,7 @@ public class MonopolyController{
         title.setBackground(Color.RED);
         title.setForeground(Color.WHITE);
 
-        // set the frame, panels and buttons
-        frame.setBounds(100, 100, 450, 300);
-        frame.setSize(1080,710);
-
+        // GridBagConstraints for the starting page elements
         GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
         gbagConstraintsTitle.gridx = 1;
         gbagConstraintsTitle.gridy = 1;
@@ -186,6 +183,10 @@ public class MonopolyController{
         gbagConstraintsStartButton.gridx = 1;
         gbagConstraintsStartButton.gridy = 2;
         gbagConstraintsStartButton.insets = new Insets(40, 0, 0, 0);
+
+        // set the frame, panels and buttons
+        frame.setBounds(100, 100, 450, 300);
+        frame.setSize(1080,710);
 
         startPanel.setSize(new Dimension(250, 250));
         startPanel.setBackground(new Color(50, 255, 155));
