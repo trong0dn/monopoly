@@ -173,7 +173,7 @@ public class MonopolyController{
         title.setBackground(Color.RED);
         title.setForeground(Color.WHITE);
 
-        // set the characteristics of the frame, panels anf buttons
+        // set the frame, panels and buttons
         frame.setBounds(100, 100, 450, 300);
         frame.setSize(1080,710);
 
@@ -197,7 +197,7 @@ public class MonopolyController{
         monopolyPanel.setSize(new Dimension(250, 250));
         monopolyPanel.setBackground(Color.white);
 
-        startButton.setSize(new Dimension(100, 25));
+        startButton.setPreferredSize(new Dimension(175, 50));
 
         // add the buttons, panels and labels to the frame
         startPanel.add(title, gbagConstraintsTitle);
