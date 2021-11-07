@@ -2,6 +2,9 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ *  Dice GUI
+ */
 public class DiceGUI extends JPanel {
     RollDice rollDice = new RollDice();
     int faceValue;
@@ -12,6 +15,9 @@ public class DiceGUI extends JPanel {
         this.faceValue = rollDice.rollDice().dieValue1;
     }
 
+    /**
+     * Filling In Dice Components
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         int width = 5;
@@ -51,6 +57,9 @@ public class DiceGUI extends JPanel {
         }
     }
 
+    /**
+     * repaints dice depending on dice face.
+     */
     public void rollDice() {
         this.faceValue = rollDice.rollDice().dieValue1;
         repaint();
