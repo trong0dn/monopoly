@@ -303,8 +303,8 @@ public class MonopolyGUI extends JFrame {
                     buttonNextTurn.setEnabled(false);
                 }
             } else {
-                infoConsole.setText("You landed on a non-purchasable property: \n" + currentSquare.name() +
-                        "\nClick Next Turn to allow player " + (currentPlayerIndex % numPlayers + 1) + " to Roll Dice!");
+                infoConsole.setText("You landed on a non-purchasable property: \n" + currentSquare.name());
+                isRollDouble(currentSquare, currentPlayerIndex);
                 buttonBuy.setEnabled(false);
                 buttonPayRent.setEnabled(false);
             }

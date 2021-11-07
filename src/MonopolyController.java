@@ -182,6 +182,9 @@ public class MonopolyController{
         playerInitPanel.setPreferredSize(new Dimension(250, 250));
         playerInitPanel.setBackground(Color.white);
 
+        monopolyPanel.setPreferredSize(new Dimension(250, 250));
+        monopolyPanel.setBackground(Color.white);
+
         // add the buttons and panels to the frame
         startPanel.add(startButton());
 
