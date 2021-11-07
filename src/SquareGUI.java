@@ -61,7 +61,7 @@ public class SquareGUI extends JPanel {
         if (gameBoard.square(squareNum) instanceof Property || gameBoard.square(squareNum) instanceof Railroad){
             labelName.setToolTipText("<html>" + squareName + "<br>" + "Cost: $"
                     + gameBoard.square(squareNum).cost() + "<br>" + "Rent: $"
-                    + gameBoard.square(squareNum).rent(9));
+                    + gameBoard.square(squareNum).rent(0));
         } else {
             labelName.setToolTipText(squareName);
         }
