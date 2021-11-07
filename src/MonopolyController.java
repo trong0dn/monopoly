@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +17,7 @@ import java.util.LinkedList;
  * This class represents all the controllers used in the Monopoly GUI
  * @author Elisha Catherasoo & Ibrahim Almalki
  */
-public class MonopolyController {
+public class MonopolyController{
     private JFrame frame; // used for testing buttons
     private JPanel playerInitPanel; // used to test buttons
     private JPanel startPanel; // Panel for the main starting page
@@ -168,35 +169,6 @@ public class MonopolyController {
     }
 
     /**
-     * Buy the property the player has landed on.
-     * @return button
-     */
-    public JButton buyButton() {
-        JButton button = new JButton("Buy");
-
-        button.addActionListener(e -> {
-            // TODO get the position of the current player and buy the property
-            //Square[] square = gameState.gameBoard.getBoard();
-            //buyProperty(gameState.currentPlayer, square[gameState.currentPlayer.getPosition()]);
-        });
-        return button;
-    }
-
-    /**
-     * Roll the dice when button is pressed
-     * @return button
-     */
-    public JButton rollButton(){
-        JButton button = new JButton("Roll Dice");
-
-        button.addActionListener(e -> {
-            // TODO Roll dice and move player to the right square
-            //turn();
-        });
-        return button;
-    }
-
-    /**
      * The Monopoly GUI
      */
     public void displayGUI() { // used for testing buttons
@@ -213,11 +185,7 @@ public class MonopolyController {
         // add the buttons and panels to the frame
         startPanel.add(startButton());
 
-        playerInitPanel.add(playerInitLabel);
         playerInitPanel.add(playButton());
-
-        monopolyPanel.add(monopolyLabel);
-        monopolyPanel.add(rollButton());
 
         getSwitchPanels().add(startPanel, "StartPanel");
         getSwitchPanels().add(playerInitPanel, "PlayerInitializePanel");
