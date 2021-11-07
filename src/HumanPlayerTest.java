@@ -1,3 +1,4 @@
+/*
 import static org.junit.Assert.*;
 
 public class HumanPlayerTest {
@@ -34,3 +35,5 @@ public class HumanPlayerTest {
     public void inputDecision() {
     }
 }
+
+ */

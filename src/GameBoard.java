@@ -369,8 +369,7 @@ public class GameBoard {
         int hotel = 450;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(position, "WHITECHAPEL ROAD",
-                rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+        return new Property(position, "WHITECHAPEL ROAD", rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**

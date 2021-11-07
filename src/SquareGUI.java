@@ -57,7 +57,7 @@ public class SquareGUI extends JPanel {
             };
         }
         labelName.setBounds(0, 0, this.getWidth(), this.getHeight());
-        labelName.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
+        labelName.setFont(new Font("Lucida Grande", Font.PLAIN, 5));
         labelName.setHorizontalAlignment(SwingConstants.CENTER);
         this.add(labelName);
     }
