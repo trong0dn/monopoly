@@ -3,11 +3,23 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
+/**
+ * GUI for Individual Squares in Monopoly
+ */
 public class SquareGUI extends JPanel {
     private final String squareName;
     private final int squareNum;
     static int total = 0;
 
+    /**
+     * Get the Square info.
+     * @param x int, x-position
+     * @param y int, y-position
+     * @param width int
+     * @param height int
+     * @param squareName String, corresponding name of square in game
+     * @param rotationDegree inr,
+     */
     public SquareGUI(int x, int y, int width, int height, String squareName, int rotationDegree) {
         this.squareNum = total;
         total++;
@@ -18,6 +30,10 @@ public class SquareGUI extends JPanel {
         rotation(rotationDegree);
     }
 
+    /**
+     * Rotates the squares/tiles so that they can be turned on their sides.
+     * @param degree, int
+     */
     private void rotation(int degree) {
         JLabel labelName;
         if (degree == 0) {
@@ -46,6 +62,10 @@ public class SquareGUI extends JPanel {
         this.add(labelName);
     }
 
+    /**
+     * Painting specific squares on game board.
+     * @param g Graphics
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (this.squareNum == 1 || this.squareNum == 3) {
