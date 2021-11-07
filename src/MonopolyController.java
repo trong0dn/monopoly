@@ -1,16 +1,8 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -23,10 +15,10 @@ public class MonopolyController{
     private JPanel startPanel; // Panel for the main starting page
     private JPanel monopolyPanel; // Panel for the actual Monopoly game
     private JPanel switchPanels; // Used for switching the panels
-    private Monopoly.GameState gameState;
     private JLabel playerName;
     private int numOfPlayers;
     private LinkedList<String> playerList;
+    private JButton startButton;
 
     /**
      * Initialize MonopolyController
@@ -34,12 +26,13 @@ public class MonopolyController{
     public MonopolyController(){
         this.frame = new JFrame(); // used for testing buttons
         this.playerInitPanel = new JPanel();
-        this.startPanel = new JPanel();
+        this.startPanel = new JPanel(new GridBagLayout());
         this.monopolyPanel = new JPanel();
         this.switchPanels = new JPanel(new CardLayout());
         this.playerName = new JLabel();
         this.numOfPlayers = 2;
         this.playerList = new LinkedList<>();
+        this.startButton = new JButton("Start Game");
     }
 
     /**
@@ -127,13 +120,11 @@ public class MonopolyController{
      * @return button
      */
     public JButton startButton(){
-        JButton button = new JButton("Start Game");
-
-        button.addActionListener(e -> {
+        startButton.addActionListener(e -> {
             CardLayout cl = (CardLayout) (switchPanels.getLayout());
             cl.show(switchPanels, "PlayerInitializePanel");
         });
-        return button;
+        return startButton;
 
     }
 
@@ -173,20 +164,44 @@ public class MonopolyController{
      */
     public void displayGUI() { // used for testing buttons
         JFrame frame = new JFrame("MONOPOLY");
-        JLabel playerInitLabel = new JLabel("This is the panel for creating the players");
-        JLabel monopolyLabel = new JLabel("This is the panel for the game");
 
-        startPanel.setPreferredSize(new Dimension(250, 250));
-        startPanel.setBackground(Color.white);
+        // make the main title
+        Font font = new Font("Lucida Grande", Font.BOLD, 60);
+        JLabel title = new JLabel("MONOPOLY!");
+        title.setFont(font);
+        title.setOpaque(true);
+        title.setBackground(Color.RED);
+        title.setForeground(Color.WHITE);
 
-        playerInitPanel.setPreferredSize(new Dimension(250, 250));
+        // set the characteristics of the frame, panels anf buttons
+        frame.setBounds(100, 100, 450, 300);
+        frame.setSize(1080,710);
+
+        GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
+        gbagConstraintsTitle.gridx = 1;
+        gbagConstraintsTitle.gridy = 1;
+        gbagConstraintsTitle.insets = new Insets(0, 0, 20, 0);
+
+        GridBagConstraints gbagConstraintsStartButton = new GridBagConstraints();
+        gbagConstraintsStartButton.gridx = 1;
+        gbagConstraintsStartButton.gridy = 2;
+        gbagConstraintsStartButton.insets = new Insets(40, 0, 0, 0);
+
+        startPanel.setSize(new Dimension(250, 250));
+        startPanel.setBackground(new Color(50, 255, 155));
+        startPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
+
+        playerInitPanel.setSize(new Dimension(250, 250));
         playerInitPanel.setBackground(Color.white);
 
-        monopolyPanel.setPreferredSize(new Dimension(250, 250));
+        monopolyPanel.setSize(new Dimension(250, 250));
         monopolyPanel.setBackground(Color.white);
 
-        // add the buttons and panels to the frame
-        startPanel.add(startButton());
+        startButton.setSize(new Dimension(100, 25));
+
+        // add the buttons, panels and labels to the frame
+        startPanel.add(title, gbagConstraintsTitle);
+        startPanel.add(startButton(), gbagConstraintsStartButton);
 
         playerInitPanel.add(playButton());
 
@@ -209,10 +224,8 @@ public class MonopolyController{
             }
         });
 
-        frame.pack();
         frame.setVisible(true);
     }
-
 
     public static void main(String[] args) {
         MonopolyController mc = new MonopolyController();

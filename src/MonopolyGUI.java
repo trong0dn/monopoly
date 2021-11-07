@@ -10,8 +10,9 @@ import java.util.LinkedList;
  * This class represents the Monopoly GUI.
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
-public class MonopolyGUI extends JFrame {
+public class MonopolyGUI extends JPanel {
     private final Monopoly monopoly;
+    private MonopolyController controller = new MonopolyController();
     private final LinkedList<Player> playersList;
     private final int numPlayers = 4;
     private GameBoardGUI gameBoard;
@@ -23,6 +24,7 @@ public class MonopolyGUI extends JFrame {
     private DiceGUI die2;
     private Boolean isDouble = false;
     private int doubles = 0;
+    private JPanel boxPanel;
     private JLayeredPane rightLayeredPane;
     private JPanel playerAssetsPanel;
     private JLayeredPane leftLayeredPane;
@@ -51,14 +53,13 @@ public class MonopolyGUI extends JFrame {
         monopoly = new Monopoly();
         playersList = new LinkedList<>();
         init();
-        setupFrame();
         setupBoard();
         setupDice();
         setupButtons();
         setupPlayerToken();
         setupPlayerStatusWindow();
         setupConsoleLog();
-        setVisible(true);
+        initController();
     }
 
     /**
@@ -76,22 +77,11 @@ public class MonopolyGUI extends JFrame {
     }
 
     /**
-     * Set up the frame for Monopoly.
-     */
-    private void setupFrame() {
-        setTitle("MONOPOLY!");
-        setBounds(100, 100, 450, 300);
-        setSize(1080,710);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    /**
      * Set up the layout for the board.
      */
     private void setupBoard() {
-        JPanel boxPanel = new JPanel();
+        boxPanel = new JPanel();
         boxPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(boxPanel);
         boxPanel.setLayout(null);
 
         // Add right panel
@@ -183,6 +173,14 @@ public class MonopolyGUI extends JFrame {
         infoConsole.setEditable(false);
         infoConsole.setText("Player 1 starts the game! \nClicking Roll Dice!");
         consolePanel.add(infoConsole);
+    }
+
+    /**
+     * Initialize the controllers.
+     */
+    private void initController() {
+        controller.setMonopolyPanel(boxPanel);
+        controller.displayGUI();
     }
 
     /**
