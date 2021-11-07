@@ -3,7 +3,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
-
+// new comment
 public class GameBoardGUI extends JPanel {
     private final GameBoard gameBoard;
 
