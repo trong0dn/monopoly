@@ -5,7 +5,7 @@ import java.util.Collection;
 public class PlayerGUI extends JPanel {
     private HumanPlayer player;
     private final int playerNumber;
-    static int totalPlayers = 0;
+    private static int totalPlayers = 0;
     private int currentSquareNumber = 0;
 
     private final int[] xLocationsOfPlayer = {550, 495, 445, 395, 345, 295, 245, 195, 145, 95, 0,
