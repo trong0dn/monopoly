@@ -108,9 +108,6 @@ public class Property implements Square{
      */
     @Override
     public int rent(int value) {
-        if (!owned) {
-            return 0;
-        }
         switch (buildings) {
             case 0:
                 if (this.monopoly) {
