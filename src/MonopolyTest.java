@@ -7,8 +7,6 @@ public class MonopolyTest {
     private Monopoly.GameState gameState;
     private final Player humanPlayer = new HumanPlayer("tester");
     private final HumanPlayer humanPlayer2 = new HumanPlayer("tester2");
-    private String playerName;
-    private int money;
     private int position;
     int rent = 2;
     int oneHouse = 10;
@@ -28,15 +26,62 @@ public class MonopolyTest {
      */
     @Test
     public void buyProperty() {
+        humanPlayer2.setMoney(1500);
         monopoly.buyProperty(humanPlayer, oldkent);
         assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
 
+        //the property is already owned, cannot purchase it
         oldkent.isOwned();
         monopoly.buyProperty(humanPlayer, oldkent);
-        assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
+        assertEquals(0, humanPlayer2.properties().toArray().length);
+
+        //player 2 purchases oldkent from player1
+        humanPlayer2.setMoney(10);
+        monopoly.buyProperty(humanPlayer2, oldkent);
+        assertEquals(oldkent, humanPlayer2.properties().toArray()[0]);
 
     }
 
+
+    /**
+     * tests the square is owned by the player,
+     * if it is they must pay rent  method.
+     *
+     */
+    @Test
+    public void owned() {
+        //player2 does not own the property, must pay rent
+        humanPlayer2.setMoney(1500);
+        monopoly.buyProperty(humanPlayer, oldkent);
+        monopoly.owned(humanPlayer2, oldkent, 5);
+        assertEquals(1498, humanPlayer2.getMoney());
+
+
+        //player landed on their own property, does not pay rent
+        humanPlayer2.setMoney(1500);
+        monopoly.buyProperty(humanPlayer2, oldkent);
+        monopoly.owned(humanPlayer2, oldkent, 5);
+        assertEquals(1500, humanPlayer2.getMoney());
+
+
+        //player landed on their own property, does not have any money, they are not bankrupt
+        humanPlayer2.setMoney(1500);
+        monopoly.buyProperty(humanPlayer2, oldkent);
+        humanPlayer2.setMoney(0);
+        monopoly.owned(humanPlayer2, oldkent, 5);
+        assertEquals(0, humanPlayer2.getMoney());
+        assertFalse(monopoly.isBankrupt());
+
+
+        //player1 landed on player2's property, does not have any money, they are bankrupt
+        humanPlayer2.setMoney(1500);
+        monopoly.buyProperty(humanPlayer, oldkent);
+        humanPlayer2.setMoney(0);
+        monopoly.owned(humanPlayer2, oldkent, 5);
+        assertTrue(monopoly.isBankrupt());
+
+
+    }
 
 
 }
