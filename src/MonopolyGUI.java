@@ -254,7 +254,7 @@ public class MonopolyGUI extends JPanel {
      * Check if the roll is a double and change the visibility of the buttons.
      * @param currentPlayerOrder    int, the index of the current player
      */
-    public void isRollDouble(int currentPlayerOrder) {
+    private void isRollDouble(int currentPlayerOrder) {
         int nextPlayerIndex = (currentPlayerOrder + 1) % playersList.size();
         if (isDouble && doubles < 3) { // A player can not have more than 3 rolls
             infoConsole.append("\nDoubles! Click Roll Dice again, player " + playersList.get(currentPlayerOrder).name());
