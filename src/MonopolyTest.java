@@ -3,9 +3,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MonopolyTest {
-    private Monopoly monopoly;
+    private Monopoly monopoly = new Monopoly();
     private Monopoly.GameState gameState;
-    private final HumanPlayer humanPlayer = new HumanPlayer("tester");
+    private final Player humanPlayer = new HumanPlayer("tester");
     private final HumanPlayer humanPlayer2 = new HumanPlayer("tester2");
     private String playerName;
     private int money;
@@ -23,33 +23,18 @@ public class MonopolyTest {
 
 
 
-    @Test
-    public void handleSquare() {
-       monopoly.handleSquare(humanPlayer, oldkent, 3);
-
-
-    }
 
     @Test
     public void buyProperty() {
         monopoly.buyProperty(humanPlayer, oldkent);
-        assertEquals(true, humanPlayer.properties().contains(oldkent));
+        assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
+
+        oldkent.isOwned();
+        monopoly.buyProperty(humanPlayer, oldkent);
+        assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
 
     }
 
-    @Test
-    public void owned() {
-        monopoly.buyProperty(humanPlayer2, oldkent);
-        monopoly.owned(humanPlayer, oldkent, 3);
-        assertEquals( 1498, humanPlayer.getMoney() );
 
-    }
-
-    @Test
-    public void unowned() {
-        monopoly.unowned(humanPlayer, oldkent);
-        assertEquals( 1440, humanPlayer.getMoney() );
-
-    }
 
 }
