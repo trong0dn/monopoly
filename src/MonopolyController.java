@@ -135,7 +135,7 @@ public class MonopolyController{
      */
     public JMenuItem getAddPlayerItem() {
         addPlayerItem.addActionListener(e -> {
-            if(playerList.size() < 8) {
+            if(playerList.size() < 4) {
                 // Make the panel to get the user name
                 JPanel panel = new JPanel(new GridLayout(1, 2));
                 JLabel playerName = new JLabel("Enter Player Name: ");
@@ -188,7 +188,7 @@ public class MonopolyController{
                 playerInitPanel.add(tempPanelNumber, gbagConstraintsPlayerNumber);
                 playerInitPanel.add(tempPanelName, gbagConstraintsPlayerName);
 
-                if (playerList.size() >= 2 && playerList.size() <= 8) {
+                if (playerList.size() >= 2 && playerList.size() <= 4) {
                     playButton.setEnabled(true);
                 }
             } else {

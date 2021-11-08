@@ -239,7 +239,7 @@ public class MonopolyGUI extends JPanel {
      */
     private void updatePlayerList() {
         for(int i = 0; i < controller.getPlayerList().size(); i++) {
-            if(playersList.get(0).name().equals("1")){
+            if(i == 0){
                 playersList.set(0,controller.getPlayerList().get(i));
             } else {
                 playersList.add(controller.getPlayerList().get(i));
@@ -274,8 +274,9 @@ public class MonopolyGUI extends JPanel {
 
         buttonRollDice.addActionListener(e -> {
             if (firstRoll) {
-                firstRoll = false;
                 updatePlayerList();
+                firstRoll = false;
+                //updatePlayerList();
                 setupButtons();
                 setupPlayerToken();
                 setupPlayerStatusWindow();
