@@ -135,7 +135,7 @@ public class MonopolyController{
      */
     public JMenuItem getAddPlayerItem() {
         addPlayerItem.addActionListener(e -> {
-            if(playerList.size() < 8) {
+            if(playerList.size() < 6) {
                 // Make the panel to get the user name
                 JPanel panel = new JPanel(new GridLayout(1, 2));
                 JLabel playerName = new JLabel("Enter Player Name: ");
@@ -292,7 +292,7 @@ public class MonopolyController{
         playButton.setEnabled(false);
 
         JPanel messagePanel = new JPanel();
-        JLabel message = new JLabel("Click Add Player on top right menu bar (need 2-8 players)");
+        JLabel message = new JLabel("Click Add Player on top right menu bar (need 2-6 players)");
         messagePanel.add(message);
 
         // add the buttons, panels and labels to the frame
