@@ -188,11 +188,11 @@ public class MonopolyController{
                 playerInitPanel.add(tempPanelNumber, gbagConstraintsPlayerNumber);
                 playerInitPanel.add(tempPanelName, gbagConstraintsPlayerName);
 
-                if (playerList.size() >= 2 && playerList.size() <= 8) {
+                if (playerList.size() >= 2 && playerList.size() <= 6) {
                     playButton.setEnabled(true);
                 }
             } else {
-                JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 8 players.\nPress Play Game!");
+                JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
             }
         });
         return addPlayerItem;
@@ -270,7 +270,7 @@ public class MonopolyController{
         gbagConstraintsMessage.gridx = 1;
         gbagConstraintsMessage.gridy = 12;
         gbagConstraintsMessage.gridwidth = 2;
-        gbagConstraintsMessage.insets = new Insets(60, 0, 0, 0);
+        gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
 
         // set the frame, panels and buttons
         frame.setBounds(100, 100, 450, 300);
