@@ -292,7 +292,7 @@ public class MonopolyController{
         playButton.setEnabled(false);
 
         JPanel messagePanel = new JPanel();
-        JLabel message = new JLabel("Click Add Player on top right menu bar (need 2-4 players)");
+        JLabel message = new JLabel("Click Add Player on top right menu bar (need 2-8 players)");
         messagePanel.add(message);
 
         // add the buttons, panels and labels to the frame
