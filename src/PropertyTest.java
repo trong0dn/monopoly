@@ -3,64 +3,50 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PropertyTest {
+    private HumanPlayer humanPlayer = new HumanPlayer("test");
 
-    @Test
-    public void position() {
-    }
+    Property property;
 
-    @Test
-    public void name() {
-    }
+    private int position1;
+    int rent = 2;
+    int oneHouse = 10;
+    int twoHouse = 30;
+    int threeHouse = 90;
+    int fourHouse = 160;
+    int hotel = 250;
+    int propertyCost = 60;
+    int houses = 50;
+    private final Square oldkent = new Property(position1, "OLD KENT ROAD",
+            rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
 
-    @Test
-    public void isOwnable() {
-    }
+    int position2;
+    private final Square whitechapel = new Property(position2, "WHITECHAPEL ROAD",
+                        4, 20, 60, 180, 320, 450, 60, 50);
 
-    @Test
-    public void isOwned() {
-    }
 
-    @Test
-    public void cost() {
-    }
 
-    @Test
-    public void purchase() {
-    }
-
+    //this function takes in a parameter that is never used?
     @Test
     public void rent() {
     }
 
-    @Test
-    public void owner() {
-    }
 
-    @Test
-    public void isMonopoly() {
-    }
-
-    @Test
-    public void setMonopoly() {
-    }
-
-    @Test
-    public void breakMonopoly() {
-    }
-
+    /**
+     * tests the updateMonopoly function
+     * checks if properties owned belong in a set
+     */
     @Test
     public void updateMonopoly() {
+        humanPlayer.addProperty(oldkent);
+        humanPlayer.addProperty(whitechapel);
+        property.updateMonopoly(humanPlayer);
+        assertEquals(true, property.isMonopoly() );
+
+
+        humanPlayer.removeProperty(whitechapel);
+        property.updateMonopoly(humanPlayer);
+        assertEquals(false, property.isMonopoly() );
     }
 
-    @Test
-    public void getHouseCost() {
-    }
 
-    @Test
-    public void setGroup() {
-    }
-
-    @Test
-    public void testSetGroup() {
-    }
 }
