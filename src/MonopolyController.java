@@ -135,7 +135,7 @@ public class MonopolyController{
      */
     public JMenuItem getAddPlayerItem() {
         addPlayerItem.addActionListener(e -> {
-            if(playerList.size() < 4) {
+            if(playerList.size() < 8) {
                 // Make the panel to get the user name
                 JPanel panel = new JPanel(new GridLayout(1, 2));
                 JLabel playerName = new JLabel("Enter Player Name: ");
@@ -188,7 +188,7 @@ public class MonopolyController{
                 playerInitPanel.add(tempPanelNumber, gbagConstraintsPlayerNumber);
                 playerInitPanel.add(tempPanelName, gbagConstraintsPlayerName);
 
-                if (playerList.size() >= 2 && playerList.size() <= 4) {
+                if (playerList.size() >= 2 && playerList.size() <= 8) {
                     playButton.setEnabled(true);
                 }
             } else {
@@ -270,7 +270,7 @@ public class MonopolyController{
         gbagConstraintsMessage.gridx = 1;
         gbagConstraintsMessage.gridy = 12;
         gbagConstraintsMessage.gridwidth = 2;
-        gbagConstraintsMessage.insets = new Insets(60, 0, 0, 0);
+        gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
 
         // set the frame, panels and buttons
         frame.setBounds(100, 100, 450, 300);
@@ -292,7 +292,7 @@ public class MonopolyController{
         playButton.setEnabled(false);
 
         JPanel messagePanel = new JPanel();
-        JLabel message = new JLabel("Click Add Player on top right menu bar (need 2-4 players)");
+        JLabel message = new JLabel("Click Add Player on top right menu bar (need 2-8 players)");
         messagePanel.add(message);
 
         // add the buttons, panels and labels to the frame
