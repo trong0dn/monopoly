@@ -310,10 +310,4 @@ public class MonopolyController{
 
         frame.setVisible(true);
     }
-
-    public static void main(String[] args) {
-        MonopolyController mc = new MonopolyController();
-        mc.getMonopolyPanel().add(new MonopolyGUI());
-        mc.displayGUI();
-    }
 }
