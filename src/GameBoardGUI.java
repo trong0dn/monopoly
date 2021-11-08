@@ -4,9 +4,20 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
+/**
+ * This class creates the GUI for the game board
+ * @author Trong Nguyen
+ */
 public class GameBoardGUI extends JPanel {
     private final GameBoard gameBoard;
 
+    /**
+     * Constructor for GameBoardGUI.
+     * @param x         int, x-axis of the GameBoard
+     * @param y         int, y-axis of the GameBoard
+     * @param width     int, width of the GameBoard
+     * @param height    int, height of the GameBoard
+     */
     public GameBoardGUI(int x, int y, int width, int height) {
         this.setBorder(new LineBorder(Color.BLACK));
         this.setBounds(x, y, width, height);
@@ -15,10 +26,18 @@ public class GameBoardGUI extends JPanel {
         initializeSquarePanels();
     }
 
+    /**
+     * Get the square based the squareNmber.
+     * @param squareNumber  int, the square position on the game board
+     * @return              Square
+     */
     public Square getSquare(int squareNumber) {
         return this.gameBoard.square(squareNumber);
     }
 
+    /**
+     * Initialize the Square Panels (ie,properties, utilities, go, jail,etc.)
+     */
     private void initializeSquarePanels() {
         ArrayList<String> squareNames = new ArrayList<>();
         for (Square sq : gameBoard.getBoard()) {

@@ -3,11 +3,24 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
+/**
+ * This class every square GUI.
+ * @author Trong Nguyen
+ */
 public class SquareGUI extends JPanel {
     private final String squareName;
     private final int squareNum;
-    static int total = 0;
+    private static int total = 0;
 
+    /**
+     * Constructor for SquareGUI.
+     * @param x                 int, x-axis of the Square
+     * @param y                 int, y-axis of the Square
+     * @param width             int, width of the Square
+     * @param height            int, height of the Square
+     * @param squareName        String, the name of the Square
+     * @param rotationDegree    int, the rotation of the Square
+     */
     public SquareGUI(int x, int y, int width, int height, String squareName, int rotationDegree) {
         this.squareNum = total;
         total++;
@@ -18,6 +31,10 @@ public class SquareGUI extends JPanel {
         rotation(rotationDegree);
     }
 
+    /**
+     * Rotate the labels on a square.
+     * @param degree    int, the degree of rotation of the label
+     */
     private void rotation(int degree) {
         JLabel labelName;
         if (degree == 0) {
@@ -40,12 +57,26 @@ public class SquareGUI extends JPanel {
                 }
             };
         }
+        GameBoard gameBoard = new GameBoard();
+        // See the full name of the property, it's cost, and it's rent
+        if (gameBoard.square(squareNum) instanceof Property || gameBoard.square(squareNum) instanceof Railroad){
+            labelName.setToolTipText("<html>" + squareName + "<br>" + "Cost: $"
+                    + gameBoard.square(squareNum).cost() + "<br>" + "Rent: $"
+                    + gameBoard.square(squareNum).rent(0));
+        } else {
+            labelName.setToolTipText(squareName);
+        }
+
         labelName.setBounds(0, 0, this.getWidth(), this.getHeight());
         labelName.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
         labelName.setHorizontalAlignment(SwingConstants.CENTER);
         this.add(labelName);
     }
 
+    /**
+     * Method that gives each set of properties their own color.
+     * @param g     Graphics
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (this.squareNum == 1 || this.squareNum == 3) {

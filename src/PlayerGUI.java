@@ -2,10 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Collection;
 
+/**
+ * This class represents the GUI for player on the game board.
+ * @author Trong Nguyen
+ */
 public class PlayerGUI extends JPanel {
     private HumanPlayer player;
     private final int playerNumber;
-    static int totalPlayers = 0;
+    private static int totalPlayers = 0;
     private int currentSquareNumber = 0;
 
     private final int[] xLocationsOfPlayer = {550, 495, 445, 395, 345, 295, 245, 195, 145, 95, 0,
@@ -18,6 +22,11 @@ public class PlayerGUI extends JPanel {
             20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
             125, 175, 225, 275, 325, 375, 425, 475, 525};
 
+    /**
+     * Constructor for PlayerGUI
+     * @param color         Color, the color for the player
+     * @param playerName    String, the player's name
+     */
     public PlayerGUI(Color color, String playerName) {
         player = new HumanPlayer(playerName);
         totalPlayers++;
@@ -30,6 +39,10 @@ public class PlayerGUI extends JPanel {
         this.setBounds((15+this.playerNumber*5+xLocationsOfPlayer[0]), yLocationsOfPlayer[0], 18, 28);
     }
 
+    /**
+     * Move the player based on their dice roll value.
+     * @param diceValue     int, the player's roll value
+     */
     public void move(int diceValue) {
         GameBoard gameBoard = new GameBoard();
         int size = gameBoard.size()-1;
@@ -43,20 +56,40 @@ public class PlayerGUI extends JPanel {
         this.setLocation((15+this.playerNumber*5+xLocationsOfPlayer[targetSquare]), yLocationsOfPlayer[targetSquare]);
     }
 
+    /**
+     * Get the player's properties.
+     * @return      Collection<Square>
+     */
     public Collection<Square> getProperties() {
         return this.player.properties();
     }
 
+    /**
+     * Get the amount of money a player has.
+     * @return      int
+     */
     public int getPlayerMoney() {
         return this.player.getMoney();
     }
 
+    /**
+     * Get the current player.
+     * @return      Player
+     */
     public Player getPlayer() { return this.player; }
 
+    /**
+     * Method for player to collect addition money.
+     * @param money     int, the money to be exchanged
+     */
     public void exchangeMoney(int money) {
         this.player.exchangeMoney(money);
     }
 
+    /**
+     * Get the player's number.
+     * @return      int
+     */
     public int getCurrentSquareNumber() {
         return this.currentSquareNumber;
     }
