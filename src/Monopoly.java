@@ -24,6 +24,8 @@ import java.util.*;
 public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
+
+
     private boolean isBankrupt;
 
     /**
@@ -276,4 +278,14 @@ public class Monopoly {
         }
         //TODO else trade assets for money
     }
+
+    /**
+     * return whether a player is bankrupt or not
+     * used for testing
+     * @return boolean
+     */
+    public boolean isBankrupt() {
+        return isBankrupt;
+    }
+
 }
