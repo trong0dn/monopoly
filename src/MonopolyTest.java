@@ -22,8 +22,10 @@ public class MonopolyTest {
             rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
 
 
-
-
+    /**
+     * tests the buyProprty method.
+     *
+     */
     @Test
     public void buyProperty() {
         monopoly.buyProperty(humanPlayer, oldkent);
