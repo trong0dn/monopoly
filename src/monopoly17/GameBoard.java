@@ -1,3 +1,5 @@
+package monopoly17;
+
 /**
  * This class represents the game board.
  * @author Elisha Catherasoo & Trong Nguyen

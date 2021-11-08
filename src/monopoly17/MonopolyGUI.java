@@ -1,3 +1,20 @@
+/*
+Milestone 2
+
+Group 17:
+Trong Nguyen 100848232
+Francisco De Grano 101147447
+Ibrahim Almalki 101142978
+Elisha Catherasoo 101148507
+
+Professor: Babak Esfandiari
+TA: Michael Vezina
+
+Due: 11/08/2021
+ */
+
+package monopoly17;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;

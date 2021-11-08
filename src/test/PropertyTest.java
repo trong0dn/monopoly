@@ -1,3 +1,8 @@
+package test;
+
+import monopoly17.HumanPlayer;
+import monopoly17.Property;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -28,8 +33,8 @@ public class PropertyTest {
      */
     @Test
     public void name() {
-        assertEquals("OLD KENT ROAD", oldkent.name());
-        assertEquals("WHITECHAPEL ROAD", whitechapel.name());
+        Assert.assertEquals("OLD KENT ROAD", oldkent.name());
+        Assert.assertEquals("WHITECHAPEL ROAD", whitechapel.name());
     }
 
 
@@ -38,8 +43,8 @@ public class PropertyTest {
      */
     @Test
     public void cost() {
-        assertEquals(60, oldkent.cost());
-        assertEquals(60, whitechapel.cost());
+        Assert.assertEquals(60, oldkent.cost());
+        Assert.assertEquals(60, whitechapel.cost());
     }
 
 
@@ -50,7 +55,7 @@ public class PropertyTest {
     public void purchase() {
         oldkent.purchase(humanPlayer);
         assertTrue(oldkent.isOwned());
-        assertEquals(humanPlayer, oldkent.owner());
+        Assert.assertEquals(humanPlayer, oldkent.owner());
 
         //whitechapel is not owned
         assertFalse(whitechapel.isOwned());
@@ -67,10 +72,10 @@ public class PropertyTest {
         //human player purchases old kent, therefore the rent on the property is $2
         humanPlayer.addProperty(oldkent);
         oldkent.purchase(humanPlayer);
-        assertEquals(2, oldkent.rent(3));
+        Assert.assertEquals(2, oldkent.rent(3));
 
         //the property is not owned, so there is no rent on the property
-        assertEquals(0, whitechapel.rent(3));
+        Assert.assertEquals(4, whitechapel.rent(3));
     }
 
 

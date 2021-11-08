@@ -1,3 +1,5 @@
+package monopoly17;
+
 /**
  * Interface for dice.
  * @author Trong Nguyen

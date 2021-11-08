@@ -1,19 +1,27 @@
+package monopoly17;
+
 /**
- * This class represents an inactive square tile on the board game.
+ * This class represents the tax square tiles on the game board.
  * @author Trong Nguyen
  */
-public class Inactive implements Square {
+public class Taxes implements Square {
     private final int position;
     private final String name;
+    private final int tax;
 
     /**
-     * Initialize Inactive squares.
+     * Initialize Taxes.
      * @param position int
      * @param name     String
      */
-    public Inactive(int position, String name) {
+    public Taxes(int position, String name) {
         this.position = position;
         this.name = name;
+        if (this.name.equals("Income Tax")) {
+            this.tax = 200;
+        } else {
+            this.tax = 100;
+        }
     }
 
     /**
@@ -35,6 +43,7 @@ public class Inactive implements Square {
         return this.name;
     }
 
+
     /**
      * If the square tile can be owned or not.
      * @return  boolean
@@ -53,6 +62,7 @@ public class Inactive implements Square {
         return false;
     }
 
+
     /**
      * Get the cost of the square tile.
      * @return  int
@@ -62,6 +72,7 @@ public class Inactive implements Square {
         return 0;
     }
 
+
     /**
      * Method invoked when a square tile is being purchased.
      * @param player    Player
@@ -69,6 +80,7 @@ public class Inactive implements Square {
     @Override
     public void purchase(Player player) {
     }
+
 
     /**
      * Rent value of the square tile.
@@ -87,5 +99,13 @@ public class Inactive implements Square {
     @Override
     public Player owner() {
         return null;
+    }
+
+    /**
+     * Get the tax.
+     * @return  int
+     */
+    public int getTax() {
+        return this.tax;
     }
 }

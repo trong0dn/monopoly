@@ -1,4 +1,9 @@
-import static org.junit.Assert.*;
+package test;
+
+import monopoly17.HumanPlayer;
+import monopoly17.Property;
+import monopoly17.Square;
+import org.junit.Assert;
 
 public class HumanPlayerTest {
     private final HumanPlayer humanPlayer = new HumanPlayer("tester");
@@ -26,7 +31,7 @@ public class HumanPlayerTest {
      */
     @org.junit.Test
     public void name() {
-        assertEquals("tester", humanPlayer.name());
+        Assert.assertEquals("tester", humanPlayer.name());
     }
 
 
@@ -38,19 +43,19 @@ public class HumanPlayerTest {
         position = 0;
         humanPlayer.setMoney(1500);
         humanPlayer.move(5);
-        assertEquals(5, humanPlayer.getPosition() );
+        Assert.assertEquals(5, humanPlayer.getPosition() );
 
         //passed go, collect $200
         //do one lap around the board
         humanPlayer.move(43);
-        assertEquals(8, humanPlayer.getPosition());
-        assertEquals(1700, humanPlayer.getMoney());
+        Assert.assertEquals(8, humanPlayer.getPosition());
+        Assert.assertEquals(1700, humanPlayer.getMoney());
 
         //did not pass go, do not collect $200
         humanPlayer.setMoney(1500);
         humanPlayer.move(4);
-        assertEquals(12, humanPlayer.getPosition());
-        assertEquals(1500, humanPlayer.getMoney());
+        Assert.assertEquals(12, humanPlayer.getPosition());
+        Assert.assertEquals(1500, humanPlayer.getMoney());
     }
 
 
@@ -63,19 +68,19 @@ public class HumanPlayerTest {
         position = 0;
         humanPlayer.setMoney(1500);
         humanPlayer.moveTo(5);
-        assertEquals(5, humanPlayer.getPosition() );
+        Assert.assertEquals(5, humanPlayer.getPosition() );
 
         //passed go, collect $200
         humanPlayer.moveTo(2);
-        assertEquals(2, humanPlayer.getPosition());
-        assertEquals(1700, humanPlayer.getMoney());
+        Assert.assertEquals(2, humanPlayer.getPosition());
+        Assert.assertEquals(1700, humanPlayer.getMoney());
 
 
         //did not pass go, do not collect $200
         humanPlayer.setMoney(1500);
         humanPlayer.moveTo(4);
-        assertEquals(4, humanPlayer.getPosition());
-        assertEquals(1500, humanPlayer.getMoney());
+        Assert.assertEquals(4, humanPlayer.getPosition());
+        Assert.assertEquals(1500, humanPlayer.getMoney());
     }
 
 
@@ -86,16 +91,16 @@ public class HumanPlayerTest {
     public void exchangeMoney(){
         humanPlayer.setMoney(1500);
         humanPlayer.exchangeMoney(100);
-        assertEquals(1600, humanPlayer.getMoney());
+        Assert.assertEquals(1600, humanPlayer.getMoney());
 
         humanPlayer.setMoney(1500);
         humanPlayer.exchangeMoney(0);
-        assertEquals(1500, humanPlayer.getMoney());
+        Assert.assertEquals(1500, humanPlayer.getMoney());
 
         //remove money (pay rent)
         humanPlayer.setMoney(1500);
         humanPlayer.exchangeMoney(-100);
-        assertEquals(1400, humanPlayer.getMoney());
+        Assert.assertEquals(1400, humanPlayer.getMoney());
 
     }
 
@@ -107,19 +112,19 @@ public class HumanPlayerTest {
     public void addProperty() {
         //add a property
         humanPlayer.addProperty(oldkent);
-        assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
+        Assert.assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
 
         //add a property that is not ownable
         humanPlayer.removeProperty(oldkent);
         oldkent.isOwned();
         humanPlayer.addProperty(oldkent);
-        assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
+        Assert.assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
 
         //add a property that is ownable
         humanPlayer.removeProperty(oldkent);
         oldkent.isOwnable();
         humanPlayer.addProperty(oldkent);
-        assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
+        Assert.assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
 
 
     }
@@ -135,14 +140,14 @@ public class HumanPlayerTest {
         humanPlayer.addProperty(oldkent);
         humanPlayer.exchangeMoney(-60);
         humanPlayer.removeProperty(oldkent);
-        assertEquals(0,  humanPlayer.properties().toArray().length);
+        Assert.assertEquals(0,  humanPlayer.properties().toArray().length);
 
         //test that they get the money back when selling
         humanPlayer.setMoney(1500);
         humanPlayer.addProperty(oldkent);
         humanPlayer.exchangeMoney(-60);
         humanPlayer.removeProperty(oldkent);
-        assertEquals(1500,  humanPlayer.getMoney());
+        Assert.assertEquals(1500,  humanPlayer.getMoney());
 
 
 

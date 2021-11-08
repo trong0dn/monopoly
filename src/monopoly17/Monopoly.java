@@ -1,6 +1,6 @@
+package monopoly17;
 /*
-
-Milestone 1
+Milestone 2
 
 Group 17:
 Trong Nguyen 100848232
@@ -11,8 +11,7 @@ Elisha Catherasoo 101148507
 Professor: Babak Esfandiari
 TA: Michael Vezina
 
-Due: 10/25/2021
-
+Due: 11/08/2021
  */
 
 import java.util.*;
