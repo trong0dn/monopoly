@@ -37,7 +37,7 @@ public class MonopolyController{
         this.switchPanels = new JPanel(new CardLayout());
         this.playerList = new LinkedList<>();
         this.startButton = new JButton("Start Game");
-        this.playButton = new JButton("Play The Game");
+        this.playButton = new JButton("Play Game!");
         this.playerMakeMenu = new JMenuBar();
         this.addPlayer = new JMenu("Add Player");
         this.addPlayerItem = new JMenuItem("Add Player");
@@ -142,6 +142,7 @@ public class MonopolyController{
     public JMenuItem getAddPlayerItem(){
         addPlayerItem.addActionListener(e -> {
             if(playerList.size() < 8) {
+                // Make the panel to get the user name
                 JPanel panel = new JPanel(new GridLayout(1, 2));
                 JLabel playerName = new JLabel("Enter Player Name: ");
                 JTextField playerNameInput = new JTextField();
@@ -149,23 +150,26 @@ public class MonopolyController{
                 panel.add(playerNameInput);
                 JOptionPane.showMessageDialog(playerInitPanel, panel);
                 Player newPlayer = new HumanPlayer(playerNameInput.getText());
+
                 playerList.add(newPlayer);
 
+                // Constraints for the player number
                 GridBagConstraints gbagConstraintsPlayerNumber = new GridBagConstraints();
                 gbagConstraintsPlayerNumber.gridx = 1;
                 gbagConstraintsPlayerNumber.gridy = playerList.indexOf(newPlayer);
-                gbagConstraintsPlayerNumber.insets = new Insets(0, 0, 30, 0);
+                gbagConstraintsPlayerNumber.insets = new Insets(0, 0, 20, 0);
 
                 // Constraint for player name
                 gbagConstraintsPlayerName.gridx = 2;
                 gbagConstraintsPlayerName.gridy = playerList.indexOf(newPlayer);
-                gbagConstraintsPlayerName.insets = new Insets(0, 0, 30, 0);
+                gbagConstraintsPlayerName.insets = new Insets(0, 0, 20, 0);
 
                 // Add the new player to the player panel
-                Font playerFont = new Font("Lucida Grande", Font.PLAIN, 30);
+                Font playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
                 JLabel playerNumber = new JLabel("Player " + (playerList.indexOf(newPlayer) + 1 + ": "));
-                JLabel newPlayerLabel = new JLabel(newPlayer.name(), SwingConstants.LEFT);
+                JLabel newPlayerLabel = new JLabel(newPlayer.name());
 
+                // Set look of player names
                 playerNumber.setFont(playerFont);
                 playerNumber.setOpaque(true);
                 playerNumber.setBackground(Color.RED);
@@ -177,15 +181,16 @@ public class MonopolyController{
                 newPlayerLabel.setForeground(Color.WHITE);
 
                 JPanel tempPanelNumber = new JPanel();
-                tempPanelNumber.setPreferredSize(new Dimension(150, 50));
+                tempPanelNumber.setPreferredSize(new Dimension(150, 40));
                 tempPanelNumber.setBackground(Color.RED);
                 tempPanelNumber.add(playerNumber);
 
                 JPanel tempPanelName = new JPanel();
-                tempPanelName.setPreferredSize(new Dimension(250, 50));
+                tempPanelName.setPreferredSize(new Dimension(250, 40));
                 tempPanelName.setBackground(Color.RED);
                 tempPanelName.add(newPlayerLabel);
 
+                // Add player name to panel
                 playerInitPanel.add(tempPanelNumber, gbagConstraintsPlayerNumber);
                 playerInitPanel.add(tempPanelName, gbagConstraintsPlayerName);
 
