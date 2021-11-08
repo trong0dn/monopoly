@@ -4,6 +4,7 @@ import java.awt.*;
 
 /**
  * This class represents the GUI for the dice.
+ * @author Trong Nguyen
  */
 public class DiceGUI extends JPanel {
     RollDice rollDice = new RollDice();

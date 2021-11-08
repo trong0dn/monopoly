@@ -3,7 +3,8 @@ import java.awt.*;
 import java.util.Collection;
 
 /**
- * This class represents the GUI for player on the game board
+ * This class represents the GUI for player on the game board.
+ * @author Trong Nguyen
  */
 public class PlayerGUI extends JPanel {
     private HumanPlayer player;

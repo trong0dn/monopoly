@@ -5,11 +5,12 @@ import java.awt.geom.AffineTransform;
 
 /**
  * This class every square GUI.
+ * @author Trong Nguyen
  */
 public class SquareGUI extends JPanel {
     private final String squareName;
     private final int squareNum;
-    static int total = 0;
+    private static int total = 0;
 
     /**
      * Constructor for SquareGUI.
