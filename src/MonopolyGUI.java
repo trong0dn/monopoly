@@ -364,9 +364,11 @@ public class MonopolyGUI extends JPanel {
             PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
             int roll = die1.getFaceValue() + die2.getFaceValue();
-            if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
+            if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
                 infoConsole.setText("You bought property:\n" + currentSquare.name() +
                         "\nPurchase cost: " + currentSquare.cost());
+            } else {
+                infoConsole.setText("You don't have enough money to buy " + currentSquare.name());
             }
             monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
             buttonBuy.setEnabled(false);
