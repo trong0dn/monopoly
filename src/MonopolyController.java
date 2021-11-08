@@ -21,10 +21,7 @@ public class MonopolyController{
     private JMenuBar playerMakeMenu;
     private JMenu addPlayer;
     private JMenuItem addPlayerItem;
-    private GridBagConstraints gbagConstraintsTitle;
-    private GridBagConstraints gbagConstraintsStartButton;
     private GridBagConstraints gbagConstraintsPlayerName;
-    private GridBagConstraints gbagConstraintsPlayButton;
 
     /**
      * Initialize MonopolyController
@@ -41,10 +38,7 @@ public class MonopolyController{
         this.playerMakeMenu = new JMenuBar();
         this.addPlayer = new JMenu("Add Player");
         this.addPlayerItem = new JMenuItem("Add Player");
-        this.gbagConstraintsTitle = new GridBagConstraints();
-        this.gbagConstraintsStartButton = new GridBagConstraints();
         this.gbagConstraintsPlayerName = new GridBagConstraints();
-        this.gbagConstraintsPlayButton = new GridBagConstraints();
     }
 
     /**
@@ -255,15 +249,18 @@ public class MonopolyController{
         titleBackground.add(title);
 
         // GridBagConstraints for the start panel
+        GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
         gbagConstraintsTitle.gridx = 1;
         gbagConstraintsTitle.gridy = 1;
         gbagConstraintsTitle.insets = new Insets(0, 0, 20, 0);
 
+        GridBagConstraints gbagConstraintsStartButton = new GridBagConstraints();
         gbagConstraintsStartButton.gridx = 1;
         gbagConstraintsStartButton.gridy = 2;
         gbagConstraintsStartButton.insets = new Insets(40, 0, 0, 0);
 
         // GridBagConstraints for the play button
+        GridBagConstraints gbagConstraintsPlayButton = new GridBagConstraints();
         gbagConstraintsPlayButton.gridx = 1;
         gbagConstraintsPlayButton.gridy = 8;
         gbagConstraintsPlayButton.gridwidth = 2;
