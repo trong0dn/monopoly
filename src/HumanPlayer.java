@@ -8,6 +8,9 @@ public class HumanPlayer implements Player {
     private final Input input;
     private final Collection<Square> properties;
     private final String playerName;
+
+
+
     private int money;
     private int position;
 
@@ -83,6 +86,16 @@ public class HumanPlayer implements Player {
     @Override
     public int getMoney() {
         return this.money;
+    }
+
+
+    /**
+     * method for setting the amount of money a player has
+     * used ony in tests
+     * @param money money
+     */
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     /**
