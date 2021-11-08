@@ -368,7 +368,7 @@ public class MonopolyGUI extends JPanel {
                 infoConsole.setText("You bought property:\n" + currentSquare.name() +
                         "\nPurchase cost: " + currentSquare.cost());
             } else {
-                infoConsole.setText("You don't have enough money to buy " + currentSquare.name());
+                infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
             }
             monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
             buttonBuy.setEnabled(false);
