@@ -1,3 +1,7 @@
+package test;
+
+import monopoly17.*;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -28,17 +32,17 @@ public class MonopolyTest {
     public void buyProperty() {
         humanPlayer2.setMoney(1500);
         monopoly.buyProperty(humanPlayer, oldkent);
-        assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
+        Assert.assertEquals(oldkent, humanPlayer.properties().toArray()[0]);
 
         //the property is already owned, cannot purchase it
         oldkent.isOwned();
         monopoly.buyProperty(humanPlayer, oldkent);
-        assertEquals(0, humanPlayer2.properties().toArray().length);
+        Assert.assertEquals(0, humanPlayer2.properties().toArray().length);
 
         //player 2 purchases oldkent from player1
         humanPlayer2.setMoney(10);
         monopoly.buyProperty(humanPlayer2, oldkent);
-        assertEquals(oldkent, humanPlayer2.properties().toArray()[0]);
+        Assert.assertEquals(oldkent, humanPlayer2.properties().toArray()[0]);
 
     }
 
@@ -54,14 +58,14 @@ public class MonopolyTest {
         humanPlayer2.setMoney(1500);
         monopoly.buyProperty(humanPlayer, oldkent);
         monopoly.owned(humanPlayer2, oldkent, 5);
-        assertEquals(1498, humanPlayer2.getMoney());
+        Assert.assertEquals(1498, humanPlayer2.getMoney());
 
 
         //player landed on their own property, does not pay rent
         humanPlayer2.setMoney(1500);
         monopoly.buyProperty(humanPlayer2, oldkent);
         monopoly.owned(humanPlayer2, oldkent, 5);
-        assertEquals(1500, humanPlayer2.getMoney());
+        Assert.assertEquals(1500, humanPlayer2.getMoney());
 
 
         //player landed on their own property, does not have any money, they are not bankrupt
@@ -69,7 +73,7 @@ public class MonopolyTest {
         monopoly.buyProperty(humanPlayer2, oldkent);
         humanPlayer2.setMoney(0);
         monopoly.owned(humanPlayer2, oldkent, 5);
-        assertEquals(0, humanPlayer2.getMoney());
+        Assert.assertEquals(0, humanPlayer2.getMoney());
         assertFalse(monopoly.isBankrupt());
 
 

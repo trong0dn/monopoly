@@ -1,3 +1,5 @@
+package monopoly17;
+
 /**
  * This class represents all the utility square tiles on the game board.
  * @author Trong Nguyen

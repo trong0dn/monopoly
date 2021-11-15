@@ -1,26 +1,30 @@
+package monopoly17;
+
 /**
- * This class represents the tax square tiles on the game board.
+ * This class represents all the railroad square tiles on the game board.
  * @author Trong Nguyen
  */
-public class Taxes implements Square {
+public class Railroad implements Square {
+    private final int COST = 200;
     private final int position;
     private final String name;
-    private final int tax;
+    private final Railroad[] others;
+    private int numOwned;
+    private Player owner;
+    private boolean owned;
 
     /**
-     * Initialize Taxes.
+     * Initialize Railroad.
      * @param position int
      * @param name     String
      */
-    public Taxes(int position, String name) {
+    public Railroad(int position, String name) {
         this.position = position;
         this.name = name;
-        if (this.name.equals("Income Tax")) {
-            this.tax = 200;
-        } else {
-            this.tax = 100;
-        }
+        this.others = new Railroad[3];
+        this.owned = false;
     }
+
 
     /**
      * Get the position of the square tile.
@@ -48,8 +52,9 @@ public class Taxes implements Square {
      */
     @Override
     public boolean isOwnable() {
-        return false;
+        return true;
     }
+
 
     /**
      * If the square tile is owned.
@@ -57,7 +62,7 @@ public class Taxes implements Square {
      */
     @Override
     public boolean isOwned() {
-        return false;
+        return owned;
     }
 
 
@@ -67,9 +72,8 @@ public class Taxes implements Square {
      */
     @Override
     public int cost() {
-        return 0;
+        return this.COST;
     }
-
 
     /**
      * Method invoked when a square tile is being purchased.
@@ -77,8 +81,10 @@ public class Taxes implements Square {
      */
     @Override
     public void purchase(Player player) {
+        owned = true;
+        owner = player;
+        updateOwners();
     }
-
 
     /**
      * Rent value of the square tile.
@@ -87,7 +93,14 @@ public class Taxes implements Square {
      */
     @Override
     public int rent(int value) {
-        return 0;
+        updateOwners();
+        return switch (numOwned) {
+            case 1 -> 25;
+            case 2 -> 50;
+            case 3 -> 100;
+            case 4 -> 200;
+            default -> 0;
+        };
     }
 
     /**
@@ -96,14 +109,30 @@ public class Taxes implements Square {
      */
     @Override
     public Player owner() {
-        return null;
+        return owner;
     }
 
     /**
-     * Get the tax.
-     * @return  int
+     * Create railroad groupings.
+     * @param a   - Railroad
+     * @param b   - Railroad
+     * @param c   - Railroad
      */
-    public int getTax() {
-        return this.tax;
+    public void setGroup(Railroad a, Railroad b, Railroad c) {
+        this.others[0] = a;
+        this.others[1] = b;
+        this.others[2] = c;
+    }
+
+    /**
+     * Updates the number of owned railroads.
+     */
+    private void updateOwners() {
+        numOwned = 1;
+        for (Railroad r : others) {
+            if (r.isOwned() && r.owner().equals(owner)) {
+                numOwned++;
+            }
+        }
     }
 }

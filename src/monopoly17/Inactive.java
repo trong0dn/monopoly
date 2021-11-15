@@ -1,28 +1,22 @@
+package monopoly17;
+
 /**
- * This class represents all the railroad square tiles on the game board.
+ * This class represents an inactive square tile on the board game.
  * @author Trong Nguyen
  */
-public class Railroad implements Square {
-    private final int COST = 200;
+public class Inactive implements Square {
     private final int position;
     private final String name;
-    private final Railroad[] others;
-    private int numOwned;
-    private Player owner;
-    private boolean owned;
 
     /**
-     * Initialize Railroad.
+     * Initialize Inactive squares.
      * @param position int
      * @param name     String
      */
-    public Railroad(int position, String name) {
+    public Inactive(int position, String name) {
         this.position = position;
         this.name = name;
-        this.others = new Railroad[3];
-        this.owned = false;
     }
-
 
     /**
      * Get the position of the square tile.
@@ -43,16 +37,14 @@ public class Railroad implements Square {
         return this.name;
     }
 
-
     /**
      * If the square tile can be owned or not.
      * @return  boolean
      */
     @Override
     public boolean isOwnable() {
-        return true;
+        return false;
     }
-
 
     /**
      * If the square tile is owned.
@@ -60,9 +52,8 @@ public class Railroad implements Square {
      */
     @Override
     public boolean isOwned() {
-        return owned;
+        return false;
     }
-
 
     /**
      * Get the cost of the square tile.
@@ -70,7 +61,7 @@ public class Railroad implements Square {
      */
     @Override
     public int cost() {
-        return this.COST;
+        return 0;
     }
 
     /**
@@ -79,9 +70,6 @@ public class Railroad implements Square {
      */
     @Override
     public void purchase(Player player) {
-        owned = true;
-        owner = player;
-        updateOwners();
     }
 
     /**
@@ -91,14 +79,7 @@ public class Railroad implements Square {
      */
     @Override
     public int rent(int value) {
-        updateOwners();
-        return switch (numOwned) {
-            case 1 -> 25;
-            case 2 -> 50;
-            case 3 -> 100;
-            case 4 -> 200;
-            default -> 0;
-        };
+        return 0;
     }
 
     /**
@@ -107,30 +88,6 @@ public class Railroad implements Square {
      */
     @Override
     public Player owner() {
-        return owner;
-    }
-
-    /**
-     * Create railroad groupings.
-     * @param a   - Railroad
-     * @param b   - Railroad
-     * @param c   - Railroad
-     */
-    public void setGroup(Railroad a, Railroad b, Railroad c) {
-        this.others[0] = a;
-        this.others[1] = b;
-        this.others[2] = c;
-    }
-
-    /**
-     * Updates the number of owned railroads.
-     */
-    private void updateOwners() {
-        numOwned = 1;
-        for (Railroad r : others) {
-            if (r.isOwned() && r.owner().equals(owner)) {
-                numOwned++;
-            }
-        }
+        return null;
     }
 }

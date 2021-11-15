@@ -1,3 +1,5 @@
+package monopoly17;
+
 /**
  * This class represents the jail square tile on the board game.
  * @author Trong Nguyen
