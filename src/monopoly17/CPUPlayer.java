@@ -1,8 +1,24 @@
 package monopoly17;
 
 import java.util.Collection;
+import java.util.LinkedList;
 
 public class CPUPlayer implements Player{
+
+    private final Input input;
+    private final Collection<Square> properties;
+    private final String CPUName;
+    private int money;
+    private int position;
+
+    public CPUPlayer(String CPUName){
+        this.input = new Input();
+        this.properties = new LinkedList<>();
+        this.CPUName = CPUName;
+        this.money = 1500;
+        this.position = 0;
+    }
+
     /**
      * Movement of square tiles for a player.
      *
@@ -10,17 +26,25 @@ public class CPUPlayer implements Player{
      */
     @Override
     public void move(int numTiles) {
-
+        this.position += numTiles;
+        int BOARD_SIZE = 40;
+        if (position >= BOARD_SIZE) {
+            position -= BOARD_SIZE;
+            exchangeMoney(200);
+        }
     }
 
     /**
      * Movement to a different position on the board.
      *
-     * @param position int
+     * @param newPosition int
      */
     @Override
-    public void moveTo(int position) {
-
+    public void moveTo(int newPosition) {
+        if (newPosition < position) {
+            exchangeMoney(200);
+        }
+        position = newPosition;
     }
 
     /**
