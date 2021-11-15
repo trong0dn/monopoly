@@ -31,6 +31,7 @@ public class CPUPlayer implements Player{
         if (position >= BOARD_SIZE) {
             position -= BOARD_SIZE;
             exchangeMoney(200);
+
         }
     }
 
@@ -54,7 +55,8 @@ public class CPUPlayer implements Player{
      */
     @Override
     public int getPosition() {
-        return 0;
+        return this.position;
+
     }
 
     /**
@@ -64,17 +66,19 @@ public class CPUPlayer implements Player{
      */
     @Override
     public Collection<Square> properties() {
-        return null;
+        return new LinkedList<>(properties);
+
     }
 
     /**
-     * Get the name of the player.
+     * Get the name of the CPU player.
      *
      * @return String
      */
     @Override
     public String name() {
-        return null;
+        return this.CPUName;
+
     }
 
     /**
@@ -84,7 +88,8 @@ public class CPUPlayer implements Player{
      */
     @Override
     public int getMoney() {
-        return 0;
+        return this.money;
+
     }
 
     /**
@@ -94,6 +99,7 @@ public class CPUPlayer implements Player{
      */
     @Override
     public void exchangeMoney(int money) {
+        this.money += money;
 
     }
 
@@ -104,7 +110,13 @@ public class CPUPlayer implements Player{
      */
     @Override
     public void addProperty(Square square) {
-
+        if (!square.isOwnable()) {
+            throw new IllegalArgumentException("This property can not be purchased");
+        }
+        else {
+            properties.add(square);
+            square.purchase(this);
+        }
     }
 
     /**
@@ -114,7 +126,8 @@ public class CPUPlayer implements Player{
      */
     @Override
     public void removeProperty(Square square) {
-
+        properties.remove(square);
+        money += square.cost();
     }
 
     /**
@@ -125,7 +138,7 @@ public class CPUPlayer implements Player{
      */
     @Override
     public boolean inputBool(Monopoly.GameState state) {
-        return false;
+        return this.input.inputBool();
     }
 
     /**
@@ -136,7 +149,7 @@ public class CPUPlayer implements Player{
      */
     @Override
     public int inputInt(Monopoly.GameState state) {
-        return 0;
+        return this.input.inputInt();
     }
 
     /**
@@ -148,6 +161,7 @@ public class CPUPlayer implements Player{
      */
     @Override
     public int inputDecision(Monopoly.GameState state, String[] choices) {
-        return 0;
+        return this.input.inputDecision(choices);
+
     }
 }
