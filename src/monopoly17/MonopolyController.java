@@ -195,6 +195,12 @@ public class MonopolyController{
         return addPlayer;
     }
 
+    public JButton AddCPUPlayer() {
+        addCPUPlayer.addActionListener(e ->
+                JOptionPane.showMessageDialog(playerInitPanel, "Not implemented yet!"));
+        return addCPUPlayer;
+    }
+
     /**
      * This will change to the player initialization panel
      * @return JButton
@@ -311,7 +317,7 @@ public class MonopolyController{
         startPanel.add(startButton(), gbagConstraintsStartButton);
         playerInitPanel.add(playerNameInput, gbagConstraintsPlayerNameInput);
         playerInitPanel.add(addPlayerButton(), gbagConstraintsAddPlayerButton);
-        playerInitPanel.add(addCPUPlayer, gbagConstraintsAddCPUPlayerButton);
+        playerInitPanel.add(AddCPUPlayer(), gbagConstraintsAddCPUPlayerButton);
         playerInitPanel.add(playButton(), gbagConstraintsPlayButton);
         playerInitPanel.add(messagePanel, gbagConstraintsMessage);
 
