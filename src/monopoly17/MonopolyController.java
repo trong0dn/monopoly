@@ -23,6 +23,8 @@ public class MonopolyController{
     private JButton addPlayer;
     private JButton addCPUPlayer;
     private JTextField playerNameInput;
+    private JPanel playerNameList;
+    private Font playerFont;
 
     /**
      * Initialize MonopolyController
@@ -39,6 +41,8 @@ public class MonopolyController{
         this.addPlayer = new JButton("Add Player");
         this.addCPUPlayer = new JButton("Add CPU Player");
         this.playerNameInput = new JTextField();
+        this.playerNameList = new JPanel(new GridLayout(0,2));
+        this.playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
     }
 
     /**
@@ -141,33 +145,21 @@ public class MonopolyController{
 
                 playerList.add(newPlayer);
 
-                // Constraints for the player number
-                GridBagConstraints gbagConstraintsPlayerNumber = new GridBagConstraints();
-                gbagConstraintsPlayerNumber.gridx = 1;
-                gbagConstraintsPlayerNumber.gridy = playerList.indexOf(newPlayer) + 1;
-                gbagConstraintsPlayerNumber.insets = new Insets(0, 0, 20, 0);
-
-                // Constraint for player name
-                GridBagConstraints gbagConstraintsPlayerName = new GridBagConstraints();
-                gbagConstraintsPlayerName.gridx = 2;
-                gbagConstraintsPlayerName.gridy = playerList.indexOf(newPlayer) + 1;
-                gbagConstraintsPlayerName.insets = new Insets(0, 0, 20, 0);
-
                 // Add the new player to the player panel
-                Font playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
-                JLabel playerNumber = new JLabel("Player " + (playerList.indexOf(newPlayer) + 1) + ": ");
-                JLabel newPlayerLabel = new JLabel(newPlayer.name());
-
-                // Set look of player names
+                JLabel playerNumber = new JLabel();
                 playerNumber.setFont(playerFont);
                 playerNumber.setOpaque(true);
                 playerNumber.setBackground(Color.RED);
                 playerNumber.setForeground(Color.WHITE);
 
+                JLabel newPlayerLabel = new JLabel();
                 newPlayerLabel.setFont(playerFont);
                 newPlayerLabel.setOpaque(true);
                 newPlayerLabel.setBackground(Color.RED);
                 newPlayerLabel.setForeground(Color.WHITE);
+
+                playerNumber.setText("Player " + (playerList.indexOf(newPlayer) + 1) + ": ");
+                newPlayerLabel.setText(newPlayer.name());
 
                 JPanel tempPanelNumber = new JPanel();
                 tempPanelNumber.setPreferredSize(new Dimension(150, 40));
@@ -180,14 +172,19 @@ public class MonopolyController{
                 tempPanelName.add(newPlayerLabel);
 
                 // Add player name to panel
-                playerInitPanel.add(tempPanelNumber, gbagConstraintsPlayerNumber);
-                playerInitPanel.add(tempPanelName, gbagConstraintsPlayerName);
+                playerNameList.add(tempPanelNumber);
+                playerNameList.add(tempPanelName);
+
+                playerNameList.revalidate();
+                playerNameList.repaint();
 
                 if (playerList.size() >= 2 && playerList.size() <= 6) {
                     playButton.setEnabled(true);
                 }
 
+                // Make text box empty
                 playerNameInput.setText("");
+
             } else {
                 JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
             }
@@ -252,6 +249,10 @@ public class MonopolyController{
         monopolyPanel.setBackground(Color.white);
 
         startButton.setPreferredSize(new Dimension(175, 50));
+
+        playerNameList.setPreferredSize(new Dimension(400, 240));
+        playerNameList.setBackground(Color.RED);
+
         playerNameInput.setPreferredSize(new Dimension(175, 50));
         addPlayer.setPreferredSize(new Dimension(175, 50));
         addCPUPlayer.setPreferredSize(new Dimension(175, 50));
@@ -282,32 +283,39 @@ public class MonopolyController{
         gbagConstraintsStartButton.gridy = 2;
         gbagConstraintsStartButton.insets = new Insets(40, 0, 0, 0);
 
+        GridBagConstraints gbagConstraintsPlayerNameList = new GridBagConstraints();
+        gbagConstraintsPlayerNameList.gridx = 1;
+        gbagConstraintsPlayerNameList.gridy = 1;
+        gbagConstraintsPlayerNameList.gridwidth = 2;
+        gbagConstraintsPlayerNameList.gridheight = 7;
+        gbagConstraintsPlayerNameList.insets = new Insets(0, 0, 10, 0);
+
         GridBagConstraints gbagConstraintsPlayerNameInput = new GridBagConstraints();
-        gbagConstraintsPlayerNameInput.gridx = 2;
-        gbagConstraintsPlayerNameInput.gridy = 0;
+        gbagConstraintsPlayerNameInput.gridx = 1;
+        gbagConstraintsPlayerNameInput.gridy = 8;
         gbagConstraintsPlayerNameInput.gridwidth = 1;
         gbagConstraintsPlayerNameInput.insets = new Insets(0, 0, 10, 0);
 
         GridBagConstraints gbagConstraintsAddPlayerButton = new GridBagConstraints();
-        gbagConstraintsAddPlayerButton.gridx = 3;
-        gbagConstraintsAddPlayerButton.gridy = 0;
+        gbagConstraintsAddPlayerButton.gridx = 2;
+        gbagConstraintsAddPlayerButton.gridy = 8;
         gbagConstraintsAddPlayerButton.gridwidth = 1;
-        gbagConstraintsAddPlayerButton.insets = new Insets(0, 0, 10, 0);
+        gbagConstraintsAddPlayerButton.insets = new Insets(0, 0, 20, 0);
 
         GridBagConstraints gbagConstraintsAddCPUPlayerButton = new GridBagConstraints();
-        gbagConstraintsAddCPUPlayerButton.gridx = 5;
-        gbagConstraintsAddCPUPlayerButton.gridy = 0;
-        gbagConstraintsAddCPUPlayerButton.gridwidth = 1;
-        gbagConstraintsAddCPUPlayerButton.insets = new Insets(0, 0, 10, 0);
+        gbagConstraintsAddCPUPlayerButton.gridx = 1;
+        gbagConstraintsAddCPUPlayerButton.gridy = 9;
+        gbagConstraintsAddCPUPlayerButton.gridwidth = 2;
+        gbagConstraintsAddCPUPlayerButton.insets = new Insets(10, 0, 10, 0);
 
         GridBagConstraints gbagConstraintsPlayButton = new GridBagConstraints();
-        gbagConstraintsPlayButton.gridx = 3;
+        gbagConstraintsPlayButton.gridx = 1;
         gbagConstraintsPlayButton.gridy = 10;
         gbagConstraintsPlayButton.gridwidth = 2;
-        gbagConstraintsPlayButton.insets = new Insets(40, 0, 0, 0);
+        gbagConstraintsPlayButton.insets = new Insets(20, 0, 0, 0);
 
         GridBagConstraints gbagConstraintsMessage = new GridBagConstraints();
-        gbagConstraintsMessage.gridx = 3;
+        gbagConstraintsMessage.gridx = 1;
         gbagConstraintsMessage.gridy = 12;
         gbagConstraintsMessage.gridwidth = 2;
         gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
@@ -315,6 +323,8 @@ public class MonopolyController{
         // add the buttons, panels and labels to the frame
         startPanel.add(titleBackground, gbagConstraintsTitle);
         startPanel.add(startButton(), gbagConstraintsStartButton);
+
+        playerInitPanel.add(playerNameList, gbagConstraintsPlayerNameList);
         playerInitPanel.add(playerNameInput, gbagConstraintsPlayerNameInput);
         playerInitPanel.add(addPlayerButton(), gbagConstraintsAddPlayerButton);
         playerInitPanel.add(AddCPUPlayer(), gbagConstraintsAddCPUPlayerButton);
