@@ -20,10 +20,11 @@ public class MonopolyController{
     private LinkedList<Player> playerList;
     private JButton startButton;
     private JButton playButton;
-    private JMenuBar playerMakeMenu;
-    private JMenu addPlayer;
-    private JMenuItem addPlayerItem;
-    private GridBagConstraints gbagConstraintsPlayerName;
+    private JButton addPlayer;
+    private JButton addCPUPlayer;
+    private JTextField playerNameInput;
+    private JPanel playerNameList;
+    private Font playerFont;
 
     /**
      * Initialize MonopolyController
@@ -37,10 +38,11 @@ public class MonopolyController{
         this.playerList = new LinkedList<>();
         this.startButton = new JButton("Start Game");
         this.playButton = new JButton("Play Game!");
-        this.playerMakeMenu = new JMenuBar();
-        this.addPlayer = new JMenu("Add Player");
-        this.addPlayerItem = new JMenuItem("Add Player");
-        this.gbagConstraintsPlayerName = new GridBagConstraints();
+        this.addPlayer = new JButton("Add Player");
+        this.addCPUPlayer = new JButton("Add CPU Player");
+        this.playerNameInput = new JTextField();
+        this.playerNameList = new JPanel(new GridLayout(0,2));
+        this.playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
     }
 
     /**
@@ -135,46 +137,29 @@ public class MonopolyController{
      * Get the menu item that adds a new player.
      * @return      JMenuItem
      */
-    public JMenuItem getAddPlayerItem() {
-        addPlayerItem.addActionListener(e -> {
+    public JButton addPlayerButton() {
+        addPlayer.addActionListener(e -> {
             if(playerList.size() < 6) {
-                // Make the panel to get the user name
-                JPanel panel = new JPanel(new GridLayout(1, 2));
-                JLabel playerName = new JLabel("Enter Player Name: ");
-                JTextField playerNameInput = new JTextField();
-                panel.add(playerName);
-                panel.add(playerNameInput);
-                JOptionPane.showMessageDialog(playerInitPanel, panel);
+                // Make the panel to get the username
                 Player newPlayer = new HumanPlayer(playerNameInput.getText());
 
                 playerList.add(newPlayer);
 
-                // Constraints for the player number
-                GridBagConstraints gbagConstraintsPlayerNumber = new GridBagConstraints();
-                gbagConstraintsPlayerNumber.gridx = 1;
-                gbagConstraintsPlayerNumber.gridy = playerList.indexOf(newPlayer);
-                gbagConstraintsPlayerNumber.insets = new Insets(0, 0, 20, 0);
-
-                // Constraint for player name
-                gbagConstraintsPlayerName.gridx = 2;
-                gbagConstraintsPlayerName.gridy = playerList.indexOf(newPlayer);
-                gbagConstraintsPlayerName.insets = new Insets(0, 0, 20, 0);
-
                 // Add the new player to the player panel
-                Font playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
-                JLabel playerNumber = new JLabel("Player " + (playerList.indexOf(newPlayer) + 1 + ": "));
-                JLabel newPlayerLabel = new JLabel(newPlayer.name());
-
-                // Set look of player names
+                JLabel playerNumber = new JLabel();
                 playerNumber.setFont(playerFont);
                 playerNumber.setOpaque(true);
                 playerNumber.setBackground(Color.RED);
                 playerNumber.setForeground(Color.WHITE);
 
+                JLabel newPlayerLabel = new JLabel();
                 newPlayerLabel.setFont(playerFont);
                 newPlayerLabel.setOpaque(true);
                 newPlayerLabel.setBackground(Color.RED);
                 newPlayerLabel.setForeground(Color.WHITE);
+
+                playerNumber.setText("Player " + (playerList.indexOf(newPlayer) + 1) + ": ");
+                newPlayerLabel.setText(newPlayer.name());
 
                 JPanel tempPanelNumber = new JPanel();
                 tempPanelNumber.setPreferredSize(new Dimension(150, 40));
@@ -187,17 +172,30 @@ public class MonopolyController{
                 tempPanelName.add(newPlayerLabel);
 
                 // Add player name to panel
-                playerInitPanel.add(tempPanelNumber, gbagConstraintsPlayerNumber);
-                playerInitPanel.add(tempPanelName, gbagConstraintsPlayerName);
+                playerNameList.add(tempPanelNumber);
+                playerNameList.add(tempPanelName);
+
+                playerNameList.revalidate();
+                playerNameList.repaint();
 
                 if (playerList.size() >= 2 && playerList.size() <= 6) {
                     playButton.setEnabled(true);
                 }
+
+                // Make text box empty
+                playerNameInput.setText("");
+
             } else {
                 JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
             }
         });
-        return addPlayerItem;
+        return addPlayer;
+    }
+
+    public JButton AddCPUPlayer() {
+        addCPUPlayer.addActionListener(e ->
+                JOptionPane.showMessageDialog(playerInitPanel, "Not implemented yet!"));
+        return addCPUPlayer;
     }
 
     /**
@@ -208,12 +206,6 @@ public class MonopolyController{
         startButton.addActionListener(e -> {
             CardLayout cl = (CardLayout) (switchPanels.getLayout());
             cl.show(switchPanels, "PlayerInitializePanel");
-
-            // add a menu bar for adding players
-            getAddPlayerItem();
-            addPlayer.add(addPlayerItem);
-            playerMakeMenu.add(addPlayer);
-            frame.setJMenuBar(playerMakeMenu);
         });
         return startButton;
     }
@@ -226,9 +218,6 @@ public class MonopolyController{
         playButton.addActionListener(e -> {
             CardLayout cl = (CardLayout) (switchPanels.getLayout());
             cl.show(switchPanels, "MonopolyPanel");
-
-            // remove the menu bar for the game
-            frame.setJMenuBar(null);
         });
         return playButton;
     }
@@ -240,41 +229,11 @@ public class MonopolyController{
         // make the main title
         Font font = new Font("Lucida Grande", Font.BOLD, 60);
         JPanel titleBackground = new JPanel();
+
+        // set sizes
         titleBackground.setPreferredSize(new Dimension(450, 90));
         titleBackground.setBackground(Color.RED);
 
-        JLabel title = new JLabel("MONOPOLY!");
-        title.setFont(font);
-        title.setOpaque(true);
-        title.setBackground(Color.RED);
-        title.setForeground(Color.WHITE);
-        titleBackground.add(title);
-
-        // GridBagConstraints for the start panel
-        GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
-        gbagConstraintsTitle.gridx = 1;
-        gbagConstraintsTitle.gridy = 1;
-        gbagConstraintsTitle.insets = new Insets(0, 0, 20, 0);
-
-        GridBagConstraints gbagConstraintsStartButton = new GridBagConstraints();
-        gbagConstraintsStartButton.gridx = 1;
-        gbagConstraintsStartButton.gridy = 2;
-        gbagConstraintsStartButton.insets = new Insets(40, 0, 0, 0);
-
-        // GridBagConstraints for the play button
-        GridBagConstraints gbagConstraintsPlayButton = new GridBagConstraints();
-        gbagConstraintsPlayButton.gridx = 1;
-        gbagConstraintsPlayButton.gridy = 8;
-        gbagConstraintsPlayButton.gridwidth = 2;
-        gbagConstraintsPlayButton.insets = new Insets(60, 0, 0, 0);
-
-        GridBagConstraints gbagConstraintsMessage = new GridBagConstraints();
-        gbagConstraintsMessage.gridx = 1;
-        gbagConstraintsMessage.gridy = 12;
-        gbagConstraintsMessage.gridwidth = 2;
-        gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
-
-        // set the frame, panels and buttons
         frame.setBounds(100, 100, 450, 300);
         frame.setSize(1080,710);
 
@@ -290,16 +249,85 @@ public class MonopolyController{
         monopolyPanel.setBackground(Color.white);
 
         startButton.setPreferredSize(new Dimension(175, 50));
+
+        playerNameList.setPreferredSize(new Dimension(400, 240));
+        playerNameList.setBackground(Color.RED);
+
+        playerNameInput.setPreferredSize(new Dimension(175, 50));
+        addPlayer.setPreferredSize(new Dimension(175, 50));
+        addCPUPlayer.setPreferredSize(new Dimension(175, 50));
         playButton.setPreferredSize(new Dimension(175, 50));
         playButton.setEnabled(false);
 
+        // starting page label
+        JLabel title = new JLabel("MONOPOLY!");
+        title.setFont(font);
+        title.setOpaque(true);
+        title.setBackground(Color.RED);
+        title.setForeground(Color.WHITE);
+        titleBackground.add(title);
+
+        // player initialization label
         JPanel messagePanel = new JPanel();
-        JLabel message = new JLabel("Click Add Player on top right menu bar (need 2-6 players)");
+        JLabel message = new JLabel("Enter your name in text box the click Add Player (need 2-6 players)");
         messagePanel.add(message);
+
+        // GridBagConstraints
+        GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
+        gbagConstraintsTitle.gridx = 1;
+        gbagConstraintsTitle.gridy = 1;
+        gbagConstraintsTitle.insets = new Insets(0, 0, 20, 0);
+
+        GridBagConstraints gbagConstraintsStartButton = new GridBagConstraints();
+        gbagConstraintsStartButton.gridx = 1;
+        gbagConstraintsStartButton.gridy = 2;
+        gbagConstraintsStartButton.insets = new Insets(40, 0, 0, 0);
+
+        GridBagConstraints gbagConstraintsPlayerNameList = new GridBagConstraints();
+        gbagConstraintsPlayerNameList.gridx = 1;
+        gbagConstraintsPlayerNameList.gridy = 1;
+        gbagConstraintsPlayerNameList.gridwidth = 2;
+        gbagConstraintsPlayerNameList.gridheight = 7;
+        gbagConstraintsPlayerNameList.insets = new Insets(0, 0, 10, 0);
+
+        GridBagConstraints gbagConstraintsPlayerNameInput = new GridBagConstraints();
+        gbagConstraintsPlayerNameInput.gridx = 1;
+        gbagConstraintsPlayerNameInput.gridy = 8;
+        gbagConstraintsPlayerNameInput.gridwidth = 1;
+        gbagConstraintsPlayerNameInput.insets = new Insets(0, 0, 10, 0);
+
+        GridBagConstraints gbagConstraintsAddPlayerButton = new GridBagConstraints();
+        gbagConstraintsAddPlayerButton.gridx = 2;
+        gbagConstraintsAddPlayerButton.gridy = 8;
+        gbagConstraintsAddPlayerButton.gridwidth = 1;
+        gbagConstraintsAddPlayerButton.insets = new Insets(0, 0, 20, 0);
+
+        GridBagConstraints gbagConstraintsAddCPUPlayerButton = new GridBagConstraints();
+        gbagConstraintsAddCPUPlayerButton.gridx = 1;
+        gbagConstraintsAddCPUPlayerButton.gridy = 9;
+        gbagConstraintsAddCPUPlayerButton.gridwidth = 2;
+        gbagConstraintsAddCPUPlayerButton.insets = new Insets(10, 0, 10, 0);
+
+        GridBagConstraints gbagConstraintsPlayButton = new GridBagConstraints();
+        gbagConstraintsPlayButton.gridx = 1;
+        gbagConstraintsPlayButton.gridy = 10;
+        gbagConstraintsPlayButton.gridwidth = 2;
+        gbagConstraintsPlayButton.insets = new Insets(20, 0, 0, 0);
+
+        GridBagConstraints gbagConstraintsMessage = new GridBagConstraints();
+        gbagConstraintsMessage.gridx = 1;
+        gbagConstraintsMessage.gridy = 12;
+        gbagConstraintsMessage.gridwidth = 2;
+        gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
 
         // add the buttons, panels and labels to the frame
         startPanel.add(titleBackground, gbagConstraintsTitle);
         startPanel.add(startButton(), gbagConstraintsStartButton);
+
+        playerInitPanel.add(playerNameList, gbagConstraintsPlayerNameList);
+        playerInitPanel.add(playerNameInput, gbagConstraintsPlayerNameInput);
+        playerInitPanel.add(addPlayerButton(), gbagConstraintsAddPlayerButton);
+        playerInitPanel.add(AddCPUPlayer(), gbagConstraintsAddCPUPlayerButton);
         playerInitPanel.add(playButton(), gbagConstraintsPlayButton);
         playerInitPanel.add(messagePanel, gbagConstraintsMessage);
 
