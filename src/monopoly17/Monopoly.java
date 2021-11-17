@@ -290,6 +290,8 @@ public class Monopoly {
         }
     }
 
+    // Comment
+
     /**
      * return whether a player is bankrupt or not
      * used for testing
