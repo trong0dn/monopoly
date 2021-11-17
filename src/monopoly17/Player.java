@@ -27,12 +27,6 @@ public interface Player {
     int getPosition();
 
     /**
-     * Get if the player is in jail pr not.
-     * @return  boolean
-     */
-    boolean getInJail();
-
-    /**
      * Set if the player is in jail pr not.
      * @param bool      boolean
      */

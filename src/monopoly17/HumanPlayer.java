@@ -65,15 +65,6 @@ public class HumanPlayer implements Player {
     }
 
     /**
-     * Get if the player is in jail pr not.
-     * @return  boolean
-     */
-    @Override
-    public boolean getInJail() {
-        return this.inJail;
-    }
-
-    /**
      * Set if the player is in jail pr not.
      * @param bool      boolean
      */
