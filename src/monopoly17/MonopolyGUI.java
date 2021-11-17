@@ -359,7 +359,7 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonNextTurn() {
         buttonNextTurn = new JButton("Next Turn");
         buttonNextTurn.addActionListener(e -> {
-            infoConsole.setText("Next Turn!");
+            infoConsole.setText("Next Turn!\n");
             if (isDouble) {
                 isDouble = false;
             }
