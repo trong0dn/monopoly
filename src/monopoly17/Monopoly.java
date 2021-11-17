@@ -14,6 +14,7 @@ TA: Michael Vezina
 Due: 11/08/2021
  */
 
+import java.time.temporal.ValueRange;
 import java.util.*;
 
 /**
@@ -23,9 +24,8 @@ import java.util.*;
 public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
-
-
     private boolean isBankrupt;
+    private ValueEstimator valueEstimator; // for buyHouse
 
     /**
      * Constructor for Monopoly.
@@ -106,6 +106,9 @@ public class Monopoly {
         for (Player p: gameState.players) {
             System.out.println(">>> " + p.name());
         }
+
+        //Declare valueEstimator for buyHouse()
+        valueEstimator = new ValueEstimator(gameState.gameBoard, gameState.players, new RollDice(), gameState.gameBoard.square(7));     //Not yet complete
     }
 
     /**
@@ -287,10 +290,19 @@ public class Monopoly {
         for (Square sq: player.properties()){
             Property prop;
 
+            if (sq instanceof Property)
+                prop = (Property) sq;
+
+            else
+                continue;
+
+            double val = valueEstimator.expectedValue(sq.position(), prop.rent());
+
+
         }
     }
 
-    // Comment
+
 
     /**
      * return whether a player is bankrupt or not
