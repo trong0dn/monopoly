@@ -293,7 +293,6 @@ public class MonopolyGUI extends JPanel {
             if (firstRoll) {
                 updatePlayerList();
                 firstRoll = false;
-                //updatePlayerList();
                 setupButtons();
                 setupPlayerToken();
                 setupPlayerStatusWindow();
@@ -312,9 +311,18 @@ public class MonopolyGUI extends JPanel {
             leftLayeredPane.remove(gameBoard);
             leftLayeredPane.add(gameBoard, Integer.valueOf(0));
 
+            int prevSquare = currentSquareNumber - diceValue;
+
+            infoConsole.setText(""); // in case player didn't pass go
+
+            // Pass Go
+            if (currentSquareNumber < 12 && prevSquare < 0) {
+                infoConsole.setText("You passed Go! You get $200!\n");
+            }
+
             // Button logic
             if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
-                infoConsole.setText("You landed on " + currentSquare.name() +
+                infoConsole.append("You landed on " + currentSquare.name() +
                                 "\nProperty Cost: $" + currentSquare.cost());
                 isRollDouble(currentPlayerOrder);
                 buttonBuy.setEnabled(true);
@@ -322,11 +330,11 @@ public class MonopolyGUI extends JPanel {
                 if (currentSquare.owner().name().equals(currentPlayer.getPlayer().name())) {
                     buttonBuy.setEnabled(false);
                     buttonPayRent.setEnabled(false);
-                    infoConsole.setText("You landed on " + currentSquare.name()
+                    infoConsole.append("You landed on " + currentSquare.name()
                             + "\nYou already own " + currentSquare.name());
                     isRollDouble(currentPlayerOrder);
                 } else {
-                    infoConsole.setText("You landed on " + currentSquare.name() +
+                    infoConsole.append("You landed on " + currentSquare.name() +
                             "\nRent: $" + currentSquare.rent(diceValue));
                     isRollDouble(currentPlayerOrder);
                     buttonPayRent.setEnabled(true);
@@ -334,7 +342,7 @@ public class MonopolyGUI extends JPanel {
                     buttonNextTurn.setEnabled(false);
                 }
             } else {
-                infoConsole.setText("You landed on a non-purchasable property: \n" + currentSquare.name());
+                infoConsole.append("You landed on a non-purchasable property: \n" + currentSquare.name());
                 isRollDouble(currentPlayerOrder);
                 buttonBuy.setEnabled(false);
                 buttonPayRent.setEnabled(false);
@@ -359,7 +367,7 @@ public class MonopolyGUI extends JPanel {
             int currentPlayerIndex = (currentPlayerOrder % playersList.size()) + 1;
             currentPlayerOrder %= playersList.size();
             cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
-            infoConsole.setText("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!");
+            infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
             buttonRollDice.setEnabled(true);
             buttonBuy.setEnabled(false);
             buttonPayRent.setEnabled(false);
