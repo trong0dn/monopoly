@@ -220,10 +220,34 @@ public class Monopoly {
 
         //    double val = valueEstimator.expectedValue(sq.position(), prop.rent()); /* Not even sure if this will be of use */
 
-
-
-
+            System.out.println(prop.name() + val); // Val not yet declared.
         }
+
+        do{
+            System.out.println("On which proerty would you like to purchase a house?");
+            Property prop = propertySelect(player);
+            if (prop.numHouses() == 5 ||  !prop.isMonopoly()) { // If player owns
+                System.out.println("You cannot buy houses on " + prop.name());
+                System.out.println("Would you like to buy any more houses?");
+                continue;
+            }
+
+            if (player.getMoney() < prop.getHouseCost()){
+                System.out.println("You are too  " + prop.name());
+                System.out.println("Would you like to buy any more houses?");
+                continue;
+            }
+
+            if (!prop.groupBuild()){ // Create method in Property called groupBuild calls monopoly?
+                System.out.println("You are too  " + prop.name());
+                System.out.println("Would you like to buy any more houses?");
+                continue;
+            }
+
+        /*  prop.build(); */ // Create build method to property.
+            player.exchangeMoney(-1 * prop.cost()); // cost() is in Property class()
+
+        } while (player.inputBool(gameState));
     }
 
     /**
