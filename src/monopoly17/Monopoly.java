@@ -204,6 +204,28 @@ public class Monopoly {
         //TODO Deal with Jail square
     }
 
+    /* Implementation of buy house feature */
+
+    private void buyHouses(Player player){
+        System.out.println("Expected Values:");
+
+        for (Square sq: player.properties()){
+            Property prop;
+
+            if (sq instanceof Property)
+                prop = (Property) sq;
+
+            else
+                continue;
+
+        //    double val = valueEstimator.expectedValue(sq.position(), prop.rent()); /* Not even sure if this will be of use */
+
+
+
+
+        }
+    }
+
     /**
      * Landing on an unowned square, the player may choose to buy the square.
      * @param player    Player
@@ -281,28 +303,6 @@ public class Monopoly {
         }
         //TODO else trade assets for money
     }
-
-    /* Implementation of buy house feature */
-
-    private void buyHouses(Player player){
-        System.out.println("Expected Values:");
-
-        for (Square sq: player.properties()){
-            Property prop;
-
-            if (sq instanceof Property)
-                prop = (Property) sq;
-
-            else
-                continue;
-
-            double val = valueEstimator.expectedValue(sq.position(), prop.rent());
-
-
-        }
-    }
-
-
 
     /**
      * return whether a player is bankrupt or not
