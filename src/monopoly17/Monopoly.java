@@ -247,6 +247,9 @@ public class Monopoly {
         /*  prop.build(); */ // Create build method to property.
             player.exchangeMoney(-1 * prop.cost()); // cost() is in Property class()
 
+            System.out.println("You own " + ); // get this to show players properties, List?
+
+
         } while (player.inputBool(gameState));
     }
 
