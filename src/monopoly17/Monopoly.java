@@ -191,6 +191,7 @@ public class Monopoly {
         if (!owned && ownable) {
             unowned(player, square);
         }
+
         else if (owned) {
             owned(player, square, roll);
         }
@@ -276,6 +277,17 @@ public class Monopoly {
             owner.exchangeMoney(rent);
         }
         //TODO else trade assets for money
+    }
+
+    /* Implementation of buy house feature */
+
+    private void buyHouses(Player player){
+        System.out.println("Expected Values:");
+
+        for (Square sq: player.properties()){
+            Property prop;
+
+        }
     }
 
     /**
