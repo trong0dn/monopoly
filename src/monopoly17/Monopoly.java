@@ -25,7 +25,7 @@ public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
     private boolean isBankrupt;
-    private ValueEstimator valueEstimator; // for buyHouse
+
 
     /**
      * Constructor for Monopoly.
@@ -107,8 +107,7 @@ public class Monopoly {
             System.out.println(">>> " + p.name());
         }
 
-        //Declare valueEstimator for buyHouse()
-        valueEstimator = new ValueEstimator(gameState.gameBoard, gameState.players, new RollDice(), gameState.gameBoard.square(7));     //Not yet complete
+
     }
 
     /**
@@ -206,14 +205,16 @@ public class Monopoly {
 
     /* Implementation of buy house feature */
 
+    /**
+     * For when the player owns properties of a full set.
+     * @param player  Player
+     * @param property Property
+     */
     private void buyHouses(Player player, Property property){
-        System.out.println("Expected Values:");
-
         if(property.isMonopoly()){
             property.buyBuilding();
             player.exchangeMoney(-1 * property.cost());
         }
-
         else
             System.out.println("You do not own the full set.");
 
