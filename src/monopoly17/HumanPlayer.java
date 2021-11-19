@@ -10,11 +10,10 @@ public class HumanPlayer implements Player {
     private final Input input;
     private final Collection<Square> properties;
     private final String playerName;
-
-
-
     private int money;
     private int position;
+    private int jailTurns;
+    private boolean inJail;
 
     /**
      * Initialize HumanPlayer.
@@ -26,6 +25,8 @@ public class HumanPlayer implements Player {
         this.playerName = playerName;
         this.money = 1500;
         this.position = 0;
+        this.jailTurns = 0;
+        this.inJail = false;
     }
 
     /**
@@ -36,7 +37,7 @@ public class HumanPlayer implements Player {
     public void move(int numTiles) {
         this.position += numTiles;
         int BOARD_SIZE = 40;
-        if (position >= BOARD_SIZE) {
+        if (position >= BOARD_SIZE && !inJail) {
             position -= BOARD_SIZE;
             exchangeMoney(200);
         }
@@ -61,6 +62,15 @@ public class HumanPlayer implements Player {
     @Override
     public int getPosition() {
         return this.position;
+    }
+
+    /**
+     * Set if the player is in jail pr not.
+     * @param bool      boolean
+     */
+    @Override
+    public void setInJail(boolean bool) {
+        inJail = bool;
     }
 
     /**
@@ -162,5 +172,23 @@ public class HumanPlayer implements Player {
     @Override
     public int inputDecision(Monopoly.GameState state, String[] choices) {
         return this.input.inputDecision(choices);
+    }
+
+    /**
+     * Get how many turn the player has been in jail.
+     * @param turns     int
+     */
+    @Override
+    public void setJailTurns(int turns) {
+        jailTurns = turns;
+    }
+
+    /**
+     * Get the number of turns the player has been in jail.
+     * @return          int
+     */
+    @Override
+    public int getJailTurns() {
+        return this.jailTurns;
     }
 }
