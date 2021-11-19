@@ -50,6 +50,7 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonNextTurn;
     private JButton buttonPayRent;
     private JButton buttonBuy;
+    private JButton buttonBuyHouse; // Add buy house button
     private boolean firstRoll = true;
 
     private final Color[] playerTokenColors = {
@@ -149,6 +150,9 @@ public class MonopolyGUI extends JPanel {
         buttonNextTurn.setBounds(80, 520, 250, 50);
         buttonNextTurn.setEnabled(false);
         rightLayeredPane.add(buttonNextTurn);
+
+        // Add buyHouse Button
+
 
 
     }
