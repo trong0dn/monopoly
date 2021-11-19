@@ -449,6 +449,9 @@ public class MonopolyGUI extends JPanel {
                             monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
                             System.out.println("House Purchased");
                             infoConsole.setText("Bought House for " + property.getHouseCost());
+                            /*
+                            Display dots when player buys house on property.
+                             */
                         });
 
                         panel.add(propButton);
