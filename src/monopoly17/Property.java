@@ -100,7 +100,7 @@ public class Property implements Square{
     public void purchase(Player player) {
         owned = true;
         owner = player;
-        //updateMonopoly(player);
+        updateMonopoly(player);
         //TODO fix update monopoly
     }
 

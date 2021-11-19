@@ -145,14 +145,17 @@ public class MonopolyGUI extends JPanel {
         buttonPayRent.setEnabled(false);
         rightLayeredPane.add(buttonPayRent);
 
+        // Add buyHouse Button
+        buttonBuyHouse = buttonBuyHouse();
+        buttonBuyHouse.setBounds(315, 470, 115, 40);
+        buttonBuyHouse.setEnabled(true);
+        rightLayeredPane.add(buttonBuyHouse);
+
         // Add next turn button
         buttonNextTurn = buttonNextTurn();
         buttonNextTurn.setBounds(80, 520, 250, 50);
         buttonNextTurn.setEnabled(false);
         rightLayeredPane.add(buttonNextTurn);
-
-        // Add buyHouse Button
-
 
 
     }
@@ -425,6 +428,41 @@ public class MonopolyGUI extends JPanel {
             updatePlayerStatusTextArea();
         });
         return buttonPayRent;
+    }
+
+    /**
+     * Allows user to buy house when they own a full set of properties
+     * @return JButton
+     */
+    private JButton buttonBuyHouse(){
+        buttonBuyHouse = new JButton("Buy House");
+        buttonBuyHouse.addActionListener(f->{
+            JPanel panel = new JPanel(new GridLayout(0, 4));
+            for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()){
+                Property property;
+                if (sq instanceof Property){
+                    property = (Property) sq;
+
+                    if (property.isMonopoly()){
+                        JButton propButton = new JButton(property.name());
+                        propButton.addActionListener(e-> {
+                            monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
+                            System.out.println("House Purchased");
+                            infoConsole.setText("Bought House for " );
+                        });
+
+                        panel.add(propButton);
+
+                    }
+                }
+
+            }
+            JOptionPane.showMessageDialog(rightLayeredPane, panel);
+
+        });
+
+        return buttonBuyHouse;
+
     }
 
     public static void main(String[] args) {

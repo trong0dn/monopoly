@@ -210,7 +210,7 @@ public class Monopoly {
      * @param player  Player
      * @param property Property
      */
-    private void buyHouses(Player player, Property property){
+    public void buyHouses(Player player, Property property){
         if(property.isMonopoly()){
             property.buyBuilding();
             player.exchangeMoney(-1 * property.cost());
