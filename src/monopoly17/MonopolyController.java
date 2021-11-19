@@ -40,7 +40,7 @@ public class MonopolyController{
         this.playButton = new JButton("Play Game!");
         this.addPlayer = new JButton("Add Player");
         this.addCPUPlayer = new JButton("Add CPU Player");
-        this.playerNameInput = new JTextField();
+        this.playerNameInput = new JTextField("");
         this.playerNameList = new JPanel(new GridLayout(0,2));
         this.playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
     }
@@ -139,7 +139,7 @@ public class MonopolyController{
      */
     public JButton addPlayerButton() {
         addPlayer.addActionListener(e -> {
-            if(playerList.size() < 6) {
+            if(playerList.size() < 6 && playerNameInput.getText().matches(".*\\w.*")) {
                 // Make the panel to get the username
                 Player newPlayer = new HumanPlayer(playerNameInput.getText());
 
@@ -185,7 +185,10 @@ public class MonopolyController{
                 // Make text box empty
                 playerNameInput.setText("");
 
-            } else {
+            } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
+                JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
+            }
+            else {
                 JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
             }
         });

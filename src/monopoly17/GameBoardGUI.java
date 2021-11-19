@@ -29,7 +29,7 @@ public class GameBoardGUI extends JPanel {
     }
 
     /**
-     * Get the square based the squareNmber.
+     * Get the square based the squareNumber.
      * @param squareNumber  int, the square position on the game board
      * @return              Square
      */
