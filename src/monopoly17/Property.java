@@ -230,5 +230,9 @@ public class Property implements Square{
         this.others[0] = propertyA;
         this.others[1] = propertyB;
     }
+
+    public void buyBuilding(){
+        buildings++;
+    }
 }
 
