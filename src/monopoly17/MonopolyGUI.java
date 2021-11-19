@@ -448,7 +448,7 @@ public class MonopolyGUI extends JPanel {
                         propButton.addActionListener(e-> {
                             monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
                             System.out.println("House Purchased");
-                            infoConsole.setText("Bought House for " );
+                            infoConsole.setText("Bought House for " + property.getHouseCost());
                         });
 
                         panel.add(propButton);
