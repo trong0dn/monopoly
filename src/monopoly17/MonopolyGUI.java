@@ -149,6 +149,8 @@ public class MonopolyGUI extends JPanel {
         buttonNextTurn.setBounds(80, 520, 250, 50);
         buttonNextTurn.setEnabled(false);
         rightLayeredPane.add(buttonNextTurn);
+
+
     }
 
     /**
@@ -247,6 +249,7 @@ public class MonopolyGUI extends JPanel {
         output.append("Property titles owned:\n");
         for (Square sq : properties) {
             output.append(">>> ").append(sq.name()).append("\n");
+
         }
         panelPlayerTextArea.setText(output.toString());
     }
