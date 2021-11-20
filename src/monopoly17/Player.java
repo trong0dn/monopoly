@@ -27,6 +27,12 @@ public interface Player {
     int getPosition();
 
     /**
+     * Set if the player is in jail pr not.
+     * @param bool      boolean
+     */
+    void setInJail(boolean bool);
+
+    /**
      * Properties owned by the player.
      * @return  Collection<Square>
      */
@@ -83,4 +89,16 @@ public interface Player {
      * @return          int
      */
     int inputDecision(Monopoly.GameState state, String[] choices);
+
+    /**
+     * Get how many turn the player has been in jail.
+     * @param turns     int
+     */
+    void setJailTurns(int turns);
+
+    /**
+     * Get the number of turns the player has been in jail.
+     * @return          int
+     */
+    int getJailTurns();
 }
