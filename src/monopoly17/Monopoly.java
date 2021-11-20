@@ -14,6 +14,7 @@ TA: Michael Vezina
 Due: 11/08/2021
  */
 
+import java.time.temporal.ValueRange;
 import java.util.*;
 
 /**
@@ -23,9 +24,8 @@ import java.util.*;
 public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
-
-
     private boolean isBankrupt;
+
 
     /**
      * Constructor for Monopoly.
@@ -106,6 +106,8 @@ public class Monopoly {
         for (Player p: gameState.players) {
             System.out.println(">>> " + p.name());
         }
+
+
     }
 
     /**
@@ -190,6 +192,7 @@ public class Monopoly {
         if (!owned && ownable) {
             unowned(player, square);
         }
+
         else if (owned) {
             owned(player, square, roll);
         }
@@ -197,6 +200,23 @@ public class Monopoly {
         //TODO Deal with Tax squares
         //else if (square instanceof  Jail) { }
         //TODO Deal with Jail square
+    }
+
+    /* Implementation of buy house feature */
+
+    /**
+     * For when the player owns properties of a full set.
+     * @param player  Player
+     * @param property Property
+     */
+    public void buyHouses(Player player, Property property){
+        if(property.isMonopoly()){
+            property.buyBuilding();
+            player.exchangeMoney(-1 * property.cost());
+        }
+        else
+            System.out.println("You do not own the full set.");
+
     }
 
     /**

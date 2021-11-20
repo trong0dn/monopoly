@@ -50,6 +50,7 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonNextTurn;
     private JButton buttonPayRent;
     private JButton buttonBuy;
+    private JButton buttonBuyHouse; // Add buy house button
     private boolean firstRoll = true;
 
     private final Color[] playerTokenColors = {
@@ -144,11 +145,19 @@ public class MonopolyGUI extends JPanel {
         buttonPayRent.setEnabled(false);
         rightLayeredPane.add(buttonPayRent);
 
+        // Add buyHouse Button
+        buttonBuyHouse = buttonBuyHouse();
+        buttonBuyHouse.setBounds(315, 470, 115, 40);
+        buttonBuyHouse.setEnabled(true);
+        rightLayeredPane.add(buttonBuyHouse);
+
         // Add next turn button
         buttonNextTurn = buttonNextTurn();
         buttonNextTurn.setBounds(80, 520, 250, 50);
         buttonNextTurn.setEnabled(false);
         rightLayeredPane.add(buttonNextTurn);
+
+
     }
 
     /**
@@ -247,6 +256,7 @@ public class MonopolyGUI extends JPanel {
         output.append("Property titles owned:\n");
         for (Square sq : properties) {
             output.append(">>> ").append(sq.name()).append("\n");
+
         }
         panelPlayerTextArea.setText(output.toString());
     }
@@ -472,6 +482,44 @@ public class MonopolyGUI extends JPanel {
             updatePlayerStatusTextArea();
         });
         return buttonPayRent;
+    }
+
+    /**
+     * Allows user to buy house when they own a full set of properties
+     * @return JButton
+     */
+    private JButton buttonBuyHouse(){
+        buttonBuyHouse = new JButton("Buy House");
+        buttonBuyHouse.addActionListener(f->{
+            JPanel panel = new JPanel(new GridLayout(0, 4));
+            for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()){
+                Property property;
+                if (sq instanceof Property){
+                    property = (Property) sq;
+
+                    if (property.isMonopoly()){
+                        JButton propButton = new JButton(property.name());
+                        propButton.addActionListener(e-> {
+                            monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
+                            System.out.println("House Purchased");
+                            infoConsole.setText("Bought House for " + property.getHouseCost());
+                            /*
+                            Display dots when player buys house on property.
+                             */
+                        });
+
+                        panel.add(propButton);
+
+                    }
+                }
+
+            }
+            JOptionPane.showMessageDialog(rightLayeredPane, panel);
+
+        });
+
+        return buttonBuyHouse;
+
     }
 
     public static void main(String[] args) {
