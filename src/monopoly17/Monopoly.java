@@ -46,7 +46,7 @@ public class Monopoly {
      * Different decision states during a player's turn.
      */
     public enum DecisionState {
-        NONE, BUY_PROPERTY, SELL_PROPERTY, BUY_HOUSE, SELL_HOUSE, TURN_ACTION
+        NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION
     }
 
     /**

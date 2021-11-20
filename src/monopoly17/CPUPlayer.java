@@ -140,12 +140,10 @@ public class CPUPlayer implements Player {
     @Override
     public boolean inputBool(Monopoly.DecisionState state) {
         return switch (state) {
+            case NONE -> handleNone();
             case BUY_PROPERTY -> handleBuyProperty();
-            case SELL_PROPERTY -> handleSellProperty();
             case BUY_HOUSE -> handleBuyHouse();
-            case SELL_HOUSE -> handleSellHouse();
             case TURN_ACTION -> handleTurnAction();
-            default -> throw new IllegalArgumentException("No implementation exists for the CPU player bool input");
         };
     }
 
@@ -189,24 +187,24 @@ public class CPUPlayer implements Player {
         return this.jailTurns;
     }
 
-    //TODO design how the CPU player handles various decisions
-    public boolean handleBuyProperty() {
+
+    public boolean handleNone() {
+        // Always choose an action over passing their turn.
         return false;
     }
 
-    public boolean handleSellProperty() {
-        return false;
+    public boolean handleBuyProperty() {
+        // Always purchases the property when possible.
+        return true;
     }
 
     public boolean handleBuyHouse() {
-        return false;
-    }
-
-    public boolean handleSellHouse() {
-        return false;
+        // Always buy house when possible.
+        return true;
     }
 
     public boolean handleTurnAction() {
+        // Always roll dice to move.
         return true;
     }
 }
