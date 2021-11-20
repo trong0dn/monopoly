@@ -60,6 +60,16 @@ public class AIPlayer implements Player{
     }
 
     /**
+     * Set if the player is in jail pr not.
+     *
+     * @param bool boolean
+     */
+    @Override
+    public void setInJail(boolean bool) {
+        return;
+    }
+
+    /**
      * Properties owned by the player.
      *
      * @return Collection<Square>
@@ -133,10 +143,64 @@ public class AIPlayer implements Player{
     /**
      * Player inputs a boolean response.
      *
-     * @param state Monopoly.GameState
+     * @param state Monopoly
      * @return boolean
      */
     @Override
+    public boolean inputBool(Monopoly.DecisionState state) {
+        return false;
+    }
+
+    /**
+     * Player inputs an integer response.
+     *
+     * @param state Monopoly
+     * @return int
+     */
+    @Override
+    public int inputInt(Monopoly.DecisionState state) {
+        return 0;
+    }
+
+    /**
+     * Player inputs a two choice decision.
+     *
+     * @param state   Monopoly
+     * @param choices String[]
+     * @return int
+     */
+    @Override
+    public int inputDecision(Monopoly.DecisionState state, String[] choices) {
+        return 0;
+    }
+
+    /**
+     * Get how many turn the player has been in jail.
+     *
+     * @param turns int
+     */
+    @Override
+    public void setJailTurns(int turns) {
+
+    }
+
+    /**
+     * Get the number of turns the player has been in jail.
+     *
+     * @return int
+     */
+    @Override
+    public int getJailTurns() {
+        return 0;
+    }
+
+    /**
+     * Player inputs a boolean response.
+     *
+     * @param state Monopoly.GameState
+     * @return boolean
+     */
+
     public boolean inputBool(Monopoly.GameState state) {
         return this.input.inputBool();
     }
@@ -147,7 +211,7 @@ public class AIPlayer implements Player{
      * @param state Monopoly.GameState
      * @return int
      */
-    @Override
+
     public int inputInt(Monopoly.GameState state) {
         return this.input.inputInt();
     }
@@ -159,7 +223,7 @@ public class AIPlayer implements Player{
      * @param choices String[]
      * @return int
      */
-    @Override
+
     public int inputDecision(Monopoly.GameState state, String[] choices) {
         return this.input.inputDecision(choices);
 
