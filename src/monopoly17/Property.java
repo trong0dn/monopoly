@@ -20,10 +20,10 @@ public class Property implements Square{
     private Player owner;
     private boolean owned;
     private final Property[] others; // collection of player's property
-    private final int propertyCost; // cost to purchase the property
-    private final int houseCost; // cost to purchase one house on the property
-    private int buildings; // number of buildings on property
-    private boolean monopoly; // player may own all property set
+    private final int propertyCost;  // cost to purchase the property
+    private final int houseCost;     // cost to purchase one house on the property
+    private int buildings;           // number of buildings on property
+    private boolean monopoly;        // player may own all property set
 
     public Property(int position, String name, int rent, int oneHouse, int twoHouse, int threeHouse, int fourHouse,
                     int hotel, int propertyCost, int houseCost) {
@@ -100,7 +100,7 @@ public class Property implements Square{
     public void purchase(Player player) {
         owned = true;
         owner = player;
-        //updateMonopoly(player);
+        updateMonopoly(player);
         //TODO fix update monopoly
     }
 
@@ -229,6 +229,10 @@ public class Property implements Square{
     public void setGroup(Property propertyA, Property propertyB) {
         this.others[0] = propertyA;
         this.others[1] = propertyB;
+    }
+
+    public void buyBuilding(){
+        buildings++;
     }
 }
 
