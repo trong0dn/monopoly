@@ -3,7 +3,7 @@ package monopoly17;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class CPUPlayer implements Player{
+public class AIPlayer implements Player{
 
     private final Input input;
     private final Collection<Square> properties;
@@ -11,7 +11,7 @@ public class CPUPlayer implements Player{
     private int money;
     private int position;
 
-    public CPUPlayer(String CPUName){
+    public AIPlayer(String CPUName){
         this.input = new Input();
         this.properties = new LinkedList<>();
         this.CPUName = CPUName;
