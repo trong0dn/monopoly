@@ -16,9 +16,9 @@ public interface Player {
 
     /**
      * Movement to a different position on the board.
-     * @param position  int
+     * @param newPosition  int
      */
-    void moveTo(int position);
+    void moveTo(int newPosition);
 
     /**
      * Get the position of the player.
@@ -70,25 +70,25 @@ public interface Player {
 
     /**
      * Player inputs a boolean response.
-     * @param state     Monopoly.GameState
+     * @param state     Monopoly
      * @return          boolean
      */
-    boolean inputBool(Monopoly.GameState state);
+    boolean inputBool(Monopoly.DecisionState state);
 
     /**
      * Player inputs an integer response.
-     * @param state     Monopoly.GameState
+     * @param state     Monopoly
      * @return          int
      */
-    int inputInt(Monopoly.GameState state);
+    int inputInt(Monopoly.DecisionState state);
 
     /**
      * Player inputs a two choice decision.
-     * @param state     Monopoly.GameState
+     * @param state     Monopoly
      * @param choices   String[]
      * @return          int
      */
-    int inputDecision(Monopoly.GameState state, String[] choices);
+    int inputDecision(Monopoly.DecisionState state, String[] choices);
 
     /**
      * Get how many turn the player has been in jail.

@@ -146,8 +146,7 @@ public class Monopoly {
             //TODO Buy/Sell houses
             System.out.println("1) Pass my turn.");
             System.out.println("2) Player Statistics.");
-            gameState.decisionState = DecisionState.TURN_ACTION;
-            int choice = gameState.currentPlayer.inputInt(gameState);
+            int choice = gameState.currentPlayer.inputInt(DecisionState.TURN_ACTION);
 
             // Switch-case for more additional player options
             switch (choice) {

@@ -1,13 +1,13 @@
 package monopoly17;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedList;
 
 /**
- * This is a class representation of a human player of this game.
- * @author Francisco De Grano & Ibrahim Almalki
+ * This class represents the CPU player of this game.
+ * @author Trong Nguyen
  */
-public class HumanPlayer implements Player {
-    private final Input input;
+public class CPUPlayer implements Player {
     private final Collection<Square> properties;
     private final String playerName;
     private int money;
@@ -16,13 +16,12 @@ public class HumanPlayer implements Player {
     private boolean inJail;
 
     /**
-     * Initialize HumanPlayer.
-     * @param playerName String
+     * Constructor for CPU Player.
+     * @param number    int
      */
-    public HumanPlayer(String playerName) {
-        this.input = new Input();
+    public CPUPlayer(int number) {
         this.properties = new LinkedList<>();
-        this.playerName = playerName;
+        this.playerName = "CPU Player " + number;
         this.money = 1500;
         this.position = 0;
         this.jailTurns = 0;
@@ -100,22 +99,13 @@ public class HumanPlayer implements Player {
         return this.money;
     }
 
-
     /**
      * Set the amount of money a player has
      * @param money int
      */
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-    /**
-     * Method for player to collect addition money.
-     * @param money int
-     */
     @Override
     public void exchangeMoney(int money) {
-        this.money += money;
+        this.money = money;
     }
 
     /**
@@ -142,35 +132,33 @@ public class HumanPlayer implements Player {
         this.money += square.cost();
     }
 
-    /**
-     * Input value for boolean entries.
-     * @param state Monopoly.GameState
-     * @return boolean
-     */
     @Override
     public boolean inputBool(Monopoly.DecisionState state) {
-        return this.input.inputBool();
+        switch (state) {
+            case BUY_PROPERTY:
+                return handleBuyProperty();
+            case SELL_PROPERTY:
+                return handleSellProperty();
+            case BUY_HOUSE:
+                return handleBuyHouse();
+            case SELL_HOUSE:
+                return handleSellHouse();
+            case TURN_ACTION:
+                return handleTurnAction();
+            default:
+                throw new IllegalArgumentException("No implementation exists for the CPU player bool input");
+        }
     }
 
-    /**
-     * Input value for integer entries.
-     * @param state Monopoly.GameState
-     * @return int
-     */
     @Override
     public int inputInt(Monopoly.DecisionState state) {
-        return this.input.inputInt();
+        throw new IllegalArgumentException("No implementation use case for CPU to input integer");
     }
 
-    /**
-     * Input value for two choices.
-     * @param state   Monopoly.GameState
-     * @param choices String[]
-     * @return int
-     */
     @Override
     public int inputDecision(Monopoly.DecisionState state, String[] choices) {
-        return this.input.inputDecision(choices);
+        // CPU Player always selects true
+        return 0;
     }
 
     /**
@@ -189,5 +177,25 @@ public class HumanPlayer implements Player {
     @Override
     public int getJailTurns() {
         return this.jailTurns;
+    }
+
+    public boolean handleBuyProperty() {
+        return false;
+    }
+
+    public boolean handleSellProperty() {
+        return false;
+    }
+
+    public boolean handleBuyHouse() {
+        return false;
+    }
+
+    public boolean handleSellHouse() {
+        return false;
+    }
+
+    public boolean handleTurnAction() {
+        return true;
     }
 }

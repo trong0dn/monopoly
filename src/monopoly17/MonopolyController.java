@@ -272,7 +272,7 @@ public class MonopolyController{
 
         // player initialization label
         JPanel messagePanel = new JPanel();
-        JLabel message = new JLabel("Enter your name in text box the click Add Player (need 2-6 players)");
+        JLabel message = new JLabel("Enter Player name in text box then click Add Player (2-6 players)");
         messagePanel.add(message);
 
         // GridBagConstraints

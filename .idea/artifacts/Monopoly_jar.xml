@@ -3,7 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Monopoly_jar</output-path>
     <root id="archive" name="Monopoly.jar">
       <element id="module-output" name="Monopoly" />
-      <element id="module-source" name="Monopoly" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/junit/junit/4.13.1/junit-4.13.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
