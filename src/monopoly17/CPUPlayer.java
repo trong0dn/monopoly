@@ -132,29 +132,39 @@ public class CPUPlayer implements Player {
         this.money += square.cost();
     }
 
+    /**
+     * Outputs a boolean value for the decisions states available
+     * @param state Monopoly.GameState
+     * @return boolean
+     */
     @Override
     public boolean inputBool(Monopoly.DecisionState state) {
-        switch (state) {
-            case BUY_PROPERTY:
-                return handleBuyProperty();
-            case SELL_PROPERTY:
-                return handleSellProperty();
-            case BUY_HOUSE:
-                return handleBuyHouse();
-            case SELL_HOUSE:
-                return handleSellHouse();
-            case TURN_ACTION:
-                return handleTurnAction();
-            default:
-                throw new IllegalArgumentException("No implementation exists for the CPU player bool input");
-        }
+        return switch (state) {
+            case BUY_PROPERTY -> handleBuyProperty();
+            case SELL_PROPERTY -> handleSellProperty();
+            case BUY_HOUSE -> handleBuyHouse();
+            case SELL_HOUSE -> handleSellHouse();
+            case TURN_ACTION -> handleTurnAction();
+            default -> throw new IllegalArgumentException("No implementation exists for the CPU player bool input");
+        };
     }
 
+    /**
+     * Input value for integer entries.
+     * @param state Monopoly.DecisionState
+     * @return int
+     */
     @Override
     public int inputInt(Monopoly.DecisionState state) {
         throw new IllegalArgumentException("No implementation use case for CPU to input integer");
     }
 
+    /**
+     * Input value for two choices.
+     * @param state   Monopoly.DecisionState
+     * @param choices String[]
+     * @return int
+     */
     @Override
     public int inputDecision(Monopoly.DecisionState state, String[] choices) {
         // CPU Player always selects true
@@ -179,6 +189,7 @@ public class CPUPlayer implements Player {
         return this.jailTurns;
     }
 
+    //TODO design how the CPU player handles various decisions
     public boolean handleBuyProperty() {
         return false;
     }

@@ -144,7 +144,7 @@ public class HumanPlayer implements Player {
 
     /**
      * Input value for boolean entries.
-     * @param state Monopoly.GameState
+     * @param state Monopoly.DecisionState
      * @return boolean
      */
     @Override
@@ -154,7 +154,7 @@ public class HumanPlayer implements Player {
 
     /**
      * Input value for integer entries.
-     * @param state Monopoly.GameState
+     * @param state Monopoly.DecisionState
      * @return int
      */
     @Override
@@ -164,7 +164,7 @@ public class HumanPlayer implements Player {
 
     /**
      * Input value for two choices.
-     * @param state   Monopoly.GameState
+     * @param state   Monopoly.DecisionState
      * @param choices String[]
      * @return int
      */
