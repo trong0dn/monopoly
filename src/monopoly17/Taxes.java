@@ -7,20 +7,45 @@ package monopoly17;
 public class Taxes implements Square {
     private final int position;
     private final String name;
-    private final int tax;
+    private final int fixTax;
+    private final double varTax;
 
     /**
      * Initialize Taxes.
      * @param position int
-     * @param name     String
+     * @param incomeTax boolean
      */
-    public Taxes(int position, String name) {
+    public Taxes(int position, boolean incomeTax) {
         this.position = position;
-        this.name = name;
-        if (this.name.equals("INCOME TAX")) {
-            this.tax = 200;
+        if (incomeTax) {
+            this.name = "INCOME TAX";
+            fixTax = 200;       // Pay 200
+            varTax = 0.1;        // Pay 10% of total money
         } else {
-            this.tax = 100;
+            this.name = "SUPER TAX";
+            fixTax = 100;       // Pay 100
+            varTax = 0;
+        }
+    }
+
+    /**
+     * Get the fix tax value.
+     * @return  int
+     */
+    public int getTax() {
+        return fixTax;
+    }
+
+    /**
+     * Get the variable tax value.
+     * @param value int
+     * @return  int
+     */
+    public int getTax(int value) {
+        if (varTax == 0) {
+            return fixTax;
+        } else {
+            return (int) (value * varTax);
         }
     }
 
@@ -33,7 +58,6 @@ public class Taxes implements Square {
         return this.position;
     }
 
-
     /**
      * Get the name of the square tile.
      * @return  String
@@ -42,7 +66,6 @@ public class Taxes implements Square {
     public String name() {
         return this.name;
     }
-
 
     /**
      * If the square tile can be owned or not.
@@ -62,7 +85,6 @@ public class Taxes implements Square {
         return false;
     }
 
-
     /**
      * Get the cost of the square tile.
      * @return  int
@@ -72,7 +94,6 @@ public class Taxes implements Square {
         return 0;
     }
 
-
     /**
      * Method invoked when a square tile is being purchased.
      * @param player    Player
@@ -80,7 +101,6 @@ public class Taxes implements Square {
     @Override
     public void purchase(Player player) {
     }
-
 
     /**
      * Rent value of the square tile.
@@ -99,14 +119,5 @@ public class Taxes implements Square {
     @Override
     public Player owner() {
         return null;
-    }
-
-    /**
-     * Get the tax value.
-     * @param value double
-     * @return  int
-     */
-    public int getTax(double value) {
-        return this.tax;
     }
 }

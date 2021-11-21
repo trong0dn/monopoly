@@ -306,7 +306,7 @@ public class Monopoly {
             System.out.println("Pay 10% of worth or $200?");
             gameState.decisionState = DecisionState.INCOME_TAX;
             if (player.inputDecision(gameState, new String[] {"10%", "$200"}) == 0)
-                cost = tax.getTax(player.getMoney() * 0.1);
+                cost = tax.getTax(player.getMoney());
         }
     }
 
