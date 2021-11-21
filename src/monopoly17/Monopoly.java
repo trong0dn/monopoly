@@ -339,7 +339,7 @@ public class Monopoly {
     }
 
     /**
-     * Method feature for moving player using owned railroads.
+     * Method features for moving player using owned railroads.
      * @param player    Player
      */
     public void railroadMove(Player player) {
