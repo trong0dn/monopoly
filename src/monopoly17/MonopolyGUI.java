@@ -150,13 +150,13 @@ public class MonopolyGUI extends JPanel {
 
         // Add buyHouse Button
         buttonBuyHouse = buttonBuyHouse();
-        buttonBuyHouse.setBounds(315, 470, 115, 40);
+        buttonBuyHouse.setBounds(80, 520, 115, 40);
         buttonBuyHouse.setEnabled(true);
         rightLayeredPane.add(buttonBuyHouse);
 
         // Add next turn button
         buttonNextTurn = buttonNextTurn();
-        buttonNextTurn.setBounds(80, 520, 250, 50);
+        buttonNextTurn.setBounds(80, 570, 250, 50);
         buttonNextTurn.setEnabled(false);
         rightLayeredPane.add(buttonNextTurn);
     }

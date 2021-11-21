@@ -65,7 +65,7 @@ public class Monopoly {
         while (gameState.players.size() > 1) {
             try {
                 gameState.currentPlayer = gameState.players.remove();
-                turn();
+                // turn();
                 if (!isBankrupt) {
                     gameState.players.add(gameState.currentPlayer);
                 }
