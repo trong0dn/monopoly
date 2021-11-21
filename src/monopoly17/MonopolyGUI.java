@@ -152,7 +152,7 @@ public class MonopolyGUI extends JPanel {
         // Add buyHouse Button
         buttonBuyHouse = buttonBuyHouse();
         buttonBuyHouse.setBounds(80, 520, 115, 40);
-        buttonBuyHouse.setEnabled(true);
+        buttonBuyHouse.setEnabled(false);
         rightLayeredPane.add(buttonBuyHouse);
 
         // Add next turn button
@@ -398,6 +398,7 @@ public class MonopolyGUI extends JPanel {
                         buttonPayRent.setEnabled(true);
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
+                        buttonBuy.setEnabled(false);
                         // Player lands on owned railroad
                     } else if (currentSquare instanceof Railroad) {
                         infoConsole.append("Station: You landed on " + currentSquare.name() +
@@ -405,12 +406,14 @@ public class MonopolyGUI extends JPanel {
                         buttonPayRent.setEnabled(true);
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
+                        buttonBuy.setEnabled(false);
                     } else if (currentSquare instanceof Utility) {
                         infoConsole.append("Utility: You landed on " + currentSquare.name() +
                                 "\nRent: $" + currentSquare.rent(diceValue));
                         buttonPayRent.setEnabled(true);
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
+                        buttonBuy.setEnabled(false);
                     }
                     isRollDouble(currentPlayerOrder);
                 } else {
@@ -421,6 +424,7 @@ public class MonopolyGUI extends JPanel {
                         buttonPayRent.setEnabled(true);
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
+                        buttonBuy.setEnabled(false);
                     } else {
                         infoConsole.append("Non-purchasable: You landed on a property: \n" + currentSquare.name());
                         isRollDouble(currentPlayerOrder);
