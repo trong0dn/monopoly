@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-11-21T17:08:39.479Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="hL9k3uZTCkHthtNf7_Hf" version="15.7.4" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2021-11-21T17:16:52.053Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="1_oJ0AwLmV0rlqFn97SJ" version="15.7.4" type="github" pages="5">
   <diagram id="mIdWcuVjI4xpF6q1rHtD" name="Class UML">
-    <mxGraphModel dx="4009" dy="276" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="5530" dy="965" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1163,7 +1163,7 @@
           <mxGeometry y="346" width="370" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-345" value="GameBoardGUI" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="-1740" y="2120" width="370" height="138" as="geometry" />
+          <mxGeometry x="-1760" y="2020" width="370" height="138" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-346" value="- gameBoard: GameBoard" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-345" vertex="1">
           <mxGeometry y="26" width="370" height="26" as="geometry" />
@@ -1204,8 +1204,8 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-355" value="+ getFaceValue(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-351" vertex="1">
           <mxGeometry y="164" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-359" value="monopoly17.MonopolyController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="-1760" y="1295" width="370" height="760" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-359" value="MonopolyController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="-1760" y="1295" width="370" height="630" as="geometry" />
         </mxCell>
         <mxCell id="CZzCfYBb0ttBlrLfNhfB-1" value="- frame: JFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="26" width="370" height="24" as="geometry" />
@@ -1222,7 +1222,7 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-364" value="- switchPanels: JPanel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="128" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-360" value="- playerList: LinkedList&lt;String&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-360" value="- playerList: LinkedList&lt;Player&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="154" width="370" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-368" value="- startButton: JButton&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
@@ -1231,68 +1231,53 @@
         <mxCell id="CZzCfYBb0ttBlrLfNhfB-3" value="- playButton: JButton&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="206" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="CZzCfYBb0ttBlrLfNhfB-32" value="- playerMakeMenu: JMenuBar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="CZzCfYBb0ttBlrLfNhfB-33" value="- addPlayer: JButton" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="232" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="CZzCfYBb0ttBlrLfNhfB-33" value="- addPlayer: JMenu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-47" value="- addCPUPlayer: JButton" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-359">
           <mxGeometry y="258" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="CZzCfYBb0ttBlrLfNhfB-34" value="- addPlayerItem: JMenuItem" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-48" value="- playerNameInput: JTextField" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-359">
           <mxGeometry y="284" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="CZzCfYBb0ttBlrLfNhfB-37" value="- gbagConstraintsPlayerName: GridBagConstraints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="CZzCfYBb0ttBlrLfNhfB-37" value="- playerNameList: JPanel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="310" width="370" height="26" as="geometry" />
         </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-49" value="- playerFont: Font" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-359">
+          <mxGeometry y="336" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-50" value="- playerTokenColors: Color[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-359">
+          <mxGeometry y="362" width="370" height="26" as="geometry" />
+        </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-369" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
-          <mxGeometry y="336" width="370" height="8" as="geometry" />
+          <mxGeometry y="388" width="370" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-387" value="+ monopoly17.MonopolyController()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
-          <mxGeometry y="344" width="370" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-386" value="+ getFrame(): JFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
-          <mxGeometry y="370" width="370" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-385" value="+ getPlayerInitPanel(): JPanel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-387" value="+ MonopolyController()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="396" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-384" value="+ getStartPanel(): JPanel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-382" value="+ getSwitchPanels(): JPanel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="422" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-383" value="+ getMonopolyPanel(): JPanel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-386" value="+ getPlayerList(): LinkedList&lt;Player&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="448" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-382" value="+ getSwitchPanels(): JPanel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-380" value="+ setMonopolyPanel(monopolyPanel: JPanel): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="474" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="CZzCfYBb0ttBlrLfNhfB-40" value="+ getPlayerList(): LinkedList&lt;monopoly17.Player&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-384" value="+ addPlayerButton(): JButton" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="500" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-381" value="+ setFrame(frame: JFrame): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-51" value="+ addCPUPlayerButton(): JButton" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-359">
           <mxGeometry y="526" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-380" value="+ setMonopolyPanel(monopolyPanel: JPanel): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-376" value="+ startButton(): JButton" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="552" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-379" value="+ setPlayerInitPanel(playerInit: JPanel): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-374" value="+ playButton():JButton" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
           <mxGeometry y="578" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-378" value="+ setStartPanel(startPanel: JPanel): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
-          <mxGeometry y="604" width="370" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-377" value="+ setSwitchPanels(switchPanels: JPanel): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
-          <mxGeometry y="630" width="370" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="CZzCfYBb0ttBlrLfNhfB-39" value="+ getAddPlayerItem(): JMenuItem" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
-          <mxGeometry y="656" width="370" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-376" value="+ startButton(): JButton" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
-          <mxGeometry y="682" width="370" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-374" value="+ playButton():JButton" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
-          <mxGeometry y="708" width="370" height="26" as="geometry" />
-        </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-371" value="+ displayGUI():void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-359" vertex="1">
-          <mxGeometry y="734" width="370" height="26" as="geometry" />
+          <mxGeometry y="604" width="370" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-393" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;" parent="1" source="LGfE7V5v2zf3gq_8V_Ni-41" target="LGfE7V5v2zf3gq_8V_Ni-330" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -1301,7 +1286,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-395" value="SquareGUI" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="-1740" y="2350" width="370" height="210" as="geometry" />
+          <mxGeometry x="-1760" y="2240" width="370" height="210" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-398" value="- squareName: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-395" vertex="1">
           <mxGeometry y="26" width="370" height="26" as="geometry" />
@@ -1359,7 +1344,7 @@
             <mxPoint x="-1571.9178082191784" y="2388" as="sourcePoint" />
             <mxPoint x="-1508.1506849315065" y="2521" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1930" y="2455" />
+              <mxPoint x="-1940" y="2350" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -1368,7 +1353,7 @@
             <mxPoint x="-1605" y="2690" as="sourcePoint" />
             <mxPoint x="-1605" y="2388" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-1250" y="2189" />
+              <mxPoint x="-1240" y="2089" />
             </Array>
           </mxGeometry>
         </mxCell>
