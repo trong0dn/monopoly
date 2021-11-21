@@ -25,7 +25,6 @@ public class Railroad implements Square {
         this.owned = false;
     }
 
-
     /**
      * Get the position of the square tile.
      * @return  int

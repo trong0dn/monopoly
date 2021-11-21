@@ -22,6 +22,14 @@ public class Jail implements Square {
     }
 
     /**
+     * Get JailType
+     * @return JailType
+     */
+    public JailType getType() {
+        return this.type;
+    }
+
+    /**
      * Get the position of the square tile.
      * @return  int
      */

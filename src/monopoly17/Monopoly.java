@@ -65,7 +65,7 @@ public class Monopoly {
         while (gameState.players.size() > 1) {
             try {
                 gameState.currentPlayer = gameState.players.remove();
-                turn();
+                // turn();
                 if (!isBankrupt) {
                     gameState.players.add(gameState.currentPlayer);
                 }
@@ -193,15 +193,17 @@ public class Monopoly {
         if (!owned && ownable) {
             unowned(player, square);
         }
-
         else if (owned) {
             owned(player, square, roll);
         }
         else if (square instanceof Taxes) {
             payTax(player, (Taxes) square, square);
         }
-        else if (square instanceof  Jail) { }
-        //TODO Deal with Jail square
+        else if (square instanceof  Jail) {
+            jailAction(player, (Jail) square);
+        } else if (square instanceof Railroad) {
+            railroadMove(player);
+        }
     }
 
     /* Implementation of buy house feature */
@@ -229,7 +231,7 @@ public class Monopoly {
     public void unowned(Player player, Square square) {
         int cost = square.cost();
 
-        if (player.getMoney() < cost) { //TODO Create method to get total value player of available assets
+        if (player.getMoney() < cost) {
             System.out.println("You can not afford to purchase " + square.name());
             return;
         }
@@ -247,7 +249,6 @@ public class Monopoly {
                 player.exchangeMoney(-1 * cost);
                 buyProperty(player, square);
             }
-            //TODO else trade assets for money
         //}
     }
 
@@ -296,18 +297,89 @@ public class Monopoly {
             player.exchangeMoney(-1 * rent);
             owner.exchangeMoney(rent);
         }
-        //TODO else trade assets for money
     }
 
+    /**
+     * Handle Tax square via paying the taxes.
+     * @param player    Player
+     * @param tax       Taxes
+     * @param square    Square
+     */
     public void payTax(Player player, Taxes tax, Square square) {
         int cost;
         // Income Tax square
         if (square.position() == 4) {
-            System.out.println("Pay 10% of worth or $200?");
             gameState.decisionState = DecisionState.INCOME_TAX;
-            if (player.inputDecision(gameState, new String[] {"10%", "$200"}) == 0)
-                cost = tax.getTax(player.getMoney() * 0.1);
+            //if (player.inputDecision(gameState, new String[] {"10", "200"}) == 0)
+                //cost = tax.getTax(player.getMoney());
+            //else {
+                cost = tax.getTax();
+            //}
+        // Super Tax square
+        } else {
+            cost = tax.getTax();
         }
+        System.out.println("You have landed on " + square.name() + " and must pay " + cost + " in Taxes.");
+        if (player.getMoney() < cost) {
+            System.out.println("You have insufficient funds.");
+        } else {
+            player.exchangeMoney(cost * -1);
+        }
+    }
+
+    /**
+     * Method for leaving jail, if the player in jail on their turn.
+     * @param player    Player
+     */
+    public void leaveJail(Player player) {
+        int JAIL_COST = 50;
+        if (player.getMoney() >= JAIL_COST) {
+            player.exchangeMoney(JAIL_COST * -1);
+        }
+    }
+
+    /**
+     * Method features for moving player using owned railroads.
+     * @param player    Player
+     */
+    public void railroadMove(Player player) {
+        int position = player.getPosition();
+        // Iterate from current position to the end
+        for (int i = position; i < gameState.gameBoard.size(); i++) {
+            if (gameState.gameBoard.square(i) instanceof Railroad) {
+                if (gameState.gameBoard.square(i).owner().equals(player)) {
+                    player.moveTo(i);
+                    return;
+                }
+                return;
+            }
+        }
+        // Iterate from start to current position
+        for (int i = 0; i < position; i++) {
+            if (gameState.gameBoard.square(i) instanceof Railroad) {
+                if (gameState.gameBoard.square(i).owner().equals(player)) {
+                    player.moveTo(i);
+                    return;
+                }
+                return;
+            }
+        }
+        throw new RuntimeException("Railroads don't exist on the board");
+    }
+
+    public void jailAction(Player player, Jail jail) {
+        Jail.JailType type = jail.getType();
+        if (type == Jail.JailType.GOTO_JAIL) {
+            intoJail(player);
+        }
+    }
+
+    private void intoJail(Player player) {
+        System.out.println("Go to Jail!");
+        player.moveTo(40);
+        Square[] square = gameState.gameBoard.getBoard();
+        Jail jail = (Jail) square[40];
+        jailAction(player, jail);
     }
 
     /**

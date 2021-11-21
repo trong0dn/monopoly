@@ -26,7 +26,6 @@ public class Utility implements Square {
         this.owned = false;
     }
 
-
     /**
      * Get the position of the square tile.
      * @return  int
@@ -90,7 +89,6 @@ public class Utility implements Square {
             }
         }
     }
-
 
     /**
      * Rent value of the square tile.

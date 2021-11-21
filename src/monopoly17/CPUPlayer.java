@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 /**
  * This class represents the CPU player of this game.
- * @author Trong Nguyen
+ * @author Trong Nguyen & Ibrahim Almalki
  */
 public class CPUPlayer implements Player {
     private final Collection<Square> properties;
