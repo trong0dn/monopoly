@@ -339,7 +339,34 @@ public class Monopoly {
         }
     }
 
-
+    /**
+     * Method feature for moving player using owned railroads.
+     * @param player    Player
+     */
+    public void railroadMove(Player player) {
+        int position = player.getPosition();
+        // Iterate from current position to the end
+        for (int i = position; i < gameState.gameBoard.size(); i++) {
+            if (gameState.gameBoard.square(i) instanceof Railroad) {
+                if (gameState.gameBoard.square(i).owner().equals(player)) {
+                    player.moveTo(i);
+                    return;
+                }
+                return;
+            }
+        }
+        // Iterate from start to current position
+        for (int i = 0; i < position; i++) {
+            if (gameState.gameBoard.square(i) instanceof Railroad) {
+                if (gameState.gameBoard.square(i).owner().equals(player)) {
+                    player.moveTo(i);
+                    return;
+                }
+                return;
+            }
+        }
+        throw new RuntimeException("Railroads don't exist on the board");
+    }
 
     /**
      * return whether a player is bankrupt or not
