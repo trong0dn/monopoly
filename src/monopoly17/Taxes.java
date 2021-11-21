@@ -102,9 +102,9 @@ public class Taxes implements Square {
     }
 
     /**
-     * Get the tax.
-     * @return  int
+     * Get the tax value.
      * @param value double
+     * @return  int
      */
     public int getTax(double value) {
         return this.tax;
