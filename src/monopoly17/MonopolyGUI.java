@@ -559,6 +559,10 @@ public class MonopolyGUI extends JPanel {
 
     }
 
+    /**
+     * creates a button to preform all activities related to the cpu player
+     * @return a run cpu button
+     */
     private JButton buttonRunCPU(){
         buttonRunCPU = new JButton("CPU's Turn");
         buttonRunCPU.addActionListener(f-> {
