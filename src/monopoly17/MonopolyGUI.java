@@ -80,8 +80,8 @@ public class MonopolyGUI extends JPanel {
         setupPlayerStatusWindow();
         setupConsoleLog();
         initController();
+        //CPUDecision();
         monopoly.play();
-        CPUDecision();
     }
 
     /**
@@ -527,9 +527,20 @@ public class MonopolyGUI extends JPanel {
     public void CPUDecision(){
         PlayerGUI currentPlayer =  playersGUI.get(currentPlayerOrder);
         Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+
+        //dice setup
+        die1.rollDice();
+        die2.rollDice();
         int roll = die1.getFaceValue() + die2.getFaceValue();
 
-        if (currentPlayer.getPlayer() instanceof CPUPlayer){
+        //grey out the buttons
+        buttonRollDice.setEnabled(false);
+        buttonBuyHouse.setEnabled(false);
+        buttonPayRent.setEnabled(false);
+        buttonBuy.setEnabled(false);
+        buttonNextTurn.setEnabled(true);
+
+        if (currentPlayer.getPlayer() instanceof CPUPlayer ){
 
             //paying rent
             if (currentSquare.isOwnable() && currentSquare.isOwned()) {
@@ -538,6 +549,7 @@ public class MonopolyGUI extends JPanel {
             monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
             buttonPayRent.setEnabled(false);
             updatePlayerStatusTextArea();
+
 
             //buying property
             if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
@@ -549,6 +561,28 @@ public class MonopolyGUI extends JPanel {
             monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
             buttonBuy.setEnabled(false);
             updatePlayerStatusTextArea();
+
+
+
+            //buy house
+            for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()){
+                Property property;
+                if (sq instanceof Property){
+                    property = (Property) sq;
+
+                    if (property.isMonopoly()){
+                        monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
+                        System.out.println("House Purchased");
+                        infoConsole.setText("Bought House for " + property.getHouseCost());
+                        /*
+                        Display dots when player buys house on property.
+                         */
+
+                    }
+                }
+            }
+
+
 
 
         }
