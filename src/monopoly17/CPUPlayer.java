@@ -17,11 +17,11 @@ public class CPUPlayer implements Player {
 
     /**
      * Constructor for CPU Player.
-     * @param number    int
+     * @param name    String
      */
-    public CPUPlayer(int number) {
+    public CPUPlayer(String name) {
         this.properties = new LinkedList<>();
-        this.playerName = "CPU Player " + number;
+        this.playerName = "CPU Player " + name;
         this.money = 1500;
         this.position = 0;
         this.jailTurns = 0;

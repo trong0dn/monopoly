@@ -1,6 +1,6 @@
 package monopoly17;
 /*
-Milestone 2
+Milestone 3
 
 Group 17:
 Trong Nguyen 100848232
@@ -11,10 +11,9 @@ Elisha Catherasoo 101148507
 Professor: Babak Esfandiari
 TA: Michael Vezina
 
-Due: 11/08/2021
+Due: 11/22/2021
  */
 
-import java.time.temporal.ValueRange;
 import java.util.*;
 
 /**
@@ -38,8 +37,8 @@ public class Monopoly {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
-        //Input input = new Input();
-        //initializePlayers(input);
+        Input input = new Input();
+        //initializePlayers(input); // Not needed for GUI-based system.
     }
 
     /**
@@ -81,7 +80,7 @@ public class Monopoly {
     }
 
     /**
-     * Initializes game starting conditions with players.
+     * Initializes game starting conditions with players. Required only for text-based system.
      */
     public void initializePlayers(Input input) {
         System.out.println("~~~Welcome to MONOPOLY!~~~");
@@ -89,8 +88,8 @@ public class Monopoly {
         System.out.println("How many players would like to play?");
 
         int numPlayers = input.inputInt();
-        while (numPlayers < 2 || numPlayers > 8) {
-            System.out.println("Try Again! You must have a min of 2 and max of 8 players: ");
+        while (numPlayers < 2 || numPlayers > 6) {
+            System.out.println("Try Again! You must have a min of 2 and max of 6 players: ");
             numPlayers = input.inputInt();
         }
         // Ask user to input name of players
@@ -106,8 +105,6 @@ public class Monopoly {
         for (Player p: gameState.players) {
             System.out.println(">>> " + p.name());
         }
-
-
     }
 
     /**

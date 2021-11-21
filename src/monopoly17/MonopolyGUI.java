@@ -179,7 +179,7 @@ public class MonopolyGUI extends JPanel {
     private void setupConsoleLog() {
         // Add console log panel
         JPanel consolePanel = new JPanel();
-        consolePanel.setBounds(80, 310, 250, 70);
+        consolePanel.setBounds(80, 300, 250, 100);
         consolePanel.setBackground(Color.BLACK);
         consolePanel.setLayout(null);
         rightLayeredPane.add(consolePanel, String.valueOf(1));
@@ -187,7 +187,7 @@ public class MonopolyGUI extends JPanel {
         infoConsole = new JTextArea();
         infoConsole.setColumns(20);
         infoConsole.setRows(5);
-        infoConsole.setBounds(5, 5, 240, 60);
+        infoConsole.setBounds(5, 5, 240, 90);
         infoConsole.setLineWrap(true);
         infoConsole.setEditable(false);
         infoConsole.setText("Player 1 starts the game! \nClicking Roll Dice!");
@@ -255,7 +255,7 @@ public class MonopolyGUI extends JPanel {
         output.append("Current Balance: $").append(playerMoney).append("\n");
         output.append("Property titles owned:\n");
         for (Square sq : properties) {
-            output.append(">>> ").append(sq.name()).append("\n");
+            output.append("> ").append(sq.name()).append("\n");
 
         }
         panelPlayerTextArea.setText(output.toString());

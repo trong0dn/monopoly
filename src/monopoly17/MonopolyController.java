@@ -11,20 +11,32 @@ import java.util.LinkedList;
  * This class represents all the controllers used in the Monopoly GUI
  * @author Elisha Catherasoo & Ibrahim Almalki
  */
-public class MonopolyController{
+public class MonopolyController
+{
     private JFrame frame;
     private JPanel playerInitPanel; // Panel for making the players
     private JPanel startPanel; // Panel for the main starting page
     private JPanel monopolyPanel; // Panel for the actual Monopoly game
     private JPanel switchPanels; // Used for switching the panels
     private LinkedList<Player> playerList;
-    private JButton startButton;
-    private JButton playButton;
-    private JButton addPlayer;
-    private JButton addCPUPlayer;
-    private JTextField playerNameInput;
-    private JPanel playerNameList;
-    private Font playerFont;
+    private final JButton startButton;
+    private final JButton playButton;
+    private final JButton addPlayer;
+    private final JButton addCPUPlayer;
+    private final JTextField playerNameInput;
+    private final JPanel playerNameList;
+    private final Font playerFont;
+
+    private final Color[] playerTokenColors = {
+        Color.RED,
+        Color.BLUE,
+        Color.GREEN,
+        Color.ORANGE,
+        Color.YELLOW,
+        Color.MAGENTA,
+        Color.GRAY,
+        Color.PINK
+    };
 
     /**
      * Initialize MonopolyController
@@ -142,20 +154,19 @@ public class MonopolyController{
             if(playerList.size() < 6 && playerNameInput.getText().matches(".*\\w.*")) {
                 // Make the panel to get the username
                 Player newPlayer = new HumanPlayer(playerNameInput.getText());
-
                 playerList.add(newPlayer);
 
                 // Add the new player to the player panel
                 JLabel playerNumber = new JLabel();
                 playerNumber.setFont(playerFont);
                 playerNumber.setOpaque(true);
-                playerNumber.setBackground(Color.RED);
+                playerNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
                 playerNumber.setForeground(Color.WHITE);
 
                 JLabel newPlayerLabel = new JLabel();
                 newPlayerLabel.setFont(playerFont);
                 newPlayerLabel.setOpaque(true);
-                newPlayerLabel.setBackground(Color.RED);
+                newPlayerLabel.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
                 newPlayerLabel.setForeground(Color.WHITE);
 
                 playerNumber.setText("Player " + (playerList.indexOf(newPlayer) + 1) + ": ");
@@ -163,12 +174,12 @@ public class MonopolyController{
 
                 JPanel tempPanelNumber = new JPanel();
                 tempPanelNumber.setPreferredSize(new Dimension(150, 40));
-                tempPanelNumber.setBackground(Color.RED);
+                tempPanelNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
                 tempPanelNumber.add(playerNumber);
 
                 JPanel tempPanelName = new JPanel();
                 tempPanelName.setPreferredSize(new Dimension(250, 40));
-                tempPanelName.setBackground(Color.RED);
+                tempPanelName.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
                 tempPanelName.add(newPlayerLabel);
 
                 // Add player name to panel
@@ -196,8 +207,60 @@ public class MonopolyController{
     }
 
     public JButton AddCPUPlayer() {
-        addCPUPlayer.addActionListener(e ->
-                JOptionPane.showMessageDialog(playerInitPanel, "Not implemented yet!"));
+        addCPUPlayer.addActionListener(e -> {
+            if (playerList.size() < 6 && playerNameInput.getText().matches(".*\\w.*")) {
+                // Make the panel to get the username
+                Player newPlayer = new CPUPlayer(playerNameInput.getText());
+                playerList.add(newPlayer);
+
+                // Add the new player to the player panel
+                JLabel playerNumber = new JLabel();
+                playerNumber.setFont(playerFont);
+                playerNumber.setOpaque(true);
+                playerNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
+                playerNumber.setForeground(Color.WHITE);
+
+                JLabel newPlayerLabel = new JLabel();
+                newPlayerLabel.setFont(playerFont);
+                newPlayerLabel.setOpaque(true);
+                newPlayerLabel.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
+                newPlayerLabel.setForeground(Color.WHITE);
+
+                playerNumber.setText("Player " + (playerList.indexOf(newPlayer) + 1) + ": ");
+                newPlayerLabel.setText(newPlayer.name());
+
+                JPanel tempPanelNumber = new JPanel();
+                tempPanelNumber.setPreferredSize(new Dimension(150, 40));
+                tempPanelNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
+                tempPanelNumber.add(playerNumber);
+
+                JPanel tempPanelName = new JPanel();
+                tempPanelName.setPreferredSize(new Dimension(250, 40));
+                tempPanelName.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
+                tempPanelName.add(newPlayerLabel);
+
+                // Add player name to panel
+                playerNameList.add(tempPanelNumber);
+                playerNameList.add(tempPanelName);
+
+                playerNameList.revalidate();
+                playerNameList.repaint();
+
+
+                if (playerList.size() >= 2 && playerList.size() <= 6) {
+                    playButton.setEnabled(true);
+                }
+
+                // Make text box empty
+                playerNameInput.setText("");
+
+            } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
+                JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
+            }
+            else {
+                JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
+            }
+        });
         return addCPUPlayer;
     }
 
