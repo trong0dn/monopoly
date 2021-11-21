@@ -182,7 +182,6 @@ public class CPUPlayer implements Player {
         return this.jailTurns;
     }
 
-
     public boolean handleNone() {
         // Always choose an action over passing their turn.
         return false;

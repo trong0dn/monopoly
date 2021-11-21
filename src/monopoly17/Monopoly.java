@@ -328,17 +328,6 @@ public class Monopoly {
     }
 
     /**
-     * Method for leaving jail, if the player in jail on their turn.
-     * @param player    Player
-     */
-    public void leaveJail(Player player) {
-        int JAIL_COST = 50;
-        if (player.getMoney() >= JAIL_COST) {
-            player.exchangeMoney(JAIL_COST * -1);
-        }
-    }
-
-    /**
      * Method features for moving player using owned railroads.
      * @param player    Player
      */
@@ -381,6 +370,18 @@ public class Monopoly {
         Jail jail = (Jail) square[40];
         jailAction(player, jail);
     }
+
+    /**
+     * Method for leaving jail, if the player in jail on their turn.
+     * @param player    Player
+     */
+    public void leaveJail(Player player) {
+        int JAIL_COST = 50;
+        if (player.getMoney() >= JAIL_COST) {
+            player.exchangeMoney(JAIL_COST * -1);
+        }
+    }
+
 
     /**
      * return whether a player is bankrupt or not
