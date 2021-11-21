@@ -193,7 +193,6 @@ public class Monopoly {
         if (!owned && ownable) {
             unowned(player, square);
         }
-
         else if (owned) {
             owned(player, square, roll);
         }
@@ -202,6 +201,8 @@ public class Monopoly {
         }
         else if (square instanceof  Jail) {
             jailAction(player, (Jail) square);
+        } else if (square instanceof Railroad) {
+            railroadMove(player);
         }
     }
 
@@ -308,18 +309,17 @@ public class Monopoly {
         int cost;
         // Income Tax square
         if (square.position() == 4) {
-            System.out.println("Pay 10% of money or $200?");
             gameState.decisionState = DecisionState.INCOME_TAX;
-            if (player.inputDecision(gameState, new String[] {"10%", "200"}) == 0)
-                cost = tax.getTax(player.getMoney());
-            else {
+            //if (player.inputDecision(gameState, new String[] {"10", "200"}) == 0)
+                //cost = tax.getTax(player.getMoney());
+            //else {
                 cost = tax.getTax();
-            }
+            //}
         // Super Tax square
         } else {
             cost = tax.getTax();
         }
-        System.out.println("You have landed on " + square.name() + " and must pay " + cost + "in Taxes.");
+        System.out.println("You have landed on " + square.name() + " and must pay " + cost + " in Taxes.");
         if (player.getMoney() < cost) {
             System.out.println("You have insufficient funds.");
         } else {
