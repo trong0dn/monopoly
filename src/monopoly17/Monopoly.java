@@ -75,8 +75,12 @@ public class Monopoly {
                 return;
             }
         }
-        Player winner = gameState.players.remove();
-        System.out.println("Monopoly winner: " + winner.name());
+        try {
+            Player winner = gameState.players.remove();
+            System.out.println("Monopoly winner: " + winner.name());
+        } catch (NoSuchElementException ignored) {
+            // Since when the game first start there are no players.
+        }
     }
 
     /**

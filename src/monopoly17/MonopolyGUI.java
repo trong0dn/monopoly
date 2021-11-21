@@ -69,7 +69,9 @@ public class MonopolyGUI extends JPanel {
      */
     public MonopolyGUI() {
         monopoly = new Monopoly();
-        playersList = new LinkedList<>();
+        Monopoly.GameState gameState = new Monopoly.GameState();
+        gameState.players = new LinkedList<>();
+        playersList = gameState.players;
         playersList.add(new HumanPlayer("1"));
         setupBoard();
         setupDice();
@@ -78,6 +80,7 @@ public class MonopolyGUI extends JPanel {
         setupPlayerStatusWindow();
         setupConsoleLog();
         initController();
+        monopoly.play();
     }
 
     /**
@@ -156,8 +159,6 @@ public class MonopolyGUI extends JPanel {
         buttonNextTurn.setBounds(80, 520, 250, 50);
         buttonNextTurn.setEnabled(false);
         rightLayeredPane.add(buttonNextTurn);
-
-
     }
 
     /**
