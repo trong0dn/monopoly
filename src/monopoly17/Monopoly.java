@@ -45,7 +45,7 @@ public class Monopoly {
      * Different decision states during a player's turn.
      */
     public enum DecisionState {
-        NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION
+        NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION, INCOME_TAX
     }
 
     /**
@@ -149,7 +149,7 @@ public class Monopoly {
             //TODO Buy/Sell houses
             System.out.println("1) Pass my turn.");
             System.out.println("2) Player Statistics.");
-            int choice = gameState.currentPlayer.inputInt(DecisionState.TURN_ACTION);
+            int choice = gameState.currentPlayer.inputInt(gameState);
 
             // Switch-case for more additional player options
             switch (choice) {
@@ -197,9 +197,10 @@ public class Monopoly {
         else if (owned) {
             owned(player, square, roll);
         }
-        //else if (square instanceof Taxes) { }
-        //TODO Deal with Tax squares
-        //else if (square instanceof  Jail) { }
+        else if (square instanceof Taxes) {
+            payTax(player, (Taxes) square, square);
+        }
+        else if (square instanceof  Jail) { }
         //TODO Deal with Jail square
     }
 
@@ -296,6 +297,17 @@ public class Monopoly {
             owner.exchangeMoney(rent);
         }
         //TODO else trade assets for money
+    }
+
+    public void payTax(Player player, Taxes tax, Square square) {
+        int cost;
+        // Income Tax square
+        if (square.position() == 4) {
+            System.out.println("Pay 10% of worth or $200?");
+            gameState.decisionState = DecisionState.INCOME_TAX;
+            if (player.inputDecision(gameState, new String[] {"10%", "$200"}) == 0)
+                cost = tax.getTax(player.getMoney() * 0.1);
+        }
     }
 
     /**

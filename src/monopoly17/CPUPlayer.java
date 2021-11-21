@@ -138,12 +138,13 @@ public class CPUPlayer implements Player {
      * @return boolean
      */
     @Override
-    public boolean inputBool(Monopoly.DecisionState state) {
-        return switch (state) {
+    public boolean inputBool(Monopoly.GameState state) {
+        return switch (state.decisionState) {
             case NONE -> handleNone();
             case BUY_PROPERTY -> handleBuyProperty();
             case BUY_HOUSE -> handleBuyHouse();
             case TURN_ACTION -> handleTurnAction();
+            case INCOME_TAX -> handleIncomeTax();
         };
     }
 
@@ -153,18 +154,12 @@ public class CPUPlayer implements Player {
      * @return int
      */
     @Override
-    public int inputInt(Monopoly.DecisionState state) {
+    public int inputInt(Monopoly.GameState state) {
         throw new IllegalArgumentException("No implementation use case for CPU to input integer");
     }
 
-    /**
-     * Input value for two choices.
-     * @param state   Monopoly.DecisionState
-     * @param choices String[]
-     * @return int
-     */
     @Override
-    public int inputDecision(Monopoly.DecisionState state, String[] choices) {
+    public int inputDecision(Monopoly.GameState state, String[] choices) {
         // CPU Player always selects true
         return 0;
     }
@@ -205,6 +200,11 @@ public class CPUPlayer implements Player {
 
     public boolean handleTurnAction() {
         // Always roll dice to move.
+        return true;
+    }
+
+    public boolean handleIncomeTax() {
+        // Always pay taxes
         return true;
     }
 }

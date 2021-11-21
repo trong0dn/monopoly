@@ -226,7 +226,7 @@ public class MonopolyController {
     /**
      * The Monopoly GUI
      */
-    public void displayGUI() { // used for testing buttons
+    public void displayGUI() {
         // make the main title
         Font font = new Font("Lucida Grande", Font.BOLD, 60);
         JPanel titleBackground = new JPanel();

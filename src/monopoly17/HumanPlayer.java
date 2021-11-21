@@ -148,7 +148,7 @@ public class HumanPlayer implements Player {
      * @return boolean
      */
     @Override
-    public boolean inputBool(Monopoly.DecisionState state) {
+    public boolean inputBool(Monopoly.GameState state) {
         return this.input.inputBool();
     }
 
@@ -158,7 +158,7 @@ public class HumanPlayer implements Player {
      * @return int
      */
     @Override
-    public int inputInt(Monopoly.DecisionState state) {
+    public int inputInt(Monopoly.GameState state) {
         return this.input.inputInt();
     }
 
@@ -169,7 +169,7 @@ public class HumanPlayer implements Player {
      * @return int
      */
     @Override
-    public int inputDecision(Monopoly.DecisionState state, String[] choices) {
+    public int inputDecision(Monopoly.GameState state, String[] choices) {
         return this.input.inputDecision(choices);
     }
 
