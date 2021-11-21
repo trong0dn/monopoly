@@ -200,8 +200,9 @@ public class Monopoly {
         else if (square instanceof Taxes) {
             payTax(player, (Taxes) square, square);
         }
-        else if (square instanceof  Jail) { }
+        else if (square instanceof  Jail) {
             jailAction(player, (Jail) square);
+        }
     }
 
     /* Implementation of buy house feature */
@@ -366,6 +367,21 @@ public class Monopoly {
             }
         }
         throw new RuntimeException("Railroads don't exist on the board");
+    }
+
+    public void jailAction(Player player, Jail jail) {
+        Jail.JailType type = jail.getType();
+        if (type == Jail.JailType.GOTO_JAIL) {
+            intoJail(player);
+        }
+    }
+
+    private void intoJail(Player player) {
+        System.out.println("Go to Jail!");
+        player.moveTo(40);
+        Square[] square = gameState.gameBoard.getBoard();
+        Jail jail = (Jail) square[40];
+        jailAction(player, jail);
     }
 
     /**
