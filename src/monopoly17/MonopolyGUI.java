@@ -51,6 +51,7 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonPayRent;
     private JButton buttonBuy;
     private JButton buttonBuyHouse; // Add buy house button
+    private JButton buttonRunCPU;
     private boolean firstRoll = true;
 
     private final Color[] playerTokenColors = {
@@ -80,7 +81,6 @@ public class MonopolyGUI extends JPanel {
         setupPlayerStatusWindow();
         setupConsoleLog();
         initController();
-        //CPUDecision();
         monopoly.play();
     }
 
@@ -154,6 +154,12 @@ public class MonopolyGUI extends JPanel {
         buttonBuyHouse.setBounds(315, 470, 115, 40);
         buttonBuyHouse.setEnabled(true);
         rightLayeredPane.add(buttonBuyHouse);
+
+        // Add RunCPU Button
+        buttonRunCPU = CPUDecision();
+        buttonRunCPU.setBounds(315, 570, 115, 40);
+        buttonRunCPU.setEnabled(true);
+        rightLayeredPane.add(buttonRunCPU);
 
         // Add next turn button
         buttonNextTurn = buttonNextTurn();
@@ -524,68 +530,69 @@ public class MonopolyGUI extends JPanel {
 
     }
 
-    public void CPUDecision(){
-        PlayerGUI currentPlayer =  playersGUI.get(currentPlayerOrder);
-        Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+    private JButton CPUDecision(){
+        buttonRunCPU = new JButton("Run CPU's Turn");
+        buttonRunCPU.addActionListener(f-> {
+            PlayerGUI currentPlayer = playersGUI.get(currentPlayerOrder);
+            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
 
-        //dice setup
-        die1.rollDice();
-        die2.rollDice();
-        int roll = die1.getFaceValue() + die2.getFaceValue();
+            //dice setup
+            die1.rollDice();
+            die2.rollDice();
+            int roll = die1.getFaceValue() + die2.getFaceValue();
 
-        //grey out the buttons
-        buttonRollDice.setEnabled(false);
-        buttonBuyHouse.setEnabled(false);
-        buttonPayRent.setEnabled(false);
-        buttonBuy.setEnabled(false);
-        buttonNextTurn.setEnabled(true);
-
-        if (currentPlayer.getPlayer() instanceof CPUPlayer ){
-
-            //paying rent
-            if (currentSquare.isOwnable() && currentSquare.isOwned()) {
-                infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
-                        "\nRent cost: " + currentSquare.rent(roll));}
-            monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+            //grey out the buttons
+            buttonRollDice.setEnabled(false);
+            buttonBuyHouse.setEnabled(false);
             buttonPayRent.setEnabled(false);
-            updatePlayerStatusTextArea();
-
-
-            //buying property
-            if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
-                infoConsole.setText("You bought property:\n" + currentSquare.name() +
-                        "\nPurchase cost: " + currentSquare.cost());
-            } else {
-                infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
-            }
-            monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
             buttonBuy.setEnabled(false);
-            updatePlayerStatusTextArea();
+            buttonNextTurn.setEnabled(true);
+
+            if (currentPlayer.getPlayer() instanceof CPUPlayer) {
+
+                //paying rent
+                if (currentSquare.isOwnable() && currentSquare.isOwned()) {
+                    infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
+                            "\nRent cost: " + currentSquare.rent(roll));
+                }
+                monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+                buttonPayRent.setEnabled(false);
+                updatePlayerStatusTextArea();
 
 
+                //buying property
+                if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
+                    infoConsole.setText("You bought property:\n" + currentSquare.name() +
+                            "\nPurchase cost: " + currentSquare.cost());
+                } else {
+                    infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
+                }
+                monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+                buttonBuy.setEnabled(false);
+                updatePlayerStatusTextArea();
 
-            //buy house
-            for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()){
-                Property property;
-                if (sq instanceof Property){
-                    property = (Property) sq;
 
-                    if (property.isMonopoly()){
-                        monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
-                        System.out.println("House Purchased");
-                        infoConsole.setText("Bought House for " + property.getHouseCost());
+                //buy house
+                for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()) {
+                    Property property;
+                    if (sq instanceof Property) {
+                        property = (Property) sq;
+
+                        if (property.isMonopoly()) {
+                            monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
+                            System.out.println("House Purchased");
+                            infoConsole.setText("Bought House for " + property.getHouseCost());
                         /*
                         Display dots when player buys house on property.
                          */
 
+                        }
+                        updatePlayerStatusTextArea();
                     }
                 }
             }
-
-
-
-
-        }
+        });
+        return buttonRunCPU;
     }
 
     public static void main(String[] args) {
