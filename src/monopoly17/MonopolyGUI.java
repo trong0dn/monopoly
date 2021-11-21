@@ -81,6 +81,7 @@ public class MonopolyGUI extends JPanel {
         setupConsoleLog();
         initController();
         monopoly.play();
+        CPUDecision();
     }
 
     /**
@@ -521,6 +522,36 @@ public class MonopolyGUI extends JPanel {
 
         return buttonBuyHouse;
 
+    }
+
+    public void CPUDecision(){
+        PlayerGUI currentPlayer =  playersGUI.get(currentPlayerOrder);
+        Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+        int roll = die1.getFaceValue() + die2.getFaceValue();
+
+        if (currentPlayer.getPlayer() instanceof CPUPlayer){
+
+            //paying rent
+            if (currentSquare.isOwnable() && currentSquare.isOwned()) {
+                infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
+                        "\nRent cost: " + currentSquare.rent(roll));}
+            monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+            buttonPayRent.setEnabled(false);
+            updatePlayerStatusTextArea();
+
+            //buying property
+            if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
+                infoConsole.setText("You bought property:\n" + currentSquare.name() +
+                        "\nPurchase cost: " + currentSquare.cost());
+            } else {
+                infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
+            }
+            monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+            buttonBuy.setEnabled(false);
+            updatePlayerStatusTextArea();
+
+
+        }
     }
 
     public static void main(String[] args) {
