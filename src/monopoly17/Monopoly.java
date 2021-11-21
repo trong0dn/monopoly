@@ -201,7 +201,7 @@ public class Monopoly {
             payTax(player, (Taxes) square, square);
         }
         else if (square instanceof  Jail) { }
-        //TODO Deal with Jail square
+            jailAction(player, (Jail) square);
     }
 
     /* Implementation of buy house feature */
@@ -299,6 +299,12 @@ public class Monopoly {
         //TODO else trade assets for money
     }
 
+    /**
+     * Handle Tax square via paying the taxes.
+     * @param player    Player
+     * @param tax       Taxes
+     * @param square    Square
+     */
     public void payTax(Player player, Taxes tax, Square square) {
         int cost;
         // Income Tax square
@@ -321,6 +327,19 @@ public class Monopoly {
             player.exchangeMoney(cost * -1);
         }
     }
+
+    /**
+     * Method for leaving jail, if the player in jail on their turn.
+     * @param player    Player
+     */
+    public void leaveJail(Player player) {
+        int JAIL_COST = 50;
+        if (player.getMoney() >= JAIL_COST) {
+            player.exchangeMoney(JAIL_COST * -1);
+        }
+    }
+
+
 
     /**
      * return whether a player is bankrupt or not
