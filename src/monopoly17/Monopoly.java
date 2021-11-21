@@ -275,7 +275,7 @@ public class Monopoly {
             rent = square.rent(roll);
         }
         else if (square instanceof Railroad) {
-            //TODO Check rules on railroad rent
+            // Railroad cost double if owned
             rent *= 2;
         }
         Player owner = square.owner();
