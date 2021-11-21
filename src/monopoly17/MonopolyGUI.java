@@ -383,6 +383,7 @@ public class MonopolyGUI extends JPanel {
                             "\nProperty Cost: $" + currentSquare.cost());
                     isRollDouble(currentPlayerOrder);
                     buttonBuy.setEnabled(true);
+                    isRollDouble(currentPlayerOrder);
                     // If square is already owned
                 } else if (currentSquare.isOwnable()) {
                     // Player lands on their own property
@@ -415,7 +416,6 @@ public class MonopolyGUI extends JPanel {
                         buttonNextTurn.setEnabled(false);
                         buttonBuy.setEnabled(false);
                     }
-                    isRollDouble(currentPlayerOrder);
                 } else {
                     // Player lands on tax square
                     if (currentSquare instanceof Taxes) {
