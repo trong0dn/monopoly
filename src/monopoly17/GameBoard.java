@@ -237,7 +237,7 @@ public class GameBoard {
      * @return  Square
      */
     public Square incomeTax(int position) {
-        return new Taxes(position, "INCOME TAX");
+        return new Taxes(position, true);
     }
 
     /**
@@ -246,7 +246,7 @@ public class GameBoard {
      * @return  Square
      */
     public Square superTax(int position) {
-        return new Taxes(position,"SUPER TAX");
+        return new Taxes(position,false);
     }
 
     /**
