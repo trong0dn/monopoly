@@ -230,7 +230,7 @@ public class Monopoly {
     public void unowned(Player player, Square square) {
         int cost = square.cost();
 
-        if (player.getMoney() < cost) { //TODO Create method to get total value player of available assets
+        if (player.getMoney() < cost) {
             System.out.println("You can not afford to purchase " + square.name());
             return;
         }
@@ -243,13 +243,12 @@ public class Monopoly {
             System.out.println("You do not have sufficient funds for this transaction.\n You currently have $"
                     + gameState.currentPlayer.getMoney());
         }
-        //if (player.inputBool(gameState)) {
+        if (player.inputBool(gameState)) {
             if (!noMoney) {
                 player.exchangeMoney(-1 * cost);
                 buyProperty(player, square);
             }
-            //TODO else trade assets for money
-        //}
+        }
     }
 
     /**
@@ -297,7 +296,6 @@ public class Monopoly {
             player.exchangeMoney(-1 * rent);
             owner.exchangeMoney(rent);
         }
-        //TODO else trade assets for money
     }
 
     /**
