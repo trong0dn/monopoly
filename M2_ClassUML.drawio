@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2021-11-08T14:28:21.970Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="Ut1XPzZSSmmrhuJIVqbF" version="15.7.0" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2021-11-21T16:49:33.948Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="MQbQkumXAhgYBp-97gOU" version="15.7.4" type="github" pages="5">
   <diagram id="mIdWcuVjI4xpF6q1rHtD" name="Class UML">
-    <mxGraphModel dx="11710" dy="3685" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="4009" dy="276" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-1" value="&lt;&lt;interface&gt;&gt;&#xa;monopoly17.Square" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="-350" y="360" width="200" height="282" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-1" value="&lt;&lt;interface&gt;&gt;&#xa;Square" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="-350" y="344" width="200" height="282" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-1" vertex="1">
           <mxGeometry y="40" width="200" height="8" as="geometry" />
@@ -25,13 +25,13 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-7" value="+ cost(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-1" vertex="1">
           <mxGeometry y="152" width="200" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-8" value="+ purchase(player: monopoly17.Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-1" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-8" value="+ purchase(player: Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-1" vertex="1">
           <mxGeometry y="178" width="200" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-9" value="+ rent(value: int): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-1" vertex="1">
           <mxGeometry y="204" width="200" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-10" value="+ owner(): monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-1" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-10" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-1" vertex="1">
           <mxGeometry y="230" width="200" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-11" value="+ toString(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-1" vertex="1">
@@ -58,8 +58,8 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-18" value="+ Roll: class" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-13" vertex="1">
           <mxGeometry y="126" width="200" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-19" value="&lt;&lt;interface&gt;&gt;&#xa;monopoly17.Player" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="-3060" y="371" width="370" height="360" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-19" value="&lt;&lt;interface&gt;&gt;&#xa;Player" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="-3060" y="371" width="370" height="438" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-20" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="40" width="370" height="8" as="geometry" />
@@ -73,32 +73,41 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-23" value="+ getPosition(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="100" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-24" value="+ properties(): Collection&lt;monopoly17.Square&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-1" value="+ setInJail(bool: boolean): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-19">
           <mxGeometry y="126" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-25" value="+ name(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-24" value="+ properties(): Collection&lt;Square&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="152" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-26" value="+ getMoney(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-25" value="+ name(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="178" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-27" value="+ exchangeMoney(money: int): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-26" value="+ getMoney(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="204" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-28" value="+ addProperty(square: monopoly17.Square): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-27" value="+ exchangeMoney(money: int): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="230" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-29" value="+ removeProperty(square: monopoly17.Square): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-28" value="+ addProperty(square: Square): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="256" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-30" value="+ inputBool(state: monopoly17.Monopoly.Gamestate): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-29" value="+ removeProperty(square: Square): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="282" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-31" value="+ inputInt(state: monopoly17.Monopoly.Gamestate): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-30" value="+ inputBool(state: Monopoly.Gamestate): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="308" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-32" value="+ inputDecision(state: monopoly17.Monopoly.Gamestate,choices: String[]): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-31" value="+ inputInt(state: Monopoly.Gamestate): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
           <mxGeometry y="334" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-32" value="+ inputDecision(state: Monopoly.Gamestate,choices: String[]): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-19" vertex="1">
+          <mxGeometry y="360" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-2" value="+ setJailTurns(turns: int): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-19">
+          <mxGeometry y="386" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-3" value="+ getJailTurns(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-19">
+          <mxGeometry y="412" width="370" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-33" value="monopoly17.RollDice" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="-2380" y="909" width="200" height="190" as="geometry" />
@@ -124,58 +133,82 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-40" value="+ rollDice(): Roll" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-33" vertex="1">
           <mxGeometry y="164" width="200" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-41" value="monopoly17.HumanPlayer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="-3060" y="801" width="370" height="424" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-41" value="HumanPlayer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="-3060" y="865" width="370" height="632" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-42" value="- properties: Collection&lt;monopoly17.Square&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-6" value="- input: Input" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-41">
           <mxGeometry y="26" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-43" value="- playerName: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-42" value="- properties: Collection&lt;Square&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
           <mxGeometry y="52" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-44" value="- money: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-43" value="- playerName: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
           <mxGeometry y="78" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-45" value="- position: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-44" value="- money: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
           <mxGeometry y="104" width="370" height="26" as="geometry" />
         </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-4" value="- position: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-41">
+          <mxGeometry y="130" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-5" value="- jailTurns: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-41">
+          <mxGeometry y="156" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-45" value="- inJail: boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+          <mxGeometry y="182" width="370" height="26" as="geometry" />
+        </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-46" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
-          <mxGeometry y="130" width="370" height="8" as="geometry" />
+          <mxGeometry y="208" width="370" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-47" value="+ monopoly17.HumanPlayer(playerName: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
-          <mxGeometry y="138" width="370" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-48" value="+ move(numTiles: int): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
-          <mxGeometry y="164" width="370" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-49" value="+ moveTo: void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
-          <mxGeometry y="190" width="370" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-50" value="+ name(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-47" value="+ HumanPlayer(playerName: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
           <mxGeometry y="216" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-51" value="+ getMoney(): int " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-48" value="+ move(numTiles: int): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
           <mxGeometry y="242" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-52" value="+ exchangeMoney(money: int): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-49" value="+ moveTo(newPosition: int): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
           <mxGeometry y="268" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-53" value="+ addProperty(square: monopoly17.Square): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-7" value="+ getPosition(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-41">
           <mxGeometry y="294" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-54" value="+ removeProperty(square: monopoly17.Square): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-8" value="+ setInJail(bool: boolean): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-41">
           <mxGeometry y="320" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-55" value="+ inputBool(state: monopoly17.Monopoly.Gamestate): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-9" value="+ properties(): Collection&lt;Square&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-41">
           <mxGeometry y="346" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-56" value="+ inputInt(state: monopoly17.Monopoly.Gamestate): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-50" value="+ name(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
           <mxGeometry y="372" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-57" value="+ inputDecision(state: monopoly17.Monopoly.Gamestate,choices: String[]): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-51" value="+ getMoney(): int " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
           <mxGeometry y="398" width="370" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-58" value="monopoly17.Inactive" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-52" value="+ exchangeMoney(money: int): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+          <mxGeometry y="424" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-53" value="+ addProperty(square: Square): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+          <mxGeometry y="450" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-54" value="+ removeProperty(square: Square): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+          <mxGeometry y="476" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-55" value="+ inputBool(state: Monopoly.Gamestate): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+          <mxGeometry y="502" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-56" value="+ inputInt(state: Monopoly.Gamestate): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+          <mxGeometry y="528" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-57" value="+ inputDecision(state: Monopoly.Gamestate,choices: String[]): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-41" vertex="1">
+          <mxGeometry y="554" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-10" value="+ setJailTurns(turns: int): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-41">
+          <mxGeometry y="580" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-35" value="+ getJailTurns(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-41">
+          <mxGeometry y="606" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-58" value="Inactive" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="-1040" y="760" width="210" height="320" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-59" value="- position: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
@@ -187,7 +220,7 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-61" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
           <mxGeometry y="78" width="210" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-62" value="+ monopoly17.Inactive(position: int, name: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-62" value="+ Inactive(position: int, name: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
           <mxGeometry y="86" width="210" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-63" value="+ position(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
@@ -205,16 +238,16 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-67" value="+ cost(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
           <mxGeometry y="216" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-68" value="+ purchase(player: monopoly17.Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-68" value="+ purchase(player: Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
           <mxGeometry y="242" width="210" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-69" value="+ rent(value: int): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
           <mxGeometry y="268" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-70" value="+ owner(): monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-70" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-58" vertex="1">
           <mxGeometry y="294" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-71" value="monopoly17.Utility" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-71" value="Utility" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="-510" y="760" width="210" height="502" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-72" value="- COST: int = 150" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
@@ -226,25 +259,25 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-74" value="- name: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="78" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-75" value="- other: monopoly17.Utility" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-75" value="- other: Utility" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="104" width="210" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-76" value="- numOwned: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="130" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-77" value="- owner: monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-77" value="- owner: Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="156" width="210" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-78" value="- owned: boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="182" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-79" value="- dice: monopoly17.RollDice" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-79" value="- dice: RollDice" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="208" width="210" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-80" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="234" width="210" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-81" value="+ monopoly17.Utility(position: int, name: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-81" value="+ Utility(position: int, name: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="242" width="210" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-82" value="+ position(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
@@ -262,64 +295,70 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-86" value="+ cost(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="372" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-87" value="+ purchase(player: monopoly17.Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-87" value="+ purchase(player: Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="398" width="210" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-88" value="+ rent(roll: int): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="424" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-89" value="+ owner(): monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-89" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="450" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-90" value="+ setGroup(other: monopoly17.Utility): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-90" value="+ setGroup(other: Utility): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-71" vertex="1">
           <mxGeometry y="476" width="210" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-91" value="monopoly17.Taxes" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="80" y="760" width="210" height="372" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-91" value="Taxes" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="90" y="760" width="230" height="424" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-92" value="- position: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="26" width="210" height="26" as="geometry" />
+          <mxGeometry y="26" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-93" value="- name: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="52" width="210" height="26" as="geometry" />
+          <mxGeometry y="52" width="230" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-94" value="- tax: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="78" width="210" height="26" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-94" value="- fixTax: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
+          <mxGeometry y="78" width="230" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-36" value="- varTax: double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-91">
+          <mxGeometry y="104" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-95" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="104" width="210" height="8" as="geometry" />
+          <mxGeometry y="130" width="230" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-96" value="+ Tax(position: int, name: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="112" width="210" height="26" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-96" value="+ Tax(position: int, incomeTax:boolean)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
+          <mxGeometry y="138" width="230" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-37" value="+ getTax(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-91">
+          <mxGeometry y="164" width="230" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1llP0iuqPvZpgc6fumh-38" value="+ getTax(value: int): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="LGfE7V5v2zf3gq_8V_Ni-91">
+          <mxGeometry y="190" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-97" value="+ position(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="138" width="210" height="26" as="geometry" />
+          <mxGeometry y="216" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-98" value="+ name(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="164" width="210" height="26" as="geometry" />
+          <mxGeometry y="242" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-99" value="+ isOwnable(): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="190" width="210" height="26" as="geometry" />
+          <mxGeometry y="268" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-100" value="+ isOwned(): boolean " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="216" width="210" height="26" as="geometry" />
+          <mxGeometry y="294" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-101" value="+ cost(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="242" width="210" height="26" as="geometry" />
+          <mxGeometry y="320" width="230" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-102" value="+ purchase(player: monopoly17.Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="268" width="210" height="26" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-102" value="+ purchase(player: Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
+          <mxGeometry y="346" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-103" value="+ rent(value: int): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="294" width="210" height="26" as="geometry" />
+          <mxGeometry y="372" width="230" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-104" value="+ owner(): monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="320" width="210" height="26" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-104" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
+          <mxGeometry y="398" width="230" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-105" value="+ getTax(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-91" vertex="1">
-          <mxGeometry y="346" width="210" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-106" value="monopoly17.Railroad" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-106" value="Railroad" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="-270" y="760" width="320" height="502" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-107" value="- COST: int = 200" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
@@ -331,13 +370,13 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-109" value="- name: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="78" width="320" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-110" value="- others: monopoly17.Railroad[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-110" value="- others: Railroad[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="104" width="320" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-111" value="- numOwned: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="130" width="320" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-112" value="- owner: monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-112" value="- owner: Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="156" width="320" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-113" value="- owned: boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
@@ -346,7 +385,7 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-114" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="208" width="320" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-115" value="+ monopoly17.Railroad(position: int, name: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-115" value="+ Railroad(position: int, name: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="216" width="320" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-116" value="+ position(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
@@ -364,22 +403,22 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-120" value="+ cost(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="346" width="320" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-121" value="+ purchase(player: monopoly17.Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-121" value="+ purchase(player: Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="372" width="320" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-122" value="+ rent(value: int): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="398" width="320" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-123" value="+ owner(): monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-123" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="424" width="320" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-124" value="+ setGroup(a: monopoly17.Railroad, b: monopoly17.Railroad, c: monopoly17.Railroad): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-124" value="+ setGroup(a: Railroad, b: Railroad, c: Railroad): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="450" width="320" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-125" value="+ updateOwners(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-106" vertex="1">
           <mxGeometry y="476" width="320" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-126" value="monopoly17.Jail" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-126" value="Jail" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="-800" y="760" width="260" height="372" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-127" value="- position: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
@@ -394,7 +433,7 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-130" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
           <mxGeometry y="104" width="260" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-131" value="+ monopoly17.Jail(position: int, name: String, type JailType)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-131" value="+ Jail(position: int, name: String, type JailType)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
           <mxGeometry y="112" width="260" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-132" value="+ position(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
@@ -412,13 +451,13 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-136" value="+ cost(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
           <mxGeometry y="242" width="260" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-137" value="+ purchase(player: monopoly17.Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-137" value="+ purchase(player: Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
           <mxGeometry y="268" width="260" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-138" value="+ rent(value: int): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
           <mxGeometry y="294" width="260" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-139" value="+ owner(): monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-139" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
           <mxGeometry y="320" width="260" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-140" value="+ JailType: enum" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-126" vertex="1">
@@ -454,8 +493,8 @@
             <mxPoint x="-250" y="700" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-146" value="monopoly17.Property" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="320" y="760" width="340" height="870" as="geometry" />
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-146" value="Property" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="350" y="760" width="340" height="870" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-147" value="- rent: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="26" width="340" height="26" as="geometry" />
@@ -481,13 +520,13 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-154" value="- name: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="208" width="340" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-155" value="- owner: monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-155" value="- owner: Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="234" width="340" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-156" value="- owned: boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="260" width="340" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-157" value="- others: monopoly17.Property[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-157" value="- others: Property[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="286" width="340" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-158" value="- propertyCost: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
@@ -505,7 +544,7 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-162" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="416" width="340" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-163" value="+ monopoly17.Property(position: int, name: String, rent: int, &#xa;    oneHouse: int, twoHouse: int, threeHouse: int, &#xa;    fourHouse: int, hotel: int, propertyCost: int, houseCost: int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-163" value="+ Property(position: int, name: String, rent: int, &#xa;    oneHouse: int, twoHouse: int, threeHouse: int, &#xa;    fourHouse: int, hotel: int, propertyCost: int, houseCost: int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="424" width="340" height="56" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-164" value="+ position(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
@@ -523,13 +562,13 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-168" value="+ cost(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="584" width="340" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-169" value="+ purchase(player: monopoly17.Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-169" value="+ purchase(player: Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="610" width="340" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-170" value="+ rent(value: int): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="636" width="340" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-171" value="+ owner(): monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-171" value="+ owner(): Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="662" width="340" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-172" value="+ isMonopoly(): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
@@ -541,16 +580,16 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-174" value="+ breakMonopoly(): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="740" width="340" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-175" value="+ updateMonopoly(player: monopoly17.Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-175" value="+ updateMonopoly(player: Player): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="766" width="340" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-176" value="+ getHouseCost(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="792" width="340" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-177" value="+ setGroup(propertyA: monopoly17.Property): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-177" value="+ setGroup(propertyA: Property): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="818" width="340" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-178" value="+ setGroup(propertyA: monopoly17.Property, propertyB: monopoly17.Property): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-178" value="+ setGroup(propertyA: Property, propertyB: Property): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-146" vertex="1">
           <mxGeometry y="844" width="340" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-179" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="LGfE7V5v2zf3gq_8V_Ni-146" edge="1">
@@ -601,34 +640,34 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-191" value="GOTO_JAIL" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-188" vertex="1">
           <mxGeometry y="92" width="140" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-192" value="monopoly17.GameBoard" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-192" value="GameBoard" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="-1360" y="360" width="240" height="1282" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-193" value="- NUM_TILES: int = 41;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="26" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-194" value="- board: monopoly17.Square[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-194" value="- board: Square[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="52" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-195" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="78" width="240" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-196" value="+ monopoly17.GameBoard()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-196" value="+ GameBoard()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="86" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-197" value="+ size(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="112" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-198" value="+ getBoard(): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-198" value="+ getBoard(): Square[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="138" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-199" value="+ square(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-199" value="+ square(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="164" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-200" value="+ property(name: String): monopoly17.Property" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-200" value="+ property(name: String): Property" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="190" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-201" value="+ makeSquare(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-201" value="+ makeSquare(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="216" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-202" value="+ groupProperties(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
@@ -637,118 +676,118 @@
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-203" value="+ groupRailroads(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="268" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-204" value="+ groupUtilities: monopoly17.Player" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-204" value="+ groupUtilities(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="294" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-205" value="+ go(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-205" value="+ go(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="320" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-206" value="+ community(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-206" value="+ community(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="346" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-207" value="+ chance(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-207" value="+ chance(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="372" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-208" value="+ incomeTax(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-208" value="+ incomeTax(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="398" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-209" value="+ superTax(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-209" value="+ superTax(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="424" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-210" value="+ electricCompany(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-210" value="+ electricCompany(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="450" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-211" value="+ waterWorks(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-211" value="+ waterWorks(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="476" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-212" value="+ kingsCross(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-212" value="+ kingsCross(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="502" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-213" value="+ marylebone(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-213" value="+ marylebone(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="528" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-214" value="+ fenchurch(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-214" value="+ fenchurch(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="554" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-215" value="+ liverpool(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-215" value="+ liverpool(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="580" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-216" value="+ freeParking(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-216" value="+ freeParking(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="606" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-217" value="+ goToJail(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-217" value="+ goToJail(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="632" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-218" value="+ inJail(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-218" value="+ inJail(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="658" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-219" value="+ justVisiting(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-219" value="+ justVisiting(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="684" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-220" value="+ oldKent(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-220" value="+ oldKent(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="710" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-221" value="+ whitechapel(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-221" value="+ whitechapel(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="736" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-222" value="+ theAngelIslington(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-222" value="+ theAngelIslington(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="762" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-223" value="+ euston(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-223" value="+ euston(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="788" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-224" value="+ pentonville(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-224" value="+ pentonville(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="814" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-225" value="+ pallMall(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-225" value="+ pallMall(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="840" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-226" value="+ whitehall(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-226" value="+ whitehall(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="866" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-227" value="+ northumrld(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-227" value="+ northumrld(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="892" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-228" value="+ bow(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-228" value="+ bow(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="918" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-229" value="+ marlborough(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-229" value="+ marlborough(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="944" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-230" value="+ vine(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-230" value="+ vine(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="970" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-231" value="+ strand(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-231" value="+ strand(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="996" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-232" value="+ fleet(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-232" value="+ fleet(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1022" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-233" value="+ trafalgar(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-233" value="+ trafalgar(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1048" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-234" value="+ leicester(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-234" value="+ leicester(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1074" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-235" value="+ conventry(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-235" value="+ conventry(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1100" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-236" value="+ piccadilly(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-236" value="+ piccadilly(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1126" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-237" value="+ regent(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-237" value="+ regent(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1152" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-238" value="+ oxford(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-238" value="+ oxford(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1178" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-239" value="+ bond(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-239" value="+ bond(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1204" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-240" value="+ park(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-240" value="+ park(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1230" width="240" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-241" value="+ mayfair(position: int): monopoly17.Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
+        <mxCell id="LGfE7V5v2zf3gq_8V_Ni-241" value="+ mayfair(position: int): Square" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-192" vertex="1">
           <mxGeometry y="1256" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-242" value="monopoly17.Input" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
@@ -1067,7 +1106,7 @@
           <mxGeometry y="1100" width="340" height="26" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-330" value="monopoly17.PlayerGUI" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="-3060" y="1369" width="370" height="372" as="geometry" />
+          <mxGeometry x="-3060" y="1560" width="370" height="372" as="geometry" />
         </mxCell>
         <mxCell id="LGfE7V5v2zf3gq_8V_Ni-336" value="- player: monopoly17.HumanPlayer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LGfE7V5v2zf3gq_8V_Ni-330" vertex="1">
           <mxGeometry y="26" width="370" height="26" as="geometry" />
