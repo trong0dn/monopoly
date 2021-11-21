@@ -68,7 +68,6 @@ public class MonopolyGUI extends JPanel {
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
-
         monopoly = new Monopoly();
         Monopoly.GameState gameState = new Monopoly.GameState();
         gameState.players = new LinkedList<>();
@@ -81,7 +80,7 @@ public class MonopolyGUI extends JPanel {
         setupPlayerStatusWindow();
         setupConsoleLog();
         initController();
-        monopoly.play();
+        monopoly.play();        // Determines the winners and losers
     }
 
     /**
@@ -317,7 +316,8 @@ public class MonopolyGUI extends JPanel {
             PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
             currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % 40;
 
-            if(currentPlayer.getPlayer().getJailTurns() > 0) {
+            // Jail feature
+            if (currentPlayer.getPlayer().getJailTurns() > 0) {
                 infoConsole.setText("You are in Jail\n");
                 if (isDouble) {
                     infoConsole.setText("You rolled doubles\n");
@@ -349,7 +349,7 @@ public class MonopolyGUI extends JPanel {
                 }
                 buttonPayRent.setEnabled(false);
                 buttonBuy.setEnabled(false);
-                // When player lands on GO TO JAIL square
+            // When player lands on GO TO JAIL square
             } else if (currentSquareNumber == 30) {
                 currentPlayer.move(diceValue);
                 Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
@@ -405,6 +405,7 @@ public class MonopolyGUI extends JPanel {
                         buttonPayRent.setEnabled(true);
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
+                        // Player lands on owned utility
                     } else if (currentSquare instanceof Utility) {
                         infoConsole.append("Utility: You landed on " + currentSquare.name() +
                                 "\nRent: $" + currentSquare.rent(diceValue));
@@ -422,6 +423,7 @@ public class MonopolyGUI extends JPanel {
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
                     } else {
+                        // FREE PARKING, CHANCE, COMMUNITY CHEST
                         infoConsole.append("Non-purchasable: You landed on a property: \n" + currentSquare.name());
                         isRollDouble(currentPlayerOrder);
                         buttonBuy.setEnabled(false);
