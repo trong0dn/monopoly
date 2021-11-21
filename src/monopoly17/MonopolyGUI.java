@@ -157,8 +157,8 @@ public class MonopolyGUI extends JPanel {
         rightLayeredPane.add(buttonBuyHouse);
 
         // Add RunCPU Button
-        buttonRunCPU = CPUDecision();
-        buttonRunCPU.setBounds(315, 570, 115, 40);
+        buttonRunCPU = buttonRunCPU();
+        buttonRunCPU.setBounds(215, 520, 115, 40);
         buttonRunCPU.setEnabled(true);
         rightLayeredPane.add(buttonRunCPU);
 
@@ -559,8 +559,8 @@ public class MonopolyGUI extends JPanel {
 
     }
 
-    private JButton CPUDecision(){
-        buttonRunCPU = new JButton("Run CPU's Turn");
+    private JButton buttonRunCPU(){
+        buttonRunCPU = new JButton("CPU's Turn");
         buttonRunCPU.addActionListener(f-> {
             PlayerGUI currentPlayer = playersGUI.get(currentPlayerOrder);
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
