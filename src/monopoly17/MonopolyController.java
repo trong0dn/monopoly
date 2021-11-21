@@ -11,14 +11,13 @@ import java.util.LinkedList;
  * This class represents all the controllers used in the Monopoly GUI
  * @author Elisha Catherasoo & Ibrahim Almalki
  */
-public class MonopolyController
-{
-    private JFrame frame;
-    private JPanel playerInitPanel; // Panel for making the players
-    private JPanel startPanel; // Panel for the main starting page
+public class MonopolyController {
+    private final JFrame frame;
+    private final JPanel playerInitPanel; // Panel for making the players
+    private final JPanel startPanel; // Panel for the main starting page
     private JPanel monopolyPanel; // Panel for the actual Monopoly game
-    private JPanel switchPanels; // Used for switching the panels
-    private LinkedList<Player> playerList;
+    private final JPanel switchPanels; // Used for switching the panels
+    private final LinkedList<Player> playerList;
     private final JButton startButton;
     private final JButton playButton;
     private final JButton addPlayer;

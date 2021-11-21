@@ -54,14 +54,14 @@ public class MonopolyGUI extends JPanel {
     private boolean firstRoll = true;
 
     private final Color[] playerTokenColors = {
-            Color.RED,
-            Color.BLUE,
-            Color.GREEN,
-            Color.ORANGE,
-            Color.YELLOW,
-            Color.MAGENTA,
-            Color.GRAY,
-            Color.PINK
+        Color.RED,
+        Color.BLUE,
+        Color.GREEN,
+        Color.ORANGE,
+        Color.YELLOW,
+        Color.MAGENTA,
+        Color.GRAY,
+        Color.PINK
     };
 
     /**

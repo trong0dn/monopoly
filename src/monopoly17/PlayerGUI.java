@@ -9,7 +9,7 @@ import java.util.Collection;
  * @author Trong Nguyen
  */
 public class PlayerGUI extends JPanel {
-    private HumanPlayer player;
+    private Player player;
     private final int playerNumber;
     private static int totalPlayers = 0;
     private int currentSquareNumber = 0;
