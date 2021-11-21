@@ -347,10 +347,10 @@ public class MonopolyGUI extends JPanel {
                     buttonNextTurn.setEnabled(true);
                     currentPlayer.getPlayer().setJailTurns(currentPlayer.getPlayer().getJailTurns() + 1);
                 }
-
                 buttonPayRent.setEnabled(false);
                 buttonBuy.setEnabled(false);
-            } else if(currentSquareNumber == 30) {
+                // When player lands on GO TO JAIL square
+            } else if (currentSquareNumber == 30) {
                 currentPlayer.move(diceValue);
                 Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
                 infoConsole.setText("You landed on " + currentSquare.name());
