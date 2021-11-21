@@ -17,7 +17,7 @@ public class Taxes implements Square {
     public Taxes(int position, String name) {
         this.position = position;
         this.name = name;
-        if (this.name.equals("Income Tax")) {
+        if (this.name.equals("INCOME TAX")) {
             this.tax = 200;
         } else {
             this.tax = 100;
@@ -104,9 +104,9 @@ public class Taxes implements Square {
     /**
      * Get the tax.
      * @return  int
-     * @param v
+     * @param value double
      */
-    public int getTax(double v) {
+    public int getTax(double value) {
         return this.tax;
     }
 }

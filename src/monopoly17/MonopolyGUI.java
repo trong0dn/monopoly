@@ -68,11 +68,12 @@ public class MonopolyGUI extends JPanel {
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
+
         monopoly = new Monopoly();
         Monopoly.GameState gameState = new Monopoly.GameState();
         gameState.players = new LinkedList<>();
         playersList = gameState.players;
-        playersList.add(new HumanPlayer("1"));
+        playersList.add(new HumanPlayer(""));
         setupBoard();
         setupDice();
         setupRollButton();
