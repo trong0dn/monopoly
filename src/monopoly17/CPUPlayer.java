@@ -150,7 +150,7 @@ public class CPUPlayer implements Player {
 
     /**
      * Input value for integer entries.
-     * @param state Monopoly.DecisionState
+     * @param state Monopoly.GameState
      * @return int
      */
     @Override
