@@ -58,38 +58,6 @@ public class MonopolyController
     }
 
     /**
-     * Get the frame.
-     * @return JFrame
-     */
-    public JFrame getFrame() {
-        return frame;
-    }
-
-    /**
-     * Get the player initialization panel.
-     * @return JPanel
-     */
-    public JPanel getPlayerInitPanel() {
-        return playerInitPanel;
-    }
-
-    /**
-     * Get the starting panel.
-     * @return JPanel
-     */
-    public JPanel getStartPanel() {
-        return startPanel;
-    }
-
-    /**
-     *  Get the monopoly panel.
-     * @return JPanel
-     */
-    public JPanel getMonopolyPanel() {
-        return monopolyPanel;
-    }
-
-    /**
      *  Get the panel that switches between the startPanel, playerInitPanel and monopolyPanel
      * @return JPanel
      */
@@ -106,43 +74,11 @@ public class MonopolyController
     }
 
     /**
-     * Set the frame.
-     * @param frame JFrame
-     */
-    public void setFrame(JFrame frame) {
-        this.frame = frame;
-    }
-
-    /**
      * Set the monopoly panel.
      * @param monopolyPanel JPanel
      */
     public void setMonopolyPanel(JPanel monopolyPanel) {
         this.monopolyPanel = monopolyPanel;
-    }
-
-    /**
-     * Set the player initialization panel.
-     * @param playerInit JPanel
-     */
-    public void setPlayerInitPanel(JPanel playerInit) {
-        this.playerInitPanel = playerInit;
-    }
-
-    /**
-     * Set the starting panel.
-     * @param startPanel JPanel
-     */
-    public void setStartPanel(JPanel startPanel) {
-        this.startPanel = startPanel;
-    }
-
-    /**
-     * Set the switching panel.
-     * @param switchPanels JPanel
-     */
-    public void setSwitchPanels(JPanel switchPanels) {
-        this.switchPanels = switchPanels;
     }
 
     /**
