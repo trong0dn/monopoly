@@ -25,9 +25,10 @@ public class Property implements Square{
     private int buildings;           // number of buildings on property
     private boolean monopoly;        // player may own all property set
 
+    /*
     private Property groupA;
     private Property groupB;
-
+    */
 
     public Property(int position, String name, int rent, int oneHouse, int twoHouse, int threeHouse, int fourHouse,
                     int hotel, int propertyCost, int houseCost) {
@@ -218,6 +219,7 @@ public class Property implements Square{
     }
 
     /**
+     * MIGHT NOT NEED THIS AT ALL
      * Set a group of properties.
      * @param propertyA  Property
      */
@@ -254,28 +256,22 @@ public class Property implements Square{
             return false;
         }
 
-        int diff_A = groupA.getBuildings() - getBuildings();
+        /*
+        this.others[0] = propertyA;
+        this.others[1] = propertyB;
+         */
+
+        int diff_A = this.others[0].getBuildings() - getBuildings();
 
         boolean confirmA = diff_A == 0 || diff_A == 1;
-        if (groupB == null)
+        if (this.others[1] == null)
             return confirmA;
 
-        int diff_B = groupB.getBuildings() - getBuildings();
+        int diff_B = this.others[1].getBuildings() - getBuildings();
         boolean confirmB = diff_B == 0 || diff_B == 1;
 
         return  confirmA && confirmB;
 
-
-        // int difference;
-        // use of Others
-        // if int of houses of one house category - numHouses == 0 || 1 )( || numHouses - houseCategory == 0,
-        //Buy house at A
-        //
-        // If others
-
-        /*
-        If you have propB.getHouses
-         */
     }
 }
 
