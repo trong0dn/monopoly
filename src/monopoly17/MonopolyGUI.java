@@ -390,7 +390,6 @@ public class MonopolyGUI extends JPanel {
                             "\nProperty Cost: $" + currentSquare.cost());
                     isRollDouble(currentPlayerOrder);
                     buttonBuy.setEnabled(true);
-                    isRollDouble(currentPlayerOrder);
                     // If square is already owned
                 } else if (currentSquare.isOwnable()) {
                     // Player lands on their own property
@@ -435,7 +434,7 @@ public class MonopolyGUI extends JPanel {
                         buttonBuy.setEnabled(false);
                     } else {
                         // FREE PARKING, CHANCE, COMMUNITY CHEST
-                        infoConsole.append("Non-purchasable: You landed on a property: \n" + currentSquare.name());
+                        infoConsole.append("Non-purchasable: You landed on: \n" + currentSquare.name());
                         isRollDouble(currentPlayerOrder);
                         buttonBuy.setEnabled(false);
                         buttonPayRent.setEnabled(false);
