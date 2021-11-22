@@ -104,7 +104,7 @@ public class MonopolyController {
      * Create a JButton for adding a new CPU Player.
      * @return      JButton
      */
-    public JButton AddCPUPlayer() {
+    public JButton addCPUPlayer() {
         addCPUPlayer.addActionListener(e -> {
             if (playerList.size() < 6 && playerNameInput.getText().matches(".*\\w.*")) {
                 // Make the panel to get the username
@@ -293,7 +293,7 @@ public class MonopolyController {
         playerInitPanel.add(playerNameList, gbagConstraintsPlayerNameList);
         playerInitPanel.add(playerNameInput, gbagConstraintsPlayerNameInput);
         playerInitPanel.add(addPlayerButton(), gbagConstraintsAddPlayerButton);
-        playerInitPanel.add(AddCPUPlayer(), gbagConstraintsAddCPUPlayerButton);
+        playerInitPanel.add(addCPUPlayer(), gbagConstraintsAddCPUPlayerButton);
         playerInitPanel.add(playButton(), gbagConstraintsPlayButton);
         playerInitPanel.add(messagePanel, gbagConstraintsMessage);
 
