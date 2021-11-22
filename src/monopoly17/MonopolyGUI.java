@@ -198,7 +198,7 @@ public class MonopolyGUI extends JPanel {
         infoConsole.setBounds(5, 5, 240, 90);
         infoConsole.setLineWrap(true);
         infoConsole.setEditable(false);
-        infoConsole.setText("Player 1 starts the game! \nClicking Roll Dice!");
+        infoConsole.setText("Player 1 starts the game! \nClick Roll Dice!");
         consolePanel.add(infoConsole);
     }
 
