@@ -37,8 +37,6 @@ public class Monopoly {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
-        Input input = new Input();
-        //initializePlayers(input); // Not needed for GUI-based system.
     }
 
     /**
@@ -206,16 +204,6 @@ public class Monopoly {
         }
     }
 
-    /* Implementation of buy house feature */
-
-    /*
-            Once you buy a house on one property you have to buy a house on the other property of the same set.
-
-
-            If current square is owned and player tries to buy on different square of same  set
-            say "must complete houses on square"
-     */
-
     /**
      * For when the player owns properties of a full set of properties.
      * @param player  Player
@@ -245,11 +233,11 @@ public class Monopoly {
         return true;
     }
 
-/**
- * Landing on an unowned square, the player may choose to buy the square.
- * @param player    Player
- * @param square    Square
- */
+    /**
+     * Landing on an unowned square, the player may choose to buy the square.
+     * @param player    Player
+     * @param square    Square
+     */
     public void unowned(Player player, Square square) {
         int cost = square.cost();
 

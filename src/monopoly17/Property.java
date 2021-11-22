@@ -245,11 +245,17 @@ public class Property implements Square {
         this.others[1] = propertyB;
     }
 
-
+    /**
+     * Get the number of buildings the property has.
+     * @return int
+     */
     public int getBuildings(){
         return buildings;
     }
 
+    /**
+     * Add a building to the property.
+     */
     public void build() {
         if(buildings == 5){
             throw new IllegalArgumentException("Cannot build past a hotel");
@@ -266,10 +272,6 @@ public class Property implements Square {
         if(!monopoly){
             return false;
         }
-        /*
-        this.others[0] = propertyA;
-        this.others[1] = propertyB;
-         */
 
         int diff_A = this.others[0].getBuildings() - getBuildings();
 
