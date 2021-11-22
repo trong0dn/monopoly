@@ -8,7 +8,6 @@ import org.junit.Assert;
 /**
  * Testing HumanPlayer class.
  * @author Ibrahim Almalki
- * Modified by Trong Nguyen
  */
 public class HumanPlayerTest {
     private final HumanPlayer humanPlayer = new HumanPlayer("Tester");

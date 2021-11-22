@@ -10,7 +10,6 @@ import static org.junit.Assert.*;
 /**
  * Testing Property class.
  * @author Ibrahim Almalki
- * Modified by Trong Nguyen
  */
 public class PropertyTest {
     private final HumanPlayer humanPlayer = new HumanPlayer("Tester1");
