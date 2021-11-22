@@ -34,7 +34,6 @@ public class Railroad implements Square {
         return this.position;
     }
 
-
     /**
      * Get the name of the square tile.
      * @return  String
@@ -43,7 +42,6 @@ public class Railroad implements Square {
     public String name() {
         return this.name;
     }
-
 
     /**
      * If the square tile can be owned or not.
@@ -54,7 +52,6 @@ public class Railroad implements Square {
         return true;
     }
 
-
     /**
      * If the square tile is owned.
      * @return  boolean
@@ -63,7 +60,6 @@ public class Railroad implements Square {
     public boolean isOwned() {
         return owned;
     }
-
 
     /**
      * Get the cost of the square tile.

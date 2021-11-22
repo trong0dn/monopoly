@@ -44,7 +44,6 @@ public class Utility implements Square {
         return this.name;
     }
 
-
     /**
      * If the square tile can be owned or not.
      * @return  boolean
@@ -54,7 +53,6 @@ public class Utility implements Square {
         return true;
     }
 
-
     /**
      * If the square tile is owned.
      * @return  boolean
@@ -63,7 +61,6 @@ public class Utility implements Square {
     public boolean isOwned() {
         return owned;
     }
-
 
     /**
      * Get the cost of the square tile.

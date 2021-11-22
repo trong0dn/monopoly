@@ -27,7 +27,6 @@ public class RollDice implements Dice {
         return this.NUM_DICE;
     }
 
-
     /**
      * Get the number of sides per dice.
      * @return  int

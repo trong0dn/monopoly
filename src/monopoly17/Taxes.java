@@ -20,7 +20,7 @@ public class Taxes implements Square {
         if (incomeTax) {
             this.name = "INCOME TAX";
             fixTax = 200;       // Pay 200
-            varTax = 0.1;        // Pay 10% of total money
+            varTax = 0.1;       // Pay 10% of total money
         } else {
             this.name = "SUPER TAX";
             fixTax = 100;       // Pay 100

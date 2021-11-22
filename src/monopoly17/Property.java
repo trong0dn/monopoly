@@ -7,7 +7,7 @@ import java.util.Queue;
  * This class represents the way properties are structured in the game.
  * @author Ibrahim Almalki & Trong Nguyen
  */
-public class Property implements Square{
+public class Property implements Square {
     private final int rent;
     private final int oneHouse;
     private final int twoHouse;
@@ -114,7 +114,6 @@ public class Property implements Square{
         owned = true;
         owner = player;
         updateMonopoly(player);
-        //TODO fix update monopoly
     }
 
     /**
@@ -139,7 +138,6 @@ public class Property implements Square{
             default: return 0;
         }
     }
-
 
     /**
      * Return owner of the square tile.
@@ -237,7 +235,6 @@ public class Property implements Square{
     }
 
     /**
-
      * Get the cost of a house.
      * @return int
      */
