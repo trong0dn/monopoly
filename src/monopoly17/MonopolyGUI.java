@@ -159,7 +159,7 @@ public class MonopolyGUI extends JPanel {
         // Add RunCPU Button
         buttonRunCPU = buttonRunCPU();
         buttonRunCPU.setBounds(215, 520, 115, 40);
-        buttonRunCPU.setEnabled(true);
+        buttonRunCPU.setEnabled(false);
         rightLayeredPane.add(buttonRunCPU);
 
         // Add next turn button
@@ -457,10 +457,22 @@ public class MonopolyGUI extends JPanel {
             currentPlayerOrder %= playersList.size();
             cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
             infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
-            buttonRollDice.setEnabled(true);
-            buttonBuy.setEnabled(false);
-            buttonPayRent.setEnabled(false);
-            buttonNextTurn.setEnabled(false);
+
+
+            if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
+                System.out.println("frick");
+                buttonRollDice.setEnabled(false);
+                buttonBuy.setEnabled(false);
+                buttonPayRent.setEnabled(false);
+                buttonNextTurn.setEnabled(false);
+                buttonRunCPU.setEnabled(true);
+            }else {
+                buttonRunCPU.setEnabled(false);
+                buttonRollDice.setEnabled(true);
+                buttonBuy.setEnabled(false);
+                buttonPayRent.setEnabled(false);
+                buttonNextTurn.setEnabled(false);
+            }
             updatePlayerStatusTextArea();
         });
         return buttonNextTurn;
@@ -565,7 +577,7 @@ public class MonopolyGUI extends JPanel {
      */
     private JButton buttonRunCPU(){
         buttonRunCPU = new JButton("CPU's Turn");
-        buttonRunCPU.addActionListener(f-> {
+        buttonRunCPU.addActionListener(e-> {
             PlayerGUI currentPlayer = playersGUI.get(currentPlayerOrder);
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
 
@@ -574,6 +586,7 @@ public class MonopolyGUI extends JPanel {
             int roll = die1.getFaceValue() + die2.getFaceValue();
 
             //grey out the buttons
+            buttonRunCPU.setEnabled(false);
             buttonRollDice.setEnabled(false);
             buttonBuyHouse.setEnabled(false);
             buttonPayRent.setEnabled(false);
@@ -588,7 +601,6 @@ public class MonopolyGUI extends JPanel {
                             "\nRent cost: " + currentSquare.rent(roll));
                 }
                 monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
-                buttonPayRent.setEnabled(false);
                 updatePlayerStatusTextArea();
 
 
@@ -600,28 +612,7 @@ public class MonopolyGUI extends JPanel {
                     infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
                 }
                 monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
-                buttonBuy.setEnabled(false);
                 updatePlayerStatusTextArea();
-
-
-                //buy house
-                for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()) {
-                    Property property;
-                    if (sq instanceof Property) {
-                        property = (Property) sq;
-
-                        if (property.isMonopoly()) {
-                            monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
-                            System.out.println("House Purchased");
-                            infoConsole.setText("Bought House for " + property.getHouseCost());
-                        /*
-                        Display dots when player buys house on property.
-                         */
-
-                        }
-                        updatePlayerStatusTextArea();
-                    }
-                }
 
 
                 //next turn
@@ -634,10 +625,8 @@ public class MonopolyGUI extends JPanel {
                 currentPlayerOrder %= playersList.size();
                 cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
                 infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
-                buttonRollDice.setEnabled(true);
-                buttonBuy.setEnabled(false);
-                buttonPayRent.setEnabled(false);
                 buttonNextTurn.setEnabled(false);
+                System.out.println("frickers");
                 updatePlayerStatusTextArea();
 
 
