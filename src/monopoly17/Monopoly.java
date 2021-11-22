@@ -393,9 +393,9 @@ public class Monopoly {
      */
     private void intoJail(Player player) {
         System.out.println("Go to Jail!");
-        player.moveTo(10);
+        player.moveTo(40);
         Square[] square = gameState.gameBoard.getBoard();
-        Jail jail = (Jail) square[10];
+        Jail jail = (Jail) square[40];
         jailAction(player, jail);
     }
 
