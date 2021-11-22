@@ -7,10 +7,14 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * Testing Property class.
+ * @author Ibrahim Almalki
+ * Modified by Trong Nguyen
+ */
 public class PropertyTest {
     private final HumanPlayer humanPlayer = new HumanPlayer("test");
     private final HumanPlayer humanPlayer2 = new HumanPlayer("test2");
-    Property property;
     private int position1;
     int rent = 2;
     int oneHouse = 10;
@@ -20,96 +24,85 @@ public class PropertyTest {
     int hotel = 250;
     int propertyCost = 60;
     int houses = 50;
-    private final Property oldkent = new Property(position1, "OLD KENT ROAD",
+    private final Property oldKent = new Property(position1, "OLD KENT ROAD",
             rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
 
     int position2;
     private final Property whitechapel = new Property(position2, "WHITECHAPEL ROAD",
                         4, 20, 60, 180, 320, 450, 60, 50);
 
-
     /**
-     * tests the name of the property is correct
+     * Test the name of the property is correct.
      */
     @Test
-    public void name() {
-        Assert.assertEquals("OLD KENT ROAD", oldkent.name());
+    public void testName() {
+        Assert.assertEquals("OLD KENT ROAD", oldKent.name());
         Assert.assertEquals("WHITECHAPEL ROAD", whitechapel.name());
     }
 
-
     /**
-     * tests the cost of the property is correct
+     * Test the cost of the property is correct.
      */
     @Test
-    public void cost() {
-        Assert.assertEquals(60, oldkent.cost());
+    public void testCost() {
+        Assert.assertEquals(60, oldKent.cost());
         Assert.assertEquals(60, whitechapel.cost());
     }
 
-
     /**
-     * tests the purchase method, which assigns the owner of the property
+     * Test the purchase method, which assigns the owner of the property.
      */
     @Test
-    public void purchase() {
-        oldkent.purchase(humanPlayer);
-        assertTrue(oldkent.isOwned());
-        Assert.assertEquals(humanPlayer, oldkent.owner());
+    public void testPurchase() {
+        oldKent.purchase(humanPlayer);
+        assertTrue(oldKent.isOwned());
+        Assert.assertEquals(humanPlayer, oldKent.owner());
 
-        //whitechapel is not owned
+        // whitechapel is not owned
         assertFalse(whitechapel.isOwned());
-        //whitechapel does not have an owner
+        // whitechapel does not have an owner
         assertNull(whitechapel.owner());
     }
 
-
     /**
-     * tests the rent method which assigns the rent to the players
+     * Test the rent method which assigns the rent to the players.
      */
     @Test
-    public void rent() {
-        //human player purchases old kent, therefore the rent on the property is $2
-        humanPlayer.addProperty(oldkent);
-        oldkent.purchase(humanPlayer);
-        Assert.assertEquals(2, oldkent.rent(3));
+    public void testRent() {
+        // Player purchases oldKent, therefore the rent on the property is $2
+        humanPlayer.addProperty(oldKent);
+        oldKent.purchase(humanPlayer);
+        Assert.assertEquals(2, oldKent.rent(3));
 
-        //the property is not owned, so there is no rent on the property
+        // Property is not owned, so there is no rent on the property
         Assert.assertEquals(4, whitechapel.rent(3));
     }
 
-
     /**
-     * tests the updateMonopoly function
-     * checks if properties owned belong in a set
+     * Tests the updateMonopoly function and checks if properties owned belong in a set.
      */
-
     @Test
-    public void updateMonopoly() {
-        //only one proeprty is owned
-        humanPlayer.addProperty(oldkent);
-        oldkent.purchase(humanPlayer);
+    public void testUpdateMonopoly() {
+        // Only one property is owned
+        humanPlayer.addProperty(oldKent);
+        oldKent.purchase(humanPlayer);
         humanPlayer.addProperty(whitechapel);
         whitechapel.purchase(humanPlayer);
-        assertFalse(oldkent.isMonopoly());
+        assertFalse(oldKent.isMonopoly());
 
-        //both property sets owned
-        humanPlayer.addProperty(oldkent);
-        oldkent.purchase(humanPlayer);
-        oldkent.setMonopoly();
+        // Both property sets owned
+        humanPlayer.addProperty(oldKent);
+        oldKent.purchase(humanPlayer);
+        oldKent.setMonopoly();
         humanPlayer.addProperty(whitechapel);
         whitechapel.purchase(humanPlayer);
-        assertTrue(oldkent.isMonopoly());
+        assertTrue(oldKent.isMonopoly());
 
-        //both properties are owned, but by different players
-        humanPlayer.addProperty(oldkent);
-        oldkent.purchase(humanPlayer);
+        // Both properties are owned, but by different players
+        humanPlayer.addProperty(oldKent);
+        oldKent.purchase(humanPlayer);
         humanPlayer2.addProperty(whitechapel);
         whitechapel.purchase(humanPlayer2);
-        assertFalse(oldkent.isMonopoly());
-
-
+        assertFalse(oldKent.isMonopoly());
     }
-
-
 }
