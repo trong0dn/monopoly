@@ -240,17 +240,23 @@ public class Monopoly {
             if (property.getBuildings() == 5 || !property.isMonopoly()){
                 System.out.println("You cannot buy houses for this property");
 
+
             }
 
             // How much money
             if (player.getMoney() < property.getHouseCost()){
                 System.out.println("You cannot buy houses for this property");
+
             }
 
             // Create case for when the player needs to build evenly 1-1
-            /*
 
-             */
+            if (!property.evenRule()){
+                System.out.println("You cannot buy houses for this property");
+
+
+            }
+
 
             property.build();
             player.exchangeMoney(property.getHouseCost() * -1);

@@ -231,9 +231,6 @@ public class Property implements Square{
         this.others[1] = propertyB;
     }
 
-    public void buyBuilding(){
-        buildings++;
-    }
 
     public int getBuildings(){
         return buildings;
@@ -246,6 +243,23 @@ public class Property implements Square{
 
         }
 
+    }
+
+    public boolean evenRule() {
+        if(!monopoly){
+            return false;
+        }
+
+        // int difference;
+        // use of Others
+        // if int of houses of one house category - numHouses == 0 || 1 )( || numHouses - houseCategory == 0,
+        //Buy house at A
+        //
+        // If others
+
+        /*
+        If you have propB.getHouses
+         */
     }
 }
 
