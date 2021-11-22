@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 /**
  * This class represents all the controllers used in the Monopoly GUI
- * @author Elisha Catherasoo & Ibrahim Almalki
+ * @author Elisha Catherasoo, Ibrahim Almalki & Trong Nguen
  */
 public class MonopolyController {
     private final JFrame frame;
@@ -38,7 +38,7 @@ public class MonopolyController {
     };
 
     /**
-     * Initialize MonopolyController
+     * Constructor for MonopolyController.
      */
     public MonopolyController() {
         this.frame = new JFrame("MONOPOLY");
@@ -81,56 +81,15 @@ public class MonopolyController {
     }
 
     /**
-     * Get the menu item that adds a new player.
-     * @return      JMenuItem
+     * Create a JButton for adding a new Human Player.
+     * @return      JButton
      */
     public JButton addPlayerButton() {
         addPlayer.addActionListener(e -> {
-            if(playerList.size() < 6 && playerNameInput.getText().matches(".*\\w.*")) {
+            if (playerList.size() < 6 && playerNameInput.getText().matches(".*\\w.*")) {
                 // Make the panel to get the username
                 Player newPlayer = new HumanPlayer(playerNameInput.getText());
-                playerList.add(newPlayer);
-
-                // Add the new player to the player panel
-                JLabel playerNumber = new JLabel();
-                playerNumber.setFont(playerFont);
-                playerNumber.setOpaque(true);
-                playerNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
-                playerNumber.setForeground(Color.WHITE);
-
-                JLabel newPlayerLabel = new JLabel();
-                newPlayerLabel.setFont(playerFont);
-                newPlayerLabel.setOpaque(true);
-                newPlayerLabel.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
-                newPlayerLabel.setForeground(Color.WHITE);
-
-                playerNumber.setText("Player " + (playerList.indexOf(newPlayer) + 1) + ": ");
-                newPlayerLabel.setText(newPlayer.name());
-
-                JPanel tempPanelNumber = new JPanel();
-                tempPanelNumber.setPreferredSize(new Dimension(150, 40));
-                tempPanelNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
-                tempPanelNumber.add(playerNumber);
-
-                JPanel tempPanelName = new JPanel();
-                tempPanelName.setPreferredSize(new Dimension(250, 40));
-                tempPanelName.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
-                tempPanelName.add(newPlayerLabel);
-
-                // Add player name to panel
-                playerNameList.add(tempPanelNumber);
-                playerNameList.add(tempPanelName);
-
-                playerNameList.revalidate();
-                playerNameList.repaint();
-
-                if (playerList.size() >= 2 && playerList.size() <= 6) {
-                    playButton.setEnabled(true);
-                }
-
-                // Make text box empty
-                playerNameInput.setText("");
-
+                addNewPlayerPanel(newPlayer);
             } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
                 JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
             }
@@ -141,54 +100,16 @@ public class MonopolyController {
         return addPlayer;
     }
 
+    /**
+     * Create a JButton for adding a new CPU Player.
+     * @return      JButton
+     */
     public JButton AddCPUPlayer() {
         addCPUPlayer.addActionListener(e -> {
             if (playerList.size() < 6 && playerNameInput.getText().matches(".*\\w.*")) {
                 // Make the panel to get the username
                 Player newPlayer = new CPUPlayer(playerNameInput.getText());
-                playerList.add(newPlayer);
-
-                // Add the new player to the player panel
-                JLabel playerNumber = new JLabel();
-                playerNumber.setFont(playerFont);
-                playerNumber.setOpaque(true);
-                playerNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
-                playerNumber.setForeground(Color.WHITE);
-
-                JLabel newPlayerLabel = new JLabel();
-                newPlayerLabel.setFont(playerFont);
-                newPlayerLabel.setOpaque(true);
-                newPlayerLabel.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
-                newPlayerLabel.setForeground(Color.WHITE);
-
-                playerNumber.setText("Player " + (playerList.indexOf(newPlayer) + 1) + ": ");
-                newPlayerLabel.setText(newPlayer.name());
-
-                JPanel tempPanelNumber = new JPanel();
-                tempPanelNumber.setPreferredSize(new Dimension(150, 40));
-                tempPanelNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
-                tempPanelNumber.add(playerNumber);
-
-                JPanel tempPanelName = new JPanel();
-                tempPanelName.setPreferredSize(new Dimension(250, 40));
-                tempPanelName.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
-                tempPanelName.add(newPlayerLabel);
-
-                // Add player name to panel
-                playerNameList.add(tempPanelNumber);
-                playerNameList.add(tempPanelName);
-
-                playerNameList.revalidate();
-                playerNameList.repaint();
-
-
-                if (playerList.size() >= 2 && playerList.size() <= 6) {
-                    playButton.setEnabled(true);
-                }
-
-                // Make text box empty
-                playerNameInput.setText("");
-
+                addNewPlayerPanel(newPlayer);
             } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
                 JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
             }
@@ -200,7 +121,52 @@ public class MonopolyController {
     }
 
     /**
-     * This will change to the player initialization panel
+     * Creates a panel to display the players added to the game.
+     * @param newPlayer     Player
+     */
+    private void addNewPlayerPanel(Player newPlayer) {
+        playerList.add(newPlayer);
+        // Add the new player to the player panel
+        JLabel playerNumber = new JLabel();
+        playerNumber.setFont(playerFont);
+        playerNumber.setOpaque(true);
+        playerNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
+        playerNumber.setForeground(Color.WHITE);
+
+        JLabel newPlayerLabel = new JLabel();
+        newPlayerLabel.setFont(playerFont);
+        newPlayerLabel.setOpaque(true);
+        newPlayerLabel.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
+        newPlayerLabel.setForeground(Color.WHITE);
+
+        playerNumber.setText("Player " + (playerList.indexOf(newPlayer) + 1) + ": ");
+        newPlayerLabel.setText(newPlayer.name());
+
+        JPanel tempPanelNumber = new JPanel();
+        tempPanelNumber.setPreferredSize(new Dimension(150, 40));
+        tempPanelNumber.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
+        tempPanelNumber.add(playerNumber);
+
+        JPanel tempPanelName = new JPanel();
+        tempPanelName.setPreferredSize(new Dimension(250, 40));
+        tempPanelName.setBackground(playerTokenColors[playerList.indexOf(newPlayer)]);
+        tempPanelName.add(newPlayerLabel);
+
+        // Add player name to panel
+        playerNameList.add(tempPanelNumber);
+        playerNameList.add(tempPanelName);
+        playerNameList.revalidate();
+        playerNameList.repaint();
+
+        if (playerList.size() >= 2 && playerList.size() <= 6) {
+            playButton.setEnabled(true);
+        }
+        // Set text box empty after player has been added
+        playerNameInput.setText("");
+    }
+
+    /**
+     * This will change to the player initialization panel.
      * @return JButton
      */
     public JButton startButton() {
@@ -213,7 +179,7 @@ public class MonopolyController {
 
     /**
      * Play the game after making all the players.
-     * @return button
+     * @return JButton
      */
     public JButton playButton() {
         playButton.addActionListener(e -> {
@@ -224,14 +190,13 @@ public class MonopolyController {
     }
 
     /**
-     * The Monopoly GUI
+     * Display the monopoly main GUI for the user interaction.
      */
     public void displayGUI() {
-        // make the main title
+        // Create main title screen
         Font font = new Font("Lucida Grande", Font.BOLD, 60);
         JPanel titleBackground = new JPanel();
 
-        // set sizes
         titleBackground.setPreferredSize(new Dimension(450, 90));
         titleBackground.setBackground(Color.RED);
 
@@ -260,7 +225,7 @@ public class MonopolyController {
         playButton.setPreferredSize(new Dimension(175, 50));
         playButton.setEnabled(false);
 
-        // starting page label
+        // Starting page label
         JLabel title = new JLabel("MONOPOLY!");
         title.setFont(font);
         title.setOpaque(true);
@@ -268,7 +233,7 @@ public class MonopolyController {
         title.setForeground(Color.WHITE);
         titleBackground.add(title);
 
-        // player initialization label
+        // Player initialization label
         JPanel messagePanel = new JPanel();
         JLabel message = new JLabel("Enter Player name in text box then click Add Player (2-6 players)");
         messagePanel.add(message);
@@ -321,7 +286,7 @@ public class MonopolyController {
         gbagConstraintsMessage.gridwidth = 2;
         gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
 
-        // add the buttons, panels and labels to the frame
+        // Add the buttons, panels and labels to the frame
         startPanel.add(titleBackground, gbagConstraintsTitle);
         startPanel.add(startButton(), gbagConstraintsStartButton);
 
@@ -338,7 +303,7 @@ public class MonopolyController {
 
         frame.add(getSwitchPanels());
 
-        // frame doesn't close immediately when trying to quit
+        // Frame does not close immediately when trying to quit
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
