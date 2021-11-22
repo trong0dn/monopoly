@@ -27,7 +27,6 @@ public class Inactive implements Square {
         return this.position;
     }
 
-
     /**
      * Get the name of the square tile.
      * @return  String

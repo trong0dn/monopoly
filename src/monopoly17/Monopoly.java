@@ -206,8 +206,6 @@ public class Monopoly {
         }
     }
 
-    /* Implementation of buy house feature */
-
     /**
      * For when the player owns properties of a full set.
      * @param player  Player
@@ -391,14 +389,11 @@ public class Monopoly {
         }
     }
 
-
     /**
-     * return whether a player is bankrupt or not
-     * used for testing
-     * @return boolean
+     * Return whether a player is bankrupt or not.
+     * @return      boolean
      */
     public boolean isBankrupt() {
         return isBankrupt;
     }
-
 }

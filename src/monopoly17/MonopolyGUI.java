@@ -50,7 +50,7 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonNextTurn;
     private JButton buttonPayRent;
     private JButton buttonBuy;
-    private JButton buttonBuyHouse; // Add buy house button
+    private JButton buttonBuyHouse;     // Add buy house button
     private JButton buttonRunCPU;
     private boolean firstRoll = true;
 
@@ -247,7 +247,7 @@ public class MonopolyGUI extends JPanel {
         panelPlayerTextArea.setBounds(90, 70, 230, 210);
         panelPlayerTextArea.setEditable(false);
         rightLayeredPane.add(panelPlayerTextArea, String.valueOf(2));
-        if(!firstRoll){
+        if(!firstRoll) {
             updatePlayerStatusTextArea();
         }
     }
@@ -264,7 +264,6 @@ public class MonopolyGUI extends JPanel {
         output.append("Property titles owned:\n");
         for (Square sq : properties) {
             output.append("> ").append(sq.name()).append("\n");
-
         }
         panelPlayerTextArea.setText(output.toString());
     }
@@ -384,7 +383,7 @@ public class MonopolyGUI extends JPanel {
                     infoConsole.setText("You passed Go! You get $200!\n");
                 }
 
-                // Button logic
+                // When a player lands on a square
                 if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
                     infoConsole.append("You landed on " + currentSquare.name() +
                             "\nProperty Cost: $" + currentSquare.cost());
@@ -525,7 +524,7 @@ public class MonopolyGUI extends JPanel {
             }
             buttonPayRent.setEnabled(false);
 
-            if(isDouble){
+            if(isDouble) {
                 buttonRollDice.setEnabled(true);
                 buttonNextTurn.setEnabled(false);
             } else {
@@ -575,19 +574,19 @@ public class MonopolyGUI extends JPanel {
     }
 
     /**
-     * creates a button to preform all activities related to the cpu player
+     * Creates a button to perform all activities related to the CPU player - automated.
      * //TODO add buying houses
-     * @return a CPU's Turn button
+     * @return  JButton
      */
     private JButton buttonRunCPU(){
         buttonRunCPU = new JButton("CPU's Turn");
         buttonRunCPU.addActionListener(e-> {
 
-            //dice setup
+            // Dice setup
             rollDiceLogic();
             int roll = die1.getFaceValue() + die2.getFaceValue();
 
-            //grey out the buttons not needed for cpu player
+            // Grey out the buttons not needed for CPU player
             buttonRunCPU.setEnabled(false);
             buttonRollDice.setEnabled(false);
             buttonBuyHouse.setEnabled(false);
@@ -596,12 +595,9 @@ public class MonopolyGUI extends JPanel {
             buttonNextTurn.setEnabled(true);
 
             if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
-
                 PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
                 Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
-
-
-                //paying rent
+                // CPU paying rent
                 if (currentSquare.isOwnable() && currentSquare.isOwned() && currentPlayer.getPlayer() != currentSquare.owner()) {
                     infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
                             "\nRent cost: " + currentSquare.rent(roll));
@@ -610,9 +606,7 @@ public class MonopolyGUI extends JPanel {
                                 "\nRent cost: " + (2*currentSquare.rent(roll)));
                     }
                 }
-
-
-                //buying property
+                // CPU buying property
                  else if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
                     infoConsole.setText("You bought property:\n" + currentSquare.name() +
                             "\nPurchase cost: " + currentSquare.cost());
@@ -622,25 +616,21 @@ public class MonopolyGUI extends JPanel {
                 monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
                 updatePlayerStatusTextArea();
 
-                //rolling doubles
-                if(isDouble){
+                // CPU rolling doubles
+                if(isDouble) {
                     buttonRunCPU.setEnabled(true);
                     buttonNextTurn.setEnabled(false);
                 } else {
                     buttonNextTurn.setEnabled(true);
                 }
-
                 //TODO add buying houses
-
             }
         });
         return buttonRunCPU;
     }
 
-
     /**
-     * the logic of the dice rolling without the button creation
-     * used in buttonRunCPU method
+     * Logic of the dice rolling without the button creation used in buttonRunCPU method.
      */
     private void rollDiceLogic(){
         if (firstRoll) {
@@ -771,9 +761,7 @@ public class MonopolyGUI extends JPanel {
             }
         }
         updatePlayerStatusTextArea();
-
     }
-
 
     public static void main(String[] args) {
         new MonopolyGUI();

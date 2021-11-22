@@ -99,7 +99,9 @@ public class GameBoardGUI extends JPanel {
         }
 
         // Create center of the game board
-        JLabel centerLabel = new JLabel("MONOPOLY"){
+        JLabel centerLabel = new JLabel("MONOPOLY") {
+            // Rotate labels on square
+            // Sourced https://www.daniweb.com/programming/software-development/threads/390060/rotate-jlabel-or-image-in-label
             protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D)g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

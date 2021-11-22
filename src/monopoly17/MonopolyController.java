@@ -13,10 +13,10 @@ import java.util.LinkedList;
  */
 public class MonopolyController {
     private final JFrame frame;
-    private final JPanel playerInitPanel; // Panel for making the players
-    private final JPanel startPanel; // Panel for the main starting page
-    private JPanel monopolyPanel; // Panel for the actual Monopoly game
-    private final JPanel switchPanels; // Used for switching the panels
+    private final JPanel playerInitPanel;   // Panel for making the players
+    private final JPanel startPanel;        // Panel for the main starting page
+    private JPanel monopolyPanel;           // Panel for the actual Monopoly game
+    private final JPanel switchPanels;      // Used for switching the panels
     private final LinkedList<Player> playerList;
     private final JButton startButton;
     private final JButton playButton;
@@ -41,7 +41,7 @@ public class MonopolyController {
      * Initialize MonopolyController
      */
     public MonopolyController() {
-        this.frame = new JFrame("MONOPOLY"); // used for testing buttons
+        this.frame = new JFrame("MONOPOLY");
         this.playerInitPanel = new JPanel(new GridBagLayout());
         this.startPanel = new JPanel(new GridBagLayout());
         this.monopolyPanel = new JPanel();
@@ -57,7 +57,7 @@ public class MonopolyController {
     }
 
     /**
-     *  Get the panel that switches between the startPanel, playerInitPanel and monopolyPanel
+     * Get the panel that switches between the startPanel, playerInitPanel and monopolyPanel
      * @return JPanel
      */
     public JPanel getSwitchPanels() {
