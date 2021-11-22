@@ -2,7 +2,7 @@ package monopoly17;
 
 /**
  * This class represents the jail square tile on the board game.
- * @author Trong Nguyen
+ * @author Elisha Catherasoo & Trong Nguyen
  */
 public class Jail implements Square {
     private final int position;

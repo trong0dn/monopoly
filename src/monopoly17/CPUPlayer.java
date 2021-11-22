@@ -150,7 +150,7 @@ public class CPUPlayer implements Player {
 
     /**
      * Input value for integer entries.
-     * @param state Monopoly.DecisionState
+     * @param state Monopoly.GameState
      * @return int
      */
     @Override
@@ -181,7 +181,6 @@ public class CPUPlayer implements Player {
     public int getJailTurns() {
         return this.jailTurns;
     }
-
 
     public boolean handleNone() {
         // Always choose an action over passing their turn.

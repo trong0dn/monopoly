@@ -2,7 +2,7 @@ package monopoly17;
 
 /**
  * This class represents all the railroad square tiles on the game board.
- * @author Trong Nguyen
+ * @author Trong Nguyen & Elisha Catherasoo
  */
 public class Railroad implements Square {
     private final int COST = 200;

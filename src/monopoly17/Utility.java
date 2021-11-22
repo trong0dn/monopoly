@@ -2,7 +2,7 @@ package monopoly17;
 
 /**
  * This class represents all the utility square tiles on the game board.
- * @author Trong Nguyen
+ * @author Trong Nguyen & Elisha Catherasoo
  */
 public class Utility implements Square {
     private final int COST = 150;
