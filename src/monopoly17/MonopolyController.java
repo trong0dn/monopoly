@@ -294,20 +294,20 @@ public class MonopolyController {
         GridBagConstraints gbagConstraintsPlayerNameInput = new GridBagConstraints();
         gbagConstraintsPlayerNameInput.gridx = 1;
         gbagConstraintsPlayerNameInput.gridy = 8;
-        gbagConstraintsPlayerNameInput.gridwidth = 1;
-        gbagConstraintsPlayerNameInput.insets = new Insets(0, 0, 10, 0);
+        gbagConstraintsPlayerNameInput.gridwidth = 2;
+        gbagConstraintsPlayerNameInput.insets = new Insets(5, 0, 10, 0);
 
         GridBagConstraints gbagConstraintsAddPlayerButton = new GridBagConstraints();
         gbagConstraintsAddPlayerButton.gridx = 2;
-        gbagConstraintsAddPlayerButton.gridy = 8;
-        gbagConstraintsAddPlayerButton.gridwidth = 1;
+        gbagConstraintsAddPlayerButton.gridy = 9;
+        gbagConstraintsAddPlayerButton.gridwidth = 2;
         gbagConstraintsAddPlayerButton.insets = new Insets(0, 0, 20, 0);
 
         GridBagConstraints gbagConstraintsAddCPUPlayerButton = new GridBagConstraints();
         gbagConstraintsAddCPUPlayerButton.gridx = 1;
         gbagConstraintsAddCPUPlayerButton.gridy = 9;
-        gbagConstraintsAddCPUPlayerButton.gridwidth = 2;
-        gbagConstraintsAddCPUPlayerButton.insets = new Insets(10, 0, 10, 0);
+        gbagConstraintsAddCPUPlayerButton.gridwidth = 1;
+        gbagConstraintsAddCPUPlayerButton.insets = new Insets(0, 15, 20, 0);
 
         GridBagConstraints gbagConstraintsPlayButton = new GridBagConstraints();
         gbagConstraintsPlayButton.gridx = 1;
