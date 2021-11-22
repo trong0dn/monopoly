@@ -8,7 +8,8 @@ import static org.junit.Assert.*;
 
 /**
  * Testing Monopoly class.
- * @author Ibrahim Almalki & Trong Nguyen
+ * @author Ibrahim Almalki
+ * Modified by Trong Nguyen
  */
 public class MonopolyTest {
     private final Monopoly monopoly = new Monopoly();
