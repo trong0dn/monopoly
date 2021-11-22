@@ -21,7 +21,7 @@ public class CPUPlayer implements Player {
      */
     public CPUPlayer(String name) {
         this.properties = new LinkedList<>();
-        this.playerName = "CPU Player " + name;
+        this.playerName = "CPU " + name;
         this.money = 1500;
         this.position = 0;
         this.jailTurns = 0;
