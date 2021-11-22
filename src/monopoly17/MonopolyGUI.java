@@ -198,7 +198,7 @@ public class MonopolyGUI extends JPanel {
         infoConsole.setBounds(5, 5, 240, 90);
         infoConsole.setLineWrap(true);
         infoConsole.setEditable(false);
-        infoConsole.setText("Player 1 starts the game! \nClicking Roll Dice!");
+        infoConsole.setText("Player 1 starts the game! \nClick Roll Dice!");
         consolePanel.add(infoConsole);
     }
 
@@ -405,6 +405,7 @@ public class MonopolyGUI extends JPanel {
                         buttonPayRent.setEnabled(true);
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
+                        buttonBuy.setEnabled(false);
                         // Player lands on owned railroad
                     } else if (currentSquare instanceof Railroad) {
                         infoConsole.append("Station: You landed on " + currentSquare.name() +
@@ -412,6 +413,7 @@ public class MonopolyGUI extends JPanel {
                         buttonPayRent.setEnabled(true);
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
+                        buttonBuy.setEnabled(false);
                         // Player lands on owned utility
                     } else if (currentSquare instanceof Utility) {
                         infoConsole.append("Utility: You landed on " + currentSquare.name() +
@@ -419,8 +421,8 @@ public class MonopolyGUI extends JPanel {
                         buttonPayRent.setEnabled(true);
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
+                        buttonBuy.setEnabled(false);
                     }
-                    isRollDouble(currentPlayerOrder);
                 } else {
                     // Player lands on tax square
                     if (currentSquare instanceof Taxes) {
@@ -429,9 +431,10 @@ public class MonopolyGUI extends JPanel {
                         buttonPayRent.setEnabled(true);
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(false);
+                        buttonBuy.setEnabled(false);
                     } else {
                         // FREE PARKING, CHANCE, COMMUNITY CHEST
-                        infoConsole.append("Non-purchasable: You landed on a property: \n" + currentSquare.name());
+                        infoConsole.append("Non-purchasable: You landed on: \n" + currentSquare.name());
                         isRollDouble(currentPlayerOrder);
                         buttonBuy.setEnabled(false);
                         buttonPayRent.setEnabled(false);

@@ -25,6 +25,19 @@ public class Property implements Square{
     private int buildings;           // number of buildings on property
     private boolean monopoly;        // player may own all property set
 
+    /**
+     * Initialize Property
+     * @param position      int
+     * @param name          String
+     * @param rent          int
+     * @param oneHouse      int
+     * @param twoHouse      int
+     * @param threeHouse    int
+     * @param fourHouse     int
+     * @param hotel         int
+     * @param propertyCost  int
+     * @param houseCost     int
+     */
     public Property(int position, String name, int rent, int oneHouse, int twoHouse, int threeHouse, int fourHouse,
                     int hotel, int propertyCost, int houseCost) {
         this.position = position;
@@ -232,6 +245,9 @@ public class Property implements Square{
         return this.houseCost;
     }
 
+    /**
+     * Increases the amount of buildings the property has.
+     */
     public void buyBuilding(){
         buildings++;
     }

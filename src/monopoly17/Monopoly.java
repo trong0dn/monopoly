@@ -356,6 +356,11 @@ public class Monopoly {
         throw new RuntimeException("Railroads don't exist on the board");
     }
 
+    /**
+     * Gives player an action if they land on GO TO JAIL.
+     * @param player    Player
+     * @param jail      Jail
+     */
     public void jailAction(Player player, Jail jail) {
         Jail.JailType type = jail.getType();
         if (type == Jail.JailType.GOTO_JAIL) {
@@ -363,6 +368,10 @@ public class Monopoly {
         }
     }
 
+    /**
+     * Moves the player to Jail.
+     * @param player    Player
+     */
     private void intoJail(Player player) {
         System.out.println("Go to Jail!");
         player.moveTo(40);
