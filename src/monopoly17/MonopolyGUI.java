@@ -460,7 +460,6 @@ public class MonopolyGUI extends JPanel {
 
 
             if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
-                System.out.println("frick");
                 buttonRollDice.setEnabled(false);
                 buttonBuy.setEnabled(false);
                 buttonPayRent.setEnabled(false);
@@ -578,8 +577,6 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonRunCPU(){
         buttonRunCPU = new JButton("CPU's Turn");
         buttonRunCPU.addActionListener(e-> {
-            PlayerGUI currentPlayer = playersGUI.get(currentPlayerOrder);
-            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
 
             //dice setup
             rollDiceLogic();
@@ -593,46 +590,48 @@ public class MonopolyGUI extends JPanel {
             buttonBuy.setEnabled(false);
             buttonNextTurn.setEnabled(true);
 
-            if (currentPlayer.getPlayer() instanceof CPUPlayer) {
+            if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
+
+                PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
+                Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+
+
 
                 //paying rent
-                if (currentSquare.isOwnable() && currentSquare.isOwned()) {
+                //monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+
+
+                if (currentSquare.isOwnable() && currentSquare.isOwned() && currentPlayer.getPlayer() != currentSquare.owner()) {
                     infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
                             "\nRent cost: " + currentSquare.rent(roll));
+                    if (currentSquare instanceof Railroad) {
+                        infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
+                                "\nRent cost: " + (2*currentSquare.rent(roll)));
+                    }
                 }
-                monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
-                updatePlayerStatusTextArea();
+               // buttonPayRent.setEnabled(false);
+                //updatePlayerStatusTextArea();
 
 
                 //buying property
-                if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
+                 else if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
                     infoConsole.setText("You bought property:\n" + currentSquare.name() +
                             "\nPurchase cost: " + currentSquare.cost());
-                } else {
+                } else if (currentPlayer.getPlayerMoney() <= currentSquare.cost()) {
                     infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
                 }
                 monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+                buttonBuy.setEnabled(false);
                 updatePlayerStatusTextArea();
 
 
-                //next turn
-                infoConsole.setText("Next Turn!\n");
-                if (isDouble) {
-                    isDouble = false;
+
+                if(isDouble){
+                    buttonRunCPU.setEnabled(true);
+                    buttonNextTurn.setEnabled(false);
+                } else {
+                    buttonNextTurn.setEnabled(true);
                 }
-                currentPlayerOrder = (currentPlayerOrder + 1) % playersList.size();
-                int currentPlayerIndex = (currentPlayerOrder % playersList.size()) + 1;
-                currentPlayerOrder %= playersList.size();
-                cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
-                infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
-                buttonNextTurn.setEnabled(false);
-                System.out.println("frickers");
-                updatePlayerStatusTextArea();
-
-
-
-
-
 
             }
         });
