@@ -162,58 +162,6 @@ public class Property implements Square{
     }
 
     /**
-     * Set monopoly to true if player has a set or false if they do not.
-     * @param player Player
-     */
-    public void updateMonopoly(Player player) {
-        boolean setA = false;
-        boolean setB = false;
-
-        if (others[1] == null) {
-            setB = true;
-        }
-        Queue<Property> properties = new LinkedList<>();
-        // Check if the square owned by a player is a property
-        for (Square square : player.properties()) {
-            if (square instanceof Property) {
-                properties.add((Property) square);
-            }
-        }
-        // Check if property owned by each player is part of a set
-        for (Property property : properties) {
-            if (property.name().equals(others[0].name())) {
-                setA = true;
-            }
-            if (others[1] != null && property.name().equals(others[1].name())) {
-                setB = true;
-            }
-        }
-        // Set monopoly if both properties are part of the same set
-        if (setA && setB) {
-            setMonopoly();
-            others[0].setMonopoly();
-            if (others[1] != null) {
-                others[1].setMonopoly();
-            }
-        } else {
-            breakMonopoly();
-            others[0].breakMonopoly();
-            if (others[1] != null) {
-                others[1].breakMonopoly();
-            }
-        }
-    }
-
-    /**
-
-     * Get the cost of a house.
-     * @return int
-     */
-    public int getHouseCost() {
-        return this.houseCost;
-    }
-
-    /**
      * Set a group of properties.
      * @param propertyA  Property
      */
@@ -229,6 +177,59 @@ public class Property implements Square{
     public void setGroup(Property propertyA, Property propertyB) {
         this.others[0] = propertyA;
         this.others[1] = propertyB;
+    }
+
+    /**
+     * Set monopoly to true if player has a set or false if they do not.
+     * @param player Player
+     */
+    public void updateMonopoly(Player player) {
+        boolean setA = false;
+        boolean setB = others[1] == null;
+
+        Queue<Property> properties = new LinkedList<>();
+        // Check if the square owned by a player is a property
+        for (Square square : player.properties()) {
+            if (square instanceof Property) {
+                properties.add((Property) square);
+            }
+        }
+        // Check if property owned by each player is part of a set
+        for (Property property : properties) {
+            if (others[0] != null && property.name().equals(others[0].name())) {
+                setA = true;
+            }
+            if (others[1] != null && property.name().equals(others[1].name())) {
+                setB = true;
+            }
+        }
+        // Set monopoly if both properties are part of the same set
+        if (setA && setB) {
+            setMonopoly();
+            if (others[0] != null) {
+                others[0].setMonopoly();
+            }
+            if (others[1] != null) {
+                others[1].setMonopoly();
+            }
+        } else {
+            breakMonopoly();
+            if (others[0] != null) {
+                others[0].breakMonopoly();
+            }
+            if (others[1] != null) {
+                others[1].breakMonopoly();
+            }
+        }
+    }
+
+    /**
+
+     * Get the cost of a house.
+     * @return int
+     */
+    public int getHouseCost() {
+        return this.houseCost;
     }
 
     public void buyBuilding(){
