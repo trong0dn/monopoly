@@ -106,7 +106,7 @@ public class PropertyTest {
         oldkent.purchase(humanPlayer);
         humanPlayer2.addProperty(whitechapel);
         whitechapel.purchase(humanPlayer2);
-        assertTrue(oldkent.isMonopoly());
+        assertFalse(oldkent.isMonopoly());
 
 
     }

@@ -1,5 +1,6 @@
 package test;
 
+import monopoly17.GameBoard;
 import monopoly17.HumanPlayer;
 import monopoly17.Property;
 import monopoly17.Square;
