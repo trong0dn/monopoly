@@ -119,7 +119,7 @@ and purchasing of houses have been fully implemented in this release.
 ### CPU Player
 
 Thhis newwest version of monopoly includes an option to introduce CPU 
-players into the game. simply enter a name for the cpu and click "Add CPU 
+players into the game. Simply enter a name for the cpu and click "Add CPU 
 Player" on the menu page. When the game starts, simply click the "CPU Turn"
 button whenever it is the turn of the CPU, and it will automatically roll
 the dice, move its position, buy properties, and pay rent. At the end of 
