@@ -156,9 +156,9 @@ public class MonopolyGUI extends JPanel {
         rightLayeredPane.add(buttonBuyHouse);
 
         // Add RunCPU Button
-        buttonRunCPU = CPUDecision();
-        buttonRunCPU.setBounds(315, 570, 115, 40);
-        buttonRunCPU.setEnabled(true);
+        buttonRunCPU = buttonRunCPU();
+        buttonRunCPU.setBounds(215, 520, 115, 40);
+        buttonRunCPU.setEnabled(false);
         rightLayeredPane.add(buttonRunCPU);
 
         // Add next turn button
@@ -463,10 +463,21 @@ public class MonopolyGUI extends JPanel {
             currentPlayerOrder %= playersList.size();
             cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
             infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
-            buttonRollDice.setEnabled(true);
-            buttonBuy.setEnabled(false);
-            buttonPayRent.setEnabled(false);
-            buttonNextTurn.setEnabled(false);
+
+
+            if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
+                buttonRollDice.setEnabled(false);
+                buttonBuy.setEnabled(false);
+                buttonPayRent.setEnabled(false);
+                buttonNextTurn.setEnabled(false);
+                buttonRunCPU.setEnabled(true);
+            }else {
+                buttonRunCPU.setEnabled(false);
+                buttonRollDice.setEnabled(true);
+                buttonBuy.setEnabled(false);
+                buttonPayRent.setEnabled(false);
+                buttonNextTurn.setEnabled(false);
+            }
             updatePlayerStatusTextArea();
         });
         return buttonNextTurn;
@@ -565,70 +576,206 @@ public class MonopolyGUI extends JPanel {
 
     }
 
-    private JButton CPUDecision(){
-        buttonRunCPU = new JButton("Run CPU's Turn");
-        buttonRunCPU.addActionListener(f-> {
-            PlayerGUI currentPlayer = playersGUI.get(currentPlayerOrder);
-            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+    /**
+     * creates a button to preform all activities related to the cpu player
+     * //TODO add buying houses
+     * @return a CPU's Turn button
+     */
+    private JButton buttonRunCPU(){
+        buttonRunCPU = new JButton("CPU's Turn");
+        buttonRunCPU.addActionListener(e-> {
 
             //dice setup
-            die1.rollDice();
-            die2.rollDice();
+            rollDiceLogic();
             int roll = die1.getFaceValue() + die2.getFaceValue();
 
-            //grey out the buttons
+            //grey out the buttons not needed for cpu player
+            buttonRunCPU.setEnabled(false);
             buttonRollDice.setEnabled(false);
             buttonBuyHouse.setEnabled(false);
             buttonPayRent.setEnabled(false);
             buttonBuy.setEnabled(false);
             buttonNextTurn.setEnabled(true);
 
-            if (currentPlayer.getPlayer() instanceof CPUPlayer) {
+            if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
+
+                PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
+                Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+
 
                 //paying rent
-                if (currentSquare.isOwnable() && currentSquare.isOwned()) {
+                if (currentSquare.isOwnable() && currentSquare.isOwned() && currentPlayer.getPlayer() != currentSquare.owner()) {
                     infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
                             "\nRent cost: " + currentSquare.rent(roll));
+                    if (currentSquare instanceof Railroad) {
+                        infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
+                                "\nRent cost: " + (2*currentSquare.rent(roll)));
+                    }
                 }
-                monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
-                buttonPayRent.setEnabled(false);
-                updatePlayerStatusTextArea();
 
 
                 //buying property
-                if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
+                 else if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
                     infoConsole.setText("You bought property:\n" + currentSquare.name() +
                             "\nPurchase cost: " + currentSquare.cost());
-                } else {
+                } else if (currentPlayer.getPlayerMoney() <= currentSquare.cost()) {
                     infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
                 }
                 monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
-                buttonBuy.setEnabled(false);
                 updatePlayerStatusTextArea();
 
-
-                //buy house
-                for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()) {
-                    Property property;
-                    if (sq instanceof Property) {
-                        property = (Property) sq;
-
-                        if (property.isMonopoly()) {
-                            monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
-                            System.out.println("House Purchased");
-                            infoConsole.setText("Bought House for " + property.getHouseCost());
-                        /*
-                        Display dots when player buys house on property.
-                         */
-
-                        }
-                        updatePlayerStatusTextArea();
-                    }
+                //rolling doubles
+                if(isDouble){
+                    buttonRunCPU.setEnabled(true);
+                    buttonNextTurn.setEnabled(false);
+                } else {
+                    buttonNextTurn.setEnabled(true);
                 }
+
+                //TODO add buying houses
+
             }
         });
         return buttonRunCPU;
     }
+
+
+    /**
+     * the logic of the dice rolling without the button creation
+     * used in buttonRunCPU method
+     */
+    private void rollDiceLogic(){
+        if (firstRoll) {
+            updatePlayerList();
+            firstRoll = false;
+            setupButtons();
+            setupPlayerToken();
+            setupPlayerStatusWindow();
+        }
+
+        die1.rollDice();
+        die2.rollDice();
+        isDouble = die1.getFaceValue() == die2.getFaceValue();
+        int diceValue = die1.getFaceValue() + die2.getFaceValue();
+        PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
+        currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % 40;
+
+        if(currentPlayer.getPlayer().getJailTurns() > 0) {
+            infoConsole.setText("You are in Jail\n");
+            if (isDouble) {
+                infoConsole.setText("You rolled doubles\n");
+                infoConsole.append("You are now out of Jail\n");
+                infoConsole.append("Roll again!");
+
+                currentPlayer.getPlayer().setInJail(false);
+                currentPlayer.getPlayer().setJailTurns(0);
+
+                buttonRollDice.setEnabled(true);
+                buttonNextTurn.setEnabled(false);
+            } else if (currentPlayer.getPlayer().getJailTurns() == 3) {
+                infoConsole.setText("You did not roll doubles\n");
+                infoConsole.append("This is your third turn in jail\n");
+                infoConsole.append("You are now out of Jail\n");
+
+                currentPlayer.getPlayer().setInJail(false);
+                currentPlayer.getPlayer().setJailTurns(0);
+
+                buttonRollDice.setEnabled(false);
+                buttonNextTurn.setEnabled(true);
+            } else {
+                infoConsole.setText("You did not roll doubles\n");
+                infoConsole.append("This is turn " + currentPlayer.getPlayer().getJailTurns() + " in jail\n");
+
+                buttonRollDice.setEnabled(false);
+                buttonNextTurn.setEnabled(true);
+                currentPlayer.getPlayer().setJailTurns(currentPlayer.getPlayer().getJailTurns() + 1);
+            }
+
+            buttonPayRent.setEnabled(false);
+            buttonBuy.setEnabled(false);
+        } else if(currentSquareNumber == 30) {
+            currentPlayer.move(diceValue);
+            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+            infoConsole.setText("You landed on " + currentSquare.name());
+            infoConsole.append("\nYou are now in Jail");
+            currentPlayer.move(20);
+            currentPlayer.getPlayer().setJailTurns(1);
+            buttonPayRent.setEnabled(false);
+            buttonRollDice.setEnabled(false);
+            buttonBuy.setEnabled(false);
+            buttonNextTurn.setEnabled(true);
+        } else {
+            currentPlayer.move(diceValue);
+            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+            // Swing concurrency thread correction for layeredPane flickering
+            leftLayeredPane.remove(gameBoard);
+            leftLayeredPane.add(gameBoard, Integer.valueOf(0));
+
+            int prevSquare = currentSquareNumber - diceValue;
+
+            infoConsole.setText(""); // in case player didn't pass go
+
+            // Pass Go
+            if (currentSquareNumber < 12 && prevSquare < 0) {
+                infoConsole.setText("You passed Go! You get $200!\n");
+            }
+
+            // Button logic
+            if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
+                infoConsole.append("You landed on " + currentSquare.name() +
+                        "\nProperty Cost: $" + currentSquare.cost());
+                isRollDouble(currentPlayerOrder);
+                buttonBuy.setEnabled(true);
+                // If square is already owned
+            } else if (currentSquare.isOwnable()) {
+                // Player lands on their own property
+                if (currentSquare.owner().name().equals(currentPlayer.getPlayer().name())) {
+                    buttonBuy.setEnabled(false);
+                    buttonPayRent.setEnabled(false);
+                    infoConsole.append("You landed on " + currentSquare.name()
+                            + "\nYou already own " + currentSquare.name());
+                    // Player lands on own property owned by another player
+                } else if (currentSquare instanceof Property) {
+                    infoConsole.append("Property: You landed on:" + currentSquare.name() +
+                            "\nRent: $" + currentSquare.rent(diceValue));
+                    buttonPayRent.setEnabled(true);
+                    buttonRollDice.setEnabled(false);
+                    buttonNextTurn.setEnabled(false);
+                    // Player lands on owned railroad
+                } else if (currentSquare instanceof Railroad) {
+                    infoConsole.append("Station: You landed on " + currentSquare.name() +
+                            "\nRent: $" + (2*currentSquare.rent(diceValue)));
+                    buttonPayRent.setEnabled(true);
+                    buttonRollDice.setEnabled(false);
+                    buttonNextTurn.setEnabled(false);
+                } else if (currentSquare instanceof Utility) {
+                    infoConsole.append("Utility: You landed on " + currentSquare.name() +
+                            "\nRent: $" + currentSquare.rent(diceValue));
+                    buttonPayRent.setEnabled(true);
+                    buttonRollDice.setEnabled(false);
+                    buttonNextTurn.setEnabled(false);
+                }
+                isRollDouble(currentPlayerOrder);
+            } else {
+                // Player lands on tax square
+                if (currentSquare instanceof Taxes) {
+                    infoConsole.append("Taxes: You landed on " + currentSquare.name() +
+                            "\nTax: $" + ((Taxes) currentSquare).getTax());
+                    buttonPayRent.setEnabled(true);
+                    buttonRollDice.setEnabled(false);
+                    buttonNextTurn.setEnabled(false);
+                } else {
+                    infoConsole.append("Non-purchasable: You landed on a property: \n" + currentSquare.name());
+                    isRollDouble(currentPlayerOrder);
+                    buttonBuy.setEnabled(false);
+                    buttonPayRent.setEnabled(false);
+                }
+            }
+        }
+        updatePlayerStatusTextArea();
+
+    }
+
 
     public static void main(String[] args) {
         new MonopolyGUI();
