@@ -305,7 +305,6 @@ public class MonopolyGUI extends JPanel {
      */
     private JButton buttonRollDice() {
         buttonRollDice = new JButton("Roll Dice");
-
         buttonRollDice.addActionListener(e -> rollDiceLogic());
         return buttonRollDice;
     }
@@ -389,7 +388,7 @@ public class MonopolyGUI extends JPanel {
             }
             buttonPayRent.setEnabled(false);
 
-            if(isDouble) {
+            if (isDouble) {
                 buttonRollDice.setEnabled(true);
                 buttonNextTurn.setEnabled(false);
             } else {
@@ -445,7 +444,6 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonRunCPU(){
         buttonRunCPU = new JButton("CPU's Turn");
         buttonRunCPU.addActionListener(e-> {
-
             // Dice setup
             rollDiceLogic();
             int roll = die1.getFaceValue() + die2.getFaceValue();
