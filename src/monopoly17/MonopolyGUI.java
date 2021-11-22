@@ -157,7 +157,7 @@ public class MonopolyGUI extends JPanel {
 
         // Add RunCPU Button
         buttonRunCPU = CPUDecision();
-        buttonRunCPU.setBounds(315, 570, 115, 40);
+        buttonRunCPU.setBounds(215, 520, 115, 40);
         buttonRunCPU.setEnabled(true);
         rightLayeredPane.add(buttonRunCPU);
 
