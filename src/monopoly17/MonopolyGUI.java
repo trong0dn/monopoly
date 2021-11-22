@@ -520,6 +520,8 @@ public class MonopolyGUI extends JPanel {
                     infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
                             "\nRent cost: " + (2*currentSquare.rent(roll)));
                 }
+
+
             }
             buttonPayRent.setEnabled(false);
 
@@ -534,6 +536,15 @@ public class MonopolyGUI extends JPanel {
         return buttonPayRent;
     }
 
+    /*
+     * if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
+     *                 infoConsole.setText("You bought property:\n" + currentSquare.name() +
+     *                         "\nPurchase cost: " + currentSquare.cost());
+     *             } else {
+     *                 infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
+     *             }
+     */
+
     /**
      * Allows user to buy house when they own a full set of properties
      * @return JButton
@@ -542,16 +553,20 @@ public class MonopolyGUI extends JPanel {
         buttonBuyHouse = new JButton("Buy House");
         buttonBuyHouse.addActionListener(f->{
             JPanel panel = new JPanel(new GridLayout(0, 4));
+            if (currentSquare.isOwned() &&){
+                System.out.println("");
+            }
+
+
             for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()){
                 Property property;
                 if (sq instanceof Property){
                     property = (Property) sq;
-
-                    if (property.isMonopoly()){
+                    if (property.isMonopoly()){ // if all property of type is owned
                         JButton propButton = new JButton(property.name());
                         propButton.addActionListener(e-> {
                             monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
-                            System.out.println("House Purchased");
+                            System.out.println("House Purchased" + property.getHouseCost()); // For the console
                             infoConsole.setText("Bought House for " + property.getHouseCost());
                             /*
                             Display dots when player buys house on property.

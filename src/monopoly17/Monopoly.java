@@ -208,26 +208,80 @@ public class Monopoly {
 
     /* Implementation of buy house feature */
 
-    /**
-     * For when the player owns properties of a full set.
-     * @param player  Player
-     * @param property Property
+    /*
+            Once you buy a house on one property you have to buy a house on the other property of the same set.
+
+
+            If current square is owned and player tries to buy on different square of same  set
+            say "must complete houses on square"
      */
-    public void buyHouses(Player player, Property property){
-        if (property.isMonopoly()) {
-            property.buyBuilding();
-            player.exchangeMoney(-1 * property.cost());
+
+    /**
+     * For when the player owns properties of a full set of properties.
+     * @param player  Player
+     *
+     */
+    public void buyHouses(Player player){
+
+        for(Square sq : player.properties()){
+            Property property;
+
+            if (sq instanceof Property){
+                property = (Property)sq;
+
+            }
+
         }
-        else
-            System.out.println("You do not own the full set.");
+
+        do {
+            Queue<Square> properties = new LinkedList<>();
+            //which property
+            Property property = (Property) selectProperty(player, properties);
+            if (property.getBuildings() == 5 || !property.isMonopoly()){
+                System.out.println("You cannot buy houses for this property");
+
+            }
+
+            // How much money
+            if (player.getMoney() < property.getHouseCost()){
+                System.out.println("You cannot buy houses for this property");
+            }
+
+            // Create case for when the player needs to build evenly 1-1
+            /*
+
+             */
+
+            property.build();
+            player.exchangeMoney(property.getHouseCost() * -1);
+
+        } while (player.inputBool(gameState));
 
     }
 
-    /**
-     * Landing on an unowned square, the player may choose to buy the square.
-     * @param player    Player
-     * @param square    Square
-     */
+    private Square selectProperty(Player player, Queue<Square> properties) {
+
+        while (true){
+            int propertyNumber = player.inputInt(gameState);
+            int propertyState = 1;
+
+            for (Square sq : properties){
+                if(propertyState++ == propertyNumber){
+                    return sq;
+                }
+
+            }
+
+
+        }
+    }
+
+
+/**
+ * Landing on an unowned square, the player may choose to buy the square.
+ * @param player    Player
+ * @param square    Square
+ */
     public void unowned(Player player, Square square) {
         int cost = square.cost();
 

@@ -234,5 +234,18 @@ public class Property implements Square{
     public void buyBuilding(){
         buildings++;
     }
+
+    public int getBuildings(){
+        return buildings;
+    }
+
+    public void build() {
+        buildings++;
+        if(buildings > 5){
+            throw new IllegalArgumentException("Cannot build past a hotel");
+
+        }
+
+    }
 }
 
