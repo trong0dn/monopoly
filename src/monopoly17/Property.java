@@ -25,6 +25,7 @@ public class Property implements Square {
     private int buildings;           // number of buildings on property
     private boolean monopoly;        // player may own all property set
 
+
     /**
      * Initialize Property
      * @param position      int
@@ -173,24 +174,6 @@ public class Property implements Square {
     }
 
     /**
-     * Set a group of properties.
-     * @param propertyA  Property
-     */
-    public void setGroup(Property propertyA) {
-        this.setGroup(propertyA, null);
-    }
-
-    /**
-     * Set a group of properties.
-     * @param propertyA  Property
-     * @param propertyB  Property
-     */
-    public void setGroup(Property propertyA, Property propertyB) {
-        this.others[0] = propertyA;
-        this.others[1] = propertyB;
-    }
-
-    /**
      * Set monopoly to true if player has a set or false if they do not.
      * @param player Player
      */
@@ -235,6 +218,7 @@ public class Property implements Square {
     }
 
     /**
+
      * Get the cost of a house.
      * @return int
      */
@@ -243,10 +227,60 @@ public class Property implements Square {
     }
 
     /**
-     * Increases the amount of buildings the property has.
+     * MIGHT NOT NEED THIS AT ALL
+     * Set a group of properties.
+     * @param propertyA  Property
      */
-    public void buyBuilding(){
-        buildings++;
+    public void setGroup(Property propertyA) {
+        this.setGroup(propertyA, null);
+    }
+
+    /**
+     * Set a group of properties.
+     * @param propertyA  Property
+     * @param propertyB  Property
+     */
+    public void setGroup(Property propertyA, Property propertyB) {
+        this.others[0] = propertyA;
+        this.others[1] = propertyB;
+    }
+
+
+    public int getBuildings(){
+        return buildings;
+    }
+
+    public void build() {
+        if(buildings == 5){
+            throw new IllegalArgumentException("Cannot build past a hotel");
+        } else {
+            buildings++;
+        }
+    }
+
+    /**
+     * Allows the game to have an even rule for when a player buys a property.
+     * @return confirmA, confirmB
+     */
+    public boolean evenRule() {
+        if(!monopoly){
+            return false;
+        }
+        /*
+        this.others[0] = propertyA;
+        this.others[1] = propertyB;
+         */
+
+        int diff_A = this.others[0].getBuildings() - getBuildings();
+
+        boolean confirmA = diff_A == 0 || diff_A == 1;
+        if (this.others[1] == null)
+            return confirmA;
+
+        int diff_B = this.others[1].getBuildings() - getBuildings();
+        boolean confirmB = diff_B == 0 || diff_B == 1;
+
+        return  confirmA && confirmB;
     }
 }
 

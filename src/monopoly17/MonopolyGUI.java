@@ -385,6 +385,8 @@ public class MonopolyGUI extends JPanel {
                     infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
                             "\nRent cost: " + (2*currentSquare.rent(roll)));
                 }
+
+
             }
             buttonPayRent.setEnabled(false);
 
@@ -399,6 +401,15 @@ public class MonopolyGUI extends JPanel {
         return buttonPayRent;
     }
 
+    /*
+     * if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
+     *                 infoConsole.setText("You bought property:\n" + currentSquare.name() +
+     *                         "\nPurchase cost: " + currentSquare.cost());
+     *             } else {
+     *                 infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
+     *             }
+     */
+
     /**
      * Allows user to buy house when they own a full set of properties
      * @return JButton
@@ -411,26 +422,29 @@ public class MonopolyGUI extends JPanel {
                 Property property;
                 if (sq instanceof Property){
                     property = (Property) sq;
-
-                    if (property.isMonopoly()){
+                    if (property.isMonopoly()){ // if all property of type is owned
                         JButton propButton = new JButton(property.name());
                         propButton.addActionListener(e-> {
-                            monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
-                            System.out.println("House Purchased");
-                            infoConsole.setText("Bought House for " + property.getHouseCost());
+                            boolean purchased = monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
+                            if (purchased) {
+                                infoConsole.setText("Bought House for $" + property.getHouseCost());
+                                if (property.getBuildings() == 5) {
+                                    infoConsole.append("\nYou have a hotel for " + property.name());
+                                } else {
+                                    infoConsole.append("\nYou have " + property.getBuildings() + " houses for " + property.name());
+                                }
+                            }   else {
+                                infoConsole.setText("You can't buy a house for " + property.name());
+                            }
                             /*
                             Display dots when player buys house on property.
                              */
                         });
-
                         panel.add(propButton);
-
                     }
                 }
-
             }
             JOptionPane.showMessageDialog(rightLayeredPane, panel);
-
         });
 
         return buttonBuyHouse;

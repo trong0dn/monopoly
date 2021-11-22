@@ -206,26 +206,50 @@ public class Monopoly {
         }
     }
 
-    /**
-     * For when the player owns properties of a full set.
-     * @param player  Player
-     * @param property Property
-     */
-    public void buyHouses(Player player, Property property){
-        if (property.isMonopoly()) {
-            property.buyBuilding();
-            player.exchangeMoney(-1 * property.cost());
-        }
-        else
-            System.out.println("You do not own the full set.");
+    /* Implementation of buy house feature */
 
+    /*
+            Once you buy a house on one property you have to buy a house on the other property of the same set.
+
+
+            If current square is owned and player tries to buy on different square of same  set
+            say "must complete houses on square"
+     */
+
+    /**
+     * For when the player owns properties of a full set of properties.
+     * @param player  Player
+     *
+     */
+    public boolean buyHouses(Player player, Property property){
+        if (property.getBuildings() == 5 || !property.isMonopoly()){
+            System.out.println("You already have a hotel");
+            return false;
+        }
+
+        // How much money
+        if (player.getMoney() < property.getHouseCost()){
+            System.out.println("You don't have enough money to buy a house");
+            return false;
+        }
+
+        // Create case for when the player needs to build evenly 1-1
+        if (!property.evenRule()){
+            System.out.println("You have to follow the Even Rule");
+            return false;
+        }
+
+        property.build();
+        player.exchangeMoney(property.getHouseCost() * -1);
+        System.out.println("House Purchased $" + property.getHouseCost());
+        return true;
     }
 
-    /**
-     * Landing on an unowned square, the player may choose to buy the square.
-     * @param player    Player
-     * @param square    Square
-     */
+/**
+ * Landing on an unowned square, the player may choose to buy the square.
+ * @param player    Player
+ * @param square    Square
+ */
     public void unowned(Player player, Square square) {
         int cost = square.cost();
 
