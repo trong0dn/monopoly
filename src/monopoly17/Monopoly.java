@@ -144,7 +144,6 @@ public class Monopoly {
         while (playerAction && !isBankrupt) {
             System.out.println("Would you like to perform any additional actions this turn?");
             System.out.println("Select the number of one of the following options:");
-            //TODO Buy/Sell houses
             System.out.println("1) Pass my turn.");
             System.out.println("2) Player Statistics.");
             int choice = gameState.currentPlayer.inputInt(gameState);
@@ -174,7 +173,6 @@ public class Monopoly {
         for (Square s: player.properties()){
             System.out.println(">>> " + s.name());
         }
-        //TODO Additional information about houses, jail, etc., later
         System.out.println("-----------------------------------------------");
     }
 
@@ -205,28 +203,26 @@ public class Monopoly {
     }
 
     /**
-     * For when the player owns properties of a full set of properties.
+     * Method to allow players to buy house for properties.
      * @param player  Player
      *
      */
     public boolean buyHouses(Player player, Property property){
+        // Check if property is a monopoly or a hotel
         if (property.getBuildings() == 5 || !property.isMonopoly()){
             System.out.println("You already have a hotel");
             return false;
         }
-
-        // How much money
+        // Check if player has enough money
         if (player.getMoney() < property.getHouseCost()){
             System.out.println("You don't have enough money to buy a house");
             return false;
         }
-
-        // Create case for when the player needs to build evenly 1-1
+        // Create case for when the player needs to build house following even rule
         if (!property.evenRule()){
             System.out.println("You have to follow the Even Rule");
             return false;
         }
-
         property.build();
         player.exchangeMoney(property.getHouseCost() * -1);
         System.out.println("House Purchased $" + property.getHouseCost());

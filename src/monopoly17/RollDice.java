@@ -7,8 +7,8 @@ import java.util.Random;
  * @author Trong Nguyen
  */
 public class RollDice implements Dice {
-    private final int NUM_DICE; // number of dice
-    private final int NUM_SIDES; // number of sides per die
+    private final int NUM_DICE;     // number of dice
+    private final int NUM_SIDES;    // number of sides per die
 
     /**
      * Initialize RollDice.

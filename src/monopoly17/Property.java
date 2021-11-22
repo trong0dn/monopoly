@@ -75,7 +75,6 @@ public class Property implements Square {
         return this.name;
     }
 
-
     /**
      * If the square tile can be owned or not.
      * @return  boolean
@@ -84,7 +83,6 @@ public class Property implements Square {
     public boolean isOwnable() {
         return true;
     }
-
 
     /**
      * If the square tile is owned.
@@ -95,7 +93,6 @@ public class Property implements Square {
         return this.owned;
     }
 
-
     /**
      * Get the cost of the square tile.
      * @return  int
@@ -104,7 +101,6 @@ public class Property implements Square {
     public int cost() {
         return this.propertyCost;
     }
-
 
     /**
      * Method invoked when a square tile is being purchased.
@@ -218,7 +214,6 @@ public class Property implements Square {
     }
 
     /**
-
      * Get the cost of a house.
      * @return int
      */
@@ -227,7 +222,6 @@ public class Property implements Square {
     }
 
     /**
-     * MIGHT NOT NEED THIS AT ALL
      * Set a group of properties.
      * @param propertyA  Property
      */
@@ -257,7 +251,7 @@ public class Property implements Square {
      * Add a building to the property.
      */
     public void build() {
-        if(buildings == 5){
+        if (buildings == 5) {
             throw new IllegalArgumentException("Cannot build past a hotel");
         } else {
             buildings++;
@@ -269,7 +263,7 @@ public class Property implements Square {
      * @return confirmA, confirmB
      */
     public boolean evenRule() {
-        if(!monopoly){
+        if (!monopoly) {
             return false;
         }
 

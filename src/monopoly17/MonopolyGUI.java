@@ -403,17 +403,17 @@ public class MonopolyGUI extends JPanel {
      * Allows user to buy house when they own a full set of properties
      * @return JButton
      */
-    private JButton buttonBuyHouse(){
+    private JButton buttonBuyHouse() {
         buttonBuyHouse = new JButton("Buy House");
-        buttonBuyHouse.addActionListener(f->{
+        buttonBuyHouse.addActionListener(f-> {
             JPanel panel = new JPanel(new GridLayout(0, 4));
-            for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()){
+            for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()) {
                 Property property;
-                if (sq instanceof Property){
+                if (sq instanceof Property) {
                     property = (Property) sq;
-                    if (property.isMonopoly()){ // if all property of type is owned
+                    if (property.isMonopoly()) {    // If all property of type is owned
                         JButton propButton = new JButton(property.name());
-                        // press the button to get a house for the property selected
+                        // Press the button to get a house for the property selected
                         propButton.addActionListener(e-> {
                             boolean purchased = monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
                             if (purchased) {
@@ -442,7 +442,7 @@ public class MonopolyGUI extends JPanel {
      * Creates a button to perform all activities related to the CPU player - automated.
      * @return  JButton
      */
-    private JButton buttonRunCPU(){
+    private JButton buttonRunCPU() {
         buttonRunCPU = new JButton("CPU's Turn");
         buttonRunCPU.addActionListener(e-> {
             // Dice setup
@@ -486,7 +486,6 @@ public class MonopolyGUI extends JPanel {
                 } else {
                     buttonNextTurn.setEnabled(true);
                 }
-                //TODO Add buying houses
             }
         });
         return buttonRunCPU;

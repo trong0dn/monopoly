@@ -315,7 +315,6 @@ public class MonopolyController {
                 }
             }
         });
-
         frame.setVisible(true);
     }
 }
