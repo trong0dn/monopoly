@@ -13,8 +13,8 @@ import static org.junit.Assert.*;
  * Modified by Trong Nguyen
  */
 public class PropertyTest {
-    private final HumanPlayer humanPlayer = new HumanPlayer("test");
-    private final HumanPlayer humanPlayer2 = new HumanPlayer("test2");
+    private final HumanPlayer humanPlayer = new HumanPlayer("Tester1");
+    private final HumanPlayer humanPlayer2 = new HumanPlayer("Tester2");
     private int position1;
     int rent = 2;
     int oneHouse = 10;

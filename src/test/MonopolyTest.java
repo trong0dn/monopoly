@@ -13,8 +13,8 @@ import static org.junit.Assert.*;
  */
 public class MonopolyTest {
     private final Monopoly monopoly = new Monopoly();
-    private final Player humanPlayer = new HumanPlayer("tester");
-    private final HumanPlayer humanPlayer2 = new HumanPlayer("tester2");
+    private final Player humanPlayer = new HumanPlayer("Tester1");
+    private final HumanPlayer humanPlayer2 = new HumanPlayer("Tester2");
     private int position;
     int rent = 2;
     int oneHouse = 10;
