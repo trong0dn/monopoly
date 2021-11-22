@@ -174,24 +174,6 @@ public class Property implements Square {
     }
 
     /**
-     * Set a group of properties.
-     * @param propertyA  Property
-     */
-    public void setGroup(Property propertyA) {
-        this.setGroup(propertyA, null);
-    }
-
-    /**
-     * Set a group of properties.
-     * @param propertyA  Property
-     * @param propertyB  Property
-     */
-    public void setGroup(Property propertyA, Property propertyB) {
-        this.others[0] = propertyA;
-        this.others[1] = propertyB;
-    }
-
-    /**
      * Set monopoly to true if player has a set or false if they do not.
      * @param player Player
      */
@@ -269,12 +251,11 @@ public class Property implements Square {
     }
 
     public void build() {
-        buildings++;
-        if(buildings > 5){
+        if(buildings == 5){
             throw new IllegalArgumentException("Cannot build past a hotel");
-
+        } else {
+            buildings++;
         }
-
     }
 
     /**
@@ -300,7 +281,6 @@ public class Property implements Square {
         boolean confirmB = diff_B == 0 || diff_B == 1;
 
         return  confirmA && confirmB;
-
     }
 }
 

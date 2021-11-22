@@ -425,22 +425,26 @@ public class MonopolyGUI extends JPanel {
                     if (property.isMonopoly()){ // if all property of type is owned
                         JButton propButton = new JButton(property.name());
                         propButton.addActionListener(e-> {
-                            monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
-                            System.out.println("House Purchased" + property.getHouseCost()); // For the console
-                            infoConsole.setText("Bought House for " + property.getHouseCost());
+                            boolean purchased = monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
+                            if (purchased) {
+                                infoConsole.setText("Bought House for $" + property.getHouseCost());
+                                if (property.getBuildings() == 5) {
+                                    infoConsole.append("\nYou have a hotel for " + property.name());
+                                } else {
+                                    infoConsole.append("\nYou have " + property.getBuildings() + " houses for " + property.name());
+                                }
+                            }   else {
+                                infoConsole.setText("You can't buy a house for " + property.name());
+                            }
                             /*
                             Display dots when player buys house on property.
                              */
                         });
-
                         panel.add(propButton);
-
                     }
                 }
-
             }
             JOptionPane.showMessageDialog(rightLayeredPane, panel);
-
         });
 
         return buttonBuyHouse;

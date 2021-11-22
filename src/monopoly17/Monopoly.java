@@ -221,67 +221,29 @@ public class Monopoly {
      * @param player  Player
      *
      */
-    public void buyHouses(Player player){
-
-        for(Square sq : player.properties()){
-            Property property;
-
-            if (sq instanceof Property){
-                property = (Property)sq;
-
-            }
-
+    public boolean buyHouses(Player player, Property property){
+        if (property.getBuildings() == 5 || !property.isMonopoly()){
+            System.out.println("You already have a hotel");
+            return false;
         }
 
-        do {
-            Queue<Square> properties = new LinkedList<>();
-            //which property
-            Property property = (Property) selectProperty(player, properties);
-            if (property.getBuildings() == 5 || !property.isMonopoly()){
-                System.out.println("You cannot buy houses for this property");
-
-
-            }
-
-            // How much money
-            if (player.getMoney() < property.getHouseCost()){
-                System.out.println("You cannot buy houses for this property");
-
-            }
-
-            // Create case for when the player needs to build evenly 1-1
-
-            if (!property.evenRule()){
-                System.out.println("You cannot buy houses for this property");
-
-
-            }
-
-
-            property.build();
-            player.exchangeMoney(property.getHouseCost() * -1);
-
-        } while (player.inputBool(gameState));
-
-    }
-
-    private Square selectProperty(Player player, Queue<Square> properties) {
-
-        while (true){
-            int propertyNumber = player.inputInt(gameState);
-            int propertyState = 1;
-
-            for (Square sq : properties){
-                if(propertyState++ == propertyNumber){
-                    return sq;
-                }
-
-            }
-
-
+        // How much money
+        if (player.getMoney() < property.getHouseCost()){
+            System.out.println("You don't have enough money to buy a house");
+            return false;
         }
-    }
 
+        // Create case for when the player needs to build evenly 1-1
+        if (!property.evenRule()){
+            System.out.println("You have to follow the Even Rule");
+            return false;
+        }
+
+        property.build();
+        player.exchangeMoney(property.getHouseCost() * -1);
+        System.out.println("House Purchased $" + property.getHouseCost());
+        return true;
+    }
 
 /**
  * Landing on an unowned square, the player may choose to buy the square.
