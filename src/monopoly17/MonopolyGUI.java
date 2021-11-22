@@ -463,14 +463,13 @@ public class MonopolyGUI extends JPanel {
             cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
             infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
 
-
             if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
                 buttonRollDice.setEnabled(false);
                 buttonBuy.setEnabled(false);
                 buttonPayRent.setEnabled(false);
                 buttonNextTurn.setEnabled(false);
                 buttonRunCPU.setEnabled(true);
-            }else {
+            } else {
                 buttonRunCPU.setEnabled(false);
                 buttonRollDice.setEnabled(true);
                 buttonBuy.setEnabled(false);
