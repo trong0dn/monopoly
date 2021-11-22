@@ -158,6 +158,12 @@ public class CPUPlayer implements Player {
         throw new IllegalArgumentException("No implementation use case for CPU to input integer");
     }
 
+    /**
+     * CPU Player chooses true for choices.
+     * @param state     Monopoly.GameState
+     * @param choices   String[]
+     * @return          int
+     */
     @Override
     public int inputDecision(Monopoly.GameState state, String[] choices) {
         // CPU Player always selects true
@@ -175,33 +181,53 @@ public class CPUPlayer implements Player {
 
     /**
      * Get the number of turns the player has been in jail.
-     * @return          int
+     * @return     int
      */
     @Override
     public int getJailTurns() {
         return this.jailTurns;
     }
 
+    /**
+     * CPU PLayer handling next turn.
+     * @return  boolean
+     */
     public boolean handleNone() {
         // Always choose an action over passing their turn.
         return false;
     }
 
+    /**
+     * CPU Player handling buying a property.
+     * @return  boolean
+     */
     public boolean handleBuyProperty() {
         // Always purchases the property when possible.
         return true;
     }
 
+    /**
+     * CPU Player handling buying a house.
+     * @return  boolean
+     */
     public boolean handleBuyHouse() {
         // Always buy house when possible.
         return true;
     }
 
+    /**
+     * CPU Player handling rolling the dice.
+     * @return  boolean
+     */
     public boolean handleTurnAction() {
         // Always roll dice to move.
         return true;
     }
 
+    /**
+     * CPU Player handling income tax.
+     * @return  boolean
+     */
     public boolean handleIncomeTax() {
         // Always pay taxes
         return true;
