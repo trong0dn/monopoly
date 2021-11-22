@@ -572,7 +572,8 @@ public class MonopolyGUI extends JPanel {
 
     /**
      * creates a button to preform all activities related to the cpu player
-     * @return a run cpu button
+     * //TODO add buying houses
+     * @return a CPU's Turn button
      */
     private JButton buttonRunCPU(){
         buttonRunCPU = new JButton("CPU's Turn");
@@ -635,6 +636,7 @@ public class MonopolyGUI extends JPanel {
 
     /**
      * the logic of the dice rolling without the button creation
+     * used in buttonRunCPU method
      */
     private void rollDiceLogic(){
         if (firstRoll) {
