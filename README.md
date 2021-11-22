@@ -116,6 +116,17 @@ version does not allow for mortgages nor sales, auctions, and trades
 between players. Functionalities such as Jail, Utilities, Railroads, 
 and purchasing of houses have been fully implemented in this release. 
 
+### CPU Player
+
+Thhis newwest version of monopoly includes an option to introduce CPU 
+players into the game. Simply enter a name for the cpu and click "Add CPU 
+Player" on the menu page. When the game starts, simply click the "CPU Turn"
+button whenever it is the turn of the CPU, and it will automatically roll
+the dice, move its position, buy properties, and pay rent. At the end of 
+the turn users will have a chance to see what see what actions the CPU has 
+performed by looking at the information panel. Finally, click the "Next 
+Turn" button to move on to the next player. 
+
 ### Winning the game
 
 To win the current Monopoly17 games, the remain player to not run out 
