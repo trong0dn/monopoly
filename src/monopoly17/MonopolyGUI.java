@@ -385,8 +385,6 @@ public class MonopolyGUI extends JPanel {
                     infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
                             "\nRent cost: " + (2*currentSquare.rent(roll)));
                 }
-
-
             }
             buttonPayRent.setEnabled(false);
 
@@ -400,15 +398,6 @@ public class MonopolyGUI extends JPanel {
         });
         return buttonPayRent;
     }
-
-    /*
-     * if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
-     *                 infoConsole.setText("You bought property:\n" + currentSquare.name() +
-     *                         "\nPurchase cost: " + currentSquare.cost());
-     *             } else {
-     *                 infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
-     *             }
-     */
 
     /**
      * Allows user to buy house when they own a full set of properties
@@ -424,6 +413,7 @@ public class MonopolyGUI extends JPanel {
                     property = (Property) sq;
                     if (property.isMonopoly()){ // if all property of type is owned
                         JButton propButton = new JButton(property.name());
+                        // press the button to get a house for the property selected
                         propButton.addActionListener(e-> {
                             boolean purchased = monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
                             if (purchased) {
@@ -433,12 +423,11 @@ public class MonopolyGUI extends JPanel {
                                 } else {
                                     infoConsole.append("\nYou have " + property.getBuildings() + " houses for " + property.name());
                                 }
-                            }   else {
-                                infoConsole.setText("You can't buy a house for " + property.name());
+                            } else {
+                                infoConsole.setText("You can't afford anymore houses for " + property.name());
                             }
-                            /*
-                            Display dots when player buys house on property.
-                             */
+                            updatePlayerStatusTextArea();
+                            // TODO Display dots when player buys house on property.
                         });
                         panel.add(propButton);
                     }
@@ -446,9 +435,7 @@ public class MonopolyGUI extends JPanel {
             }
             JOptionPane.showMessageDialog(rightLayeredPane, panel);
         });
-
         return buttonBuyHouse;
-
     }
 
     /**
