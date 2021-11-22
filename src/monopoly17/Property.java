@@ -25,10 +25,6 @@ public class Property implements Square{
     private int buildings;           // number of buildings on property
     private boolean monopoly;        // player may own all property set
 
-    /*
-    private Property groupA;
-    private Property groupB;
-    */
 
     public Property(int position, String name, int rent, int oneHouse, int twoHouse, int threeHouse, int fourHouse,
                     int hotel, int propertyCost, int houseCost) {
@@ -251,11 +247,14 @@ public class Property implements Square{
 
     }
 
+    /**
+     * Allows the game to have an even rule for when a player buys a property.
+     * @return confirmA, confirmB
+     */
     public boolean evenRule() {
         if(!monopoly){
             return false;
         }
-
         /*
         this.others[0] = propertyA;
         this.others[1] = propertyB;

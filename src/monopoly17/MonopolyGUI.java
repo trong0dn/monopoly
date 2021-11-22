@@ -553,11 +553,6 @@ public class MonopolyGUI extends JPanel {
         buttonBuyHouse = new JButton("Buy House");
         buttonBuyHouse.addActionListener(f->{
             JPanel panel = new JPanel(new GridLayout(0, 4));
-            if (currentSquare.isOwned() &&){
-                System.out.println("");
-            }
-
-
             for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()){
                 Property property;
                 if (sq instanceof Property){
