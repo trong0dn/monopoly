@@ -582,7 +582,7 @@ public class MonopolyGUI extends JPanel {
             rollDiceLogic();
             int roll = die1.getFaceValue() + die2.getFaceValue();
 
-            //grey out the buttons
+            //grey out the buttons not needed for cpu player
             buttonRunCPU.setEnabled(false);
             buttonRollDice.setEnabled(false);
             buttonBuyHouse.setEnabled(false);
@@ -596,11 +596,7 @@ public class MonopolyGUI extends JPanel {
                 Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
 
 
-
                 //paying rent
-                //monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
-
-
                 if (currentSquare.isOwnable() && currentSquare.isOwned() && currentPlayer.getPlayer() != currentSquare.owner()) {
                     infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
                             "\nRent cost: " + currentSquare.rent(roll));
@@ -609,8 +605,6 @@ public class MonopolyGUI extends JPanel {
                                 "\nRent cost: " + (2*currentSquare.rent(roll)));
                     }
                 }
-               // buttonPayRent.setEnabled(false);
-                //updatePlayerStatusTextArea();
 
 
                 //buying property
@@ -621,17 +615,17 @@ public class MonopolyGUI extends JPanel {
                     infoConsole.setText("You don't have enough money to buy: \n" + currentSquare.name());
                 }
                 monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
-                buttonBuy.setEnabled(false);
                 updatePlayerStatusTextArea();
 
-
-
+                //rolling doubles
                 if(isDouble){
                     buttonRunCPU.setEnabled(true);
                     buttonNextTurn.setEnabled(false);
                 } else {
                     buttonNextTurn.setEnabled(true);
                 }
+
+                //TODO add buying houses
 
             }
         });
