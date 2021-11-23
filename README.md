@@ -128,6 +128,16 @@ see what actions the CPU has performed by looking at the information
 panel. Finally, click the "Next Turn" button to move on to the next 
 player. 
 
+
+### Buying Houses
+
+For this state of the project, the game logic was implemented and 
+testing via manual testing via command line console. Followed with 
+implementation via the GUI, so far the user is only able to buy houses
+for properties that they have a monopoly on. This feature is 
+shown via the gameplay information console. We might future decide to
+add house tokens onto the game board for future development.
+
 ### Winning the game
 
 To win the current Monopoly17 games, the remain player to not run out 
