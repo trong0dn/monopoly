@@ -5,8 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
-import static monopoly17.Taxes.FIX_INCOME_TAX;
-import static monopoly17.Taxes.FIX_SUPER_TAX;
+import static monopoly17.Taxes.*;
 
 public class TaxesTest {
     Taxes incomeTaxes;
@@ -14,8 +13,8 @@ public class TaxesTest {
 
     @Before
     public void setUp() {
-        incomeTaxes = new Taxes(0, true);
-        superTaxes = new Taxes(1, false);
+        incomeTaxes = new Taxes(INCOME_TAX_POSITION, true);
+        superTaxes = new Taxes(SUPER_TAX_POSITION, false);
     }
 
     @Test
@@ -30,8 +29,8 @@ public class TaxesTest {
 
     @Test
     public void testPosition() {
-        Assert.assertEquals(incomeTaxes.position(), 0);
-        Assert.assertEquals(superTaxes.position(), 1);
+        Assert.assertEquals(incomeTaxes.position(), 4);
+        Assert.assertEquals(superTaxes.position(), 38);
     }
 
     @Test
@@ -41,31 +40,31 @@ public class TaxesTest {
     }
 
     @Test
-    public void isOwnable() {
+    public void TestIsOwnable() {
         Assert.assertFalse(incomeTaxes.isOwnable());
         Assert.assertFalse(superTaxes.isOwnable());
     }
 
     @Test
-    public void isOwned() {
+    public void testIsOwned() {
         Assert.assertFalse(incomeTaxes.isOwned());
         Assert.assertFalse(superTaxes.isOwned());
     }
 
     @Test
-    public void cost() {
+    public void testCost() {
         Assert.assertEquals(incomeTaxes.cost(), 0);
         Assert.assertEquals(superTaxes.cost(), 0);
     }
 
     @Test
-    public void rent() {
+    public void testRent() {
         Assert.assertEquals(incomeTaxes.rent(0), 0);
         Assert.assertEquals(superTaxes.rent(0), 0);
     }
 
     @Test
-    public void owner() {
+    public void testOwner() {
         Assert.assertNull(incomeTaxes.owner());
         Assert.assertNull(superTaxes.owner());
     }

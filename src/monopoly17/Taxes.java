@@ -5,8 +5,10 @@ package monopoly17;
  * @author Trong Nguyen & Elisha Catherasoo
  */
 public class Taxes implements Square {
-    public static int FIX_INCOME_TAX = 200;
-    public static int FIX_SUPER_TAX = 100;
+    public static final int FIX_INCOME_TAX = 200;
+    public static final int FIX_SUPER_TAX = 100;
+    public static final int INCOME_TAX_POSITION = 4;
+    public static final int SUPER_TAX_POSITION = 38;
 
     private final int position;
     private final String name;

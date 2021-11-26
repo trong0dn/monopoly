@@ -5,6 +5,8 @@ package monopoly17;
  * @author Trong Nguyen & Elisha Catherasoo
  */
 public class Utility implements Square {
+    public static final int ELECTRIC_POSITION = 12;
+    public static final int WATER_POSITION = 28;
     private final int COST = 150;
     private final int position;
     private final String name;
@@ -100,10 +102,10 @@ public class Utility implements Square {
         int ONE = 4;
         int TWO = 10;
 
-        if (owner.equals(other.owner())) {
-            return TWO * roll;
-        } else {
+        if (other == null || !owner.equals(other.owner())) {
             return ONE * roll;
+        } else {
+            return TWO * roll;
         }
     }
 
