@@ -144,7 +144,7 @@ public class CPUPlayer implements Player {
             case BUY_PROPERTY -> handleBuyProperty();
             case BUY_HOUSE -> handleBuyHouse();
             case TURN_ACTION -> handleTurnAction();
-            case INCOME_TAX -> handleIncomeTax();
+            case TAX -> handleIncomeTax();
         };
     }
 

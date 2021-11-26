@@ -43,7 +43,7 @@ public class Monopoly {
      * Different decision states during a player's turn.
      */
     public enum DecisionState {
-        NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION, INCOME_TAX
+        NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION, TAX
     }
 
     /**
@@ -315,7 +315,7 @@ public class Monopoly {
         int cost;
         // Income Tax square
         if (square.position() == 4) {
-            gameState.decisionState = DecisionState.INCOME_TAX;
+            gameState.decisionState = DecisionState.TAX;
             //if (player.inputDecision(gameState, new String[] {"10", "200"}) == 0)
                 //cost = tax.getTax(player.getMoney());
             //else {

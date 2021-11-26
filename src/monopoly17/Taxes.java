@@ -5,6 +5,9 @@ package monopoly17;
  * @author Trong Nguyen & Elisha Catherasoo
  */
 public class Taxes implements Square {
+    public static int FIX_INCOME_TAX = 200;
+    public static int FIX_SUPER_TAX = 100;
+
     private final int position;
     private final String name;
     private final int fixTax;
@@ -19,11 +22,11 @@ public class Taxes implements Square {
         this.position = position;
         if (incomeTax) {
             this.name = "INCOME TAX";
-            fixTax = 200;       // Pay 200
-            varTax = 0.1;       // Pay 10% of total money
+            fixTax = FIX_INCOME_TAX;        // Pay 200
+            varTax = 0.1;                   // Pay 10% of total money
         } else {
             this.name = "SUPER TAX";
-            fixTax = 100;       // Pay 100
+            fixTax = FIX_SUPER_TAX;         // Pay 100
             varTax = 0;
         }
     }
