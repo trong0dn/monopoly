@@ -10,6 +10,10 @@ import org.junit.Assert;
 import static monopoly17.Utility.ELECTRIC_POSITION;
 import static monopoly17.Utility.WATER_POSITION;
 
+/**
+ * Testing Utility class.
+ * @author Trong Nguyen
+ */
 public class UtilityTest {
     Utility electricUtility;
     Utility waterUtility;

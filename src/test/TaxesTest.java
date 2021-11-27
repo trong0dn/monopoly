@@ -7,6 +7,10 @@ import org.junit.Assert;
 
 import static monopoly17.Taxes.*;
 
+/**
+ * Testing Taxes class.
+ * @author Trong Nguyen
+ */
 public class TaxesTest {
     Taxes incomeTaxes;
     Taxes superTaxes;

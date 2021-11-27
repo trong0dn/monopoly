@@ -7,6 +7,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Testing Railroad class.
+ * @author Trong Nguyen
+ */
 public class RailroadTest {
     Railroad rA;
     Railroad rB;
