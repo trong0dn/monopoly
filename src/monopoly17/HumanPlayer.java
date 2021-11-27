@@ -39,7 +39,7 @@ public class HumanPlayer implements Player {
         int BOARD_SIZE = 40;
         if (position >= BOARD_SIZE && !inJail) {
             position -= BOARD_SIZE;
-            exchangeMoney(200);
+            exchangeMoney(PASS_GO_COLLECT);
         }
     }
 
@@ -50,7 +50,7 @@ public class HumanPlayer implements Player {
     @Override
     public void moveTo(int newPosition) {
         if (newPosition < position) {
-            exchangeMoney(200);
+            exchangeMoney(PASS_GO_COLLECT);
         }
         position = newPosition;
     }

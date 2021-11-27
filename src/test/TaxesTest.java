@@ -1,5 +1,6 @@
 package test;
 
+import monopoly17.SquareInfo;
 import monopoly17.Taxes;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,8 +18,8 @@ public class TaxesTest {
 
     @Before
     public void setUp() {
-        incomeTaxes = new Taxes(INCOME_TAX_POSITION, true);
-        superTaxes = new Taxes(SUPER_TAX_POSITION, false);
+        incomeTaxes = new Taxes(SquareInfo.SQUARE_4.getPosition(), SquareInfo.SQUARE_4.getName());
+        superTaxes = new Taxes(SquareInfo.SQUARE_38.getPosition(), SquareInfo.SQUARE_38.getName());
     }
 
     @Test

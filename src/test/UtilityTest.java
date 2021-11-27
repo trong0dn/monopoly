@@ -2,13 +2,11 @@ package test;
 
 import monopoly17.HumanPlayer;
 import monopoly17.Player;
+import monopoly17.SquareInfo;
 import monopoly17.Utility;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
-
-import static monopoly17.Utility.ELECTRIC_POSITION;
-import static monopoly17.Utility.WATER_POSITION;
 
 /**
  * Testing Utility class.
@@ -23,12 +21,12 @@ public class UtilityTest {
 
     @Before
     public void SetUp() {
-        electricUtility = new Utility(ELECTRIC_POSITION, "ELECTRIC COMPANY");
-        waterUtility = new Utility(WATER_POSITION, "WATER WORKS");
+        electricUtility = new Utility(SquareInfo.SQUARE_12.getPosition(), SquareInfo.SQUARE_12.getName());
+        waterUtility = new Utility(SquareInfo.SQUARE_28.getPosition(), SquareInfo.SQUARE_28.getName());
 
         player = new HumanPlayer("Tester");
-        ownedElectricUtility = new Utility(ELECTRIC_POSITION, "ELECTRIC COMPANY");
-        ownedWaterUtility = new Utility(WATER_POSITION, "WATER WORKS");
+        ownedElectricUtility = new Utility(SquareInfo.SQUARE_12.getPosition(), SquareInfo.SQUARE_12.getName());
+        ownedWaterUtility = new Utility(SquareInfo.SQUARE_28.getPosition(), SquareInfo.SQUARE_28.getName());
 
         ownedElectricUtility.purchase(player);
         ownedWaterUtility.purchase(player);
@@ -39,14 +37,14 @@ public class UtilityTest {
 
     @Test
     public void testPosition() {
-        Assert.assertEquals(electricUtility.position(),12);
-        Assert.assertEquals(waterUtility .position(),28);
+        Assert.assertEquals(electricUtility.position(),SquareInfo.SQUARE_12.getPosition());
+        Assert.assertEquals(waterUtility .position(),SquareInfo.SQUARE_28.getPosition());
     }
 
     @Test
     public void testName() {
-        Assert.assertEquals(electricUtility.name(),"ELECTRIC COMPANY");
-        Assert.assertEquals(waterUtility.name(),"WATER WORKS");
+        Assert.assertEquals(electricUtility.name(), SquareInfo.SQUARE_12.getName());
+        Assert.assertEquals(waterUtility.name(), SquareInfo.SQUARE_28.getName());
     }
 
     @Test

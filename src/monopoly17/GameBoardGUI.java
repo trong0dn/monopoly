@@ -120,7 +120,7 @@ public class GameBoardGUI extends JPanel {
         centerLabel.setOpaque(true);
         centerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         centerLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-        centerLabel.setBounds(200, 280, 263, 55);
+        centerLabel.setBounds(200, 280, 265, 55);
         this.add(centerLabel);
     }
 }

@@ -7,8 +7,6 @@ package monopoly17;
 public class Taxes implements Square {
     public static final int FIX_INCOME_TAX = 200;
     public static final int FIX_SUPER_TAX = 100;
-    public static final int INCOME_TAX_POSITION = 4;
-    public static final int SUPER_TAX_POSITION = 38;
 
     private final int position;
     private final String name;
@@ -18,16 +16,15 @@ public class Taxes implements Square {
     /**
      * Initialize Taxes.
      * @param position int
-     * @param incomeTax boolean
+     * @param name String
      */
-    public Taxes(int position, boolean incomeTax) {
+    public Taxes(int position, String name) {
         this.position = position;
-        if (incomeTax) {
-            this.name = "INCOME TAX";
+        this.name = name;
+        if (name.equals(SquareInfo.SQUARE_4.getName())) {
             fixTax = FIX_INCOME_TAX;        // Pay 200
             varTax = 0.1;                   // Pay 10% of total money
         } else {
-            this.name = "SUPER TAX";
             fixTax = FIX_SUPER_TAX;         // Pay 100
             varTax = 0;
         }

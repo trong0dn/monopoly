@@ -24,7 +24,8 @@ public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
     private boolean isBankrupt;
-
+    public static int MIN_PLAYERS = 2;
+    public static int MAX_PLAYERS = 6;
 
     /**
      * Constructor for Monopoly.
@@ -90,7 +91,7 @@ public class Monopoly {
         System.out.println("How many players would like to play?");
 
         int numPlayers = input.inputInt();
-        while (numPlayers < 2 || numPlayers > 6) {
+        while (numPlayers < MIN_PLAYERS || numPlayers > MAX_PLAYERS) {
             System.out.println("Try Again! You must have a min of 2 and max of 6 players: ");
             numPlayers = input.inputInt();
         }

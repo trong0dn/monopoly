@@ -40,13 +40,22 @@ public enum SquareInfo {
     SQUARE_36(36, "CHANCE"),
     SQUARE_37(37, "PARK LANE"),
     SQUARE_38(38, "SUPER TAX"),
-    SQUARE_39(39, "MAYFAIR");
+    SQUARE_39(39, "MAYFAIR"),
+    SQUARE_40(40, "IN JAIL");
 
-    private int position;
-    private String name;
+    private final int position;
+    private final String name;
 
     SquareInfo(int position, String name) {
         this.position = position;
         this.name = name;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
