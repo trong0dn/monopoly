@@ -107,7 +107,7 @@ public class GameBoard {
             case 37 -> park(position);
             case 38 -> superTax(position);
             case 39 -> mayfair(position);
-            case 40 -> inJail(position);
+            case 40 -> inJail(10); // same square position as justVisiting
             default -> null;
         };
     }

@@ -173,6 +173,11 @@ public class HumanPlayer implements Player {
         return this.input.inputDecision(choices);
     }
 
+    @Override
+    public void addJailTurns() {
+        jailTurns++;
+    }
+
     /**
      * Get how many turn the player has been in jail.
      * @param turns     int

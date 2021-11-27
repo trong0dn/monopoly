@@ -170,6 +170,11 @@ public class CPUPlayer implements Player {
         return 0;
     }
 
+    @Override
+    public void addJailTurns() {
+        jailTurns++;
+    }
+
     /**
      * Get how many turn the player has been in jail.
      * @param turns     int

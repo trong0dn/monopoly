@@ -79,4 +79,14 @@ public class MonopolyTest {
         monopoly.owned(humanPlayer2, oldKent, 5);
         assertTrue(monopoly.isBankrupt());
     }
+
+    /**
+     * Test that the player goes to Jail if they land on GO TO JAIL.
+     */
+    @Test
+    public void testGoToJail() {
+        humanPlayer.moveTo(30);
+
+        Assert.assertEquals(10, humanPlayer.getPosition());
+    }
 }

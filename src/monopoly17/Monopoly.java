@@ -370,7 +370,29 @@ public class Monopoly {
     public void jailAction(Player player, Jail jail) {
         Jail.JailType type = jail.getType();
         if (type == Jail.JailType.GOTO_JAIL) {
+            System.out.println("You have landed on GO TO JAIL. You are now in Jail.");
             intoJail(player);
+        }
+        if(type == Jail.JailType.IN_JAIL) {
+            inJail(player);
+        }
+    }
+
+    /**
+     * Action when player is currently in jail.
+     * @param player    Player
+     */
+    private void inJail(Player player) {
+        if (rollDice.rollDice().isDouble) {
+            System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
+            player.moveTo(10);
+        } else {
+            if(player.getJailTurns() == 3) {
+                System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
+                player.moveTo(10);
+            } else {
+                System.out.println("You have not rolled doubles. You are still in Jail.");
+            }
         }
     }
 

@@ -91,6 +91,11 @@ public interface Player {
     int inputDecision(Monopoly.GameState state, String[] choices);
 
     /**
+     * Add another turn that the player is in jail.
+     */
+    void addJailTurns();
+
+    /**
      * Get how many turn the player has been in jail.
      * @param turns     int
      */

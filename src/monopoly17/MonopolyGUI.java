@@ -509,8 +509,8 @@ public class MonopolyGUI extends JPanel {
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
         currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % 40;
 
-        // Jail feature
-        if (currentPlayer.getPlayer().getJailTurns() > 0) {
+        /*
+        if(currentPlayer.getPlayer().getJailTurns() > 0) {
             infoConsole.setText("You are in Jail\n");
             if (isDouble) {
                 infoConsole.setText("You rolled doubles\n");
@@ -540,11 +540,10 @@ public class MonopolyGUI extends JPanel {
                 buttonNextTurn.setEnabled(true);
                 currentPlayer.getPlayer().setJailTurns(currentPlayer.getPlayer().getJailTurns() + 1);
             }
-            buttonBuyHouse.setEnabled(false);
+
             buttonPayRent.setEnabled(false);
             buttonBuy.setEnabled(false);
-            // When player lands on GO TO JAIL square
-        } else if (currentSquareNumber == 30) {
+        } else if(currentSquareNumber == 30) {
             currentPlayer.move(diceValue);
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
             infoConsole.setText("You landed on " + currentSquare.name());
@@ -555,85 +554,92 @@ public class MonopolyGUI extends JPanel {
             buttonRollDice.setEnabled(false);
             buttonBuy.setEnabled(false);
             buttonNextTurn.setEnabled(true);
-            buttonBuyHouse.setEnabled(false);
-        } else {
-            currentPlayer.move(diceValue);
-            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
-            // Swing concurrency thread correction for layeredPane flickering
-            leftLayeredPane.remove(gameBoard);
-            leftLayeredPane.add(gameBoard, Integer.valueOf(0));
 
-            int prevSquare = currentSquareNumber - diceValue;
+         */
+        currentPlayer.move(diceValue);
+        Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+        // Swing concurrency thread correction for layeredPane flickering
+        leftLayeredPane.remove(gameBoard);
+        leftLayeredPane.add(gameBoard, Integer.valueOf(0));
 
-            infoConsole.setText(""); // in case player didn't pass go
+        int prevSquare = currentSquareNumber - diceValue;
 
-            // Pass Go
-            if (currentSquareNumber < 12 && prevSquare < 0) {
-                infoConsole.setText("You passed Go! You get $200!\n");
-            }
+        infoConsole.setText(""); // in case player didn't pass go
 
-            // When a player lands on a square
-            if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
-                infoConsole.append("You landed on " + currentSquare.name() +
-                        "\nProperty Cost: $" + currentSquare.cost());
-                isRollDouble(currentPlayerOrder);
-                buttonBuy.setEnabled(true);
+        // Pass Go
+        if (currentSquareNumber < 12 && prevSquare < 0) {
+            infoConsole.setText("You passed Go! You get $200!\n");
+        }
+
+        // When a player lands on a square
+        if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
+            infoConsole.append("You landed on " + currentSquare.name() +
+                    "\nProperty Cost: $" + currentSquare.cost());
+            isRollDouble(currentPlayerOrder);
+            buttonBuy.setEnabled(true);
+            buttonBuyHouse.setEnabled(true);
+            // If square is already owned
+        } else if (currentSquare.isOwnable()) {
+            // Player lands on their own property
+            if (currentSquare.owner().name().equals(currentPlayer.getPlayer().name())) {
+                buttonBuy.setEnabled(false);
+                buttonPayRent.setEnabled(false);
                 buttonBuyHouse.setEnabled(true);
-                // If square is already owned
-            } else if (currentSquare.isOwnable()) {
-                // Player lands on their own property
-                if (currentSquare.owner().name().equals(currentPlayer.getPlayer().name())) {
-                    buttonBuy.setEnabled(false);
-                    buttonPayRent.setEnabled(false);
-                    buttonBuyHouse.setEnabled(true);
-                    infoConsole.append("You landed on " + currentSquare.name()
-                            + "\nYou already own " + currentSquare.name());
-                    // Player lands on own property owned by another player
-                } else if (currentSquare instanceof Property) {
-                    infoConsole.append("Property: You landed on:" + currentSquare.name() +
-                            "\nRent: $" + currentSquare.rent(diceValue));
-                    buttonPayRent.setEnabled(true);
-                    buttonRollDice.setEnabled(false);
-                    buttonNextTurn.setEnabled(false);
-                    buttonBuy.setEnabled(false);
-                    buttonBuyHouse.setEnabled(false);
-                    // Player lands on owned railroad
-                } else if (currentSquare instanceof Railroad) {
-                    infoConsole.append("Station: You landed on " + currentSquare.name() +
-                            "\nRent: $" + (2*currentSquare.rent(diceValue)));
-                    buttonPayRent.setEnabled(true);
-                    buttonRollDice.setEnabled(false);
-                    buttonNextTurn.setEnabled(false);
-                    buttonBuy.setEnabled(false);
-                    buttonBuyHouse.setEnabled(false);
-                    // Player lands on owned utility
-                } else if (currentSquare instanceof Utility) {
-                    infoConsole.append("Utility: You landed on " + currentSquare.name() +
-                            "\nRent: $" + currentSquare.rent(diceValue));
-                    buttonPayRent.setEnabled(true);
-                    buttonRollDice.setEnabled(false);
-                    buttonNextTurn.setEnabled(false);
-                    buttonBuy.setEnabled(false);
-                    buttonBuyHouse.setEnabled(false);
-                }
-            } else {
-                // Player lands on tax square
-                if (currentSquare instanceof Taxes) {
-                    infoConsole.append("Taxes: You landed on " + currentSquare.name() +
-                            "\nTax: $" + ((Taxes) currentSquare).getTax());
-                    buttonPayRent.setEnabled(true);
-                    buttonRollDice.setEnabled(false);
-                    buttonNextTurn.setEnabled(false);
-                    buttonBuy.setEnabled(false);
-                } else {
-                    // FREE PARKING, CHANCE, COMMUNITY CHEST
-                    infoConsole.append("Non-purchasable: You landed on: \n" + currentSquare.name());
-                    isRollDouble(currentPlayerOrder);
-                    buttonBuy.setEnabled(false);
-                    buttonPayRent.setEnabled(false);
-                }
+                infoConsole.append("You landed on " + currentSquare.name()
+                        + "\nYou already own " + currentSquare.name());
+                // Player lands on own property owned by another player
+            } else if (currentSquare instanceof Property) {
+                infoConsole.append("Property: You landed on:" + currentSquare.name() +
+                        "\nRent: $" + currentSquare.rent(diceValue));
+                buttonPayRent.setEnabled(true);
+                buttonRollDice.setEnabled(false);
+                buttonNextTurn.setEnabled(false);
+                buttonBuy.setEnabled(false);
+                buttonBuyHouse.setEnabled(false);
+                // Player lands on owned railroad
+            } else if (currentSquare instanceof Railroad) {
+                infoConsole.append("Station: You landed on " + currentSquare.name() +
+                        "\nRent: $" + (2*currentSquare.rent(diceValue)));
+                buttonPayRent.setEnabled(true);
+                buttonRollDice.setEnabled(false);
+                buttonNextTurn.setEnabled(false);
+                buttonBuy.setEnabled(false);
+                buttonBuyHouse.setEnabled(false);
+                // Player lands on owned utility
+            } else if (currentSquare instanceof Utility) {
+                infoConsole.append("Utility: You landed on " + currentSquare.name() +
+                        "\nRent: $" + currentSquare.rent(diceValue));
+                buttonPayRent.setEnabled(true);
+                buttonRollDice.setEnabled(false);
+                buttonNextTurn.setEnabled(false);
+                buttonBuy.setEnabled(false);
                 buttonBuyHouse.setEnabled(false);
             }
+        } else {
+            // Player lands on tax square
+            if (currentSquare instanceof Taxes) {
+                infoConsole.append("Taxes: You landed on " + currentSquare.name() +
+                        "\nTax: $" + ((Taxes) currentSquare).getTax());
+                buttonPayRent.setEnabled(true);
+                buttonRollDice.setEnabled(false);
+                buttonNextTurn.setEnabled(false);
+                buttonBuy.setEnabled(false);
+            } else if(currentSquare instanceof Jail && ((Jail) currentSquare).getType() != Jail.JailType.JUST_VISITING) {
+                if(((Jail) currentSquare).getType() == Jail.JailType.GOTO_JAIL) {
+                    infoConsole.setText("You have landed on:\n" + currentSquare.name());
+                    infoConsole.append("\nYou are now in Jail.");
+                }
+                if(((Jail) currentSquare).getType() == Jail.JailType.IN_JAIL) {
+                    infoConsole.setText("You are in Jail");
+                }
+            } else {
+                // FREE PARKING, CHANCE, COMMUNITY CHEST
+                infoConsole.append("Non-purchasable: You landed on: \n" + currentSquare.name());
+                isRollDouble(currentPlayerOrder);
+                buttonBuy.setEnabled(false);
+                buttonPayRent.setEnabled(false);
+            }
+            buttonBuyHouse.setEnabled(false);
         }
         updatePlayerStatusTextArea();
     }
