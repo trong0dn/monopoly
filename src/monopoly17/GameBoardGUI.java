@@ -38,7 +38,7 @@ public class GameBoardGUI extends JPanel {
     }
 
     /**
-     * Initialize the Square Panels (ie,properties, utilities, go, jail,etc.)
+     * Initialize the Square Panels (ie. properties, utilities, go, jail,etc.)
      */
     private void initializeSquarePanels() {
         ArrayList<String> squareNames = new ArrayList<>();
