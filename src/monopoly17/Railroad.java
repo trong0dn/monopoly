@@ -5,10 +5,6 @@ package monopoly17;
  * @author Trong Nguyen & Elisha Catherasoo
  */
 public class Railroad implements Square {
-    public final static int RAILROAD_A_POSITION = 5;
-    public final static int RAILROAD_B_POSITION = 15;
-    public final static int RAILROAD_C_POSITION = 25;
-    public final static int RAILROAD_D_POSITION = 35;
     private final int COST = 200;
     private final int position;
     private final String name;

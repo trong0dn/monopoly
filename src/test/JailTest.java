@@ -1,6 +1,7 @@
 package test;
 
 import monopoly17.Jail;
+import monopoly17.SquareInfo;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,9 +17,9 @@ public class JailTest {
 
     @Before
     public void setUp() {
-        visitingJail = new Jail(10, "JUST VISITING", Jail.JailType.JUST_VISITING);
-        inJail = new Jail(10, "IN JAIL", Jail.JailType.IN_JAIL);
-        gotoJail = new Jail(30, "GO TO JAIL",Jail.JailType.GOTO_JAIL);
+        visitingJail = new Jail(SquareInfo.SQUARE_10.getPosition(), SquareInfo.SQUARE_10.getName(), Jail.JailType.JUST_VISITING);
+        inJail = new Jail(SquareInfo.SQUARE_40.getPosition(), SquareInfo.SQUARE_40.getName(), Jail.JailType.IN_JAIL);
+        gotoJail = new Jail(SquareInfo.SQUARE_30.getPosition(), SquareInfo.SQUARE_30.getName(),Jail.JailType.GOTO_JAIL);
     }
 
     @Test
@@ -30,16 +31,16 @@ public class JailTest {
 
     @Test
     public void testPosition() {
-        Assert.assertEquals(visitingJail.position(), 10);
-        Assert.assertEquals(inJail.position(), 10);
-        Assert.assertEquals(gotoJail.position(), 30);
+        Assert.assertEquals(visitingJail.position(), SquareInfo.SQUARE_10.getPosition());
+        Assert.assertEquals(inJail.position(), SquareInfo.SQUARE_40.getPosition());
+        Assert.assertEquals(gotoJail.position(), SquareInfo.SQUARE_30.getPosition());
     }
 
     @Test
     public void testName() {
-        Assert.assertEquals(visitingJail.name(), "JUST VISITING");
-        Assert.assertEquals(inJail.name(), "IN JAIL");
-        Assert.assertEquals(gotoJail.name(), "GO TO JAIL");
+        Assert.assertEquals(visitingJail.name(), SquareInfo.SQUARE_10.getName());
+        Assert.assertEquals(inJail.name(), SquareInfo.SQUARE_40.getName());
+        Assert.assertEquals(gotoJail.name(), SquareInfo.SQUARE_30.getName());
     }
 
     @Test

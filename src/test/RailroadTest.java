@@ -3,6 +3,7 @@ package test;
 import monopoly17.HumanPlayer;
 import monopoly17.Player;
 import monopoly17.Railroad;
+import monopoly17.SquareInfo;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,10 +20,10 @@ public class RailroadTest {
 
     @Before
     public void setUp() {
-        rA = new Railroad(Railroad.RAILROAD_A_POSITION, "KINGS CROSS STATION");
-        rB = new Railroad(Railroad.RAILROAD_B_POSITION, "MARYLEBONE STATION");
-        rC = new Railroad(Railroad.RAILROAD_C_POSITION, "FENCHURCH ST. STATION");
-        rD = new Railroad(Railroad.RAILROAD_D_POSITION, "LIVERPOOL ST. STATION");
+        rA = new Railroad(SquareInfo.SQUARE_5.getPosition(), SquareInfo.SQUARE_5.getName());
+        rB = new Railroad(SquareInfo.SQUARE_15.getPosition(), SquareInfo.SQUARE_15.getName());
+        rC = new Railroad(SquareInfo.SQUARE_25.getPosition(), SquareInfo.SQUARE_25.getName());
+        rD = new Railroad(SquareInfo.SQUARE_35.getPosition(), SquareInfo.SQUARE_35.getName());
 
         rA.setGroup(rB, rC, rD);
         rB.setGroup(rA, rC, rD);
@@ -32,18 +33,18 @@ public class RailroadTest {
 
     @Test
     public void testPosition() {
-        Assert.assertEquals(rA.position(), 5);
-        Assert.assertEquals(rB.position(), 15);
-        Assert.assertEquals(rC.position(), 25);
-        Assert.assertEquals(rD.position(), 35);
+        Assert.assertEquals(rA.position(), SquareInfo.SQUARE_5.getPosition());
+        Assert.assertEquals(rB.position(), SquareInfo.SQUARE_15.getPosition());
+        Assert.assertEquals(rC.position(), SquareInfo.SQUARE_25.getPosition());
+        Assert.assertEquals(rD.position(), SquareInfo.SQUARE_35.getPosition());
     }
 
     @Test
     public void testName() {
-        Assert.assertEquals(rA.name(), "KINGS CROSS STATION");
-        Assert.assertEquals(rB.name(), "MARYLEBONE STATION");
-        Assert.assertEquals(rC.name(), "FENCHURCH ST. STATION");
-        Assert.assertEquals(rD.name(), "LIVERPOOL ST. STATION");
+        Assert.assertEquals(rA.name(), SquareInfo.SQUARE_5.getName());
+        Assert.assertEquals(rB.name(), SquareInfo.SQUARE_15.getName());
+        Assert.assertEquals(rC.name(), SquareInfo.SQUARE_25.getName());
+        Assert.assertEquals(rD.name(), SquareInfo.SQUARE_35.getName());
     }
 
     @Test
