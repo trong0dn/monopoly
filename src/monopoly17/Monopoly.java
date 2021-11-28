@@ -190,7 +190,6 @@ public class Monopoly {
         boolean owned = square.isOwned();
         boolean ownable = square.isOwnable();
         if (square instanceof  Jail) {
-            System.out.println("1");
             jailAction(player, (Jail) square);
         }
         if (!owned && ownable) {
@@ -392,16 +391,13 @@ public class Monopoly {
     private void inJail(Player player) {
         gameState.decisionState = DecisionState.IN_JAIL;
         if (rollDice.rollDice().isDouble) {
-            System.out.println("2");
             System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
             player.setJailTurns(0);
         } else {
             if(player.getJailTurns() == maxJailTurns) {
-                System.out.println("3");
                 System.out.println("You have been in Jail for 3 turns.\n");
                 player.setJailTurns(0);
             } else {
-                System.out.println("4");
                 System.out.println("You have not rolled doubles. You are still in Jail.");
                 player.addJailTurn();
             }
@@ -413,7 +409,6 @@ public class Monopoly {
      * @param player    Player
      */
     private void goToJail(Player player) {
-        System.out.println("5");
         System.out.println("Go to Jail!");
         player.moveTo(JAILPOSITION);
         player.addJailTurn();
