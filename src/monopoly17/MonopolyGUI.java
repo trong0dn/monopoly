@@ -674,8 +674,6 @@ public class MonopolyGUI extends JPanel {
                     currentPlayer.moveTo(newJailPosition);
                     currentPlayer.getPlayer().setJailTurns(jailTurns);
 
-                    System.out.println(currentPlayer.getPlayer().getJailTurns() + "====");
-
                 } else if(currentPlayer.getPlayer().getJailTurns() > 0) {
                     ArrayList<Integer> positionAndJailTurns = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare,
                             diceValue);
@@ -691,14 +689,15 @@ public class MonopolyGUI extends JPanel {
                         buttonNextTurn.setEnabled(false);
                         infoConsole.setText("You rolled doubles. You are now out of jail!\nRoll again!");
                     } else if (currentPlayer.getPlayer().getJailTurns() == 0) {
-                        infoConsole.setText("You have been in Jail for 3 turns.\nYou are now out of jail");
+                        buttonRollDice.setEnabled(false);
+                        buttonNextTurn.setEnabled(true);
+                        infoConsole.setText("You did not roll doubles.\n");
+                        infoConsole.append("You have been in Jail for 3 turns.\nYou are now out of jail");
                     } else {
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(true);
                         infoConsole.setText("You did not roll doubles.\nYou are still in Jail");
                     }
-
-                    System.out.println(currentPlayer.getPlayer().getJailTurns() + "........");
                 } else {
                     infoConsole.setText("Non-purchasable: You landed on: \n" + currentSquare.name());
                     isRollDouble(currentPlayerOrder);
