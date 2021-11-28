@@ -67,47 +67,47 @@ public class GameBoard {
      */
     private Square makeSquare(int position) {
         return switch (position) { // Using cases to represent individual squares on board. Clockwise.
-            case 0 -> go(position);
-            case 1 -> oldKent(position);
-            case 2 -> community(position);
-            case 3 -> whitechapel(position);
-            case 4 -> incomeTax(position);
-            case 5 -> kingsCross(position);
-            case 6 -> theAngelIslington(position);
-            case 7 -> chance(position);
-            case 8 -> euston(position);
-            case 9 -> pentonville(position);
-            case 10 -> justVisiting(position);
-            case 11 -> pallMall(position);
-            case 12 -> electricCompany(position);
-            case 13 -> whitehall(position);
-            case 14 -> northumrld(position);
-            case 15 -> marylebone(position);
-            case 16 -> bow(position);
-            case 17 -> community(position);
-            case 18 -> marlborough(position);
-            case 19 -> vine(position);
-            case 20 -> freeParking(position);
-            case 21 -> strand(position);
-            case 22 -> chance(position);
-            case 23 -> fleet(position);
-            case 24 -> trafalgar(position);
-            case 25 -> fenchurch(position);
-            case 26 -> leicester(position);
-            case 27 -> conventry(position);
-            case 28 -> waterWorks(position);
-            case 29 -> piccadilly(position);
-            case 30 -> goToJail(position);
-            case 31 -> regent(position);
-            case 32 -> oxford(position);
-            case 33 -> community(position);
-            case 34 -> bond(position);
-            case 35 -> liverpool(position);
-            case 36 -> chance(position);
-            case 37 -> park(position);
-            case 38 -> superTax(position);
-            case 39 -> mayfair(position);
-            case 40 -> inJail(10); // same square position as justVisiting
+            case 0 -> square0();    // go
+            case 1 -> square1();    // oldKent
+            case 2 -> square2();    // community
+            case 3 -> square3();    // whitechapel
+            case 4 -> square4();    // incomeTax
+            case 5 -> square5();    // kingsCross
+            case 6 -> square6();    // theAngelIslington
+            case 7 -> square7();    // chance
+            case 8 -> square8();    // euston
+            case 9 -> square9();    // pentonville
+            case 10 -> square10();  // justVisiting
+            case 11 -> square11();  // pallMall
+            case 12 -> square12();  // electricCompany
+            case 13 -> square13();  // whitehall
+            case 14 -> square14();  // northumrld
+            case 15 -> square15();  // marylebone
+            case 16 -> square16();  // bow
+            case 17 -> square17();  // community
+            case 18 -> square18();  // marlborough
+            case 19 -> square19();  // vine
+            case 20 -> square20();  // freeParking
+            case 21 -> square21();  // strand
+            case 22 -> square22();  // chance
+            case 23 -> square23();  // fleet
+            case 24 -> square24();  // trafalgar
+            case 25 -> square25();  // fenchurch
+            case 26 -> square26();  // leicester
+            case 27 -> square27();  // conventry
+            case 28 -> square28();  // waterWorks
+            case 29 -> square29();  // piccadilly
+            case 30 -> square30();  // goToJail
+            case 31 -> square31();  // regent
+            case 32 -> square32();  // oxford
+            case 33 -> square33();  // community
+            case 34 -> square34();  // bond
+            case 35 -> square35();  // liverpool
+            case 36 -> square36();  // chance
+            case 37 -> square37();  // park
+            case 38 -> square38();  // superTax
+            case 39 -> square39();  // mayfair
+            case 40 -> square40();  // inJail
             default -> null;
         };
     }
@@ -116,28 +116,28 @@ public class GameBoard {
      * Group properties by color set.
      */
     private void groupProperties() {
-        Property brownA = (Property) square(1); // Properties associated with cases. ie case 1.
-        Property brownB = (Property) square(3);
-        Property skyA = (Property) square(6);
-        Property skyB = (Property) square(8);
-        Property skyC = (Property) square(9);
-        Property pinkA = (Property) square(11);
-        Property pinkB = (Property) square(13);
-        Property pinkC = (Property) square(14);
-        Property orangeA = (Property) square(16);
-        Property orangeB = (Property) square(18);
-        Property orangeC = (Property) square(19);
-        Property redA = (Property) square(21);
-        Property redB = (Property) square(23);
-        Property redC = (Property) square(24);
-        Property yellowA = (Property) square(26);
-        Property yellowB = (Property) square(27);
-        Property yellowC = (Property) square(29);
-        Property greenA = (Property) square(31);
-        Property greenB = (Property) square(32);
-        Property greenC = (Property) square(34);
-        Property blueA = (Property) square(37);
-        Property blueB = (Property) square(39);
+        Property brownA = (Property) square(SquareInfo.SQUARE_1.getPosition());
+        Property brownB = (Property) square(SquareInfo.SQUARE_3.getPosition());
+        Property skyA = (Property) square(SquareInfo.SQUARE_6.getPosition());
+        Property skyB = (Property) square(SquareInfo.SQUARE_8.getPosition());
+        Property skyC = (Property) square(SquareInfo.SQUARE_9.getPosition());
+        Property pinkA = (Property) square(SquareInfo.SQUARE_11.getPosition());
+        Property pinkB = (Property) square(SquareInfo.SQUARE_13.getPosition());
+        Property pinkC = (Property) square(SquareInfo.SQUARE_14.getPosition());
+        Property orangeA = (Property) square(SquareInfo.SQUARE_16.getPosition());
+        Property orangeB = (Property) square(SquareInfo.SQUARE_18.getPosition());
+        Property orangeC = (Property) square(SquareInfo.SQUARE_19.getPosition());
+        Property redA = (Property) square(SquareInfo.SQUARE_21.getPosition());
+        Property redB = (Property) square(SquareInfo.SQUARE_23.getPosition());
+        Property redC = (Property) square(SquareInfo.SQUARE_24.getPosition());
+        Property yellowA = (Property) square(SquareInfo.SQUARE_26.getPosition());
+        Property yellowB = (Property) square(SquareInfo.SQUARE_27.getPosition());
+        Property yellowC = (Property) square(SquareInfo.SQUARE_29.getPosition());
+        Property greenA = (Property) square(SquareInfo.SQUARE_31.getPosition());
+        Property greenB = (Property) square(SquareInfo.SQUARE_32.getPosition());
+        Property greenC = (Property) square(SquareInfo.SQUARE_34.getPosition());
+        Property blueA = (Property) square(SquareInfo.SQUARE_37.getPosition());
+        Property blueB = (Property) square(SquareInfo.SQUARE_39.getPosition());
 
         // BROWN property group
         brownA.setGroup(brownB);
@@ -182,10 +182,10 @@ public class GameBoard {
      * Group railroads.
      */
     private void groupRailroads() {
-        Railroad a = (Railroad) square(5);  // Railroad on square 5
-        Railroad b = (Railroad) square(15); // Railroad on square 15
-        Railroad c = (Railroad) square(25); // Railroad on square 25
-        Railroad d = (Railroad) square(35); // Railroad on square 35
+        Railroad a = (Railroad) square(SquareInfo.SQUARE_5.getPosition());  // Railroad on square 5
+        Railroad b = (Railroad) square(SquareInfo.SQUARE_15.getPosition()); // Railroad on square 15
+        Railroad c = (Railroad) square(SquareInfo.SQUARE_25.getPosition()); // Railroad on square 25
+        Railroad d = (Railroad) square(SquareInfo.SQUARE_35.getPosition()); // Railroad on square 35
 
         a.setGroup(b, c, d);
         b.setGroup(a, c, d);
@@ -197,8 +197,8 @@ public class GameBoard {
      * Group utilities.
      */
     private void groupUtilities() {
-        Utility a = (Utility) square(12); // Utilities on square 12
-        Utility b = (Utility) square(28); // Utilities on square 28
+        Utility a = (Utility) square(SquareInfo.SQUARE_12.getPosition()); // Utilities on square 12
+        Utility b = (Utility) square(SquareInfo.SQUARE_28.getPosition()); // Utilities on square 28
 
         a.setGroup(b);
         b.setGroup(a);
@@ -206,145 +206,17 @@ public class GameBoard {
 
     /**
      * Setup "GO" square tile on the board.
-     * @param position  int
      * @return  Square
      */
-    public Square go(int position) {
-        return new Inactive(position, "GO");
+    public Square square0() {
+        return new Inactive(SquareInfo.SQUARE_0.getPosition(), SquareInfo.SQUARE_0.getName());
     }
 
     /**
-     * Setup "COMMUNITY CHEST" square tile on the board.
-     * @param position  int
+     * Setup "Square 1" tile on the board.
      * @return  Square
      */
-    public Square community(int position) {
-        return new Inactive(position, "COMMUNITY CHEST");
-    }
-
-    /**
-     * Setup "CHANCE" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square chance(int position) {
-        return new Inactive(position, "CHANCE");
-    }
-
-    /**
-     * Setup "INCOME TAX" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square incomeTax(int position) {
-        return new Taxes(position, true);
-    }
-
-    /**
-     * Setup "SUPER TAX" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square superTax(int position) {
-        return new Taxes(position,false);
-    }
-
-    /**
-     * Setup "ELECTRIC COMPANY" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square electricCompany(int position) {
-        return new Utility(position, "ELECTRIC COMPANY");
-    }
-
-    /**
-     * Setup "WATER WORKS" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square waterWorks(int position) {
-        return new Utility(position, "WATER WORKS");
-    }
-
-    /**
-     * Setup "KINGS CROSS STATION" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square kingsCross(int position) {
-        return new Railroad(position, "KINGS CROSS STATION");
-    }
-
-    /**
-     * Setup "MARYLEBONE STATION" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square marylebone(int position) {
-        return new Railroad(position, "MARYLEBONE STATION");
-    }
-
-    /**
-     * Setup "FENCHURCH ST. STATION" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square fenchurch(int position) {
-        return new Railroad(position, "FENCHURCH ST. STATION");
-    }
-
-    /**
-     * Setup "LIVERPOOL ST. STATION" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square liverpool(int position) {
-        return new Railroad(position, "LIVERPOOL ST. STATION");
-    }
-
-    /**
-     * Setup "FREE PARKING" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square freeParking(int position) {
-        return new Inactive(position, "FREE PARKING");
-    }
-
-    /**
-     * Setup "GO TO JAIL" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square goToJail(int position) {
-        return new Jail(position, "GO TO JAIL", Jail.JailType.GOTO_JAIL);
-    }
-
-    /**
-     * Setup "IN JAIL" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square inJail(int position) {
-        return new Jail(position, "IN JAIL", Jail.JailType.IN_JAIL);
-    }
-
-    /**
-     * Setup "JUST VISITING" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square justVisiting(int position) {
-        return new Jail(position, "JUST VISITING", Jail.JailType.JUST_VISITING);
-    }
-
-    /**
-     * Setup "OLD KENT ROAD" square tile on the board.
-     * @param position  int
-     * @return  Square
-     */
-    public Square oldKent(int position) {
+    public Square square1() {
         int rent = 2;
         int oneHouse = 10;
         int twoHouse = 30;
@@ -353,16 +225,23 @@ public class GameBoard {
         int hotel = 250;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(position, "OLD KENT ROAD",
+        return new Property(SquareInfo.SQUARE_1.getPosition(), SquareInfo.SQUARE_1.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "WHITECHAPEL ROAD" square tile on the board.
-     * @param position  int
+     * Setup "COMMUNITY CHEST" square tile on the board.
      * @return  Square
      */
-    public Square whitechapel(int position) {
+    public Square square2() {
+        return new Inactive(SquareInfo.SQUARE_2.getPosition(), SquareInfo.SQUARE_2.getName());
+    }
+
+    /**
+     * Setup "Square 3" tile on the board.
+     * @return  Square
+     */
+    public Square square3() {
         int rent = 4;
         int oneHouse = 20;
         int twoHouse = 60;
@@ -371,16 +250,31 @@ public class GameBoard {
         int hotel = 450;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(position, "WHITECHAPEL ROAD",
+        return new Property(SquareInfo.SQUARE_3.getPosition(), SquareInfo.SQUARE_3.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "THE ANGEL, ISLINGTON" square tile on the board.
-     * @param position  int
+     * Setup "INCOME TAX" square tile on the board.
      * @return  Square
      */
-    public Square theAngelIslington(int position) {
+    public Square square4() {
+        return new Taxes(SquareInfo.SQUARE_4.getPosition(), SquareInfo.SQUARE_4.getName());
+    }
+
+    /**
+     * Setup "KINGS CROSS STATION" square tile on the board.
+     * @return  Square
+     */
+    public Square square5() {
+        return new Railroad(SquareInfo.SQUARE_5.getPosition(), SquareInfo.SQUARE_5.getName());
+    }
+
+    /**
+     * Setup "Square 6" tile on the board.
+     * @return  Square
+     */
+    public Square square6() {
         int rent = 6;
         int oneHouse = 30;
         int twoHouse = 90;
@@ -389,16 +283,23 @@ public class GameBoard {
         int hotel = 550;
         int propertyCost = 100;
         int houses = 50;
-        return new Property(position, "THE ANGEL, ISLINGTON",
+        return new Property(SquareInfo.SQUARE_6.getPosition(), SquareInfo.SQUARE_6.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "EUSTON ROAD" square tile on the board.
-     * @param position  int
+     * Setup "CHANCE" square tile on the board.
      * @return  Square
      */
-    public Square euston(int position) {
+    public Square square7() {
+        return new Inactive(SquareInfo.SQUARE_7.getPosition(), SquareInfo.SQUARE_7.getName());
+    }
+
+    /**
+     * Setup "Square 8" tile on the board.
+     * @return  Square
+     */
+    public Square square8() {
         int rent = 6;
         int oneHouse = 30;
         int twoHouse = 90;
@@ -407,16 +308,15 @@ public class GameBoard {
         int hotel = 550;
         int propertyCost = 100;
         int houses = 50;
-        return new Property(position, "EUSTON ROAD",
+        return new Property(SquareInfo.SQUARE_8.getPosition(), SquareInfo.SQUARE_8.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "PENTONVILLE ROAD" square tile on the board.
-     * @param position  int
+     * Setup "Square 9" tile on the board.
      * @return  Square
      */
-    public Square pentonville(int position) {
+    public Square square9() {
         int rent = 6;
         int oneHouse = 30;
         int twoHouse = 90;
@@ -425,16 +325,23 @@ public class GameBoard {
         int hotel = 550;
         int propertyCost = 120;
         int houses = 50;
-        return new Property(position, "PENTONVILLE ROAD",
+        return new Property(SquareInfo.SQUARE_9.getPosition(), SquareInfo.SQUARE_9.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "PALL MALL" square tile on the board.
-     * @param position  int
+     * Setup "JUST VISITING" square tile on the board.
      * @return  Square
      */
-    public Square pallMall(int position) {
+    public Square square10() {
+        return new Jail(SquareInfo.SQUARE_10.getPosition(), SquareInfo.SQUARE_10.getName(), Jail.JailType.JUST_VISITING);
+    }
+
+    /**
+     * Setup "Square 11" tile on the board.
+     * @return  Square
+     */
+    public Square square11() {
         int rent = 10;
         int oneHouse = 50;
         int twoHouse = 150;
@@ -443,16 +350,23 @@ public class GameBoard {
         int hotel = 750;
         int propertyCost = 140;
         int houses = 100;
-        return new Property(position, "PALL MALL",
+        return new Property(SquareInfo.SQUARE_11.getPosition(), SquareInfo.SQUARE_11.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "WHITEHALL" square tile on the board.
-     * @param position  int
+     * Setup "ELECTRIC COMPANY" square tile on the board.
      * @return  Square
      */
-    public Square whitehall(int position) {
+    public Square square12() {
+        return new Utility(SquareInfo.SQUARE_12.getPosition(), SquareInfo.SQUARE_12.getName());
+    }
+
+    /**
+     * Setup "Square 13" tile on the board.
+     * @return  Square
+     */
+    public Square square13() {
         int rent = 10;
         int oneHouse = 50;
         int twoHouse = 150;
@@ -461,16 +375,15 @@ public class GameBoard {
         int hotel = 750;
         int propertyCost = 140;
         int houses = 100;
-        return new Property(position, "WHITEHALL",
+        return new Property(SquareInfo.SQUARE_13.getPosition(), SquareInfo.SQUARE_13.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "NORTHUMRL'D AVENUE" square tile on the board.
-     * @param position  int
+     * Setup "Square 14" tile on the board.
      * @return  Square
      */
-    public Square northumrld(int position) {
+    public Square square14() {
         int rent = 10;
         int oneHouse = 50;
         int twoHouse = 150;
@@ -479,16 +392,23 @@ public class GameBoard {
         int hotel = 750;
         int propertyCost = 160;
         int houses = 100;
-        return new Property(position, "NORTHUMRL'D AVENUE",
+        return new Property(SquareInfo.SQUARE_14.getPosition(), SquareInfo.SQUARE_14.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "BOW STREET" square tile on the board.
-     * @param position  int
+     * Setup "MARYLEBONE STATION" square tile on the board.
      * @return  Square
      */
-    public Square bow(int position) {
+    public Square square15() {
+        return new Railroad(SquareInfo.SQUARE_15.getPosition(), SquareInfo.SQUARE_15.getName());
+    }
+
+    /**
+     * Setup "Square 16" tile on the board.
+     * @return  Square
+     */
+    public Square square16() {
         int rent = 14;
         int oneHouse = 70;
         int twoHouse = 200;
@@ -497,16 +417,23 @@ public class GameBoard {
         int hotel = 750;
         int propertyCost = 180;
         int houses = 100;
-        return new Property(position, "BOW STREET",
+        return new Property(SquareInfo.SQUARE_16.getPosition(), SquareInfo.SQUARE_16.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "MARLBOROUGH STREET" square tile on the board.
-     * @param position  int
+     * Setup "COMMUNITY CHEST" square tile on the board.
      * @return  Square
      */
-    public Square marlborough(int position) {
+    public Square square17() {
+        return new Inactive(SquareInfo.SQUARE_17.getPosition(), SquareInfo.SQUARE_17.getName());
+    }
+
+    /**
+     * Setup "Square 18" tile on the board.
+     * @return  Square
+     */
+    public Square square18() {
         int rent = 14;
         int oneHouse = 70;
         int twoHouse = 200;
@@ -515,16 +442,15 @@ public class GameBoard {
         int hotel = 950;
         int propertyCost = 180;
         int houses = 100;
-        return new Property(position, "MARLBOROUGH STREET",
+        return new Property(SquareInfo.SQUARE_18.getPosition(), SquareInfo.SQUARE_18.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "VINE STREET" square tile on the board.
-     * @param position  int
+     * Setup "Square 19" tile on the board.
      * @return  Square
      */
-    public Square vine(int position) {
+    public Square square19() {
         int rent = 16;
         int oneHouse = 80;
         int twoHouse = 220;
@@ -533,16 +459,23 @@ public class GameBoard {
         int hotel = 1000;
         int propertyCost = 200;
         int houses = 100;
-        return new Property(position, "VINE STREET",
+        return new Property(SquareInfo.SQUARE_19.getPosition(), SquareInfo.SQUARE_19.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "STRAND" square tile on the board.
-     * @param position  int
+     * Setup "FREE PARKING" square tile on the board.
      * @return  Square
      */
-    public Square strand(int position) {
+    public Square square20() {
+        return new Inactive(SquareInfo.SQUARE_20.getPosition(), SquareInfo.SQUARE_20.getName());
+    }
+
+    /**
+     * Setup "Square 21" tile on the board.
+     * @return  Square
+     */
+    public Square square21() {
         int rent = 18;
         int oneHouse = 90;
         int twoHouse = 250;
@@ -551,16 +484,23 @@ public class GameBoard {
         int hotel = 1050;
         int propertyCost = 220;
         int houses = 150;
-        return new Property(position, "STRAND",
+        return new Property(SquareInfo.SQUARE_21.getPosition(), SquareInfo.SQUARE_21.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "FLEET STREET" square tile on the board.
-     * @param position  int
+     * Setup "CHANCE" square tile on the board.
      * @return  Square
      */
-    public Square fleet(int position) {
+    public Square square22() {
+        return new Inactive(SquareInfo.SQUARE_22.getPosition(), SquareInfo.SQUARE_22.getName());
+    }
+
+    /**
+     * Setup "Square 23" tile on the board.
+     * @return  Square
+     */
+    public Square square23() {
         int rent = 18;
         int oneHouse = 90;
         int twoHouse = 250;
@@ -569,16 +509,15 @@ public class GameBoard {
         int hotel = 1050;
         int propertyCost = 220;
         int houses = 150;
-        return new Property(position, "FLEET STREET",
+        return new Property(SquareInfo.SQUARE_23.getPosition(), SquareInfo.SQUARE_23.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "TRAFALGAR SQUARE" square tile on the board.
-     * @param position  int
+     * Setup "Square 24" tile on the board.
      * @return  Square
      */
-    public Square trafalgar(int position) {
+    public Square square24() {
         int rent = 20;
         int oneHouse = 100;
         int twoHouse = 300;
@@ -587,16 +526,23 @@ public class GameBoard {
         int hotel = 1100;
         int propertyCost = 260;
         int houses = 150;
-        return new Property(position, "TRAFALGAR SQUARE",
+        return new Property(SquareInfo.SQUARE_24.getPosition(), SquareInfo.SQUARE_24.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "LEICESTER" square tile on the board.
-     * @param position  int
+     * Setup "FENCHURCH ST. STATION" square tile on the board.
      * @return  Square
      */
-    public Square leicester(int position) {
+    public Square square25() {
+        return new Railroad(SquareInfo.SQUARE_25.getPosition(), SquareInfo.SQUARE_25.getName());
+    }
+
+    /**
+     * Setup "Square 26" tile on the board.
+     * @return  Square
+     */
+    public Square square26() {
         int rent = 22;
         int oneHouse = 110;
         int twoHouse = 330;
@@ -605,16 +551,15 @@ public class GameBoard {
         int hotel = 1150;
         int propertyCost = 260;
         int houses = 150;
-        return new Property(position, "LEICESTER",
+        return new Property(SquareInfo.SQUARE_26.getPosition(), SquareInfo.SQUARE_26.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "CONVENTRY STREET" square tile on the board.
-     * @param position  int
+     * Setup "Square 27" tile on the board.
      * @return  Square
      */
-    public Square conventry(int position) {
+    public Square square27() {
         int rent = 22;
         int oneHouse = 110;
         int twoHouse = 330;
@@ -623,16 +568,23 @@ public class GameBoard {
         int hotel = 1150;
         int propertyCost = 280;
         int houses = 150;
-        return new Property(position, "CONVENTRY STREET",
+        return new Property(SquareInfo.SQUARE_27.getPosition(), SquareInfo.SQUARE_27.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "PICCADILLY" square tile on the board.
-     * @param position  int
+     * Setup "WATER WORKS" square tile on the board.
      * @return  Square
      */
-    public Square piccadilly(int position) {
+    public Square square28() {
+        return new Utility(SquareInfo.SQUARE_28.getPosition(), SquareInfo.SQUARE_28.getName());
+    }
+
+    /**
+     * Setup "Square 29" tile on the board.
+     * @return  Square
+     */
+    public Square square29() {
         int rent = 24;
         int oneHouse = 120;
         int twoHouse = 360;
@@ -641,16 +593,23 @@ public class GameBoard {
         int hotel = 1200;
         int propertyCost = 280;
         int houses = 150;
-        return new Property(position, "PICCADILLY",
+        return new Property(SquareInfo.SQUARE_29.getPosition(), SquareInfo.SQUARE_29.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "REGENT STREET" square tile on the board.
-     * @param position  int
+     * Setup "GO TO JAIL" square tile on the board.
      * @return  Square
      */
-    public Square regent(int position) {
+    public Square square30() {
+        return new Jail(SquareInfo.SQUARE_30.getPosition(), SquareInfo.SQUARE_30.getName(), Jail.JailType.GOTO_JAIL);
+    }
+
+    /**
+     * Setup "Square 31" square tile on the board.
+     * @return  Square
+     */
+    public Square square31() {
         int rent = 26;
         int oneHouse = 130;
         int twoHouse = 390;
@@ -659,16 +618,15 @@ public class GameBoard {
         int hotel = 1250;
         int propertyCost = 300;
         int houses = 200;
-        return new Property(position, "REGENT STREET",
+        return new Property(SquareInfo.SQUARE_31.getPosition(), SquareInfo.SQUARE_31.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "OXFORD STREET" square tile on the board.
-     * @param position  int
+     * Setup "Square 32" square tile on the board.
      * @return  Square
      */
-    public Square oxford(int position) {
+    public Square square32() {
         int rent = 26;
         int oneHouse = 130;
         int twoHouse = 390;
@@ -677,16 +635,23 @@ public class GameBoard {
         int hotel = 1275;
         int propertyCost = 300;
         int houses = 200;
-        return new Property(position, "OXFORD STREET",
+        return new Property(SquareInfo.SQUARE_32.getPosition(), SquareInfo.SQUARE_32.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "BOND STREET" square tile on the board.
-     * @param position  int
+     * Setup "COMMUNITY CHEST" square tile on the board.
      * @return  Square
      */
-    public Square bond(int position) {
+    public Square square33() {
+        return new Inactive(SquareInfo.SQUARE_33.getPosition(), SquareInfo.SQUARE_33.getName());
+    }
+
+    /**
+     * Setup "Square 34" square tile on the board.
+     * @return  Square
+     */
+    public Square square34() {
         int rent = 26;
         int oneHouse = 130;
         int twoHouse = 390;
@@ -695,16 +660,31 @@ public class GameBoard {
         int hotel = 1275;
         int propertyCost = 320;
         int houses = 200;
-        return new Property(position, "BOND STREET",
+        return new Property(SquareInfo.SQUARE_34.getPosition(), SquareInfo.SQUARE_34.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "PARK LANE" square tile on the board.
-     * @param position  int
+     * Setup "LIVERPOOL ST. STATION" square tile on the board.
      * @return  Square
      */
-    public Square park(int position) {
+    public Square square35() {
+        return new Railroad(SquareInfo.SQUARE_35.getPosition(), SquareInfo.SQUARE_35.getName());
+    }
+
+    /**
+     * Setup "CHANCE" square tile on the board.
+     * @return  Square
+     */
+    public Square square36() {
+        return new Inactive(SquareInfo.SQUARE_36.getPosition(), SquareInfo.SQUARE_36.getName());
+    }
+
+    /**
+     * Setup "Square 37" tile on the board.
+     * @return  Square
+     */
+    public Square square37() {
         int rent = 35;
         int oneHouse = 175;
         int twoHouse = 500;
@@ -713,16 +693,23 @@ public class GameBoard {
         int hotel = 1500;
         int propertyCost = 350;
         int houses = 200;
-        return new Property(position, "PARK LANE",
+        return new Property(SquareInfo.SQUARE_37.getPosition(), SquareInfo.SQUARE_37.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
     /**
-     * Setup "MAYFAIR" square tile on the board.
-     * @param position  int
+     * Setup "SUPER TAX" square tile on the board.
      * @return  Square
      */
-    public Square mayfair(int position) {
+    public Square square38() {
+        return new Taxes(SquareInfo.SQUARE_38.getPosition(), SquareInfo.SQUARE_38.getName());
+    }
+
+    /**
+     * Setup "Sqaure 39" tile on the board.
+     * @return  Square
+     */
+    public Square square39() {
         int rent = 35;
         int oneHouse = 175;
         int twoHouse = 500;
@@ -731,7 +718,15 @@ public class GameBoard {
         int hotel = 1500;
         int propertyCost = 400;
         int houses = 200;
-        return new Property(position, "MAYFAIR",
+        return new Property(SquareInfo.SQUARE_39.getPosition(), SquareInfo.SQUARE_39.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    }
+
+    /**
+     * Setup "IN JAIL" square tile on the board.
+     * @return  Square
+     */
+    public Square square40() {
+        return new Jail(SquareInfo.SQUARE_40.getPosition(), SquareInfo.SQUARE_40.getName(), Jail.JailType.IN_JAIL);
     }
 }

@@ -24,6 +24,8 @@ public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
     private boolean isBankrupt;
+    public static int MIN_PLAYERS = 2;
+    public static int MAX_PLAYERS = 6;
     private int maxJailTurns;
     private int JAILPOSITION;
 
@@ -93,7 +95,7 @@ public class Monopoly {
         System.out.println("How many players would like to play?");
 
         int numPlayers = input.inputInt();
-        while (numPlayers < 2 || numPlayers > 6) {
+        while (numPlayers < MIN_PLAYERS || numPlayers > MAX_PLAYERS) {
             System.out.println("Try Again! You must have a min of 2 and max of 6 players: ");
             numPlayers = input.inputInt();
         }
@@ -184,7 +186,7 @@ public class Monopoly {
      * @param player    Player
      * @param square    Square
      * @param roll      int
-     * @return          int
+     * @return          ArrayList<Integer>
      */
     public ArrayList<Integer> handleSquare(Player player, Square square, int roll) {
         boolean owned = square.isOwned();
@@ -377,30 +379,7 @@ public class Monopoly {
     public void jailAction(Player player, Jail jail) {
         Jail.JailType type = jail.getType();
         if (type == Jail.JailType.GOTO_JAIL) {
-            System.out.println("You have landed on GO TO JAIL");
-            goToJail(player);
-        } else if(player.getJailTurns() > 0) {
-            inJail(player);
-        }
-    }
-
-    /**
-     * Action when player is currently in jail.
-     * @param player    Player
-     */
-    private void inJail(Player player) {
-        gameState.decisionState = DecisionState.IN_JAIL;
-        if (rollDice.rollDice().isDouble) {
-            System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
-            player.setJailTurns(0);
-        } else {
-            if(player.getJailTurns() == maxJailTurns) {
-                System.out.println("You have been in Jail for 3 turns.\n");
-                player.setJailTurns(0);
-            } else {
-                System.out.println("You have not rolled doubles. You are still in Jail.");
-                player.addJailTurn();
-            }
+            intoJail(player);
         }
     }
 
@@ -408,26 +387,23 @@ public class Monopoly {
      * Moves the player to Jail.
      * @param player    Player
      */
-    private void goToJail(Player player) {
+    private void intoJail(Player player) {
         System.out.println("Go to Jail!");
-        player.moveTo(JAILPOSITION);
-        player.addJailTurn();
+        player.moveTo(40);
+        Square[] square = gameState.gameBoard.getBoard();
+        Jail jail = (Jail) square[40];
+        jailAction(player, jail);
     }
 
     /**
      * Method for leaving jail, if the player in jail on their turn.
      * @param player    Player
      */
-    public int leaveJail(Player player) {
-        System.out.println("Bail out of Jail.");
+    public void leaveJail(Player player) {
         int JAIL_COST = 50;
         if (player.getMoney() >= JAIL_COST) {
             player.exchangeMoney(JAIL_COST * -1);
         }
-
-        player.setJailTurns(0);
-
-        return player.getJailTurns();
     }
 
     /**

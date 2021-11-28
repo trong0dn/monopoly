@@ -7,7 +7,7 @@ import java.util.Collection;
  * @author Francisco De Grano & Trong Nguyen
  */
 public interface Player {
-
+    int PASS_GO_COLLECT = 200;
     /**
      * Movement of square tiles for a player.
      * @param numTiles  int
