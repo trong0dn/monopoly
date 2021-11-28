@@ -21,7 +21,7 @@ public class GameState implements Serializable {
      * Export the AddressBook to TXT file.
      */
     public void saveGame() {
-        try{
+        try {
             FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(this);
@@ -35,7 +35,7 @@ public class GameState implements Serializable {
      * Import the AddressBook contents of a .txt file.
      * @return  AddressBook
      */
-    public static Monopoly loadGame() {
+    public Monopoly loadGame() {
         try {
             FileInputStream fileInputStream = new FileInputStream(FILENAME);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);

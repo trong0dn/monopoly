@@ -1,12 +1,13 @@
 package monopoly17;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  * This class defines all the methods to handle user inputs.
  * @author Elisha Catherasoo & Trong Nguyen
  */
-public class Input {
+public class Input implements Serializable {
     private final Scanner scanner;
 
     /**

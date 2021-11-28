@@ -2,13 +2,14 @@ package monopoly17;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
  * This class represents the GUI for player on the game board.
  * @author Trong Nguyen
  */
-public class PlayerGUI extends JPanel {
+public class PlayerGUI extends JPanel implements Serializable {
     private Player player;
     private final int playerNumber;
     private static int totalPlayers = 0;

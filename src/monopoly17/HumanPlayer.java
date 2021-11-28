@@ -1,12 +1,13 @@
 package monopoly17;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * This is a class representation of a human player of this game.
  * @author Francisco De Grano & Ibrahim Almalki
  */
-public class HumanPlayer implements Player {
+public class HumanPlayer implements Player, Serializable {
     private final Input input;
     private final Collection<Square> properties;
     private final String playerName;

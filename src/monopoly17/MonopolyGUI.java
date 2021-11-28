@@ -38,7 +38,7 @@ public class MonopolyGUI extends JFrame {
     private Monopoly monopoly;
     private GameBoardGUI gameBoardGUI;
     private ArrayList<PlayerGUI> playersGUI = new ArrayList<>();
-    private LinkedList<Player> playersList;                       // The list of players
+    private LinkedList<Player> playersList;                             // The list of players
     private DiceGUI die1;
     private DiceGUI die2;
     private int currentPlayerOrder;
@@ -95,8 +95,7 @@ public class MonopolyGUI extends JFrame {
         setupSwitchPanel();
         monopoly = new Monopoly();
         GameState gameState = new GameState();
-        gameState.players = new LinkedList<>();
-        this.playersList = gameState.players;
+        this.playersList = monopoly.getPlayers();
         monopoly.play();        // Determines the winners and losers
     }
 
@@ -113,7 +112,7 @@ public class MonopolyGUI extends JFrame {
             return;
         }
         monopoly.save();
-        JOptionPane.showMessageDialog(this, "Address Book has been saved to file");
+        JOptionPane.showMessageDialog(this, "Monopoly has been saved to file");
     }
 
     /**
@@ -124,11 +123,15 @@ public class MonopolyGUI extends JFrame {
         setMonopoly(monopoly.load());
     }
 
+    private void newMonopoly(ActionEvent actionEvent) {
+        setMonopoly(new Monopoly());
+    }
+
     /**
      * Initialize the frame and it's panels.
      */
     private void initFrame() {
-        new JFrame("MONOPOLY");
+        this.setTitle("MONOPOLY");
         playerInitPanel = new JPanel(new GridBagLayout());
         startPanel = new JPanel(new GridBagLayout());
         monopolyPanel = new JPanel();
@@ -137,12 +140,15 @@ public class MonopolyGUI extends JFrame {
         JMenu menu = new JMenu("Menu");
         JMenuItem saveMenuItem = new JMenuItem("Save Game");
         JMenuItem loadMenuItem = new JMenuItem("Load Game");
+        JMenuItem newMenuItem = new JMenuItem("New Game");
 
         saveMenuItem.addActionListener(this::saveMonopoly);
         loadMenuItem.addActionListener(this::loadMonopoly);
+        newMenuItem.addActionListener(this::newMonopoly);
 
         menu.add(saveMenuItem);
         menu.add(loadMenuItem);
+        menu.add(newMenuItem);
         menuBar.add(menu);
         this.setJMenuBar(menuBar);
     }

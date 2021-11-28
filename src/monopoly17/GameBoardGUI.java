@@ -4,13 +4,14 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * This class creates the GUI for the game board
  * @author Trong Nguyen
  */
-public class GameBoardGUI extends JPanel {
+public class GameBoardGUI extends JPanel implements Serializable {
     private final GameBoard gameBoard;
 
     /**

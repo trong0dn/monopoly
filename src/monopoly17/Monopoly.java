@@ -22,7 +22,7 @@ import java.util.*;
  */
 public class Monopoly {
     private final RollDice rollDice;
-    private final GameState gameState;
+    private GameState gameState;
     private boolean isBankrupt;
     public static int MIN_PLAYERS = 2;
     public static int MAX_PLAYERS = 6;
@@ -45,7 +45,11 @@ public class Monopoly {
     }
 
     public Monopoly load() {
-        return GameState.loadGame();
+        return gameState.loadGame();
+    }
+
+    public LinkedList<Player> getPlayers() {
+        return gameState.players;
     }
 
     /**

@@ -4,12 +4,13 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.io.Serializable;
 
 /**
  * This class every square GUI.
  * @author Trong Nguyen
  */
-public class SquareGUI extends JPanel {
+public class SquareGUI extends JPanel implements Serializable {
     private final String squareName;
     private final int squareNum;
     private static int total = 0;
