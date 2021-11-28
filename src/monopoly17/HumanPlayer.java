@@ -14,6 +14,7 @@ public class HumanPlayer implements Player {
     private int position;
     private int jailTurns;
     private boolean inJail;
+    private int jailPosition;
 
     /**
      * Initialize HumanPlayer.
@@ -27,6 +28,7 @@ public class HumanPlayer implements Player {
         this.position = 0;
         this.jailTurns = 0;
         this.inJail = false;
+        this.jailPosition = 10;
     }
 
     /**
@@ -49,7 +51,7 @@ public class HumanPlayer implements Player {
      */
     @Override
     public void moveTo(int newPosition) {
-        if (newPosition < position) {
+        if (newPosition < position && newPosition != jailPosition) {
             exchangeMoney(200);
         }
         position = newPosition;

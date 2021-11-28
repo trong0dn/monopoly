@@ -25,10 +25,8 @@ public class Monopoly {
     private GameState gameState;
     private boolean isBankrupt;
     private int maxJailTurns;
-    private int goToJailPosition;
-    private int inJailPosition;
+    private int JailPosition;
     private int justVisitingPosition;
-
 
     /**
      * Constructor for Monopoly.
@@ -42,8 +40,7 @@ public class Monopoly {
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
         this.maxJailTurns = 3;
-        this.goToJailPosition = 30;
-        this.inJailPosition = 40;
+        this.JailPosition = 40;
         this.justVisitingPosition = 10;
     }
 
@@ -189,25 +186,28 @@ public class Monopoly {
      * @param player    Player
      * @param square    Square
      * @param roll      int
+     * @return          int
      */
-    public void handleSquare(Player player, Square square, int roll) {
+    public int handleSquare(Player player, Square square, int roll) {
         boolean owned = square.isOwned();
         boolean ownable = square.isOwnable();
-
+        if (square instanceof  Jail) {
+            // treat Just Visiting as a normal square
+            if (((Jail) square).getType() != Jail.JailType.JUST_VISITING) {
+                jailAction(player, (Jail) square);
+            }
+        }
         if (!owned && ownable) {
             unowned(player, square);
-        }
-        else if (owned) {
+        } else if (owned) {
             owned(player, square, roll);
-        }
-        else if (square instanceof Taxes) {
+        } else if (square instanceof Taxes) {
             payTax(player, (Taxes) square, square);
-        }
-        else if (square instanceof  Jail) {
-            jailAction(player, (Jail) square);
         } else if (square instanceof Railroad) {
             railroadMove(player);
         }
+
+        return player.getPosition();
     }
 
     /**
@@ -379,9 +379,8 @@ public class Monopoly {
         Jail.JailType type = jail.getType();
         if (type == Jail.JailType.GOTO_JAIL) {
             System.out.println("You have landed on GO TO JAIL. You are now in Jail.");
-            intoJail(player);
-        }
-        if(type == Jail.JailType.IN_JAIL) {
+            goToJail(player);
+        } else if(type == Jail.JailType.IN_JAIL) {
             inJail(player);
         }
     }
@@ -394,7 +393,7 @@ public class Monopoly {
         gameState.decisionState = DecisionState.IN_JAIL;
         if (rollDice.rollDice().isDouble) {
             System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
-            player.moveTo(justVisitingPosition);
+            player.move(justVisitingPosition);
             player.setJailTurns(0);
         } else {
             if(player.getJailTurns() == maxJailTurns) {
@@ -412,12 +411,9 @@ public class Monopoly {
      * Moves the player to Jail.
      * @param player    Player
      */
-    private void intoJail(Player player) {
+    private void goToJail(Player player) {
         System.out.println("Go to Jail!");
-        player.moveTo(goToJailPosition);
-        Square[] square = gameState.gameBoard.getBoard();
-        Jail jail = (Jail) square[goToJailPosition];
-        jailAction(player, jail);
+        player.moveTo(JailPosition);
     }
 
     /**
