@@ -33,14 +33,15 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  * This class represents the Monopoly GUI.
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
-public class MonopolyGUI extends JPanel {
-    private final Monopoly monopoly;
+public class MonopolyGUI {
+    private Monopoly monopoly;
     private GameBoardGUI gameBoard;
-    private int currentPlayerOrder;
-    private int currentSquareNumber;
-    private final ArrayList<PlayerGUI> playersGUI = new ArrayList<>();
+    private ArrayList<PlayerGUI> playersGUI = new ArrayList<>();
+    private LinkedList<Player> playersList;                       // The list of players
     private DiceGUI die1;
     private DiceGUI die2;
+    private int currentPlayerOrder;
+    private int currentSquareNumber;
     private Boolean isDouble = false;
     private int doubles = 0;
 
@@ -49,7 +50,6 @@ public class MonopolyGUI extends JPanel {
     private JPanel startPanel;                                          // Panel for the main starting page
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
-    private final LinkedList<Player> playersList;                       // The list of players
     private JButton startButton;
     private JButton playButton;
     private JButton addPlayer;
@@ -100,6 +100,10 @@ public class MonopolyGUI extends JPanel {
         monopoly.play();        // Determines the winners and losers
     }
 
+    private void setMonopoly(Monopoly monopoly) {
+        this.monopoly = monopoly;
+    }
+
     /**
      * Initialize the frame and it's panels.
      */
@@ -108,6 +112,16 @@ public class MonopolyGUI extends JPanel {
         playerInitPanel = new JPanel(new GridBagLayout());
         startPanel = new JPanel(new GridBagLayout());
         monopolyPanel = new JPanel();
+
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("Menu");
+        JMenuItem saveMenuItem = new JMenuItem("Save Game");
+        JMenuItem loadMenuItem = new JMenuItem("Load Game");
+
+        menu.add(saveMenuItem);
+        menu.add(loadMenuItem);
+        menuBar.add(menu);
+        frame.setJMenuBar(menuBar);
     }
 
     /**
@@ -161,7 +175,7 @@ public class MonopolyGUI extends JPanel {
      */
     private void setupPanels() {
         frame.setBounds(100, 100, 450, 300);
-        frame.setSize(1080,710);
+        frame.setSize(1080,740);
 
         startPanel.setSize(new Dimension(250, 250));
         startPanel.setBackground(new Color(50, 255, 155));
