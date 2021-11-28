@@ -130,7 +130,7 @@ public class MonopolyGUI extends JPanel {
     private void setupRollButton() {
         // Add roll dice button
         buttonRollDice = buttonRollDice();
-        buttonRollDice.setBounds(80, 570, 115, 40);
+        buttonRollDice.setBounds(80, 420, 250, 40);
         rightLayeredPane.add(buttonRollDice);
     }
 
@@ -140,25 +140,25 @@ public class MonopolyGUI extends JPanel {
     private void setupButtons() {
         // Add buy button
         buttonBuy = buttonBuy();
-        buttonBuy.setBounds(80, 420, 115, 40);
+        buttonBuy.setBounds(80, 470, 115, 40);
         buttonBuy.setEnabled(false);
         rightLayeredPane.add(buttonBuy);
 
         // Add pay rent button
         buttonPayRent = buttonPayRent();
-        buttonPayRent.setBounds(215, 420, 115, 40);
+        buttonPayRent.setBounds(215, 470, 115, 40);
         buttonPayRent.setEnabled(false);
         rightLayeredPane.add(buttonPayRent);
 
         // Add buyHouse Button
         buttonBuyHouse = buttonBuyHouse();
-        buttonBuyHouse.setBounds(80, 470, 115, 40);
+        buttonBuyHouse.setBounds(80, 520, 115, 40);
         buttonBuyHouse.setEnabled(false);
         rightLayeredPane.add(buttonBuyHouse);
 
         // Add RunCPU Button
         buttonRunCPU = buttonRunCPU();
-        buttonRunCPU.setBounds(215, 470, 115, 40);
+        buttonRunCPU.setBounds(80, 570, 115, 40);
         buttonRunCPU.setEnabled(false);
         rightLayeredPane.add(buttonRunCPU);
 
