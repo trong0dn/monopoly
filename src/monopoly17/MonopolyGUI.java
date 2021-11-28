@@ -30,20 +30,21 @@ import java.util.LinkedList;
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class MonopolyGUI extends JPanel {
-
-    private final JFrame frame;
-    private final JPanel playerInitPanel;           // Panel for making the players
-    private final JPanel startPanel;                // Panel for the main starting page
-    private JPanel monopolyPanel;                   // Panel for the actual Monopoly game
-    private final JPanel switchPanels;              // Used for switching the panels
-    private final LinkedList<Player> playersList;   // The list of players
-    private final JButton startButton;
-    private final JButton playButton;
-    private final JButton addPlayer;
-    private final JButton addCPUPlayer;
-    private final JTextField playerNameInput;
-    private final JPanel playerNameList;
-    private final Font playerFont;
+    private JFrame frame;
+    private JPanel playerInitPanel;                                     // Panel for making the players
+    private JPanel startPanel;                                          // Panel for the main starting page
+    private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
+    private final JPanel switchPanels = new JPanel(new CardLayout());  // Used for switching between panels
+    private final LinkedList<Player> playersList;                       // The list of players
+    private JButton startButton;
+    private JButton playButton;
+    private JButton addPlayer;
+    private JButton addCPUPlayer;
+    private JTextField playerNameInput;
+    private JPanel playerNameList;
+    private Font playerFont;
+    private JPanel titleBackground;
+    private JPanel messagePanel;
 
     private final Monopoly monopoly;
     private GameBoardGUI gameBoard;
@@ -87,36 +88,66 @@ public class MonopolyGUI extends JPanel {
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
-        this.frame = new JFrame("MONOPOLY");
-        this.playerInitPanel = new JPanel(new GridBagLayout());
-        this.startPanel = new JPanel(new GridBagLayout());
-        this.monopolyPanel = new JPanel();
-        this.switchPanels = new JPanel(new CardLayout());
-        this.startButton = new JButton("Start Game");
-        this.playButton = new JButton("Play Game!");
-        this.addPlayer = new JButton("Add Player");
-        this.addCPUPlayer = new JButton("Add CPU Player");
-        this.playerNameInput = new JTextField("");
-        this.playerNameList = new JPanel(new GridLayout(0,2));
-        this.playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
+        setupFrame();
+        setupPanelComponents();
+        setupSwitchPanel();
 
         monopoly = new Monopoly();
         Monopoly.GameState gameState = new Monopoly.GameState();
         gameState.players = new LinkedList<>();
         this.playersList = gameState.players;
 
-        setupSwitchPanels();
-
         monopoly.play();        // Determines the winners and losers
     }
 
-    private void setupSwitchPanels() {
+    private void setupFrame() {
+        frame = new JFrame("MONOPOLY");
+        playerInitPanel = new JPanel(new GridBagLayout());
+        startPanel = new JPanel(new GridBagLayout());
+        monopolyPanel = new JPanel();
+    }
+
+    private void setupPanelComponents() {
+        startButton = new JButton("Start Game");
+        playButton = new JButton("Play Game!");
+        addPlayer = new JButton("Add Player");
+        addCPUPlayer = new JButton("Add CPU Player");
+        playerNameInput = new JTextField("");
+        playerNameList = new JPanel(new GridLayout(0,2));
+        playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
+        titleBackground = new JPanel();
+        messagePanel = new JPanel();
+    }
+
+    private void setupSwitchPanel() {
         Font font = new Font("Lucida Grande", Font.BOLD, 60);
-        JPanel titleBackground = new JPanel();
 
         titleBackground.setPreferredSize(new Dimension(450, 90));
         titleBackground.setBackground(Color.RED);
 
+        setupPanels();
+        setupLayouts();
+
+        // Starting page label
+        JLabel title = new JLabel("MONOPOLY!");
+        title.setFont(font);
+        title.setOpaque(true);
+        title.setBackground(Color.RED);
+        title.setForeground(Color.WHITE);
+        titleBackground.add(title);
+
+        // Player initialization label
+        JLabel message = new JLabel("Enter Player name in text box then click Add Player (2-6 players)");
+        messagePanel.add(message);
+
+        switchPanels.add(startPanel, "StartPanel");
+        switchPanels.add(playerInitPanel, "PlayerInitializePanel");
+        switchPanels.add(monopolyPanel, "MonopolyPanel");
+
+        frame.add(switchPanels);
+    }
+
+    private void setupPanels() {
         frame.setBounds(100, 100, 450, 300);
         frame.setSize(1080,710);
 
@@ -143,20 +174,9 @@ public class MonopolyGUI extends JPanel {
         addCPUPlayer.setPreferredSize(new Dimension(175, 50));
         playButton.setPreferredSize(new Dimension(175, 50));
         playButton.setEnabled(false);
+    }
 
-        // Starting page label
-        JLabel title = new JLabel("MONOPOLY!");
-        title.setFont(font);
-        title.setOpaque(true);
-        title.setBackground(Color.RED);
-        title.setForeground(Color.WHITE);
-        titleBackground.add(title);
-
-        // Player initialization label
-        JPanel messagePanel = new JPanel();
-        JLabel message = new JLabel("Enter Player name in text box then click Add Player (2-6 players)");
-        messagePanel.add(message);
-
+    private void setupLayouts() {
         // GridBagConstraints
         GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
         gbagConstraintsTitle.gridx = 1;
@@ -215,26 +235,6 @@ public class MonopolyGUI extends JPanel {
         playerInitPanel.add(addCPUPlayer(), gbagConstraintsAddCPUPlayerButton);
         playerInitPanel.add(playButton(), gbagConstraintsPlayButton);
         playerInitPanel.add(messagePanel, gbagConstraintsMessage);
-
-        switchPanels.add(startPanel, "StartPanel");
-        switchPanels.add(playerInitPanel, "PlayerInitializePanel");
-        switchPanels.add(monopolyPanel, "MonopolyPanel");
-
-        frame.add(switchPanels);
-
-        // Frame does not close immediately when trying to quit
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we) {
-                if (JOptionPane.showConfirmDialog(frame, "Are you sure you want to quit?")
-                        == JOptionPane.OK_OPTION) {
-                    frame.setVisible(false);
-                    frame.dispose();
-                }
-            }
-        });
-        frame.setVisible(true);
     }
 
     /**
@@ -278,17 +278,12 @@ public class MonopolyGUI extends JPanel {
     /**
      * Set up the positions of the buttons.
      */
-    private void setupRollButton() {
+    private void setupMonopolyButtons() {
         // Add roll dice button
         buttonRollDice = buttonRollDice();
         buttonRollDice.setBounds(80, 420, 250, 40);
         rightLayeredPane.add(buttonRollDice);
-    }
 
-    /**
-     * Set up the positions of the buttons.
-     */
-    private void setupButtons() {
         // Add buy button
         buttonBuy = buttonBuy();
         buttonBuy.setBounds(80, 470, 115, 40);
@@ -433,11 +428,10 @@ public class MonopolyGUI extends JPanel {
 
             setupBoard();
             setupDice();
-            setupRollButton();
             setupPlayerToken();
             setupPlayerStatusWindow();
             setupConsoleLog();
-            setupButtons();
+            setupMonopolyButtons();
         });
         return playButton;
     }
@@ -960,7 +954,23 @@ public class MonopolyGUI extends JPanel {
         updatePlayerStatusTextArea();
     }
 
+    public void displayGUI(){
+        // Frame does not close immediately when trying to quit
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent we) {
+                if (JOptionPane.showConfirmDialog(frame, "Are you sure you want to quit?")
+                        == JOptionPane.OK_OPTION) {
+                    frame.setVisible(false);
+                    frame.dispose();
+                }
+            }
+        });
+        frame.setVisible(true);
+    }
+
     public static void main(String[] args) {
-        new MonopolyGUI();
+        new MonopolyGUI().displayGUI();
     }
 }
