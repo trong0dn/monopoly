@@ -25,14 +25,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import static monopoly17.GameBoard.BOARD_SIZE;
+import static monopoly17.Monopoly.MAX_PLAYERS;
+import static monopoly17.Monopoly.MIN_PLAYERS;
+
 /**
  * This class represents the Monopoly GUI.
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class MonopolyGUI extends JPanel {
-    public static int MIN_PLAYERS = 2;
-    public static int MAX_PLAYERS = 6;
-
     private final Monopoly monopoly;
     private GameBoardGUI gameBoard;
     private int currentPlayerOrder;
@@ -345,7 +346,7 @@ public class MonopolyGUI extends JPanel {
      * Create a JButton for adding a new Human Player.
      * @return      JButton
      */
-    public JButton addPlayerButton() {
+    private JButton addPlayerButton() {
         addPlayer.addActionListener(e -> {
             if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
                 // Make the panel to get the username
@@ -365,7 +366,7 @@ public class MonopolyGUI extends JPanel {
      * Create a JButton for adding a new CPU Player.
      * @return      JButton
      */
-    public JButton addCPUPlayer() {
+    private JButton addCPUPlayer() {
         addCPUPlayer.addActionListener(e -> {
             if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
                 // Make the panel to get the username
@@ -430,7 +431,7 @@ public class MonopolyGUI extends JPanel {
      * This will change to the player initialization panel.
      * @return JButton
      */
-    public JButton startButton() {
+    private JButton startButton() {
         startButton.addActionListener(e -> {
             CardLayout cl = (CardLayout) (switchPanels.getLayout());
             cl.show(switchPanels, "PlayerInitializePanel");
@@ -442,7 +443,7 @@ public class MonopolyGUI extends JPanel {
      * Play the game after making all the players.
      * @return JButton
      */
-    public JButton playButton() {
+    private JButton playButton() {
         playButton.addActionListener(e -> {
             CardLayout cl = (CardLayout) (switchPanels.getLayout());
             cl.show(switchPanels, "MonopolyPanel");
@@ -600,7 +601,7 @@ public class MonopolyGUI extends JPanel {
     /**
      * Handles when it is the CPU Player's next turn.
      */
-    public void handleCPUNextTurn() {
+    private void handleCPUNextTurn() {
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
         if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
             buttonRunCPU.setEnabled(true);
@@ -660,7 +661,7 @@ public class MonopolyGUI extends JPanel {
     /**
      * Handle paying rent for a property.
      */
-    public void handlePayRent() {
+    private void handlePayRent() {
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
         Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
         int roll = die1.getFaceValue() + die2.getFaceValue();
@@ -679,7 +680,7 @@ public class MonopolyGUI extends JPanel {
     /**
      * Handle when a Human Player roll doubles.
      */
-    public void handlePlayerRollDoubles() {
+    private void handlePlayerRollDoubles() {
         if (isDouble) {
             buttonRollDice.setEnabled(true);
             buttonNextTurn.setEnabled(false);
@@ -744,7 +745,7 @@ public class MonopolyGUI extends JPanel {
     /**
      * Handles the button logic during CPU Player's turn.
      */
-    public void handleCPUButtons() {
+    private void handleCPUButtons() {
         buttonRunCPU.setEnabled(false);
         buttonRollDice.setEnabled(false);
         buttonBuyHouse.setEnabled(false);
@@ -757,7 +758,7 @@ public class MonopolyGUI extends JPanel {
     /**
      * Handle square when CPU Player has landed.
      */
-    public void handleCPUSquare() {
+    private void handleCPUSquare() {
         int roll = die1.getFaceValue() + die2.getFaceValue();
         if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
             PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
@@ -835,11 +836,10 @@ public class MonopolyGUI extends JPanel {
         isDouble = die1.getFaceValue() == die2.getFaceValue();
         int diceValue = die1.getFaceValue() + die2.getFaceValue();
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-
-        Square currentSquare = this.gameBoard.getSquare(10); //If in Jail
+        Square currentSquare = this.gameBoard.getSquare(SquareInfo.SQUARE_10.getPosition()); //If in Jail
 
         if (currentPlayer.getPlayer().getJailTurns() == 0) {
-            currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % 40;
+            currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % BOARD_SIZE;
             currentPlayer.move(diceValue);
             currentSquare = this.gameBoard.getSquare(currentSquareNumber);
         }
@@ -858,6 +858,17 @@ public class MonopolyGUI extends JPanel {
         }
 
         // When a player lands on a square
+        handleSquareGUI(currentPlayer, currentSquare, diceValue);
+        updatePlayerStatusTextArea();
+    }
+
+    /**
+     * Handles the GUI display when a player lands on a square.
+     * @param currentPlayer     PlayerGUI
+     * @param currentSquare     Square
+     * @param diceValue         int
+     */
+    private void handleSquareGUI(PlayerGUI currentPlayer, Square currentSquare, int diceValue) {
         if (currentSquare.isOwnable() && !currentSquare.isOwned()) {
             infoConsole.append("You landed on " + currentSquare.name() +
                     "\nProperty Cost: $" + currentSquare.cost());
@@ -877,32 +888,19 @@ public class MonopolyGUI extends JPanel {
             } else if (currentSquare instanceof Property) {
                 infoConsole.append("Property: You landed on:" + currentSquare.name() +
                         "\nRent: $" + currentSquare.rent(diceValue));
-                buttonPayRent.setEnabled(true);
-                buttonRollDice.setEnabled(false);
-                buttonNextTurn.setEnabled(false);
-                buttonBuy.setEnabled(false);
-                buttonBuyHouse.setEnabled(false);
+                handleButtonsSpecialSquares();
                 // Player lands on owned railroad
             } else if (currentSquare instanceof Railroad) {
                 infoConsole.append("Station: You landed on " + currentSquare.name() +
                         "\nRent: $" + (2*currentSquare.rent(diceValue)));
-                buttonPayRent.setEnabled(true);
-                buttonRollDice.setEnabled(false);
-                buttonNextTurn.setEnabled(false);
-                buttonBuy.setEnabled(false);
-                buttonBuyHouse.setEnabled(false);
+                handleButtonsSpecialSquares();
                 // Player lands on owned utility
             } else if (currentSquare instanceof Utility) {
                 infoConsole.append("Utility: You landed on " + currentSquare.name() +
                         "\nRent: $" + currentSquare.rent(diceValue));
-                buttonPayRent.setEnabled(true);
-                buttonRollDice.setEnabled(false);
-                buttonNextTurn.setEnabled(false);
-                buttonBuy.setEnabled(false);
-                buttonBuyHouse.setEnabled(false);
+                handleButtonsSpecialSquares();
             }
         } else {
-            // Player lands on tax square
             if (currentSquare instanceof Taxes) {
                 infoConsole.append("Taxes: You landed on " + currentSquare.name() +
                         "\nTax: $" + ((Taxes) currentSquare).getTax());
@@ -911,57 +909,7 @@ public class MonopolyGUI extends JPanel {
                 buttonNextTurn.setEnabled(false);
                 buttonBuy.setEnabled(false);
             } else if(currentSquare instanceof Jail) {
-                if(((Jail) currentSquare).getType() == Jail.JailType.GOTO_JAIL) {
-                    buttonRunCPU.setEnabled(false);
-                    buttonRollDice.setEnabled(false);
-                    buttonBuyHouse.setEnabled(false);
-                    buttonPayRent.setEnabled(false);
-                    buttonBuy.setEnabled(false);
-                    buttonPayBail.setEnabled(false);
-                    buttonNextTurn.setEnabled(true);
-                    //buttonGoToJail.setEnabled(true);
-                    infoConsole.setText("You have landed on:\n" + currentSquare.name());
-                    infoConsole.append("\nYou are now in Jail.");
-
-                    ArrayList<Integer> positionAndJailTurns = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare,
-                            diceValue);
-
-                    int newJailPosition = positionAndJailTurns.get(0);
-                    int jailTurns = positionAndJailTurns.get(1);
-
-                    currentPlayer.moveTo(newJailPosition);
-                    currentPlayer.getPlayer().setJailTurns(jailTurns);
-
-                } else if(currentPlayer.getPlayer().getJailTurns() > 0) {
-                    ArrayList<Integer> positionAndJailTurns = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare,
-                            diceValue);
-
-                    int newJailPosition = positionAndJailTurns.get(0);
-                    int jailTurns = positionAndJailTurns.get(1);
-
-                    currentPlayer.moveTo(newJailPosition);
-                    currentPlayer.getPlayer().setJailTurns(jailTurns);
-
-                    if(isDouble) {
-                        buttonRollDice.setEnabled(true);
-                        buttonNextTurn.setEnabled(false);
-                        infoConsole.setText("You rolled doubles. You are now out of jail!\nRoll again!");
-                    } else if (currentPlayer.getPlayer().getJailTurns() == 0) {
-                        buttonRollDice.setEnabled(false);
-                        buttonNextTurn.setEnabled(true);
-                        infoConsole.setText("You did not roll doubles.\n");
-                        infoConsole.append("You have been in Jail for 3 turns.\nYou are now out of jail\n");
-                    } else {
-                        buttonRollDice.setEnabled(false);
-                        buttonNextTurn.setEnabled(true);
-                        buttonPayBail.setEnabled(true);
-                        infoConsole.setText("You did not roll doubles.\nYou are still in Jail\n");
-                        infoConsole.append("Bail out of Jail for $50 by pressing Pay Bail");
-                    }
-                } else {
-                    infoConsole.setText("Non-purchasable: You landed on: \n" + currentSquare.name());
-                    isRollDouble(currentPlayerOrder);
-                }
+                handleJail(currentPlayer, currentSquare, diceValue);
             } else {
                 // FREE PARKING, CHANCE, COMMUNITY CHEST
                 infoConsole.append("Non-purchasable: You landed on: \n" + currentSquare.name());
@@ -971,7 +919,91 @@ public class MonopolyGUI extends JPanel {
             }
             buttonBuyHouse.setEnabled(false);
         }
-        updatePlayerStatusTextArea();
+    }
+
+    /**
+     * Handles button logic for GUI when player interacts with Railroads, Utilities, or Property.
+     */
+    private void handleButtonsSpecialSquares() {
+        buttonPayRent.setEnabled(true);
+        buttonRollDice.setEnabled(false);
+        buttonNextTurn.setEnabled(false);
+        buttonBuy.setEnabled(false);
+        buttonBuyHouse.setEnabled(false);
+    }
+
+    /**
+     * Handles button logic for GUI when player interacts with Jail.
+     */
+    private void handleButtonsGoToJail() {
+        buttonRunCPU.setEnabled(false);
+        buttonRollDice.setEnabled(false);
+        buttonBuyHouse.setEnabled(false);
+        buttonPayRent.setEnabled(false);
+        buttonBuy.setEnabled(false);
+        buttonPayBail.setEnabled(false);
+        buttonNextTurn.setEnabled(true);
+    }
+
+    /**
+     * Handles GUI when a player interacts with Jail sqaure.
+     * @param currentPlayer     PlayerGUI
+     * @param currentSquare     Square
+     * @param diceValue         int
+     */
+    private void handleJail(PlayerGUI currentPlayer, Square currentSquare, int diceValue) {
+        if(((Jail) currentSquare).getType() == Jail.JailType.GOTO_JAIL) {
+            handleButtonsGoToJail();
+            infoConsole.setText("You have landed on:\n" + currentSquare.name());
+            infoConsole.append("\nYou are now in Jail.");
+            updateJailTurn(currentPlayer, currentSquare, diceValue);
+        } else if(currentPlayer.getPlayer().getJailTurns() > 0) {
+            updateJailTurn(currentPlayer, currentSquare, diceValue);
+            handleRollJail(currentPlayer);
+        } else {
+            infoConsole.setText("Non-purchasable: You landed on: \n" + currentSquare.name());
+            isRollDouble(currentPlayerOrder);
+        }
+    }
+
+    /**
+     * Update the jail turns for a player.
+     * @param currentPlayer     PlayerGUI
+     * @param currentSquare     Square
+     * @param diceValue         int
+     */
+    private void updateJailTurn(PlayerGUI currentPlayer, Square currentSquare, int diceValue) {
+        ArrayList<Integer> positionAndJailTurns = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare,
+                diceValue);
+
+        int newJailPosition = positionAndJailTurns.get(0);
+        int jailTurns = positionAndJailTurns.get(1);
+
+        currentPlayer.moveTo(newJailPosition);
+        currentPlayer.getPlayer().setJailTurns(jailTurns);
+    }
+
+    /**
+     * Handles when a player attempts to roll to get out of jail.
+     * @param currentPlayer     PlayerGUI
+     */
+    private void handleRollJail(PlayerGUI currentPlayer) {
+        if(isDouble) {
+            buttonRollDice.setEnabled(true);
+            buttonNextTurn.setEnabled(false);
+            infoConsole.setText("You rolled doubles. You are now out of jail!\nRoll again!");
+        } else if (currentPlayer.getPlayer().getJailTurns() == 0) {
+            buttonRollDice.setEnabled(false);
+            buttonNextTurn.setEnabled(true);
+            infoConsole.setText("You did not roll doubles.\n");
+            infoConsole.append("You have been in Jail for 3 turns.\nYou are now out of jail\n");
+        } else {
+            buttonRollDice.setEnabled(false);
+            buttonNextTurn.setEnabled(true);
+            buttonPayBail.setEnabled(true);
+            infoConsole.setText("You did not roll doubles.\nYou are still in Jail\n");
+            infoConsole.append("Bail out of Jail for $50 by pressing Pay Bail");
+        }
     }
 
     /**

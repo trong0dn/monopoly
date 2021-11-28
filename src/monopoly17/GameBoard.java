@@ -5,15 +5,15 @@ package monopoly17;
  * @author Elisha Catherasoo & Trong Nguyen
  */
 public class GameBoard {
-    private final int NUM_TILES = 41;
+    public static final int BOARD_SIZE = 40;
     private final Square[] board; // representation of the game board
 
     /**
      * Constructor for GameBoard.
      */
     public GameBoard() {
-        this.board = new Square[NUM_TILES];
-        for (int i = 0; i < NUM_TILES; i++) {
+        this.board = new Square[BOARD_SIZE];
+        for (int i = 0; i < BOARD_SIZE; i++) {
             board[i] = makeSquare(i);
         }
         groupProperties();
@@ -26,7 +26,7 @@ public class GameBoard {
      * @return  int
      */
     public int size() {
-        return this.NUM_TILES;
+        return BOARD_SIZE;
     }
 
     /**
@@ -66,7 +66,7 @@ public class GameBoard {
      * @return          Square
      */
     private Square makeSquare(int position) {
-        return switch (position) { // Using cases to represent individual squares on board. Clockwise.
+        return switch (position) {  // Using cases to represent individual squares on board. Clockwise.
             case 0 -> square0();    // go
             case 1 -> square1();    // oldKent
             case 2 -> square2();    // community
@@ -107,7 +107,6 @@ public class GameBoard {
             case 37 -> square37();  // park
             case 38 -> square38();  // superTax
             case 39 -> square39();  // mayfair
-            case 40 -> square40();  // inJail
             default -> null;
         };
     }
@@ -720,13 +719,5 @@ public class GameBoard {
         int houses = 200;
         return new Property(SquareInfo.SQUARE_39.getPosition(), SquareInfo.SQUARE_39.getName(),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
-    }
-
-    /**
-     * Setup "IN JAIL" square tile on the board.
-     * @return  Square
-     */
-    public Square square40() {
-        return new Jail(SquareInfo.SQUARE_40.getPosition(), SquareInfo.SQUARE_40.getName(), Jail.JailType.IN_JAIL);
     }
 }
