@@ -26,8 +26,8 @@ public class Monopoly {
     private boolean isBankrupt;
     public static int MIN_PLAYERS = 2;
     public static int MAX_PLAYERS = 6;
-    private int maxJailTurns;
-    private int JAILPOSITION;
+    private int MAX_JAIL_TURNS;
+    private int JAIL_POSITION;
 
     /**
      * Constructor for Monopoly.
@@ -40,8 +40,8 @@ public class Monopoly {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
-        this.maxJailTurns = 3;
-        this.JAILPOSITION = 10;
+        this.MAX_JAIL_TURNS = 3;
+        this.JAIL_POSITION = 10;
     }
 
     /**
@@ -379,31 +379,57 @@ public class Monopoly {
     public void jailAction(Player player, Jail jail) {
         Jail.JailType type = jail.getType();
         if (type == Jail.JailType.GOTO_JAIL) {
-            intoJail(player);
+            System.out.println("You have landed on GO TO JAIL. You are now in Jail.");
+            goToJail(player);
+        } else if(player.getJailTurns() > 0) {
+            inJail(player);
         }
     }
 
     /**
-     * Moves the player to Jail.
+     * Action when player is currently in jail.
      * @param player    Player
      */
-    private void intoJail(Player player) {
-        System.out.println("Go to Jail!");
-        player.moveTo(40);
-        Square[] square = gameState.gameBoard.getBoard();
-        Jail jail = (Jail) square[40];
-        jailAction(player, jail);
+    private void inJail(Player player) {
+        if (rollDice.rollDice().isDouble) {
+            System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
+            player.setJailTurns(0);
+        } else {
+            if(player.getJailTurns() == 3) {
+                System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
+                player.setJailTurns(0);
+            } else {
+                System.out.println("You have not rolled doubles. You are still in Jail.");
+                player.addJailTurn();
+            }
+        }
     }
 
     /**
-     * Method for leaving jail, if the player in jail on their turn.
+     * Action when player lands on Go To Jail
      * @param player    Player
      */
-    public void leaveJail(Player player) {
+    private void goToJail(Player player) {
+        System.out.println("Go to Jail!");
+        player.moveTo(JAIL_POSITION);
+        player.addJailTurn();
+    }
+
+
+    /**
+     * Method for leaving jail, if the player is in jail on their turn.
+     * @param player    Player
+     */
+    public int leaveJail(Player player) {
+        System.out.println("You have paid Bail!");
         int JAIL_COST = 50;
         if (player.getMoney() >= JAIL_COST) {
             player.exchangeMoney(JAIL_COST * -1);
         }
+        player.setJailTurns(0);
+
+        return player.getJailTurns();
+
     }
 
     /**
