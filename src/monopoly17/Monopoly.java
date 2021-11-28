@@ -393,7 +393,7 @@ public class Monopoly {
             System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
             player.setJailTurns(0);
         } else {
-            if(player.getJailTurns() == 3) {
+            if(player.getJailTurns() == MAX_JAIL_TURNS) {
                 System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
                 player.setJailTurns(0);
             } else {
