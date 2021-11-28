@@ -89,8 +89,8 @@ public class MonopolyGUI extends JPanel {
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
-        setupFrame();
-        setupPanelComponents();
+        initFrame();
+        initPanelComponents();
         setupSwitchPanel();
 
         monopoly = new Monopoly();
@@ -101,14 +101,20 @@ public class MonopolyGUI extends JPanel {
         monopoly.play();        // Determines the winners and losers
     }
 
-    private void setupFrame() {
+    /**
+     * Initialize the frame and it's panels.
+     */
+    private void initFrame() {
         frame = new JFrame("MONOPOLY");
         playerInitPanel = new JPanel(new GridBagLayout());
         startPanel = new JPanel(new GridBagLayout());
         monopolyPanel = new JPanel();
     }
 
-    private void setupPanelComponents() {
+    /**
+     * Initialize the components in the panels.
+     */
+    private void initPanelComponents() {
         startButton = new JButton("Start Game");
         playButton = new JButton("Play Game!");
         addPlayer = new JButton("Add Player");
@@ -120,6 +126,9 @@ public class MonopolyGUI extends JPanel {
         messagePanel = new JPanel();
     }
 
+    /**
+     * Setup the panels in the switch panel.
+     */
     private void setupSwitchPanel() {
         Font font = new Font("Lucida Grande", Font.BOLD, 60);
 
@@ -148,6 +157,9 @@ public class MonopolyGUI extends JPanel {
         frame.add(switchPanels);
     }
 
+    /**
+     * Set up the panels.
+     */
     private void setupPanels() {
         frame.setBounds(100, 100, 450, 300);
         frame.setSize(1080,710);
@@ -171,9 +183,11 @@ public class MonopolyGUI extends JPanel {
         setupButtons();
     }
 
+    /**
+     * Set up the buttons not in the game.
+     */
     private void setupButtons() {
         startButton.setPreferredSize(new Dimension(175, 50));
-
         playerNameInput.setPreferredSize(new Dimension(175, 50));
         addPlayer.setPreferredSize(new Dimension(175, 50));
         addCPUPlayer.setPreferredSize(new Dimension(175, 50));
@@ -181,6 +195,9 @@ public class MonopolyGUI extends JPanel {
         playButton.setEnabled(false);
     }
 
+    /**
+     * Set up the layouts used.
+     */
     private void setupLayouts() {
         // GridBagConstraints
         GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
@@ -319,6 +336,7 @@ public class MonopolyGUI extends JPanel {
         buttonNextTurn.setEnabled(false);
         rightLayeredPane.add(buttonNextTurn);
 
+        // Add pay bail button
         buttonPayBail = buttonPayBail();
         buttonPayBail.setBounds(215, 520, 115, 40);
         buttonPayBail.setEnabled(false);
@@ -959,6 +977,9 @@ public class MonopolyGUI extends JPanel {
         updatePlayerStatusTextArea();
     }
 
+    /**
+     * Display the game.
+     */
     public void displayGUI(){
         // Frame does not close immediately when trying to quit
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
