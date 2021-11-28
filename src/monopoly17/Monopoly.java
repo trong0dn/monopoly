@@ -44,7 +44,7 @@ public class Monopoly {
      * Different decision states during a player's turn.
      */
     public enum DecisionState {
-        NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION, TAX
+        NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION, TAX, IN_JAIL
     }
 
     /**
@@ -107,15 +107,14 @@ public class Monopoly {
         System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
         int countRollDoubles = 0;
         while (true) {
-            //TODO If player is in jail, they have to try to get out
+            // If player is in jail, they have to try to get out
             Dice.Roll roll = rollDice.rollDice();
             if (roll.isDouble) {
                 countRollDoubles++;
-                //TODO Check rules on rolling doubles
             }
-            //TODO Player can leave jail if they roll doubles
+            // Player can leave jail if they roll doubles
             if (countRollDoubles == 3) {
-                //TODO Goto_Jail
+                // Goto_Jail
                 break;
             }
             // Print the roll number and current position
@@ -172,25 +171,29 @@ public class Monopoly {
      * @param player    Player
      * @param square    Square
      * @param roll      int
+     * @return          ArrayList<Integer>
      */
-    public void handleSquare(Player player, Square square, int roll) {
+    public ArrayList<Integer> handleSquare(Player player, Square square, int roll) {
         boolean owned = square.isOwned();
         boolean ownable = square.isOwnable();
-
+        if (square instanceof  Jail) {
+            jailAction(player, (Jail) square);
+        }
         if (!owned && ownable) {
             unowned(player, square);
-        }
-        else if (owned) {
+        } else if (owned) {
             owned(player, square, roll);
-        }
-        else if (square instanceof Taxes) {
+        } else if (square instanceof Taxes) {
             payTax(player, (Taxes) square, square);
-        }
-        else if (square instanceof  Jail) {
-            jailAction(player, (Jail) square);
         } else if (square instanceof Railroad) {
             railroadMove(player);
         }
+
+        ArrayList<Integer> positionJailTurns = new ArrayList<>();
+        positionJailTurns.add(player.getPosition());
+        positionJailTurns.add(player.getJailTurns());
+
+        return positionJailTurns;
     }
 
     /**
@@ -304,18 +307,9 @@ public class Monopoly {
      */
     public void payTax(Player player, Taxes tax, Square square) {
         int cost;
+        gameState.decisionState = DecisionState.TAX;
         // Income Tax square
-        if (square.position() == 4) {
-            gameState.decisionState = DecisionState.TAX;
-            //if (player.inputDecision(gameState, new String[] {"10", "200"}) == 0)
-                //cost = tax.getTax(player.getMoney());
-            //else {
-                cost = tax.getTax();
-            //}
-        // Super Tax square
-        } else {
-            cost = tax.getTax();
-        }
+        cost = tax.getTax();
         System.out.println("You have landed on " + square.name() + " and must pay " + cost + " in Taxes.");
         if (player.getMoney() < cost) {
             System.out.println("You have insufficient funds.");
@@ -361,31 +355,58 @@ public class Monopoly {
     public void jailAction(Player player, Jail jail) {
         Jail.JailType type = jail.getType();
         if (type == Jail.JailType.GOTO_JAIL) {
-            intoJail(player);
+            System.out.println("You have landed on GO TO JAIL. You are now in Jail.");
+            goToJail(player);
+        } else if(player.getJailTurns() > 0) {
+            inJail(player);
         }
     }
 
     /**
-     * Moves the player to Jail.
+     * Action when player is currently in jail.
      * @param player    Player
      */
-    private void intoJail(Player player) {
-        System.out.println("Go to Jail!");
-        player.moveTo(40);
-        Square[] square = gameState.gameBoard.getBoard();
-        Jail jail = (Jail) square[40];
-        jailAction(player, jail);
+    private void inJail(Player player) {
+        if (rollDice.rollDice().isDouble) {
+            System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
+            player.setJailTurns(0);
+        } else {
+            int MAX_JAIL_TURNS = 3;
+            if(player.getJailTurns() == MAX_JAIL_TURNS) {
+                System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
+                player.setJailTurns(0);
+            } else {
+                System.out.println("You have not rolled doubles. You are still in Jail.");
+                player.addJailTurn();
+            }
+        }
     }
 
     /**
-     * Method for leaving jail, if the player in jail on their turn.
+     * Action when player lands on Go To Jail
      * @param player    Player
      */
-    public void leaveJail(Player player) {
+    private void goToJail(Player player) {
+        System.out.println("Go to Jail!");
+        player.moveTo(SquareInfo.SQUARE_10.getPosition());
+        player.addJailTurn();
+    }
+
+
+    /**
+     * Method for leaving jail, if the player is in jail on their turn.
+     * @param player    Player
+     */
+    public int leaveJail(Player player) {
+        System.out.println("You have paid Bail!");
         int JAIL_COST = 50;
         if (player.getMoney() >= JAIL_COST) {
             player.exchangeMoney(JAIL_COST * -1);
         }
+        player.setJailTurns(0);
+
+        return player.getJailTurns();
+
     }
 
     /**

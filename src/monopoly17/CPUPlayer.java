@@ -145,6 +145,8 @@ public class CPUPlayer implements Player {
             case BUY_HOUSE -> handleBuyHouse();
             case TURN_ACTION -> handleTurnAction();
             case TAX -> handleIncomeTax();
+            // TODO CPU handleJail()
+            case IN_JAIL -> false;
         };
     }
 
@@ -168,6 +170,11 @@ public class CPUPlayer implements Player {
     public int inputDecision(GameState state, String[] choices) {
         // CPU Player always selects true
         return 0;
+    }
+
+    @Override
+    public void addJailTurn() {
+        jailTurns++;
     }
 
     /**
