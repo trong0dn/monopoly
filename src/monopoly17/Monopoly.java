@@ -22,7 +22,7 @@ import java.util.*;
  */
 public class Monopoly {
     private final RollDice rollDice;
-    private GameState gameState;
+    private final GameState gameState;
     private boolean isBankrupt;
     public static int MIN_PLAYERS = 2;
     public static int MAX_PLAYERS = 6;
@@ -33,7 +33,7 @@ public class Monopoly {
     public Monopoly() {
         this.rollDice = new RollDice();
         this.isBankrupt = false;
-        this.gameState = new GameState();
+        gameState = new GameState();
         gameState.players = new LinkedList<>();
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
@@ -45,16 +45,6 @@ public class Monopoly {
      */
     public enum DecisionState {
         NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION, TAX, IN_JAIL
-    }
-
-    /**
-     * Track the game state.
-     */
-    public static class GameState {
-        public DecisionState decisionState;
-        public LinkedList<Player> players;
-        public GameBoard gameBoard;
-        public Player currentPlayer;
     }
 
     /**

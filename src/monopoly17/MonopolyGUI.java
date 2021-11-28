@@ -30,6 +30,19 @@ import java.util.LinkedList;
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class MonopolyGUI extends JPanel {
+    public static int MIN_PLAYERS = 2;
+    public static int MAX_PLAYERS = 6;
+
+    private final Monopoly monopoly;
+    private GameBoardGUI gameBoard;
+    private int currentPlayerOrder;
+    private int currentSquareNumber;
+    private final ArrayList<PlayerGUI> playersGUI = new ArrayList<>();
+    private DiceGUI die1;
+    private DiceGUI die2;
+    private Boolean isDouble = false;
+    private int doubles = 0;
+
     private JFrame frame;
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
@@ -46,16 +59,6 @@ public class MonopolyGUI extends JPanel {
     private JPanel titleBackground;
     private JPanel messagePanel;
 
-    private final Monopoly monopoly;
-    private GameBoardGUI gameBoard;
-    private int currentPlayerOrder;
-    private int currentSquareNumber;
-    private final ArrayList<PlayerGUI> playersGUI = new ArrayList<>();
-    private DiceGUI die1;
-    private DiceGUI die2;
-    private Boolean isDouble = false;
-    private int doubles = 0;
-
     // Visuals and Buttons for monopolyPanel
     private JLayeredPane rightLayeredPane;
     private JPanel playerAssetsPanel;
@@ -70,9 +73,6 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonBuyHouse;
     private JButton buttonRunCPU;
     private JButton buttonPayBail;
-
-    public static int MIN_PLAYERS = 2;
-    public static int MAX_PLAYERS = 6;
 
     private final Color[] playerTokenColors = {
         Color.RED,
@@ -92,12 +92,10 @@ public class MonopolyGUI extends JPanel {
         initFrame();
         initPanelComponents();
         setupSwitchPanel();
-
         monopoly = new Monopoly();
-        Monopoly.GameState gameState = new Monopoly.GameState();
+        GameState gameState = new GameState();
         gameState.players = new LinkedList<>();
         this.playersList = gameState.players;
-
         monopoly.play();        // Determines the winners and losers
     }
 
@@ -719,7 +717,6 @@ public class MonopolyGUI extends JPanel {
                                 infoConsole.setText("You can't afford anymore houses for " + property.name());
                             }
                             updatePlayerStatusTextArea();
-                            // TODO Display dots when player buys house on property.
                         });
                         panel.add(propButton);
                     }
