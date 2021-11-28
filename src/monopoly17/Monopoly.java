@@ -25,8 +25,7 @@ public class Monopoly {
     private GameState gameState;
     private boolean isBankrupt;
     private int maxJailTurns;
-    private int JailPosition;
-    private int justVisitingPosition;
+    private int JAILPOSITION;
 
     /**
      * Constructor for Monopoly.
@@ -40,8 +39,7 @@ public class Monopoly {
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
         this.maxJailTurns = 3;
-        this.JailPosition = 40;
-        this.justVisitingPosition = 10;
+        this.JAILPOSITION = 40;
     }
 
     /**
@@ -393,12 +391,12 @@ public class Monopoly {
         gameState.decisionState = DecisionState.IN_JAIL;
         if (rollDice.rollDice().isDouble) {
             System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
-            player.move(justVisitingPosition);
+            player.moveTo(JAILPOSITION);
             player.setJailTurns(0);
         } else {
             if(player.getJailTurns() == maxJailTurns) {
                 System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
-                player.moveTo(justVisitingPosition);
+                player.moveTo(JAILPOSITION);
                 player.setJailTurns(0);
             } else {
                 System.out.println("You have not rolled doubles. You are still in Jail.");
@@ -413,7 +411,7 @@ public class Monopoly {
      */
     private void goToJail(Player player) {
         System.out.println("Go to Jail!");
-        player.moveTo(JailPosition);
+        player.moveTo(JAILPOSITION);
     }
 
     /**
