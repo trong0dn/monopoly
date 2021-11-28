@@ -93,7 +93,7 @@ public interface Player {
     /**
      * Add another turn that the player is in jail.
      */
-    void addJailTurns();
+    void addJailTurn();
 
     /**
      * Get how many turn the player has been in jail.

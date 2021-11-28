@@ -175,8 +175,11 @@ public class HumanPlayer implements Player {
         return this.input.inputDecision(choices);
     }
 
+    /**
+     * The player was in jail for another turn.
+     */
     @Override
-    public void addJailTurns() {
+    public void addJailTurn() {
         jailTurns++;
     }
 

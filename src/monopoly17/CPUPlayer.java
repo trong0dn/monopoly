@@ -145,6 +145,8 @@ public class CPUPlayer implements Player {
             case BUY_HOUSE -> handleBuyHouse();
             case TURN_ACTION -> handleTurnAction();
             case TAX -> handleIncomeTax();
+            // TODO CPU handleJail()
+            case IN_JAIL -> false;
         };
     }
 
@@ -171,7 +173,7 @@ public class CPUPlayer implements Player {
     }
 
     @Override
-    public void addJailTurns() {
+    public void addJailTurn() {
         jailTurns++;
     }
 

@@ -515,9 +515,13 @@ public class MonopolyGUI extends JPanel {
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
             int roll = die1.getFaceValue() + die2.getFaceValue();
 
-            int newPosition = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+            int newPosition = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll).get(0);
+            int jailTurns = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll).get(1);
 
             currentPlayer.moveTo(newPosition);
+            currentPlayer.getPlayer().setJailTurns(jailTurns);
+
+            System.out.println(currentPlayer.getPlayer().getJailTurns() + "====");
 
             buttonRunCPU.setEnabled(false);
             buttonRollDice.setEnabled(false);
@@ -651,15 +655,41 @@ public class MonopolyGUI extends JPanel {
                     buttonPayRent.setEnabled(false);
                     buttonBuy.setEnabled(false);
                     buttonPayBail.setEnabled(false);
-                    buttonNextTurn.setEnabled(false);
-                    buttonGoToJail.setEnabled(true);
+                    buttonNextTurn.setEnabled(true);
+                    //buttonGoToJail.setEnabled(true);
                     infoConsole.setText("You have landed on:\n" + currentSquare.name());
-                    infoConsole.append("\nPress Go To Jail.");
-                }
-                if(((Jail) currentSquare).getType() == Jail.JailType.IN_JAIL && currentPlayer.getPlayer().getJailTurns() > 0) {
+                    infoConsole.append("\nYou are now in Jail.");
+
+                    ArrayList<Integer> positionAndJailTurns = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare,
+                            diceValue);
+
+                    int newJailPosition = positionAndJailTurns.get(0);
+                    int jailTurns = positionAndJailTurns.get(1);
+
+                    currentPlayer.moveTo(newJailPosition);
+                    currentPlayer.getPlayer().setJailTurns(jailTurns);
+
+                    System.out.println(currentPlayer.getPlayer().getJailTurns() + "====");
+
+                } else if(currentPlayer.getPlayer().getJailTurns() > 0) {
+                    buttonRollDice.setEnabled((false));
                     buttonPayBail.setEnabled(true);
+                    buttonNextTurn.setEnabled(true);
                     infoConsole.setText("You are in Jail");
-                    currentPlayer.getPlayer().moveTo(monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, diceValue));
+
+                    ArrayList<Integer> positionAndJailTurns = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare,
+                            diceValue);
+
+                    int newJailPosition = positionAndJailTurns.get(0);
+                    int jailTurns = positionAndJailTurns.get(1);
+
+                    currentPlayer.moveTo(newJailPosition);
+                    currentPlayer.getPlayer().setJailTurns(jailTurns);
+
+                    System.out.println(currentPlayer.getPlayer().getJailTurns() + "........");
+                } else {
+                    infoConsole.setText("Non-purchasable: You landed on: \n" + currentSquare.name());
+                    isRollDouble(currentPlayerOrder);
                 }
             } else {
                 // FREE PARKING, CHANCE, COMMUNITY CHEST

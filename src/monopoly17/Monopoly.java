@@ -186,10 +186,11 @@ public class Monopoly {
      * @param roll      int
      * @return          int
      */
-    public int handleSquare(Player player, Square square, int roll) {
+    public ArrayList<Integer> handleSquare(Player player, Square square, int roll) {
         boolean owned = square.isOwned();
         boolean ownable = square.isOwnable();
         if (square instanceof  Jail) {
+            System.out.println("1");
             jailAction(player, (Jail) square);
         }
         if (!owned && ownable) {
@@ -202,7 +203,11 @@ public class Monopoly {
             railroadMove(player);
         }
 
-        return player.getPosition();
+        ArrayList<Integer> positionJailTurns = new ArrayList<>();
+        positionJailTurns.add(player.getPosition());
+        positionJailTurns.add(player.getJailTurns());
+
+        return positionJailTurns;
     }
 
     /**
@@ -373,7 +378,7 @@ public class Monopoly {
     public void jailAction(Player player, Jail jail) {
         Jail.JailType type = jail.getType();
         if (type == Jail.JailType.GOTO_JAIL) {
-            System.out.println("You have landed on GO TO JAIL. You are now in Jail.");
+            System.out.println("You have landed on GO TO JAIL");
             goToJail(player);
         } else if(player.getJailTurns() > 0) {
             inJail(player);
@@ -387,17 +392,19 @@ public class Monopoly {
     private void inJail(Player player) {
         gameState.decisionState = DecisionState.IN_JAIL;
         if (rollDice.rollDice().isDouble) {
+            System.out.println("2");
             System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
-            //player.moveTo(JAILPOSITION);
             player.setJailTurns(0);
         } else {
             if(player.getJailTurns() > maxJailTurns) {
-                System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
-                //player.moveTo(JAILPOSITION);
+                System.out.println("3");
+                System.out.println("You have been in Jail for 3 turns.\n");
                 player.setJailTurns(0);
             } else {
+                System.out.println("4");
                 System.out.println("You have not rolled doubles. You are still in Jail.");
-                player.addJailTurns();
+                player.addJailTurn();
+                System.out.println(player.getJailTurns() + "+++++++");
             }
         }
     }
@@ -407,9 +414,11 @@ public class Monopoly {
      * @param player    Player
      */
     private void goToJail(Player player) {
+        System.out.println("5");
         System.out.println("Go to Jail!");
         player.moveTo(JAILPOSITION);
-        player.addJailTurns();
+        player.addJailTurn();
+        System.out.println(player.getJailTurns() + ",,,,,,");
     }
 
     /**
@@ -417,6 +426,7 @@ public class Monopoly {
      * @param player    Player
      */
     public void leaveJail(Player player) {
+        System.out.println("6");
         int JAIL_COST = 50;
         if (player.getMoney() >= JAIL_COST) {
             player.exchangeMoney(JAIL_COST * -1);
