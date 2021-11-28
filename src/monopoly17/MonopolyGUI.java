@@ -52,7 +52,6 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonBuy;
     private JButton buttonBuyHouse;     // Add buy house button
     private JButton buttonRunCPU;
-    private JButton buttonGoToJail;
     private JButton buttonPayBail;
     private boolean firstRoll = true;
 
@@ -168,11 +167,6 @@ public class MonopolyGUI extends JPanel {
         buttonNextTurn.setBounds(215, 570, 115, 40);
         buttonNextTurn.setEnabled(false);
         rightLayeredPane.add(buttonNextTurn);
-
-        buttonGoToJail = buttonGoToJail();
-        buttonGoToJail.setBounds(80, 520, 115, 40);
-        buttonGoToJail.setEnabled(false);
-        rightLayeredPane.add(buttonGoToJail);
 
         buttonPayBail = buttonPayBail();
         buttonPayBail.setBounds(215, 520, 115, 40);
@@ -338,6 +332,8 @@ public class MonopolyGUI extends JPanel {
             cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
             infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
 
+            PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
+
             if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
                 buttonRunCPU.setEnabled(true);
                 buttonRollDice.setEnabled(false);
@@ -349,7 +345,10 @@ public class MonopolyGUI extends JPanel {
             buttonPayRent.setEnabled(false);
             buttonBuy.setEnabled(false);
             buttonBuyHouse.setEnabled(false);
-            buttonGoToJail.setEnabled(false);
+
+            if (currentPlayer.getPlayer().getJailTurns() > 0) {
+                buttonPayBail.setEnabled(true);
+            }
             buttonPayBail.setEnabled(false);
             updatePlayerStatusTextArea();
         });
@@ -505,38 +504,6 @@ public class MonopolyGUI extends JPanel {
     }
 
     /**
-     * Makes the player go to jail.
-     * @return  JButton
-     */
-    private JButton buttonGoToJail() {
-        buttonGoToJail = new JButton("Go To Jail");
-        buttonGoToJail.addActionListener(e -> {
-            PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
-            int roll = die1.getFaceValue() + die2.getFaceValue();
-
-            int newPosition = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll).get(0);
-            int jailTurns = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll).get(1);
-
-            currentPlayer.moveTo(newPosition);
-            currentPlayer.getPlayer().setJailTurns(jailTurns);
-
-            System.out.println(currentPlayer.getPlayer().getJailTurns() + "====");
-
-            buttonRunCPU.setEnabled(false);
-            buttonRollDice.setEnabled(false);
-            buttonBuyHouse.setEnabled(false);
-            buttonPayRent.setEnabled(false);
-            buttonBuy.setEnabled(false);
-            buttonPayBail.setEnabled(false);
-            buttonGoToJail.setEnabled(false);
-            buttonNextTurn.setEnabled(true);
-        });
-
-        return buttonGoToJail;
-    }
-
-    /**
      * Allows the player to bail out of jail.
      * @return  JButton
      */
@@ -553,7 +520,6 @@ public class MonopolyGUI extends JPanel {
             buttonPayRent.setEnabled(false);
             buttonBuy.setEnabled(false);
             buttonPayBail.setEnabled(false);
-            buttonGoToJail.setEnabled(false);
             buttonNextTurn.setEnabled(true);
         });
 
