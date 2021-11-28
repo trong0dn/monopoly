@@ -26,6 +26,8 @@ public class MonopolyTest {
     int houses = 50;
     private final Square oldKent = new Property(position, "OLD KENT ROAD",
             rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+    public final Square goToJail = new Jail(30, "GO TO JAIL", Jail.JailType.GOTO_JAIL);
+    public final Square inJail = new Jail(40, "IN JAIL", Jail.JailType.IN_JAIL);
 
     /**
      * Test the buyProperty method.
@@ -78,5 +80,17 @@ public class MonopolyTest {
         humanPlayer2.setMoney(0);
         monopoly.owned(humanPlayer2, oldKent, 5);
         assertTrue(monopoly.isBankrupt());
+    }
+
+    /**
+     * Test where the player goes when they land on GO TO JAIL
+     */
+    @Test
+    public void testGoToJail() {
+        humanPlayer.moveTo(30);
+
+        monopoly.handleSquare(humanPlayer, goToJail, 0);
+
+        Assert.assertEquals(40, humanPlayer.getPosition());
     }
 }
