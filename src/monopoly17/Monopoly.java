@@ -24,6 +24,10 @@ public class Monopoly {
     private final RollDice rollDice;
     private GameState gameState;
     private boolean isBankrupt;
+    private int maxJailTurns;
+    private int goToJailPosition;
+    private int inJailPosition;
+    private int justVisitingPosition;
 
 
     /**
@@ -37,13 +41,17 @@ public class Monopoly {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
+        this.maxJailTurns = 3;
+        this.goToJailPosition = 30;
+        this.inJailPosition = 40;
+        this.justVisitingPosition = 10;
     }
 
     /**
      * Different decision states during a player's turn.
      */
     public enum DecisionState {
-        NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION, TAX
+        NONE, BUY_PROPERTY, BUY_HOUSE, TURN_ACTION, TAX, IN_JAIL
     }
 
     /**
@@ -383,15 +391,19 @@ public class Monopoly {
      * @param player    Player
      */
     private void inJail(Player player) {
+        gameState.decisionState = DecisionState.IN_JAIL;
         if (rollDice.rollDice().isDouble) {
             System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
-            player.moveTo(10);
+            player.moveTo(justVisitingPosition);
+            player.setJailTurns(0);
         } else {
-            if(player.getJailTurns() == 3) {
+            if(player.getJailTurns() == maxJailTurns) {
                 System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
-                player.moveTo(10);
+                player.moveTo(justVisitingPosition);
+                player.setJailTurns(0);
             } else {
                 System.out.println("You have not rolled doubles. You are still in Jail.");
+                player.addJailTurns();
             }
         }
     }
@@ -402,9 +414,9 @@ public class Monopoly {
      */
     private void intoJail(Player player) {
         System.out.println("Go to Jail!");
-        player.moveTo(40);
+        player.moveTo(goToJailPosition);
         Square[] square = gameState.gameBoard.getBoard();
-        Jail jail = (Jail) square[40];
+        Jail jail = (Jail) square[goToJailPosition];
         jailAction(player, jail);
     }
 
