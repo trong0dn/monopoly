@@ -26,8 +26,6 @@ public class Monopoly {
     private boolean isBankrupt;
     public static int MIN_PLAYERS = 2;
     public static int MAX_PLAYERS = 6;
-    private int MAX_JAIL_TURNS = 3;
-    private int JAIL_POSITION = 10;
 
     /**
      * Constructor for Monopoly.
@@ -119,15 +117,14 @@ public class Monopoly {
         System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
         int countRollDoubles = 0;
         while (true) {
-            //TODO If player is in jail, they have to try to get out
+            // If player is in jail, they have to try to get out
             Dice.Roll roll = rollDice.rollDice();
             if (roll.isDouble) {
                 countRollDoubles++;
-                //TODO Check rules on rolling doubles
             }
-            //TODO Player can leave jail if they roll doubles
+            // Player can leave jail if they roll doubles
             if (countRollDoubles == 3) {
-                //TODO Goto_Jail
+                // Goto_Jail
                 break;
             }
             // Print the roll number and current position
@@ -320,18 +317,9 @@ public class Monopoly {
      */
     public void payTax(Player player, Taxes tax, Square square) {
         int cost;
+        gameState.decisionState = DecisionState.TAX;
         // Income Tax square
-        if (square.position() == 4) {
-            gameState.decisionState = DecisionState.TAX;
-            //if (player.inputDecision(gameState, new String[] {"10", "200"}) == 0)
-                //cost = tax.getTax(player.getMoney());
-            //else {
-                cost = tax.getTax();
-            //}
-        // Super Tax square
-        } else {
-            cost = tax.getTax();
-        }
+        cost = tax.getTax();
         System.out.println("You have landed on " + square.name() + " and must pay " + cost + " in Taxes.");
         if (player.getMoney() < cost) {
             System.out.println("You have insufficient funds.");
@@ -393,6 +381,7 @@ public class Monopoly {
             System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
             player.setJailTurns(0);
         } else {
+            int MAX_JAIL_TURNS = 3;
             if(player.getJailTurns() == MAX_JAIL_TURNS) {
                 System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
                 player.setJailTurns(0);
@@ -409,7 +398,7 @@ public class Monopoly {
      */
     private void goToJail(Player player) {
         System.out.println("Go to Jail!");
-        player.moveTo(JAIL_POSITION);
+        player.moveTo(SquareInfo.SQUARE_10.getPosition());
         player.addJailTurn();
     }
 
