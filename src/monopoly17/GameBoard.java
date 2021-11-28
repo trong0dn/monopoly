@@ -66,7 +66,7 @@ public class GameBoard {
      * @return          Square
      */
     private Square makeSquare(int position) {
-        return switch (position) { // Using cases to represent individual squares on board. Clockwise.
+        return switch (position) {  // Using cases to represent individual squares on board. Clockwise.
             case 0 -> square0();    // go
             case 1 -> square1();    // oldKent
             case 2 -> square2();    // community
