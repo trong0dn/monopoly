@@ -577,10 +577,15 @@ public class MonopolyGUI extends JPanel {
         isDouble = die1.getFaceValue() == die2.getFaceValue();
         int diceValue = die1.getFaceValue() + die2.getFaceValue();
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-        currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % 40;
 
-        currentPlayer.move(diceValue);
-        Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+        Square currentSquare = this.gameBoard.getSquare(10); //If in Jail
+
+        if (currentPlayer.getPlayer().getJailTurns() == 0) {
+            currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % 40;
+            currentPlayer.move(diceValue);
+            currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+        }
+
         // Swing concurrency thread correction for layeredPane flickering
         leftLayeredPane.remove(gameBoard);
         leftLayeredPane.add(gameBoard, Integer.valueOf(0));
@@ -672,11 +677,6 @@ public class MonopolyGUI extends JPanel {
                     System.out.println(currentPlayer.getPlayer().getJailTurns() + "====");
 
                 } else if(currentPlayer.getPlayer().getJailTurns() > 0) {
-                    buttonRollDice.setEnabled((false));
-                    buttonPayBail.setEnabled(true);
-                    buttonNextTurn.setEnabled(true);
-                    infoConsole.setText("You are in Jail");
-
                     ArrayList<Integer> positionAndJailTurns = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare,
                             diceValue);
 
@@ -685,6 +685,18 @@ public class MonopolyGUI extends JPanel {
 
                     currentPlayer.moveTo(newJailPosition);
                     currentPlayer.getPlayer().setJailTurns(jailTurns);
+
+                    if(isDouble) {
+                        buttonRollDice.setEnabled(true);
+                        buttonNextTurn.setEnabled(false);
+                        infoConsole.setText("You rolled doubles. You are now out of jail!\nRoll again!");
+                    } else if (currentPlayer.getPlayer().getJailTurns() == 0) {
+                        infoConsole.setText("You have been in Jail for 3 turns.\nYou are now out of jail");
+                    } else {
+                        buttonRollDice.setEnabled(false);
+                        buttonNextTurn.setEnabled(true);
+                        infoConsole.setText("You did not roll doubles.\nYou are still in Jail");
+                    }
 
                     System.out.println(currentPlayer.getPlayer().getJailTurns() + "........");
                 } else {
