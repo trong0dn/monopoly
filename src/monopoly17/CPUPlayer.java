@@ -3,6 +3,8 @@ package monopoly17;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import static monopoly17.GameBoard.BOARD_SIZE;
+
 /**
  * This class represents the CPU player of this game.
  * @author Ibrahim Almalki & Trong Nguyen
@@ -35,7 +37,6 @@ public class CPUPlayer implements Player {
     @Override
     public void move(int numTiles) {
         this.position += numTiles;
-        int BOARD_SIZE = 40;
         if (position >= BOARD_SIZE && !inJail) {
             position -= BOARD_SIZE;
             exchangeMoney(PASS_GO_COLLECT);
@@ -145,7 +146,6 @@ public class CPUPlayer implements Player {
             case BUY_HOUSE -> handleBuyHouse();
             case TURN_ACTION -> handleTurnAction();
             case TAX -> handleIncomeTax();
-            // TODO CPU handleJail()
             case IN_JAIL -> false;
         };
     }
