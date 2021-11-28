@@ -32,11 +32,11 @@ import java.util.LinkedList;
 public class MonopolyGUI extends JPanel {
 
     private final JFrame frame;
-    private final JPanel playerInitPanel;   // Panel for making the players
-    private final JPanel startPanel;        // Panel for the main starting page
-    private JPanel monopolyPanel;           // Panel for the actual Monopoly game
-    private final JPanel switchPanels;      // Used for switching the panels
-    private final LinkedList<Player> playersList;
+    private final JPanel playerInitPanel;           // Panel for making the players
+    private final JPanel startPanel;                // Panel for the main starting page
+    private JPanel monopolyPanel;                   // Panel for the actual Monopoly game
+    private final JPanel switchPanels;              // Used for switching the panels
+    private final LinkedList<Player> playersList;   // The list of players
     private final JButton startButton;
     private final JButton playButton;
     private final JButton addPlayer;
@@ -46,7 +46,6 @@ public class MonopolyGUI extends JPanel {
     private final Font playerFont;
 
     private final Monopoly monopoly;
-    //rivate final LinkedList<Player> playersList;
     private GameBoardGUI gameBoard;
     private static JTextArea infoConsole;
     private int currentPlayerOrder;
@@ -56,7 +55,8 @@ public class MonopolyGUI extends JPanel {
     private DiceGUI die2;
     private Boolean isDouble = false;
     private int doubles = 0;
-    private JPanel boxPanel;
+
+    // Visuals and Buttons for the monopolyPanel
     private JLayeredPane rightLayeredPane;
     private JPanel playerAssetsPanel;
     private JLayeredPane leftLayeredPane;
@@ -88,22 +88,6 @@ public class MonopolyGUI extends JPanel {
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
-        setupSwitchPanels();
-
-        monopoly = new Monopoly();
-        Monopoly.GameState gameState = new Monopoly.GameState();
-        gameState.players = new LinkedList<>();
-        //playersList = gameState.players;
-        //playersList.add(new HumanPlayer(""));
-        setupBoard();
-        setupDice();
-        setupRollButton();
-        //setupPlayerToken();
-        setupPlayerStatusWindow();
-        setupConsoleLog();
-        //initController();
-        monopoly.play();        // Determines the winners and losers
-
         this.frame = new JFrame("MONOPOLY");
         this.playerInitPanel = new JPanel(new GridBagLayout());
         this.startPanel = new JPanel(new GridBagLayout());
@@ -117,6 +101,23 @@ public class MonopolyGUI extends JPanel {
         this.playerNameInput = new JTextField("");
         this.playerNameList = new JPanel(new GridLayout(0,2));
         this.playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
+
+        monopoly = new Monopoly();
+        Monopoly.GameState gameState = new Monopoly.GameState();
+        gameState.players = new LinkedList<>();
+        //playersList = gameState.players;
+        //playersList.add(new HumanPlayer(""));
+        //setupBoard();
+
+        setupSwitchPanels();
+
+        setupDice();
+        setupRollButton();
+        //setupPlayerToken();
+        setupPlayerStatusWindow();
+        setupConsoleLog();
+        //initController();
+        monopoly.play();        // Determines the winners and losers
     }
 
     private void setupSwitchPanels() {
@@ -137,6 +138,8 @@ public class MonopolyGUI extends JPanel {
         playerInitPanel.setBackground(new Color(50, 255, 155));
         playerInitPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
 
+        monopolyPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        monopolyPanel.setLayout(null);
         monopolyPanel.setSize(new Dimension(250, 250));
         monopolyPanel.setBackground(Color.white);
 
@@ -250,7 +253,6 @@ public class MonopolyGUI extends JPanel {
      * Set up the layout for the board.
      */
     private void setupBoard() {
-        monopolyPanel = new JPanel();
         monopolyPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         monopolyPanel.setLayout(null);
 
@@ -380,7 +382,7 @@ public class MonopolyGUI extends JPanel {
      * @param newPlayer     Player
      */
     private void addNewPlayerPanel(Player newPlayer) {
-        playerList.add(newPlayer);
+        playersList.add(newPlayer);
         // Add the new player to the player panel
         JLabel playerNumber = new JLabel();
         playerNumber.setFont(playerFont);
@@ -413,7 +415,7 @@ public class MonopolyGUI extends JPanel {
         playerNameList.revalidate();
         playerNameList.repaint();
 
-        if (playersList.size() >= Min_ && playersList.size() <= 6) {
+        if (playersList.size() >= MIN_PLAYERS && playersList.size() <= 6) {
             playButton.setEnabled(true);
         }
         // Set text box empty after player has been added
@@ -440,13 +442,18 @@ public class MonopolyGUI extends JPanel {
         playButton.addActionListener(e -> {
             CardLayout cl = (CardLayout) (switchPanels.getLayout());
             cl.show(switchPanels, "MonopolyPanel");
+
+            setupButtons();
+            setupPlayerToken();
+            setupPlayerStatusWindow();
+
         });
         return playButton;
     }
 
     /**
      * Give each player their own color.
-     *
+     */
     private void setupPlayerToken() {
         if (!firstRoll) {
             for (int i = 0; i < playersList.size(); i++) {
@@ -456,6 +463,7 @@ public class MonopolyGUI extends JPanel {
             }
         }
     }
+
 
     /**
      * Gives the players instructions.
@@ -521,6 +529,7 @@ public class MonopolyGUI extends JPanel {
         panelPlayerTextArea.setBounds(90, 70, 230, 210);
         panelPlayerTextArea.setEditable(false);
         rightLayeredPane.add(panelPlayerTextArea, String.valueOf(2));
+
         if(!firstRoll) {
             updatePlayerStatusTextArea();
         }
@@ -544,7 +553,7 @@ public class MonopolyGUI extends JPanel {
 
     /**
      * Update the player list after the user inputs the names in the player initialization panel.
-     */
+     *
     private void updatePlayerList() {
         for(int i = 0; i < playersList.size(); i++) {
             if(i == 0){
@@ -599,10 +608,8 @@ public class MonopolyGUI extends JPanel {
             currentPlayerOrder %= playersList.size();
             cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
             infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
-
-            PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-
-            handleCPUNextTurn(currentPlayer);
+            
+            handleCPUNextTurn();
             updatePlayerStatusTextArea();
         });
         return buttonNextTurn;
@@ -611,8 +618,8 @@ public class MonopolyGUI extends JPanel {
     /**
      * Handles when it is the CPU Player's next turn.
      */
-    public void handleCPUNextTurn(PlayerGUI currentPlayer) {
-        currentPlayer = this.playersGUI.get(currentPlayerOrder);
+    public void handleCPUNextTurn() {
+        PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
         if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
             buttonRunCPU.setEnabled(true);
             buttonRollDice.setEnabled(false);
@@ -842,14 +849,6 @@ public class MonopolyGUI extends JPanel {
      * Logic of the dice rolling without the button creation.
      */
     private void rollDiceLogic() {
-        if (firstRoll) {
-            updatePlayerList();
-            firstRoll = false;
-            setupButtons();
-            //setupPlayerToken();
-            setupPlayerStatusWindow();
-        }
-
         die1.rollDice();
         die2.rollDice();
         isDouble = die1.getFaceValue() == die2.getFaceValue();
