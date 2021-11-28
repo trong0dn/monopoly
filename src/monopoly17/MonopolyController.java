@@ -12,6 +12,7 @@ import java.util.LinkedList;
  * @author Elisha Catherasoo, Ibrahim Almalki & Trong Nguen
  */
 public class MonopolyController {
+    /*
     private final JFrame frame;
     private final JPanel playerInitPanel;   // Panel for making the players
     private final JPanel startPanel;        // Panel for the main starting page
@@ -39,7 +40,7 @@ public class MonopolyController {
 
     /**
      * Constructor for MonopolyController.
-     */
+     *
     public MonopolyController() {
         this.frame = new JFrame("MONOPOLY");
         this.playerInitPanel = new JPanel(new GridBagLayout());
@@ -59,7 +60,7 @@ public class MonopolyController {
     /**
      * Get the panel that switches between the startPanel, playerInitPanel and monopolyPanel
      * @return JPanel
-     */
+     *
     public JPanel getSwitchPanels() {
         return switchPanels;
     }
@@ -67,7 +68,7 @@ public class MonopolyController {
     /**
      * Get the list of players.
      * @return      LinkedList<Player>
-     */
+     *
     public LinkedList<Player> getPlayerList(){
         return playerList;
     }
@@ -75,7 +76,7 @@ public class MonopolyController {
     /**
      * Set the monopoly panel.
      * @param monopolyPanel JPanel
-     */
+     *
     public void setMonopolyPanel(JPanel monopolyPanel) {
         this.monopolyPanel = monopolyPanel;
     }
@@ -83,7 +84,7 @@ public class MonopolyController {
     /**
      * Create a JButton for adding a new Human Player.
      * @return      JButton
-     */
+     *
     public JButton addPlayerButton() {
         addPlayer.addActionListener(e -> {
             if (playerList.size() < 6 && playerNameInput.getText().matches(".*\\w.*")) {
@@ -103,7 +104,7 @@ public class MonopolyController {
     /**
      * Create a JButton for adding a new CPU Player.
      * @return      JButton
-     */
+     *
     public JButton addCPUPlayer() {
         addCPUPlayer.addActionListener(e -> {
             if (playerList.size() < 6 && playerNameInput.getText().matches(".*\\w.*")) {
@@ -123,7 +124,7 @@ public class MonopolyController {
     /**
      * Creates a panel to display the players added to the game.
      * @param newPlayer     Player
-     */
+     *
     private void addNewPlayerPanel(Player newPlayer) {
         playerList.add(newPlayer);
         // Add the new player to the player panel
@@ -168,7 +169,7 @@ public class MonopolyController {
     /**
      * This will change to the player initialization panel.
      * @return JButton
-     */
+     *
     public JButton startButton() {
         startButton.addActionListener(e -> {
             CardLayout cl = (CardLayout) (switchPanels.getLayout());
@@ -180,7 +181,7 @@ public class MonopolyController {
     /**
      * Play the game after making all the players.
      * @return JButton
-     */
+     *
     public JButton playButton() {
         playButton.addActionListener(e -> {
             CardLayout cl = (CardLayout) (switchPanels.getLayout());
@@ -191,7 +192,7 @@ public class MonopolyController {
 
     /**
      * Display the monopoly main GUI for the user interaction.
-     */
+     *
     public void displayGUI() {
         // Create main title screen
         Font font = new Font("Lucida Grande", Font.BOLD, 60);
@@ -317,4 +318,8 @@ public class MonopolyController {
         });
         frame.setVisible(true);
     }
+
+     */
 }
+
+

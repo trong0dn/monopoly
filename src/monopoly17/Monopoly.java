@@ -26,8 +26,8 @@ public class Monopoly {
     private boolean isBankrupt;
     public static int MIN_PLAYERS = 2;
     public static int MAX_PLAYERS = 6;
-    private int MAX_JAIL_TURNS;
-    private int JAIL_POSITION;
+    private int MAX_JAIL_TURNS = 3;
+    private int JAIL_POSITION = 10;
 
     /**
      * Constructor for Monopoly.
@@ -40,8 +40,6 @@ public class Monopoly {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
-        this.MAX_JAIL_TURNS = 3;
-        this.JAIL_POSITION = 10;
     }
 
     /**

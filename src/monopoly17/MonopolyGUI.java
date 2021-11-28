@@ -19,6 +19,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -28,9 +30,23 @@ import java.util.LinkedList;
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class MonopolyGUI extends JPanel {
-    private final Monopoly monopoly;
-    private final MonopolyController controller = new MonopolyController();
+
+    private final JFrame frame;
+    private final JPanel playerInitPanel;   // Panel for making the players
+    private final JPanel startPanel;        // Panel for the main starting page
+    private JPanel monopolyPanel;           // Panel for the actual Monopoly game
+    private final JPanel switchPanels;      // Used for switching the panels
     private final LinkedList<Player> playersList;
+    private final JButton startButton;
+    private final JButton playButton;
+    private final JButton addPlayer;
+    private final JButton addCPUPlayer;
+    private final JTextField playerNameInput;
+    private final JPanel playerNameList;
+    private final Font playerFont;
+
+    private final Monopoly monopoly;
+    //rivate final LinkedList<Player> playersList;
     private GameBoardGUI gameBoard;
     private static JTextArea infoConsole;
     private int currentPlayerOrder;
@@ -54,6 +70,8 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonRunCPU;
     private JButton buttonPayBail;
     private boolean firstRoll = true;
+    public static int MIN_PLAYERS = 2;
+    public static int MAX_PLAYERS = 6;
 
     private final Color[] playerTokenColors = {
         Color.RED,
@@ -70,28 +88,171 @@ public class MonopolyGUI extends JPanel {
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
+        setupSwitchPanels();
+
         monopoly = new Monopoly();
         Monopoly.GameState gameState = new Monopoly.GameState();
         gameState.players = new LinkedList<>();
-        playersList = gameState.players;
-        playersList.add(new HumanPlayer(""));
+        //playersList = gameState.players;
+        //playersList.add(new HumanPlayer(""));
         setupBoard();
         setupDice();
         setupRollButton();
-        setupPlayerToken();
+        //setupPlayerToken();
         setupPlayerStatusWindow();
         setupConsoleLog();
-        initController();
+        //initController();
         monopoly.play();        // Determines the winners and losers
+
+        this.frame = new JFrame("MONOPOLY");
+        this.playerInitPanel = new JPanel(new GridBagLayout());
+        this.startPanel = new JPanel(new GridBagLayout());
+        this.monopolyPanel = new JPanel();
+        this.switchPanels = new JPanel(new CardLayout());
+        this.playersList = new LinkedList<>();
+        this.startButton = new JButton("Start Game");
+        this.playButton = new JButton("Play Game!");
+        this.addPlayer = new JButton("Add Player");
+        this.addCPUPlayer = new JButton("Add CPU Player");
+        this.playerNameInput = new JTextField("");
+        this.playerNameList = new JPanel(new GridLayout(0,2));
+        this.playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
+    }
+
+    private void setupSwitchPanels() {
+        Font font = new Font("Lucida Grande", Font.BOLD, 60);
+        JPanel titleBackground = new JPanel();
+
+        titleBackground.setPreferredSize(new Dimension(450, 90));
+        titleBackground.setBackground(Color.RED);
+
+        frame.setBounds(100, 100, 450, 300);
+        frame.setSize(1080,710);
+
+        startPanel.setSize(new Dimension(250, 250));
+        startPanel.setBackground(new Color(50, 255, 155));
+        startPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
+
+        playerInitPanel.setSize(new Dimension(250, 250));
+        playerInitPanel.setBackground(new Color(50, 255, 155));
+        playerInitPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
+
+        monopolyPanel.setSize(new Dimension(250, 250));
+        monopolyPanel.setBackground(Color.white);
+
+        startButton.setPreferredSize(new Dimension(175, 50));
+
+        playerNameList.setPreferredSize(new Dimension(400, 240));
+        playerNameList.setBackground(Color.RED);
+
+        playerNameInput.setPreferredSize(new Dimension(175, 50));
+        addPlayer.setPreferredSize(new Dimension(175, 50));
+        addCPUPlayer.setPreferredSize(new Dimension(175, 50));
+        playButton.setPreferredSize(new Dimension(175, 50));
+        playButton.setEnabled(false);
+
+        // Starting page label
+        JLabel title = new JLabel("MONOPOLY!");
+        title.setFont(font);
+        title.setOpaque(true);
+        title.setBackground(Color.RED);
+        title.setForeground(Color.WHITE);
+        titleBackground.add(title);
+
+        // Player initialization label
+        JPanel messagePanel = new JPanel();
+        JLabel message = new JLabel("Enter Player name in text box then click Add Player (2-6 players)");
+        messagePanel.add(message);
+
+        // GridBagConstraints
+        GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
+        gbagConstraintsTitle.gridx = 1;
+        gbagConstraintsTitle.gridy = 1;
+        gbagConstraintsTitle.insets = new Insets(0, 0, 20, 0);
+
+        GridBagConstraints gbagConstraintsStartButton = new GridBagConstraints();
+        gbagConstraintsStartButton.gridx = 1;
+        gbagConstraintsStartButton.gridy = 2;
+        gbagConstraintsStartButton.insets = new Insets(40, 0, 0, 0);
+
+        GridBagConstraints gbagConstraintsPlayerNameList = new GridBagConstraints();
+        gbagConstraintsPlayerNameList.gridx = 1;
+        gbagConstraintsPlayerNameList.gridy = 1;
+        gbagConstraintsPlayerNameList.gridwidth = 2;
+        gbagConstraintsPlayerNameList.gridheight = 7;
+        gbagConstraintsPlayerNameList.insets = new Insets(0, 0, 10, 0);
+
+        GridBagConstraints gbagConstraintsPlayerNameInput = new GridBagConstraints();
+        gbagConstraintsPlayerNameInput.gridx = 1;
+        gbagConstraintsPlayerNameInput.gridy = 8;
+        gbagConstraintsPlayerNameInput.gridwidth = 2;
+        gbagConstraintsPlayerNameInput.insets = new Insets(5, 0, 10, 0);
+
+        GridBagConstraints gbagConstraintsAddPlayerButton = new GridBagConstraints();
+        gbagConstraintsAddPlayerButton.gridx = 1;
+        gbagConstraintsAddPlayerButton.gridy = 9;
+        gbagConstraintsAddPlayerButton.gridwidth = 1;
+        gbagConstraintsAddPlayerButton.insets = new Insets(0, 15, 20, 0);
+
+        GridBagConstraints gbagConstraintsAddCPUPlayerButton = new GridBagConstraints();
+        gbagConstraintsAddCPUPlayerButton.gridx = 2;
+        gbagConstraintsAddCPUPlayerButton.gridy = 9;
+        gbagConstraintsAddCPUPlayerButton.gridwidth = 2;
+        gbagConstraintsAddCPUPlayerButton.insets = new Insets(0, 0, 20, 0);
+
+        GridBagConstraints gbagConstraintsPlayButton = new GridBagConstraints();
+        gbagConstraintsPlayButton.gridx = 1;
+        gbagConstraintsPlayButton.gridy = 10;
+        gbagConstraintsPlayButton.gridwidth = 2;
+        gbagConstraintsPlayButton.insets = new Insets(20, 0, 0, 0);
+
+        GridBagConstraints gbagConstraintsMessage = new GridBagConstraints();
+        gbagConstraintsMessage.gridx = 1;
+        gbagConstraintsMessage.gridy = 12;
+        gbagConstraintsMessage.gridwidth = 2;
+        gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
+
+        // Add the buttons, panels and labels to the frame
+        startPanel.add(titleBackground, gbagConstraintsTitle);
+        startPanel.add(startButton(), gbagConstraintsStartButton);
+
+        playerInitPanel.add(playerNameList, gbagConstraintsPlayerNameList);
+        playerInitPanel.add(playerNameInput, gbagConstraintsPlayerNameInput);
+        playerInitPanel.add(addPlayerButton(), gbagConstraintsAddPlayerButton);
+        playerInitPanel.add(addCPUPlayer(), gbagConstraintsAddCPUPlayerButton);
+        playerInitPanel.add(playButton(), gbagConstraintsPlayButton);
+        playerInitPanel.add(messagePanel, gbagConstraintsMessage);
+
+        switchPanels.add(startPanel, "StartPanel");
+        switchPanels.add(playerInitPanel, "PlayerInitializePanel");
+        switchPanels.add(monopolyPanel, "MonopolyPanel");
+
+        setupBoard();
+
+        frame.add(switchPanels);
+
+        // Frame does not close immediately when trying to quit
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent we) {
+                if (JOptionPane.showConfirmDialog(frame, "Are you sure you want to quit?")
+                        == JOptionPane.OK_OPTION) {
+                    frame.setVisible(false);
+                    frame.dispose();
+                }
+            }
+        });
+        frame.setVisible(true);
     }
 
     /**
      * Set up the layout for the board.
      */
     private void setupBoard() {
-        boxPanel = new JPanel();
-        boxPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        boxPanel.setLayout(null);
+        monopolyPanel = new JPanel();
+        monopolyPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        monopolyPanel.setLayout(null);
 
         // Add right panel
         rightLayeredPane = new JLayeredPane();
@@ -99,12 +260,12 @@ public class MonopolyGUI extends JPanel {
         rightLayeredPane.setBorder(new LineBorder(new Color(0, 0, 0)));
         rightLayeredPane.setBounds(680, 5, 430, 670);
         rightLayeredPane.setLayout(null);
-        boxPanel.add(rightLayeredPane);
+        monopolyPanel.add(rightLayeredPane);
 
         leftLayeredPane = new JLayeredPane();
         leftLayeredPane.setBorder(new LineBorder(new Color(0, 0, 0)));
         leftLayeredPane.setBounds(5, 5, 670, 670);
-        boxPanel.add(leftLayeredPane);
+        monopolyPanel.add(leftLayeredPane);
 
         // Add game board to right panel
         gameBoard = new GameBoardGUI(5,5,670,670);
@@ -175,8 +336,117 @@ public class MonopolyGUI extends JPanel {
     }
 
     /**
-     * Give each player their own color.
+     * Create a JButton for adding a new Human Player.
+     * @return      JButton
      */
+    public JButton addPlayerButton() {
+        addPlayer.addActionListener(e -> {
+            if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
+                // Make the panel to get the username
+                Player newPlayer = new HumanPlayer(playerNameInput.getText());
+                addNewPlayerPanel(newPlayer);
+            } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
+                JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
+            }
+            else {
+                JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
+            }
+        });
+        return addPlayer;
+    }
+
+    /**
+     * Create a JButton for adding a new CPU Player.
+     * @return      JButton
+     */
+    public JButton addCPUPlayer() {
+        addCPUPlayer.addActionListener(e -> {
+            if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
+                // Make the panel to get the username
+                Player newPlayer = new CPUPlayer(playerNameInput.getText());
+                addNewPlayerPanel(newPlayer);
+            } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
+                JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
+            }
+            else {
+                JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
+            }
+        });
+        return addCPUPlayer;
+    }
+
+    /**
+     * Creates a panel to display the players added to the game.
+     * @param newPlayer     Player
+     */
+    private void addNewPlayerPanel(Player newPlayer) {
+        playerList.add(newPlayer);
+        // Add the new player to the player panel
+        JLabel playerNumber = new JLabel();
+        playerNumber.setFont(playerFont);
+        playerNumber.setOpaque(true);
+        playerNumber.setBackground(playerTokenColors[playersList.indexOf(newPlayer)]);
+        playerNumber.setForeground(Color.WHITE);
+
+        JLabel newPlayerLabel = new JLabel();
+        newPlayerLabel.setFont(playerFont);
+        newPlayerLabel.setOpaque(true);
+        newPlayerLabel.setBackground(playerTokenColors[playersList.indexOf(newPlayer)]);
+        newPlayerLabel.setForeground(Color.WHITE);
+
+        playerNumber.setText("Player " + (playersList.indexOf(newPlayer) + 1) + ": ");
+        newPlayerLabel.setText(newPlayer.name());
+
+        JPanel tempPanelNumber = new JPanel();
+        tempPanelNumber.setPreferredSize(new Dimension(150, 40));
+        tempPanelNumber.setBackground(playerTokenColors[playersList.indexOf(newPlayer)]);
+        tempPanelNumber.add(playerNumber);
+
+        JPanel tempPanelName = new JPanel();
+        tempPanelName.setPreferredSize(new Dimension(250, 40));
+        tempPanelName.setBackground(playerTokenColors[playersList.indexOf(newPlayer)]);
+        tempPanelName.add(newPlayerLabel);
+
+        // Add player name to panel
+        playerNameList.add(tempPanelNumber);
+        playerNameList.add(tempPanelName);
+        playerNameList.revalidate();
+        playerNameList.repaint();
+
+        if (playersList.size() >= Min_ && playersList.size() <= 6) {
+            playButton.setEnabled(true);
+        }
+        // Set text box empty after player has been added
+        playerNameInput.setText("");
+    }
+
+    /**
+     * This will change to the player initialization panel.
+     * @return JButton
+     */
+    public JButton startButton() {
+        startButton.addActionListener(e -> {
+            CardLayout cl = (CardLayout) (switchPanels.getLayout());
+            cl.show(switchPanels, "PlayerInitializePanel");
+        });
+        return startButton;
+    }
+
+    /**
+     * Play the game after making all the players.
+     * @return JButton
+     */
+    public JButton playButton() {
+        playButton.addActionListener(e -> {
+            CardLayout cl = (CardLayout) (switchPanels.getLayout());
+            cl.show(switchPanels, "MonopolyPanel");
+        });
+        return playButton;
+    }
+
+    /**
+     * Give each player their own color.
+     *
     private void setupPlayerToken() {
         if (!firstRoll) {
             for (int i = 0; i < playersList.size(); i++) {
@@ -212,8 +482,6 @@ public class MonopolyGUI extends JPanel {
      * Initialize the controllers.
      */
     private void initController() {
-        controller.setMonopolyPanel(boxPanel);
-        controller.displayGUI();
     }
 
     /**
@@ -278,11 +546,11 @@ public class MonopolyGUI extends JPanel {
      * Update the player list after the user inputs the names in the player initialization panel.
      */
     private void updatePlayerList() {
-        for(int i = 0; i < controller.getPlayerList().size(); i++) {
+        for(int i = 0; i < playersList.size(); i++) {
             if(i == 0){
-                playersList.set(0,controller.getPlayerList().get(i));
+                playersList.set(0,playersList.get(i));
             } else {
-                playersList.add(controller.getPlayerList().get(i));
+                playersList.add(playersList.get(i));
             }
         }
     }
@@ -578,7 +846,7 @@ public class MonopolyGUI extends JPanel {
             updatePlayerList();
             firstRoll = false;
             setupButtons();
-            setupPlayerToken();
+            //setupPlayerToken();
             setupPlayerStatusWindow();
         }
 
