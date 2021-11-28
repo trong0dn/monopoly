@@ -34,7 +34,7 @@ public class MonopolyGUI extends JPanel {
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
-    private final JPanel switchPanels = new JPanel(new CardLayout());  // Used for switching between panels
+    private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
     private final LinkedList<Player> playersList;                       // The list of players
     private JButton startButton;
     private JButton playButton;
@@ -48,7 +48,6 @@ public class MonopolyGUI extends JPanel {
 
     private final Monopoly monopoly;
     private GameBoardGUI gameBoard;
-    private static JTextArea infoConsole;
     private int currentPlayerOrder;
     private int currentSquareNumber;
     private final ArrayList<PlayerGUI> playersGUI = new ArrayList<>();
@@ -57,12 +56,13 @@ public class MonopolyGUI extends JPanel {
     private Boolean isDouble = false;
     private int doubles = 0;
 
-    // Visuals and Buttons for the monopolyPanel
+    // Visuals and Buttons for monopolyPanel
     private JLayeredPane rightLayeredPane;
     private JPanel playerAssetsPanel;
     private JLayeredPane leftLayeredPane;
     private JTextArea panelPlayerTextArea;
     private final CardLayout cardLayout = new CardLayout();
+    private static JTextArea infoConsole;
     private JButton buttonRollDice;
     private JButton buttonNextTurn;
     private JButton buttonPayRent;
@@ -70,6 +70,7 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonBuyHouse;
     private JButton buttonRunCPU;
     private JButton buttonPayBail;
+
     public static int MIN_PLAYERS = 2;
     public static int MAX_PLAYERS = 6;
 
@@ -164,10 +165,14 @@ public class MonopolyGUI extends JPanel {
         monopolyPanel.setSize(new Dimension(250, 250));
         monopolyPanel.setBackground(Color.white);
 
-        startButton.setPreferredSize(new Dimension(175, 50));
-
         playerNameList.setPreferredSize(new Dimension(400, 240));
         playerNameList.setBackground(Color.RED);
+
+        setupButtons();
+    }
+
+    private void setupButtons() {
+        startButton.setPreferredSize(new Dimension(175, 50));
 
         playerNameInput.setPreferredSize(new Dimension(175, 50));
         addPlayer.setPreferredSize(new Dimension(175, 50));
