@@ -19,6 +19,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -33,9 +34,9 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  * This class represents the Monopoly GUI.
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
-public class MonopolyGUI {
+public class MonopolyGUI extends JFrame {
     private Monopoly monopoly;
-    private GameBoardGUI gameBoard;
+    private GameBoardGUI gameBoardGUI;
     private ArrayList<PlayerGUI> playersGUI = new ArrayList<>();
     private LinkedList<Player> playersList;                       // The list of players
     private DiceGUI die1;
@@ -45,7 +46,6 @@ public class MonopolyGUI {
     private Boolean isDouble = false;
     private int doubles = 0;
 
-    private JFrame frame;
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
@@ -105,10 +105,30 @@ public class MonopolyGUI {
     }
 
     /**
+     * Save the current Monopoly game.
+     * @param actionEvent   ActionEvent
+     */
+    private void saveMonopoly(ActionEvent actionEvent) {
+        if (monopoly == null) {
+            return;
+        }
+        monopoly.save();
+        JOptionPane.showMessageDialog(this, "Address Book has been saved to file");
+    }
+
+    /**
+     * Import a previous saved Monopoly game.
+     * @param actionEvent   ActionEvent
+     */
+    private void loadMonopoly(ActionEvent actionEvent) {
+        setMonopoly(monopoly.load());
+    }
+
+    /**
      * Initialize the frame and it's panels.
      */
     private void initFrame() {
-        frame = new JFrame("MONOPOLY");
+        new JFrame("MONOPOLY");
         playerInitPanel = new JPanel(new GridBagLayout());
         startPanel = new JPanel(new GridBagLayout());
         monopolyPanel = new JPanel();
@@ -118,10 +138,13 @@ public class MonopolyGUI {
         JMenuItem saveMenuItem = new JMenuItem("Save Game");
         JMenuItem loadMenuItem = new JMenuItem("Load Game");
 
+        saveMenuItem.addActionListener(this::saveMonopoly);
+        loadMenuItem.addActionListener(this::loadMonopoly);
+
         menu.add(saveMenuItem);
         menu.add(loadMenuItem);
         menuBar.add(menu);
-        frame.setJMenuBar(menuBar);
+        this.setJMenuBar(menuBar);
     }
 
     /**
@@ -167,15 +190,15 @@ public class MonopolyGUI {
         switchPanels.add(playerInitPanel, "PlayerInitializePanel");
         switchPanels.add(monopolyPanel, "MonopolyPanel");
 
-        frame.add(switchPanels);
+        this.add(switchPanels);
     }
 
     /**
      * Set up the panels.
      */
     private void setupPanels() {
-        frame.setBounds(100, 100, 450, 300);
-        frame.setSize(1080,740);
+        this.setBounds(100, 100, 450, 300);
+        this.setSize(1080,740);
 
         startPanel.setSize(new Dimension(250, 250));
         startPanel.setBackground(new Color(50, 255, 155));
@@ -293,9 +316,9 @@ public class MonopolyGUI {
         monopolyPanel.add(leftLayeredPane);
 
         // Add game board to right panel
-        gameBoard = new GameBoardGUI(5,5,670,670);
-        gameBoard.setBackground(new Color(50, 255, 155));
-        leftLayeredPane.add(gameBoard, Integer.valueOf(0));
+        gameBoardGUI = new GameBoardGUI(5,5,670,670);
+        gameBoardGUI.setBackground(new Color(50, 255, 155));
+        leftLayeredPane.add(gameBoardGUI, Integer.valueOf(0));
     }
 
     /**
@@ -643,7 +666,7 @@ public class MonopolyGUI {
         buttonBuy = new JButton("Buy Property");
         buttonBuy.addActionListener(e -> {
             PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+            Square currentSquare = this.gameBoardGUI.getSquare(currentSquareNumber);
             int roll = die1.getFaceValue() + die2.getFaceValue();
             if (currentSquare.isOwnable() && !currentSquare.isOwned() && currentPlayer.getPlayerMoney() >= currentSquare.cost()) {
                 infoConsole.setText("You bought property:\n" + currentSquare.name() +
@@ -677,7 +700,7 @@ public class MonopolyGUI {
      */
     private void handlePayRent() {
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-        Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+        Square currentSquare = this.gameBoardGUI.getSquare(currentSquareNumber);
         int roll = die1.getFaceValue() + die2.getFaceValue();
         monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
         if (currentSquare.isOwnable() && currentSquare.isOwned()) {
@@ -776,7 +799,7 @@ public class MonopolyGUI {
         int roll = die1.getFaceValue() + die2.getFaceValue();
         if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
             PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-            Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+            Square currentSquare = this.gameBoardGUI.getSquare(currentSquareNumber);
             // CPU paying rent
             if (currentSquare.isOwnable() && currentSquare.isOwned() && currentPlayer.getPlayer() != currentSquare.owner()) {
                 infoConsole.setText("You paid rent on:\n" + currentSquare.name() +
@@ -850,17 +873,17 @@ public class MonopolyGUI {
         isDouble = die1.getFaceValue() == die2.getFaceValue();
         int diceValue = die1.getFaceValue() + die2.getFaceValue();
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-        Square currentSquare = this.gameBoard.getSquare(SquareInfo.SQUARE_10.getPosition()); //If in Jail
+        Square currentSquare = this.gameBoardGUI.getSquare(SquareInfo.SQUARE_10.getPosition()); //If in Jail
 
         if (currentPlayer.getPlayer().getJailTurns() == 0) {
             currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % BOARD_SIZE;
             currentPlayer.move(diceValue);
-            currentSquare = this.gameBoard.getSquare(currentSquareNumber);
+            currentSquare = this.gameBoardGUI.getSquare(currentSquareNumber);
         }
 
         // Swing concurrency thread correction for layeredPane flickering
-        leftLayeredPane.remove(gameBoard);
-        leftLayeredPane.add(gameBoard, Integer.valueOf(0));
+        leftLayeredPane.remove(gameBoardGUI);
+        leftLayeredPane.add(gameBoardGUI, Integer.valueOf(0));
 
         int prevSquare = currentSquareNumber - diceValue;
 
@@ -1025,18 +1048,18 @@ public class MonopolyGUI {
      */
     public void displayGUI(){
         // Frame does not close immediately when trying to quit
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        frame.addWindowListener(new WindowAdapter() {
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we) {
-                if (JOptionPane.showConfirmDialog(frame, "Are you sure you want to quit?")
+                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?")
                         == JOptionPane.OK_OPTION) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    setVisible(false);
+                    dispose();
                 }
             }
         });
-        frame.setVisible(true);
+        this.setVisible(true);
     }
 
     public static void main(String[] args) {

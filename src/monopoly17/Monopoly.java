@@ -40,6 +40,14 @@ public class Monopoly {
         gameState.currentPlayer = null;
     }
 
+    public void save() {
+        gameState.saveGame();
+    }
+
+    public Monopoly load() {
+        return GameState.loadGame();
+    }
+
     /**
      * Different decision states during a player's turn.
      */
