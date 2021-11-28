@@ -512,7 +512,10 @@ public class MonopolyGUI extends JPanel {
         buttonPayBail.addActionListener(e -> {
             PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
 
-            monopoly.leaveJail(currentPlayer.getPlayer());
+            currentPlayer.getPlayer().setJailTurns(monopoly.leaveJail(currentPlayer.getPlayer()));
+
+            infoConsole.setText("You paid $50 to get out of jail\n");
+            infoConsole.append("You are now out of Jail!");
 
             buttonRunCPU.setEnabled(false);
             buttonRollDice.setEnabled(false);
@@ -658,11 +661,13 @@ public class MonopolyGUI extends JPanel {
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(true);
                         infoConsole.setText("You did not roll doubles.\n");
-                        infoConsole.append("You have been in Jail for 3 turns.\nYou are now out of jail");
+                        infoConsole.append("You have been in Jail for 3 turns.\nYou are now out of jail\n");
                     } else {
                         buttonRollDice.setEnabled(false);
                         buttonNextTurn.setEnabled(true);
-                        infoConsole.setText("You did not roll doubles.\nYou are still in Jail");
+                        buttonPayBail.setEnabled(true);
+                        infoConsole.setText("You did not roll doubles.\nYou are still in Jail\n");
+                        infoConsole.append("Bail out of Jail for $50 by pressing Pay Bail");
                     }
                 } else {
                     infoConsole.setText("Non-purchasable: You landed on: \n" + currentSquare.name());

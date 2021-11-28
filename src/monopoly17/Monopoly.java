@@ -418,12 +418,16 @@ public class Monopoly {
      * Method for leaving jail, if the player in jail on their turn.
      * @param player    Player
      */
-    public void leaveJail(Player player) {
-        System.out.println("6");
+    public int leaveJail(Player player) {
+        System.out.println("Bail out of Jail.");
         int JAIL_COST = 50;
         if (player.getMoney() >= JAIL_COST) {
             player.exchangeMoney(JAIL_COST * -1);
         }
+
+        player.setJailTurns(0);
+
+        return player.getJailTurns();
     }
 
     /**
