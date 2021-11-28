@@ -138,7 +138,7 @@ public class CPUPlayer implements Player {
      * @return boolean
      */
     @Override
-    public boolean inputBool(Monopoly.GameState state) {
+    public boolean inputBool(GameState state) {
         return switch (state.decisionState) {
             case NONE -> handleNone();
             case BUY_PROPERTY -> handleBuyProperty();
@@ -154,7 +154,7 @@ public class CPUPlayer implements Player {
      * @return int
      */
     @Override
-    public int inputInt(Monopoly.GameState state) {
+    public int inputInt(GameState state) {
         throw new IllegalArgumentException("No implementation use case for CPU to input integer");
     }
 
@@ -165,7 +165,7 @@ public class CPUPlayer implements Player {
      * @return          int
      */
     @Override
-    public int inputDecision(Monopoly.GameState state, String[] choices) {
+    public int inputDecision(GameState state, String[] choices) {
         // CPU Player always selects true
         return 0;
     }

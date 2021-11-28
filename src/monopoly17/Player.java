@@ -73,14 +73,14 @@ public interface Player {
      * @param state     Monopoly.GameState
      * @return          boolean
      */
-    boolean inputBool(Monopoly.GameState state);
+    boolean inputBool(GameState state);
 
     /**
      * Player inputs an integer response.
      * @param state     Monopoly.GameState
      * @return          int
      */
-    int inputInt(Monopoly.GameState state);
+    int inputInt(GameState state);
 
     /**
      * Player inputs a two choice decision.
@@ -88,7 +88,7 @@ public interface Player {
      * @param choices   String[]
      * @return          int
      */
-    int inputDecision(Monopoly.GameState state, String[] choices);
+    int inputDecision(GameState state, String[] choices);
 
     /**
      * Get how many turn the player has been in jail.

@@ -70,7 +70,7 @@ public class MonopolyGUI extends JPanel {
      */
     public MonopolyGUI() {
         monopoly = new Monopoly();
-        Monopoly.GameState gameState = new Monopoly.GameState();
+        GameState gameState = new GameState();
         gameState.players = new LinkedList<>();
         playersList = gameState.players;
         playersList.add(new HumanPlayer(""));
