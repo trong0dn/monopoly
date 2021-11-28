@@ -524,6 +524,8 @@ public class MonopolyGUI extends JPanel {
             buttonBuy.setEnabled(false);
             buttonPayBail.setEnabled(false);
             buttonNextTurn.setEnabled(true);
+
+            updatePlayerStatusTextArea();
         });
 
         return buttonPayBail;
