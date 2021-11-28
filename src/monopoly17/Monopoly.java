@@ -39,7 +39,7 @@ public class Monopoly {
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
         this.maxJailTurns = 3;
-        this.JAILPOSITION = 40;
+        this.JAILPOSITION = 10;
     }
 
     /**
@@ -190,10 +190,7 @@ public class Monopoly {
         boolean owned = square.isOwned();
         boolean ownable = square.isOwnable();
         if (square instanceof  Jail) {
-            // treat Just Visiting as a normal square
-            if (((Jail) square).getType() != Jail.JailType.JUST_VISITING) {
-                jailAction(player, (Jail) square);
-            }
+            jailAction(player, (Jail) square);
         }
         if (!owned && ownable) {
             unowned(player, square);
@@ -378,7 +375,7 @@ public class Monopoly {
         if (type == Jail.JailType.GOTO_JAIL) {
             System.out.println("You have landed on GO TO JAIL. You are now in Jail.");
             goToJail(player);
-        } else if(type == Jail.JailType.IN_JAIL) {
+        } else if(player.getJailTurns() > 0) {
             inJail(player);
         }
     }
@@ -391,12 +388,12 @@ public class Monopoly {
         gameState.decisionState = DecisionState.IN_JAIL;
         if (rollDice.rollDice().isDouble) {
             System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
-            player.moveTo(JAILPOSITION);
+            //player.moveTo(JAILPOSITION);
             player.setJailTurns(0);
         } else {
-            if(player.getJailTurns() == maxJailTurns) {
+            if(player.getJailTurns() > maxJailTurns) {
                 System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
-                player.moveTo(JAILPOSITION);
+                //player.moveTo(JAILPOSITION);
                 player.setJailTurns(0);
             } else {
                 System.out.println("You have not rolled doubles. You are still in Jail.");
@@ -412,6 +409,7 @@ public class Monopoly {
     private void goToJail(Player player) {
         System.out.println("Go to Jail!");
         player.moveTo(JAILPOSITION);
+        player.addJailTurns();
     }
 
     /**

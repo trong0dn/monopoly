@@ -515,7 +515,9 @@ public class MonopolyGUI extends JPanel {
             Square currentSquare = this.gameBoard.getSquare(currentSquareNumber);
             int roll = die1.getFaceValue() + die2.getFaceValue();
 
-            currentPlayer.getPlayer().moveTo(monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll));
+            int newPosition = monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, roll);
+
+            currentPlayer.moveTo(newPosition);
 
             buttonRunCPU.setEnabled(false);
             buttonRollDice.setEnabled(false);
@@ -641,7 +643,7 @@ public class MonopolyGUI extends JPanel {
                 buttonRollDice.setEnabled(false);
                 buttonNextTurn.setEnabled(false);
                 buttonBuy.setEnabled(false);
-            } else if(currentSquare instanceof Jail && ((Jail) currentSquare).getType() != Jail.JailType.JUST_VISITING) {
+            } else if(currentSquare instanceof Jail) {
                 if(((Jail) currentSquare).getType() == Jail.JailType.GOTO_JAIL) {
                     buttonRunCPU.setEnabled(false);
                     buttonRollDice.setEnabled(false);
@@ -654,7 +656,7 @@ public class MonopolyGUI extends JPanel {
                     infoConsole.setText("You have landed on:\n" + currentSquare.name());
                     infoConsole.append("\nPress Go To Jail.");
                 }
-                if(((Jail) currentSquare).getType() == Jail.JailType.IN_JAIL) {
+                if(((Jail) currentSquare).getType() == Jail.JailType.IN_JAIL && currentPlayer.getPlayer().getJailTurns() > 0) {
                     buttonPayBail.setEnabled(true);
                     infoConsole.setText("You are in Jail");
                     currentPlayer.getPlayer().moveTo(monopoly.handleSquare(currentPlayer.getPlayer(), currentSquare, diceValue));

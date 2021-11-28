@@ -58,6 +58,12 @@ public class PlayerGUI extends JPanel {
         this.setLocation((15+this.playerNumber*5+xLocationsOfPlayer[targetSquare]), yLocationsOfPlayer[targetSquare]);
     }
 
+    public void moveTo(int position) {
+        currentSquareNumber = position;
+
+        this.setLocation((15+this.playerNumber*5+xLocationsOfPlayer[position]), yLocationsOfPlayer[position]);
+    }
+
     /**
      * Get the player's properties.
      * @return      Collection<Square>
