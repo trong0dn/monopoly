@@ -402,6 +402,25 @@ public class Monopoly {
                 player.addJailTurn();
             }
         }
+        if(type == Jail.JailType.IN_JAIL) {
+            inJail(player);
+        }
+    }
+
+    /**
+     * Action when player is currently in jail.
+     * @param player    Player
+     */
+    private void inJail(Player player) {
+        if (rollDice.rollDice().isDouble) {
+            System.out.println("You have rolled doubles. You are now out of Jail.\nRoll again!\n");
+        } else {
+            if(player.getJailTurns() == 3) {
+                System.out.println("You have been in Jail for 3 turns. You are now out of Jail.\n");
+            } else {
+                System.out.println("You have not rolled doubles. You are still in Jail.");
+            }
+        }
     }
 
     /**
@@ -415,7 +434,7 @@ public class Monopoly {
     }
 
     /**
-     * Method for leaving jail, if the player in jail on their turn.
+     * Method for leaving jail, if the player is in jail on their turn.
      * @param player    Player
      */
     public int leaveJail(Player player) {
