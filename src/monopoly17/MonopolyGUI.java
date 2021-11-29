@@ -26,6 +26,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Objects;
 
 import static monopoly17.GameBoard.BOARD_SIZE;
 import static monopoly17.Monopoly.MAX_PLAYERS;
@@ -129,25 +130,24 @@ public class MonopolyGUI extends JFrame {
         this.setJMenuBar(menuBar);
     }
 
+    ArrayList<Object> arrayList;
+
     /**
      * Export the Saved game file.
      */
-    public void saveGame(ActionEvent actionEvent) {
-        ArrayList<Object> list = new ArrayList<>();
-        list.add(monopoly);
-        list.add(gameBoardGUI);
-        list.add(playersGUI);
-        list.add(playersList);
-        list.add(currentPlayerOrder);
-        list.add(currentSquareNumber);
-        list.add(isDouble);
-        list.add(doubles);
+    private void saveGame(ActionEvent actionEvent) {
+        arrayList = new ArrayList<>();
+        arrayList.add(monopoly);
+        arrayList.add(gameBoardGUI);
+        arrayList.add(playersGUI);
+        arrayList.add(playersList);
+        arrayList.add(currentPlayerOrder);
+        arrayList.add(currentSquareNumber);
 
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
-            objectOutputStream.writeObject(list);
+            objectOutputStream.writeObject(arrayList);
             objectOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -156,9 +156,9 @@ public class MonopolyGUI extends JFrame {
 
     /**
      * Import the Saved contents of a file.
-     * @return  Monopoly
+     * @return  ArrayList<?>
      */
-    public ArrayList<Object> loadGame(ActionEvent actionEvent) {
+    private ArrayList<Object> importGame() {
         try {
             FileInputStream fileInputStream = new FileInputStream(FILENAME);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -169,7 +169,32 @@ public class MonopolyGUI extends JFrame {
         return null;
     }
 
-    public void newGame(ActionEvent actionEvent) {
+    private void loadGame(ActionEvent actionEvent) {
+        setGame(Objects.requireNonNull(importGame()));
+    }
+
+    private void setGame(ArrayList<Object> arrayList) {
+        CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        cl.show(switchPanels, "MonopolyPanel");
+        for (int i = 0; i < arrayList.size(); i++) {
+            arrayList.set(i, arrayList.get(i));
+        }
+        this.monopoly = (Monopoly) arrayList.get(0);
+        this.gameBoardGUI = (GameBoardGUI) arrayList.get(1);
+        this.playersGUI = (ArrayList<PlayerGUI>) arrayList.get(2);
+        this.playersList = (LinkedList<Player>) arrayList.get(3);
+        this.currentPlayerOrder = (int) arrayList.get(4);
+        this.currentSquareNumber = (int) arrayList.get(5);
+
+        setupBoard();
+        setupDice();
+        //setupPlayerToken();
+        setupPlayerStatusWindow();
+        setupConsoleLog();
+        setupMonopolyButtons();
+    }
+
+    private void newGame(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "StartPanel");
         this.monopoly = new Monopoly();
