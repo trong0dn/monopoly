@@ -3,12 +3,14 @@ package monopoly17;
 import java.io.Serializable;
 import java.util.*;
 
+import static monopoly17.GameBoard.BOARD_SIZE;
+
 /**
  * This is a class representation of a human player of this game.
  * @author Francisco De Grano & Ibrahim Almalki
  */
 public class HumanPlayer implements Player, Serializable {
-    private final Input input;
+    // private final Input input;
     private final Collection<Square> properties;
     private final String playerName;
     private int money;
@@ -22,7 +24,7 @@ public class HumanPlayer implements Player, Serializable {
      * @param playerName String
      */
     public HumanPlayer(String playerName) {
-        this.input = new Input();
+        // this.input = new Input();
         this.properties = new LinkedList<>();
         this.playerName = playerName;
         this.money = 1500;
@@ -39,7 +41,6 @@ public class HumanPlayer implements Player, Serializable {
     @Override
     public void move(int numTiles) {
         this.position += numTiles;
-        int BOARD_SIZE = 40;
         if (position >= BOARD_SIZE && !inJail) {
             position -= BOARD_SIZE;
             exchangeMoney(PASS_GO_COLLECT);
@@ -152,7 +153,7 @@ public class HumanPlayer implements Player, Serializable {
      */
     @Override
     public boolean inputBool(GameState state) {
-        return this.input.inputBool();
+        return false;
     }
 
     /**
@@ -162,7 +163,7 @@ public class HumanPlayer implements Player, Serializable {
      */
     @Override
     public int inputInt(GameState state) {
-        return this.input.inputInt();
+        return 0;
     }
 
     /**
@@ -173,7 +174,7 @@ public class HumanPlayer implements Player, Serializable {
      */
     @Override
     public int inputDecision(GameState state, String[] choices) {
-        return this.input.inputDecision(choices);
+        return 0;
     }
 
     /**

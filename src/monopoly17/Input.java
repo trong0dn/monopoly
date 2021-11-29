@@ -7,7 +7,7 @@ import java.util.Scanner;
  * This class defines all the methods to handle user inputs.
  * @author Elisha Catherasoo & Trong Nguyen
  */
-public class Input implements Serializable {
+public class Input {
     private final Scanner scanner;
 
     /**
