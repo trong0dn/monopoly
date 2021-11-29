@@ -10,7 +10,7 @@ import java.util.Collection;
  * @author Trong Nguyen
  */
 public class PlayerGUI extends JPanel implements Serializable {
-    private Player player;
+    private final Player player;
     private final int playerNumber;
     private static int totalPlayers = 0;
     private int currentSquareNumber = 0;
@@ -40,6 +40,13 @@ public class PlayerGUI extends JPanel implements Serializable {
         labelPlayerNumber.setForeground(Color.WHITE);
         this.add(labelPlayerNumber);
         this.setBounds((15+this.playerNumber*5+xLocationsOfPlayer[0]), yLocationsOfPlayer[0], 18, 28);
+    }
+
+    /**
+     * Reset totalPlayer counter for new game.
+     */
+    public void setTotalPlayers() {
+        totalPlayers = 0;
     }
 
     /**

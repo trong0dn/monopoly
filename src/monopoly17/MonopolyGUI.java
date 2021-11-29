@@ -37,22 +37,22 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  */
 public class MonopolyGUI extends JFrame {
     private static final String FILENAME = "monopoly17.txt";
-    private final Monopoly monopoly;
-    private GameBoardGUI gameBoardGUI;
-    private final ArrayList<PlayerGUI> playersGUI;
-    private final LinkedList<Player> playersList;                             // The list of players
+    private Monopoly monopoly;
+    private ArrayList<PlayerGUI> playersGUI;
+    private LinkedList<Player> playersList;                       // The list of players
     private int currentPlayerOrder;
     private int currentSquareNumber;
     private Boolean isDouble = false;
     private int doubles = 0;
 
+    private GameBoardGUI gameBoardGUI;
     private DiceGUI die1;
     private DiceGUI die2;
 
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
-    private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
+    private JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
     private JButton startButton;
     private JButton playButton;
     private JButton addPlayer;
@@ -68,7 +68,7 @@ public class MonopolyGUI extends JFrame {
     private JPanel playerAssetsPanel;
     private JLayeredPane leftLayeredPane;
     private JTextArea panelPlayerTextArea;
-    private final CardLayout cardLayout = new CardLayout();
+    private CardLayout cardLayout = new CardLayout();
     private static JTextArea infoConsole;
     private JButton buttonRollDice;
     private JButton buttonNextTurn;
@@ -100,6 +100,7 @@ public class MonopolyGUI extends JFrame {
         this.playersGUI = new ArrayList<>();
         this.playersList = monopoly.getPlayers();
         this.monopoly.play();        // Determines the winners and losers
+        displayGUI();
     }
 
     /**
@@ -126,7 +127,6 @@ public class MonopolyGUI extends JFrame {
         menu.add(newMenuItem);
         menuBar.add(menu);
         this.setJMenuBar(menuBar);
-        displayGUI();
     }
 
     /**
@@ -172,6 +172,16 @@ public class MonopolyGUI extends JFrame {
     public void newGame(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "StartPanel");
+        this.monopoly = new Monopoly();
+        this.playersGUI = new ArrayList<>();
+        this.playersList = new LinkedList<>();
+        this.currentPlayerOrder = 0;
+        this.currentSquareNumber = 0;
+        isDouble = false;
+        doubles = 0;
+        initFrame();
+        initPanelComponents();
+        setupSwitchPanel();
     }
 
     /**
@@ -506,11 +516,14 @@ public class MonopolyGUI extends JFrame {
      * Give each player their own color.
      */
     private void setupPlayerToken() {
+        PlayerGUI playerGUI = null;
         for (int i = 0; i < playersList.size(); i++) {
-            PlayerGUI playerGUI = new PlayerGUI(playerTokenColors[i], playersList.get(i).name());
+            playerGUI = new PlayerGUI(playerTokenColors[i], playersList.get(i).name());
             playersGUI.add(playerGUI);
             leftLayeredPane.add(playerGUI, Integer.valueOf(1));
         }
+        assert playerGUI != null;
+        playerGUI.setTotalPlayers();
     }
 
     /**
