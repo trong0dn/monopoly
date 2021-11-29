@@ -188,10 +188,21 @@ public class MonopolyGUI extends JFrame {
 
         setupBoard();
         setupDice();
-        //setupPlayerToken();
+        setPlayerTokens();
         setupPlayerStatusWindow();
         setupConsoleLog();
         setupMonopolyButtons();
+    }
+
+    private void setPlayerTokens() {
+        PlayerGUI playerGUI = null;
+        for (PlayerGUI gui : playersGUI) {
+            playerGUI = gui;
+            playerGUI.moveTo(gui.getCurrentSquareNumber());
+            leftLayeredPane.add(playerGUI, Integer.valueOf(1));
+        }
+        assert playerGUI != null;
+        playerGUI.resetTotalPlayers();
     }
 
     private void newGame(ActionEvent actionEvent) {
@@ -391,7 +402,6 @@ public class MonopolyGUI extends JFrame {
      * Set up the dice positions.
      */
     private void setupDice() {
-        // Add dice graphics
         die1 = new DiceGUI(350, 450, 40, 40);
         leftLayeredPane.add(die1, Integer.valueOf(1));
 
@@ -548,7 +558,7 @@ public class MonopolyGUI extends JFrame {
             leftLayeredPane.add(playerGUI, Integer.valueOf(1));
         }
         assert playerGUI != null;
-        playerGUI.setTotalPlayers();
+        playerGUI.resetTotalPlayers();
     }
 
     /**

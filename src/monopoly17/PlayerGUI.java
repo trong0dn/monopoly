@@ -45,7 +45,7 @@ public class PlayerGUI extends JPanel implements Serializable {
     /**
      * Reset totalPlayer counter for new game.
      */
-    public void setTotalPlayers() {
+    public void resetTotalPlayers() {
         totalPlayers = 0;
     }
 
