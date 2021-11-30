@@ -38,6 +38,12 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  */
 public class MonopolyGUI extends JFrame {
     private static final String FILENAME = "monopoly17.txt";
+    private static final int MONOPOLY_IDX = 0;
+    private static final int PLAYER_GUI_IDX = 1;
+    private static final int PLAYER_LIST_IDX = 2;
+    private static final int CURRENT_PLAYER_IDX = 3;
+    private static final int CURRENT_SQUARE_IDX = 4;
+
     private Monopoly monopoly;
     private ArrayList<PlayerGUI> playersGUI;
     private LinkedList<Player> playersList;                       // The list of players
@@ -136,12 +142,11 @@ public class MonopolyGUI extends JFrame {
      */
     private void saveGame(ActionEvent actionEvent) {
         ArrayList<Object> arrayList = new ArrayList<>();
-        arrayList.add(monopoly);
-        arrayList.add(gameBoardGUI);
-        arrayList.add(playersGUI);
-        arrayList.add(playersList);
-        arrayList.add(currentPlayerOrder);
-        arrayList.add(currentSquareNumber);
+        arrayList.add(MONOPOLY_IDX, monopoly);
+        arrayList.add(PLAYER_GUI_IDX, playersGUI);
+        arrayList.add(PLAYER_LIST_IDX, playersList);
+        arrayList.add(CURRENT_PLAYER_IDX, currentPlayerOrder);
+        arrayList.add(CURRENT_SQUARE_IDX, currentSquareNumber);
 
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
@@ -151,6 +156,7 @@ public class MonopolyGUI extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        JOptionPane.showMessageDialog(null, "Game has been saved");
     }
 
     /**
@@ -188,12 +194,11 @@ public class MonopolyGUI extends JFrame {
         for (int i = 0; i < arrayList.size(); i++) {
             arrayList.set(i, arrayList.get(i));
         }
-        this.monopoly = (Monopoly) arrayList.get(0);
-        this.gameBoardGUI = (GameBoardGUI) arrayList.get(1);
-        this.playersGUI = (ArrayList<PlayerGUI>) arrayList.get(2);
-        this.playersList = (LinkedList<Player>) arrayList.get(3);
-        this.currentPlayerOrder = (int) arrayList.get(4);
-        this.currentSquareNumber = (int) arrayList.get(5);
+        this.monopoly = (Monopoly) arrayList.get(MONOPOLY_IDX);
+        this.playersGUI = (ArrayList<PlayerGUI>) arrayList.get(PLAYER_GUI_IDX);
+        this.playersList = (LinkedList<Player>) arrayList.get(PLAYER_LIST_IDX);
+        this.currentPlayerOrder = (int) arrayList.get(CURRENT_PLAYER_IDX);
+        this.currentSquareNumber = (int) arrayList.get(CURRENT_SQUARE_IDX);
 
         setupBoard();
         setupDice();

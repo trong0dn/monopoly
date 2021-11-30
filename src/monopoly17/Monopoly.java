@@ -23,7 +23,7 @@ import java.util.*;
  */
 public class Monopoly implements Serializable {
     private final RollDice rollDice;
-    private GameState gameState;
+    private final GameState gameState;
     private boolean isBankrupt;
     public static int MIN_PLAYERS = 2;
     public static int MAX_PLAYERS = 6;
@@ -77,11 +77,10 @@ public class Monopoly implements Serializable {
         }
     }
 
-    /**
-     * Initializes game starting conditions with players. Required only for text-based system.
-     */
     /*
-    public void initializePlayers(Input input) {
+      Initializes game starting conditions with players. Required only for text-based system.
+     */
+    /*public void initializePlayers(Input input) {
         System.out.println("~~~Welcome to MONOPOLY!~~~");
         // Ask user for number of players participating
         System.out.println("How many players would like to play?");
@@ -104,14 +103,13 @@ public class Monopoly implements Serializable {
         for (Player p: gameState.players) {
             System.out.println(">>> " + p.name());
         }
-    }
-    */
+    }*/
 
-    /**
-     * Game logic for when it is a player's turn.
-     */
+
     /*
-    public void turn() {
+      Game logic for when it is a player's turn. Required only for text-based system.
+     */
+    /*public void turn() {
         System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
         int countRollDoubles = 0;
         while (true) {
@@ -154,8 +152,7 @@ public class Monopoly implements Serializable {
             }
         }
         System.out.println();
-    }
-    */
+    }*/
 
     /**
      * Prints the state of the players name, current balance and their properties owned.
