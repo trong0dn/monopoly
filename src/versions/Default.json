@@ -297,5 +297,19 @@
   },
   "square40" : {
     "name": "IN JAIL"
+  },
+  "railroads" : {
+    "one": "25",
+    "two": "50",
+    "three": "100",
+    "four": "200"
+  },
+  "utilities" : {
+    "one": "4",
+    "two": "10"
+  },
+  "taxes" : {
+    "income_tax": "200",
+    "super_tax": "100"
   }
 }
