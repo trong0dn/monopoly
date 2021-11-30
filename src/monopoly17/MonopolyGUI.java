@@ -53,7 +53,7 @@ public class MonopolyGUI extends JFrame {
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
-    private JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
+    private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
     private JButton startButton;
     private JButton playButton;
     private JButton addPlayer;
@@ -69,7 +69,7 @@ public class MonopolyGUI extends JFrame {
     private JPanel playerAssetsPanel;
     private JLayeredPane leftLayeredPane;
     private JTextArea panelPlayerTextArea;
-    private CardLayout cardLayout = new CardLayout();
+    private final CardLayout cardLayout = new CardLayout();
     private static JTextArea infoConsole;
     private JButton buttonRollDice;
     private JButton buttonNextTurn;
@@ -130,13 +130,12 @@ public class MonopolyGUI extends JFrame {
         this.setJMenuBar(menuBar);
     }
 
-    ArrayList<Object> arrayList;
-
     /**
      * Export the Saved game file.
+     * @param actionEvent   ActionEvent
      */
     private void saveGame(ActionEvent actionEvent) {
-        arrayList = new ArrayList<>();
+        ArrayList<Object> arrayList = new ArrayList<>();
         arrayList.add(monopoly);
         arrayList.add(gameBoardGUI);
         arrayList.add(playersGUI);
@@ -156,8 +155,9 @@ public class MonopolyGUI extends JFrame {
 
     /**
      * Import the Saved contents of a file.
-     * @return  ArrayList<?>
+     * @return  ArrayList<Object>
      */
+    @SuppressWarnings("unchecked")
     private ArrayList<Object> importGame() {
         try {
             FileInputStream fileInputStream = new FileInputStream(FILENAME);
@@ -169,10 +169,19 @@ public class MonopolyGUI extends JFrame {
         return null;
     }
 
+    /**
+     * Load the current game play state.
+     * @param actionEvent   ActionEvent
+     */
     private void loadGame(ActionEvent actionEvent) {
         setGame(Objects.requireNonNull(importGame()));
     }
 
+    /**
+     * Set the current game play state.
+     * @param arrayList     ArrayList<Object>
+     */
+    @SuppressWarnings("unchecked")
     private void setGame(ArrayList<Object> arrayList) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
@@ -194,6 +203,9 @@ public class MonopolyGUI extends JFrame {
         setupMonopolyButtons();
     }
 
+    /**
+     * Update player token to loaded position.
+     */
     private void setPlayerTokens() {
         PlayerGUI playerGUI = null;
         for (PlayerGUI gui : playersGUI) {
@@ -205,6 +217,10 @@ public class MonopolyGUI extends JFrame {
         playerGUI.resetTotalPlayers();
     }
 
+    /**
+     * Creates a new game.
+     * @param actionEvent   ActionEvent
+     */
     private void newGame(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "StartPanel");
