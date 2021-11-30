@@ -9,20 +9,17 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 public class JSONLanguages {
+    private static Map square1values;
 
     public JSONLanguages(String file) {
         try {
-            //for testing purposes
             Object obj = new JSONParser().parse(new FileReader("src/versions/" + file));
 
             JSONObject jo = (JSONObject) obj;
 
-            Map address = ((Map) jo.get("square1"));
+            square1values = ((Map) jo.get("square1"));
 
-            // iterating address Map
-            for (Map.Entry pair : (Iterable<Map.Entry>) address.entrySet()) {
-                System.out.println(pair.getKey() + " : " + pair.getValue());
-            }
+            System.out.println(square1values.get("name"));
 
         } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
