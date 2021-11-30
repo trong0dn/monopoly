@@ -3,7 +3,7 @@
     "name": "GO"
   },
   "square1" : {
-    "name": "OLD KENT ROAD",
+    "name": "MEDITERRANEAN AVENUE",
     "rent": "2",
     "oneHouse": "10",
     "twoHouse": "30",
@@ -17,7 +17,7 @@
     "name": "COMMUNITY CHEST"
   },
   "square3" : {
-    "name": "WHITECHAPEL ROAD",
+    "name": "BALTIC AVENUE",
     "rent": "4",
     "oneHouse": "20",
     "twoHouse": "60",
@@ -31,10 +31,10 @@
     "name": "INCOME TAX"
   },
   "square5" : {
-    "name": "KINGS CROSS STATION"
+    "name": "READING RAILROAD"
   },
   "square6" : {
-    "name": "THE ANGEL, ISLINGTON",
+    "name": "ORIENTAL AVENUE",
     "rent": "6",
     "oneHouse": "30",
     "twoHouse": "90",
@@ -48,7 +48,7 @@
     "name": "CHANCE"
   },
   "square8" : {
-    "name": "EUSTON ROAD",
+    "name": "VERMONT AVENUE",
     "rent": "6",
     "oneHouse": "30",
     "twoHouse": "90",
@@ -59,7 +59,7 @@
     "houses": "50"
   },
   "square9" : {
-    "name": "PENTONVILLE ROAD",
+    "name": "CONNECTICUT AVENUE",
     "rent": "6",
     "oneHouse": "30",
     "twoHouse": "90",
@@ -73,7 +73,7 @@
     "name": "JUST VISITING"
   },
   "square11" : {
-    "name": "PALL MALL",
+    "name": "ST. CHARLES PLACE",
     "rent": "10",
     "oneHouse": "50",
     "twoHouse": "150",
@@ -87,7 +87,7 @@
     "name": "ELECTRIC COMPANY"
   },
   "square13" : {
-    "name": "WHITEHALL",
+    "name": "STATES AVENUE",
     "rent": "10",
     "oneHouse": "50",
     "twoHouse": "150",
@@ -98,7 +98,7 @@
     "houses": "100"
   },
   "square14" : {
-    "name": "NORTHUMRL'D AVENUE",
+    "name": "VIRGINIA AVENUE",
     "rent": "10",
     "oneHouse": "50",
     "twoHouse": "150",
@@ -109,10 +109,10 @@
     "houses": "100"
   },
   "square15" : {
-    "name": "MARYLEBONE STATION"
+    "name": "PENNSYLVANIA RAILROAD"
   },
   "square16" : {
-    "name": "BOW STREET",
+    "name": "ST. JAMES PLACE",
     "rent": "14",
     "oneHouse": "70",
     "twoHouse": "200",
@@ -126,7 +126,7 @@
     "name": "COMMUNITY CHEST"
   },
   "square18" : {
-    "name": "MARLBOROUGH STREET",
+    "name": "TENNESSEE AVENUE",
     "rent": "14",
     "oneHouse": "70",
     "twoHouse": "200",
@@ -137,7 +137,7 @@
     "houses": "100"
   },
   "square19" : {
-    "name": "VINE STREET",
+    "name": "NEW YORK AVENUE",
     "rent": "16",
     "oneHouse": "80",
     "twoHouse": "220",
@@ -151,7 +151,7 @@
     "name": "FREE PARKING"
   },
   "square21" : {
-    "name": "THE STRAND",
+    "name": "KENTUCKY AVENUE",
     "rent": "18",
     "oneHouse": "90",
     "twoHouse": "250",
@@ -165,7 +165,7 @@
     "name": "CHANCE"
   },
   "square23" : {
-    "name": "FLEET STREET",
+    "name": "INDIANA AVENUE",
     "rent": "18",
     "oneHouse": "90",
     "twoHouse": "250",
@@ -176,7 +176,7 @@
     "houses": "150"
   },
   "square24" : {
-    "name": "TRAFALGAR SQUARE",
+    "name": "ILLINOIS AVENUE",
     "rent": "20",
     "oneHouse": "100",
     "twoHouse": "300",
@@ -187,10 +187,10 @@
     "houses": "10"
   },
   "square25" : {
-    "name": "FENCHURCH ST. STATION"
+    "name": "B. & O. RAILROAD"
   },
   "square26" : {
-    "name": "LEICESTER SQUARE",
+    "name": "ATLANTIC AVENUE",
     "rent": "22",
     "oneHouse": "110",
     "twoHouse": "330",
@@ -201,7 +201,7 @@
     "houses": "150"
   },
   "square27" : {
-    "name": "CONVENTRY STREET",
+    "name": "VENTNOR AVENUE",
     "rent": "22",
     "oneHouse": "110",
     "twoHouse": "330",
@@ -215,7 +215,7 @@
     "name": "WATER WORKS"
   },
   "square29" : {
-    "name": "PICCADILLY",
+    "name": "MARVIN GARDENS",
     "rent": "24",
     "oneHouse": "120",
     "twoHouse": "360",
@@ -229,7 +229,7 @@
     "name": "GO TO JAIL"
   },
   "square31" : {
-    "name": "REGENT STREET",
+    "name": "PACIFIC AVENUE",
     "rent": "26",
     "oneHouse": "130",
     "twoHouse": "390",
@@ -240,7 +240,7 @@
     "houses": "200"
   },
   "square32" : {
-    "name": "OXFORD STREET",
+    "name": "NORTH CAROLINA AVENUE",
     "rent": "26",
     "oneHouse": "130",
     "twoHouse": "390",
@@ -254,7 +254,7 @@
     "name": "COMMUNITY CHEST"
   },
   "square34" : {
-    "name": "BOND STREET",
+    "name": "PENNSYLVANIA AVENUE",
     "rent": "26",
     "oneHouse": "130",
     "twoHouse": "390",
@@ -265,13 +265,13 @@
     "houses": "200"
   },
   "square35" : {
-    "name": "LIVERPOOL ST. STATION"
+    "name": "SHORT LINE"
   },
   "square36" : {
     "name": "CHANCE"
   },
   "square37" : {
-    "name": "PARK LANE",
+    "name": "PARK PLACE",
     "rent": "35",
     "oneHouse": "175",
     "twoHouse": "500",
@@ -285,7 +285,7 @@
     "name": "SUPER TAX"
   },
   "square39" : {
-    "name":"MAYFAIR",
+    "name":"BOARDWALK",
     "rent": "35",
     "oneHouse": "175",
     "twoHouse": "500",
