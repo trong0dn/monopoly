@@ -10,10 +10,10 @@ import org.json.simple.parser.*;
 
 public class JSONLanguages {
 
-    public static void main(String[] args) {
+    public JSONLanguages(String file) {
         try {
             //for testing purposes
-            Object obj = new JSONParser().parse(new FileReader("src/versions/Default.json"));
+            Object obj = new JSONParser().parse(new FileReader("src/versions/" + file));
 
             JSONObject jo = (JSONObject) obj;
 
