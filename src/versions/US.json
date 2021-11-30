@@ -299,12 +299,14 @@
     "name": "IN JAIL"
   },
   "railroads" : {
+    "propertyCost": "200",
     "one": "25",
     "two": "50",
     "three": "100",
     "four": "200"
   },
   "utilities" : {
+    "propertyCost": "150",
     "one": "4",
     "two": "10"
   },
