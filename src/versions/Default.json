@@ -1,0 +1,413 @@
+{
+  "square0" : {
+    "name": "GO"
+  },
+  "square1" : {
+    "name": "OLD KENT ROAD",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square2" : {
+    "name": "COMMUNITY CHEST"
+  },
+  "square3" : {
+    "name": "WHITECHAPEL ROAD",
+    "rent": "4",
+    "oneHouse": "20",
+    "twoHouse": "60",
+    "threeHouse": "180",
+    "fourHouse": "320",
+    "hotel": "450",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square4" : {
+    "name": "INCOME TAX"
+  },
+  "square5" : {
+    "name": "KINGS CROSS STATION",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square6" : {
+    "name": "THE ANGEL, ISLINGTON",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square7" : {
+    "name": "CHANCE"
+  },
+  "square8" : {
+    "name": "EUSTON ROAD",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square9" : {
+    "name": "PENTONVILLE ROAD",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square10" : {
+    "name": "JUST VISITING"
+  },
+  "square11" : {
+    "name": "PALL MALL",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square12" : {
+    "name": "ELECTRIC COMPANY",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square13" : {
+    "name": "WHITEHALL",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square14" : {
+    "name": "NORTHUMRL'D AVENUE",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square15" : {
+    "name": "MARYLEBONE STATION",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square16" : {
+    "name": "BOW STREET",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square17" : {
+    "name": "COMMUNITY CHEST",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square18" : {
+    "name": "MARLBOROUGH STREET",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square19" : {
+    "name": "VINE STREET",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square20" : {
+    "name": "FREE PARKING",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square21" : {
+    "name": "STRAND",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square22" : {
+    "name": "CHANCE",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square23" : {
+    "name": "FLEET STREET",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square24" : {
+    "name": "TRAFALGAR SQUARE",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square25" : {
+    "name": "FENCHURCH ST. STATION",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square26" : {
+    "name": "LEICESTER",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square27" : {
+    "name": "CONVENTRY STREET",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square28" : {
+    "name": "WATER WORKS",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square29" : {
+    "name": "PICCADILLY",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square30" : {
+    "name": "GO TO JAIL",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square31" : {
+    "name": "REGENT STREET",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square32" : {
+    "name": "OXFORD STREET",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square33" : {
+    "name": "COMMUNITY CHEST",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square34" : {
+    "name": "BOND STREET",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square35" : {
+    "name": "LIVERPOOL ST. STATION",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square36" : {
+    "name": "CHANCE",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square37" : {
+    "name": "PARK LANE",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square38" : {
+    "name": "SUPER TAX",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square39" : {
+    "name":"MAYFAIR",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square40" : {
+    "name": "IN JAIL",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  }
+}
