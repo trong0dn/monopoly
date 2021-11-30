@@ -243,7 +243,7 @@ public class Monopoly implements Serializable {
         }
 
         boolean noMoney = false;
-        System.out.println("Would you like to purchase " + square.name() + " for $" + cost + " (Yes/No)?");
+        System.out.println("You have purchase " + square.name() + " for $" + cost);
         gameState.decisionState = DecisionState.BUY_PROPERTY;
         if (player.getMoney() < cost) {
             noMoney = true;

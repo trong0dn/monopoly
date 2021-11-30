@@ -41,8 +41,6 @@ public class MonopolyGUI extends JFrame {
     private static final int MONOPOLY_IDX = 0;
     private static final int PLAYER_GUI_IDX = 1;
     private static final int PLAYER_LIST_IDX = 2;
-    private static final int CURRENT_PLAYER_IDX = 3;
-    private static final int CURRENT_SQUARE_IDX = 4;
 
     private Monopoly monopoly;
     private ArrayList<PlayerGUI> playersGUI;
@@ -145,8 +143,6 @@ public class MonopolyGUI extends JFrame {
         arrayList.add(MONOPOLY_IDX, monopoly);
         arrayList.add(PLAYER_GUI_IDX, playersGUI);
         arrayList.add(PLAYER_LIST_IDX, playersList);
-        arrayList.add(CURRENT_PLAYER_IDX, currentPlayerOrder);
-        arrayList.add(CURRENT_SQUARE_IDX, currentSquareNumber);
 
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
@@ -197,8 +193,6 @@ public class MonopolyGUI extends JFrame {
         this.monopoly = (Monopoly) arrayList.get(MONOPOLY_IDX);
         this.playersGUI = (ArrayList<PlayerGUI>) arrayList.get(PLAYER_GUI_IDX);
         this.playersList = (LinkedList<Player>) arrayList.get(PLAYER_LIST_IDX);
-        this.currentPlayerOrder = (int) arrayList.get(CURRENT_PLAYER_IDX);
-        this.currentSquareNumber = (int) arrayList.get(CURRENT_SQUARE_IDX);
 
         setupBoard();
         setupDice();
