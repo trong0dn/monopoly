@@ -138,7 +138,7 @@ public class MonopolyGUI extends JFrame {
      * Export the Saved game file.
      * @param actionEvent   ActionEvent
      */
-    private void saveGame(ActionEvent actionEvent) {
+    public void saveGame(ActionEvent actionEvent) {
         ArrayList<Object> arrayList = new ArrayList<>();
         arrayList.add(MONOPOLY_IDX, monopoly);
         arrayList.add(PLAYER_GUI_IDX, playersGUI);
@@ -160,7 +160,7 @@ public class MonopolyGUI extends JFrame {
      * @return  ArrayList<Object>
      */
     @SuppressWarnings("unchecked")
-    private ArrayList<Object> importGame() {
+    public ArrayList<Object> importGame() {
         try {
             FileInputStream fileInputStream = new FileInputStream(FILENAME);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -175,7 +175,7 @@ public class MonopolyGUI extends JFrame {
      * Load the current game play state.
      * @param actionEvent   ActionEvent
      */
-    private void loadGame(ActionEvent actionEvent) {
+    public void loadGame(ActionEvent actionEvent) {
         setGame(Objects.requireNonNull(importGame()));
     }
 
@@ -184,7 +184,7 @@ public class MonopolyGUI extends JFrame {
      * @param arrayList     ArrayList<Object>
      */
     @SuppressWarnings("unchecked")
-    private void setGame(ArrayList<Object> arrayList) {
+    public void setGame(ArrayList<Object> arrayList) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
         for (int i = 0; i < arrayList.size(); i++) {
