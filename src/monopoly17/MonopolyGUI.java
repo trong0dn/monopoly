@@ -104,10 +104,10 @@ public class MonopolyGUI extends JFrame {
         initFrame();
         initPanelComponents();
         setupSwitchPanel();
-        //this.monopoly = new Monopoly();
+        this.monopoly = new Monopoly();
         this.playersGUI = new ArrayList<>();
         this.playersList = monopoly.getPlayers();
-        //this.monopoly.play();        // Determines the winners and losers
+        this.monopoly.play();        // Determines the winners and losers
         displayGUI();
     }
 
@@ -332,6 +332,8 @@ public class MonopolyGUI extends JFrame {
         playButton.setEnabled(false);
 
         startButton.addActionListener(this::startButton);
+        usVersionButton.addActionListener(this::usVersionButton);
+        ukVersionButton.addActionListener(this::ukVersionButton);
         addPlayer.addActionListener(this::addPlayerButton);
         addCPUPlayer.addActionListener(this::addPlayerButton);
         playButton.addActionListener(this::playButton);
@@ -576,30 +578,20 @@ public class MonopolyGUI extends JFrame {
 
     /**
      * Makes Monopoly use the US version.
-     * @return  JButton
+     * @param actionEvent ActionEvent
      */
-    private JButton usVersionButton() {
-        usVersionButton.addActionListener(e -> {
-
-
-            CardLayout cl = (CardLayout) (switchPanels.getLayout());
-            cl.show(switchPanels, "PlayerInitializePanel");
-        });
-        return usVersionButton;
+    private void usVersionButton(ActionEvent actionEvent) {
+        CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        cl.show(switchPanels, "PlayerInitializePanel");
     }
 
     /**
      * Makes Monopoly use the US version.
-     * @return  JButton
+     * @param actionEvent ActionEvent
      */
-    private JButton ukVersionButton() {
-        ukVersionButton.addActionListener(e -> {
-
-
-            CardLayout cl = (CardLayout) (switchPanels.getLayout());
-            cl.show(switchPanels, "PlayerInitializePanel");
-        });
-        return ukVersionButton;
+    private void ukVersionButton(ActionEvent actionEvent) {
+        CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        cl.show(switchPanels, "PlayerInitializePanel");
     }
 
     /**
@@ -610,16 +602,12 @@ public class MonopolyGUI extends JFrame {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
 
-        monopoly = new Monopoly();
-
         setupBoard();
         setupDice();
         setupPlayerToken();
         setupPlayerStatusWindow();
         setupConsoleLog();
         setupMonopolyButtons();
-
-        monopoly.play();
     }
 
     /**
