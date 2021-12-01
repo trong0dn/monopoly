@@ -64,13 +64,13 @@ public class MonopolyGUI extends JFrame {
     private JButton addCPUPlayer;
     private JTextField playerNameInput;
     private JPanel playerNameList;
-    private Font playerFont;
     private JPanel titleBackground;
     private JPanel messagePanel;
+    private Font playerFont;
 
     // Visuals and Buttons for monopolyPanel
-    private JLayeredPane rightLayeredPane;
     private JPanel playerAssetsPanel;
+    private JLayeredPane rightLayeredPane;
     private JLayeredPane leftLayeredPane;
     private JTextArea panelPlayerTextArea;
     private final CardLayout cardLayout = new CardLayout();
@@ -710,14 +710,14 @@ public class MonopolyGUI extends JFrame {
         cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
         infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
 
-        handleCPUNextTurn();
+        handleCPUTurn();
         updatePlayerStatusTextArea();
     }
 
     /**
      * Handles when it is the CPU Player's next turn.
      */
-    private void handleCPUNextTurn() {
+    private void handleCPUTurn() {
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
         if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
             buttonRunCPU.setEnabled(true);
@@ -1089,7 +1089,7 @@ public class MonopolyGUI extends JFrame {
     /**
      * Display the game.
      */
-    public void displayGUI() {
+    private void displayGUI() {
         // Frame does not close immediately when trying to quit
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
