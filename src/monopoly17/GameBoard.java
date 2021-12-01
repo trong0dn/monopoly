@@ -707,7 +707,7 @@ public class GameBoard implements Serializable {
     }
 
     /**
-     * Setup "Sqaure 39" tile on the board.
+     * Setup "Square 39" tile on the board.
      * @return  Square
      */
     public Square square39() {
