@@ -1,10 +1,12 @@
 package monopoly17;
 
+import java.io.Serializable;
+
 /**
  * This class represents the tax square tiles on the game board.
  * @author Trong Nguyen & Elisha Catherasoo
  */
-public class Taxes implements Square {
+public class Taxes implements Square, Serializable {
     public static final int FIX_INCOME_TAX = 200;
     public static final int FIX_SUPER_TAX = 100;
 

@@ -1,10 +1,12 @@
 package monopoly17;
 
+import java.io.Serializable;
+
 /**
  * This class represents an inactive square tile on the board game.
  * @author Trong Nguyen
  */
-public class Inactive implements Square {
+public class Inactive implements Square, Serializable {
     private final int position;
     private final String name;
 

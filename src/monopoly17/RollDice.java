@@ -1,12 +1,13 @@
 package monopoly17;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * Class represents rolling dice.
  * @author Trong Nguyen
  */
-public class RollDice implements Dice {
+public class RollDice implements Dice, Serializable {
     private final int NUM_DICE;     // number of dice
     private final int NUM_SIDES;    // number of sides per die
 

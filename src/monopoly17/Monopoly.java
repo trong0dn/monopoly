@@ -14,13 +14,14 @@ TA: Michael Vezina
 Due: 11/22/2021
  */
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * This class represents the user interface for the Monopoly board game.
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
-public class Monopoly {
+public class Monopoly implements Serializable {
     private final RollDice rollDice;
     private final GameState gameState;
     private boolean isBankrupt;
@@ -38,6 +39,10 @@ public class Monopoly {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
+    }
+
+    public LinkedList<Player> getPlayers() {
+        return gameState.players;
     }
 
     /**
@@ -72,10 +77,10 @@ public class Monopoly {
         }
     }
 
-    /**
-     * Initializes game starting conditions with players. Required only for text-based system.
+    /*
+      Initializes game starting conditions with players. Required only for text-based system.
      */
-    public void initializePlayers(Input input) {
+    /*public void initializePlayers(Input input) {
         System.out.println("~~~Welcome to MONOPOLY!~~~");
         // Ask user for number of players participating
         System.out.println("How many players would like to play?");
@@ -98,12 +103,13 @@ public class Monopoly {
         for (Player p: gameState.players) {
             System.out.println(">>> " + p.name());
         }
-    }
+    }*/
 
-    /**
-     * Game logic for when it is a player's turn.
+
+    /*
+      Game logic for when it is a player's turn. Required only for text-based system.
      */
-    public void turn() {
+    /*public void turn() {
         System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
         int countRollDoubles = 0;
         while (true) {
@@ -146,7 +152,7 @@ public class Monopoly {
             }
         }
         System.out.println();
-    }
+    }*/
 
     /**
      * Prints the state of the players name, current balance and their properties owned.
@@ -237,7 +243,7 @@ public class Monopoly {
         }
 
         boolean noMoney = false;
-        System.out.println("Would you like to purchase " + square.name() + " for $" + cost + " (Yes/No)?");
+        System.out.println("You have purchase " + square.name() + " for $" + cost);
         gameState.decisionState = DecisionState.BUY_PROPERTY;
         if (player.getMoney() < cost) {
             noMoney = true;
