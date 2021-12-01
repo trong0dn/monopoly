@@ -1,6 +1,5 @@
 package monopoly17;
 
-import java.io.Serializable;
 import java.util.Scanner;
 
 /**

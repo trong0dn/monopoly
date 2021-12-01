@@ -17,7 +17,6 @@ public class HumanPlayer implements Player, Serializable {
     private int position;
     private int jailTurns;
     private boolean inJail;
-    private int jailPosition;
 
     /**
      * Initialize HumanPlayer.
@@ -31,7 +30,6 @@ public class HumanPlayer implements Player, Serializable {
         this.position = 0;
         this.jailTurns = 0;
         this.inJail = false;
-        this.jailPosition = 10;
     }
 
     /**

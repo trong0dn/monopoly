@@ -3,7 +3,6 @@ package monopoly17;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.io.Serializable;
 
 /**
  * This class represents the GUI for the dice.

@@ -6,7 +6,7 @@ import java.util.Queue;
 
 /**
  * This class represents the way properties are structured in the game.
- * @author Ibrahim Almalki & Trong Nguyen
+ * @author Ibrahim Almalki, Francisco De Grano & Trong Nguyen
  */
 public class Property implements Square, Serializable {
     private final int rent;
@@ -28,7 +28,7 @@ public class Property implements Square, Serializable {
 
 
     /**
-     * Initialize Property
+     * Initialize Property.
      * @param position      int
      * @param name          String
      * @param rent          int
