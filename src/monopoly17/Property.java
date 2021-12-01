@@ -1,5 +1,6 @@
 package monopoly17;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -7,7 +8,7 @@ import java.util.Queue;
  * This class represents the way properties are structured in the game.
  * @author Ibrahim Almalki & Trong Nguyen
  */
-public class Property implements Square {
+public class Property implements Square, Serializable {
     private final int rent;
     private final int oneHouse;
     private final int twoHouse;

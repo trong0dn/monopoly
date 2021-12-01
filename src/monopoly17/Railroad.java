@@ -1,10 +1,12 @@
 package monopoly17;
 
+import java.io.Serializable;
+
 /**
  * This class represents all the railroad square tiles on the game board.
  * @author Trong Nguyen & Elisha Catherasoo
  */
-public class Railroad implements Square {
+public class Railroad implements Square, Serializable {
     private final int COST = 200;
     private final int position;
     private final String name;

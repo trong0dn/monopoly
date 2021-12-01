@@ -2,14 +2,15 @@ package monopoly17;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
  * This class represents the GUI for player on the game board.
  * @author Trong Nguyen
  */
-public class PlayerGUI extends JPanel {
-    private Player player;
+public class PlayerGUI extends JPanel implements Serializable {
+    private final Player player;
     private final int playerNumber;
     private static int totalPlayers = 0;
     private int currentSquareNumber = 0;
@@ -39,6 +40,13 @@ public class PlayerGUI extends JPanel {
         labelPlayerNumber.setForeground(Color.WHITE);
         this.add(labelPlayerNumber);
         this.setBounds((15+this.playerNumber*5+xLocationsOfPlayer[0]), yLocationsOfPlayer[0], 18, 28);
+    }
+
+    /**
+     * Reset totalPlayer counter for new game.
+     */
+    public void resetTotalPlayers() {
+        totalPlayers = 0;
     }
 
     /**
