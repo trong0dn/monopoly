@@ -12,7 +12,7 @@ public class Jail implements Square, Serializable {
     private final JailType type;
 
     /**
-     * Initialize Jail,
+     * Initialize Jail.
      * @param position int
      * @param name     String
      * @param type     JailType

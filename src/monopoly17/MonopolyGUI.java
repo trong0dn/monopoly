@@ -1,5 +1,5 @@
 /*
-Milestone 3
+Milestone 4
 
 Group 17:
 Trong Nguyen 100848232
@@ -10,7 +10,7 @@ Elisha Catherasoo 101148507
 Professor: Babak Esfandiari
 TA: Michael Vezina
 
-Due: 11/22/2021
+Due: 12/06/2021
  */
 
 package monopoly17;
@@ -320,7 +320,7 @@ public class MonopolyGUI extends JFrame {
 
         startButton.addActionListener(this::startButton);
         addPlayer.addActionListener(this::addPlayerButton);
-        addCPUPlayer.addActionListener(this::addPlayerButton);
+        addCPUPlayer.addActionListener(this::addCPUPlayerButton);
         playButton.addActionListener(this::playButton);
     }
 
@@ -485,6 +485,23 @@ public class MonopolyGUI extends JFrame {
         if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
             // Make the panel to get the username
             Player newPlayer = new HumanPlayer(playerNameInput.getText());
+            addNewPlayerPanel(newPlayer);
+        } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
+            JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
+        }
+        else {
+            JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
+        }
+    }
+
+    /**
+     * Create a JButton for adding a new CPU Player.
+     * @param actionEvent ActionEvent
+     */
+    private void addCPUPlayerButton(ActionEvent actionEvent) {
+        if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
+            // Make the panel to get the username
+            Player newPlayer = new CPUPlayer(playerNameInput.getText());
             addNewPlayerPanel(newPlayer);
         } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
             JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
@@ -820,9 +837,9 @@ public class MonopolyGUI extends JFrame {
      * @param actionEvent ActionEvent
      */
     private void buttonRunCPU(ActionEvent actionEvent) {
-        handleCPUButtons();
         rollDiceLogic();
         handleCPUSquare();
+        handleCPUButtons();
     }
 
     /**

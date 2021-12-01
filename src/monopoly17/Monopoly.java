@@ -1,18 +1,4 @@
 package monopoly17;
-/*
-Milestone 3
-
-Group 17:
-Trong Nguyen 100848232
-Francisco De Grano 101147447
-Ibrahim Almalki 101142978
-Elisha Catherasoo 101148507
-
-Professor: Babak Esfandiari
-TA: Michael Vezina
-
-Due: 11/22/2021
- */
 
 import java.io.Serializable;
 import java.util.*;

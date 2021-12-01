@@ -12,7 +12,7 @@ import static monopoly17.GameBoard.BOARD_SIZE;
  * This class every square GUI.
  * @author Trong Nguyen
  */
-public class SquareGUI extends JPanel implements Serializable {
+public class SquareGUI extends JPanel {
     private String squareName;
     private int squareNum;
     private static int total = 0;
