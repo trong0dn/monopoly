@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * This class creates the GUI for the game board
  * @author Trong Nguyen
  */
-public class GameBoardGUI extends JPanel implements Serializable {
+public class GameBoardGUI extends JPanel {
     private final GameBoard gameBoard;
 
     /**
