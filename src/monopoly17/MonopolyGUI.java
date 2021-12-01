@@ -837,9 +837,9 @@ public class MonopolyGUI extends JFrame {
      * @param actionEvent ActionEvent
      */
     private void buttonRunCPU(ActionEvent actionEvent) {
-        handleCPUButtons();
         rollDiceLogic();
         handleCPUSquare();
+        handleCPUButtons();
     }
 
     /**

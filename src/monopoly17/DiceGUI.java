@@ -10,8 +10,8 @@ import java.io.Serializable;
  * @author Trong Nguyen
  */
 public class DiceGUI extends JPanel implements Serializable {
-    RollDice rollDice = new RollDice();
-    int faceValue;
+    private final RollDice rollDice = new RollDice();
+    private int faceValue;
 
     /**
      * Constructor for DiceGUI.
