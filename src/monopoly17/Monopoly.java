@@ -426,7 +426,7 @@ public class Monopoly implements Serializable {
     }
 
     /**
-     * Import the Saved contents of a file.
+     * Import the saved contents of the game file.
      * @return  ArrayList<Object>
      */
     @SuppressWarnings("unchecked")
