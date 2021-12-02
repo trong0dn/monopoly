@@ -1,6 +1,6 @@
 # Monopoly17
-Milestone 3 <br>
-Date: Nov. 22nd, 2021
+Milestone 4 <br>
+Date: Dec. 6th, 2021
 
 ------------------------------------------------------------------------
 ## Contact Information
@@ -32,26 +32,32 @@ monopoly17 package:
 * DiceGUI.java
 * GameBoard.java
 * GameBoardGUI.java
+* GameState.java
 * HumanPlayer.java
 * Inactive.java
 * Input.java
 * Jail.java
 * Monopoly.java
-* MonopolyController.java
 * MonopolyGUI.java
 * Player.java
 * PlayerGUI.java
 * Property.java
+* Railroad.java
 * RollDice.java
 * Square.java
 * SquareGUI.java
+* SquareInfo.java
 * Taxes.java
 * Utility.java
 
 test package:
 * HumanPlayerTest.java
+* JailTest.java
 * MonopolyTest.java
 * PropertyTest.java
+* RailroadTest.java
+* TaxesTest.java
+* UtiliyTest.java
 
 Execution source:
 * monopoly17.MonopolyGUI
@@ -59,12 +65,16 @@ Execution source:
 The application is supported with various documentation and diagrams 
 upon deliverable:
 
-* M3_Group17-ClassUML.drawio.pdf (Class UML diagram)
-* M3_Group17-Documentation.pdf	(Documentation)
-* M3_Group17-SequenceUML_1.drawio.pdf (Sequence UML for Creating Player)
-* M3_Group17-SequenceUML_2.drawio.pdf (Sequence UML for Buying Property)
-* M3_Group17-SequenceUML_3.drawio.pdf (Sequence UML for Player Position)
-* M3_Group17-SequenceUML_4.drawio.pdf (Sequence UML for Player Turn)
+* M4_Group17-ClassUML.drawio.pdf (Class UML diagram)
+* M4_Group17-Documentation.pdf	(Documentation)
+* M4_Group17-SequenceUML_1.drawio.pdf 
+	(Sequence UML for xxx)
+* M4_Group17-SequenceUML_2.drawio.pdf 
+	(Sequence UML for xxx)
+* M4_Group17-SequenceUML_3.drawio.pdf 
+	(Sequence UML for xxx)
+* M4_Group17-SequenceUML_4.drawio.pdf 
+	(Sequence UML for User Loads Saved Game)
 
 ------------------------------------------------------------------------
 ## Installation
@@ -77,10 +87,10 @@ This program has been tested for Windows 10 and Mac OS Big Sur v11.5.2
 The application should work with the most recent version of Java 
 programming language update with JDK 16.0.2. 
 
-No other supplementary libraries and testing file with modular 
-dependencies are required to run this application.
+No other supplementary libraries with modular dependencies are required 
+to run this application.
 
-Monopoly has been compiled by a more recent version of the Java 
+Monopoly17 has been compiled by a more recent version of the Java 
 Runtime (class file version 60.0).
 
 ------------------------------------------------------------------------
@@ -106,9 +116,29 @@ then allows the user play the graphically supported Monopoly game. In
 addition the user will be able to see the Monopoly GUI in action. 
 
 ------------------------------------------------------------------------
-## Monopoly17 gameplay
+## Monopoly17 Gameplay
 
-### Modifications to the current version
+### Version 4.0 (Latest Iteration)
+In the latest update of the project, we implemented the load/save 
+features such that users are able to save the current game state. Then
+load a previously saved game state into play. The second feature added
+was introducing international verison of the game with customized
+square names.
+
+#### Save/Load Feature
+
+Using Java Serialization, we were able to store the state of the game
+into a serializable object. Then was done via storing the various
+objects in an arraylist which serialized to bytecode store in a .txt 
+file. The GUI enabled the user to select a load menu item which restores
+the previously saved game session.
+
+#### International Version Customization
+
+------------------------------------------------------------------------
+### Version 3.0
+
+#### Special Square
 
 As stated, Monopoly17 is a simplified version of the classic board game 
 Monopoly. The games does not have Chance/Community chest cards and this 
@@ -116,7 +146,7 @@ version does not allow for mortgages nor sales, auctions, and trades
 between players. Functionalities such as Jail, Utilities, Railroads, 
 and purchasing of houses have been fully implemented in this release. 
 
-### CPU Player
+#### CPU Player
 
 The newest version of monopoly includes an option to introduce CPU 
 players into the game. Simply enter a name for the CPU and click "Add 
@@ -128,8 +158,7 @@ see what actions the CPU has performed by looking at the information
 panel. Finally, click the "Next Turn" button to move on to the next 
 player. 
 
-
-### Buying Houses
+#### Buying Houses
 
 For this state of the project, the game logic was implemented and 
 testing via manual testing via command line console. Followed with 
@@ -138,11 +167,27 @@ for properties that they have a monopoly on. This feature is
 shown via the gameplay information console. We might future decide to
 add house tokens onto the game board for future development.
 
-### Winning the game
+------------------------------------------------------------------------
+### Version 2.0
 
-To win the current Monopoly17 games, the remain player to not run out 
-of money or is not bankrupt will be the winner. As players lose in the 
-game, they will be removed from the game.
+#### GUI-based version
+
+GUI-based version of the game. Display must be in a JFrame, and user 
+input is via the mouse.
+
+------------------------------------------------------------------------
+### Version 1.0
+
+#### Text-based game via output console
+
+A text-based playable version of the game, i.e., players should be able 
+to play the game via the console using the keyboard. There should be a 
+command to print the state of each player (where they are on the board, 
+how much money they have, which properties they own), a command to buy 
+the property they landed on (if available), and a command to pass your 
+turn to the next player. Events such as landing on a property owned by 
+another player (and therefore paying the indicated rent), the bankruptcy 
+of a player, etc. should be printed to the console when applicable.
 
 ------------------------------------------------------------------------
 ## Acknowledgement
