@@ -22,7 +22,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -37,14 +36,13 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class MonopolyGUI extends JFrame {
-    private static final String FILENAME = "monopoly17.txt";
     private static final int MONOPOLY_IDX = 0;
     private static final int PLAYER_GUI_IDX = 1;
     private static final int PLAYER_LIST_IDX = 2;
 
     private Monopoly monopoly;
     private ArrayList<PlayerGUI> playersGUI;
-    private LinkedList<Player> playersList;                       // The list of players
+    private LinkedList<Player> playersList;                             // The list of players
     private int currentPlayerOrder;
     private int currentSquareNumber;
     private Boolean isDouble = false;
@@ -144,31 +142,9 @@ public class MonopolyGUI extends JFrame {
         arrayList.add(PLAYER_GUI_IDX, playersGUI);
         arrayList.add(PLAYER_LIST_IDX, playersList);
 
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(arrayList);
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        JOptionPane.showMessageDialog(null, "Game has been saved");
-    }
+        monopoly.exportGame(arrayList);
 
-    /**
-     * Import the Saved contents of a file.
-     * @return  ArrayList<Object>
-     */
-    @SuppressWarnings("unchecked")
-    public ArrayList<Object> importGame() {
-        try {
-            FileInputStream fileInputStream = new FileInputStream(FILENAME);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            return (ArrayList<Object>) objectInputStream.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
+        JOptionPane.showMessageDialog(null, "Game has been saved");
     }
 
     /**
@@ -176,7 +152,7 @@ public class MonopolyGUI extends JFrame {
      * @param actionEvent   ActionEvent
      */
     public void loadGame(ActionEvent actionEvent) {
-        setGame(Objects.requireNonNull(importGame()));
+        setGame(Objects.requireNonNull(monopoly.importGame()));
     }
 
     /**

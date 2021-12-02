@@ -1,6 +1,6 @@
 package monopoly17;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -8,6 +8,7 @@ import java.util.*;
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class Monopoly implements Serializable {
+    private static final String FILENAME = "monopoly17.txt";
     private final RollDice rollDice;
     private final GameState gameState;
     private boolean isBankrupt;
@@ -407,5 +408,36 @@ public class Monopoly implements Serializable {
      */
     public boolean isBankrupt() {
         return isBankrupt;
+    }
+
+    /**
+     * Export the game state using serialization.
+     * @param arrayList ArrayList<Object>
+     */
+    public void exportGame(ArrayList<Object> arrayList) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(arrayList);
+            objectOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Import the Saved contents of a file.
+     * @return  ArrayList<Object>
+     */
+    @SuppressWarnings("unchecked")
+    public ArrayList<Object> importGame() {
+        try {
+            FileInputStream fileInputStream = new FileInputStream(FILENAME);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            return (ArrayList<Object>) objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
