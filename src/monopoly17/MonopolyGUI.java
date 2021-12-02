@@ -36,9 +36,9 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class MonopolyGUI extends JFrame {
-    private static final int MONOPOLY_IDX = 0;
-    private static final int PLAYER_GUI_IDX = 1;
-    private static final int PLAYER_LIST_IDX = 2;
+    public static final int MONOPOLY_IDX = 0;
+    public static final int PLAYER_GUI_IDX = 1;
+    public static final int PLAYER_LIST_IDX = 2;
 
     private Monopoly monopoly;
     private ArrayList<PlayerGUI> playersGUI;

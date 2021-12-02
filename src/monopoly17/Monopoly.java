@@ -8,7 +8,7 @@ import java.util.*;
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class Monopoly implements Serializable {
-    private static final String FILENAME = "monopoly17.txt";
+    public static final String FILENAME = "monopoly17.txt";
     private final RollDice rollDice;
     private final GameState gameState;
     private boolean isBankrupt;
