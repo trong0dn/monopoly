@@ -76,7 +76,7 @@ public class MonopolyTest {
         monopoly.buyProperty(humanPlayer, oldKent);
         Assert.assertEquals(0, humanPlayer2.properties().toArray().length);
 
-        // player 2 purchases oldKent from player1
+        // Player 2 purchases oldKent from player1
         humanPlayer2.setMoney(10);
         monopoly.buyProperty(humanPlayer2, oldKent);
         Assert.assertEquals(oldKent, humanPlayer2.properties().toArray()[0]);
@@ -87,19 +87,19 @@ public class MonopolyTest {
      */
     @Test
     public void testOwned() {
-        //player2 does not own the property, must pay rent
+        // Player2 does not own the property, must pay rent
         humanPlayer2.setMoney(1500);
         monopoly.buyProperty(humanPlayer, oldKent);
         monopoly.owned(humanPlayer2, oldKent, 5);
         Assert.assertEquals(1498, humanPlayer2.getMoney());
 
-        //player landed on their own property, does not pay rent
+        // Player landed on their own property, does not pay rent
         humanPlayer2.setMoney(1500);
         monopoly.buyProperty(humanPlayer2, oldKent);
         monopoly.owned(humanPlayer2, oldKent, 5);
         Assert.assertEquals(1500, humanPlayer2.getMoney());
 
-        // player landed on their own property, does not have any money, they are not bankrupt
+        // Player landed on their own property, does not have any money, they are not bankrupt
         humanPlayer2.setMoney(1500);
         monopoly.buyProperty(humanPlayer2, oldKent);
         humanPlayer2.setMoney(0);
@@ -107,7 +107,7 @@ public class MonopolyTest {
         Assert.assertEquals(0, humanPlayer2.getMoney());
         assertFalse(monopoly.isBankrupt());
 
-        // player1 landed on player2's property, does not have any money, they are bankrupt
+        // Player1 landed on player2's property, does not have any money, they are bankrupt
         humanPlayer2.setMoney(1500);
         monopoly.buyProperty(humanPlayer, oldKent);
         humanPlayer2.setMoney(0);
@@ -136,7 +136,7 @@ public class MonopolyTest {
     }
 
     /**
-     * Check whether the game is exported.
+     * Check whether the game is imported and export contents are the same.
      */
     @Test
     @SuppressWarnings("unchecked")
