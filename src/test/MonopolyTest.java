@@ -20,7 +20,7 @@ public class MonopolyTest {
     private Monopoly monopoly;
     private Player humanPlayer;
     private HumanPlayer humanPlayer2;
-    private int position;
+    int position;
     int rent = 2;
     int oneHouse = 10;
     int twoHouse = 30;
