@@ -139,9 +139,19 @@ public class MonopolyTest {
      * Check whether the game is exported.
      */
     @Test
+    @SuppressWarnings("unchecked")
     public void testExportAndImportGame() {
         monopoly.exportGame(arrayList);
+        ArrayList<PlayerGUI> exportG = (ArrayList<PlayerGUI>) arrayList.get(PLAYER_GUI_IDX);
+        LinkedList<Player> exportP = (LinkedList<Player>) arrayList.get(PLAYER_LIST_IDX);
+
         ArrayList<Object> imported = monopoly.importGame();
-        assertEquals(arrayList, imported);
+        ArrayList<PlayerGUI> importG = (ArrayList<PlayerGUI>) imported.get(PLAYER_GUI_IDX);
+        LinkedList<Player> importP = (LinkedList<Player>) imported.get(PLAYER_LIST_IDX);
+
+        assertEquals(exportG.get(0).getPlayer().name(), importG.get(0).getPlayer().name());
+        assertEquals(exportP.get(0).name(), importP.get(0).name());
+        assertEquals(exportG.get(1).getPlayer().name(), importG.get(1).getPlayer().name());
+        assertEquals(exportP.get(1).name(), importP.get(1).name());
     }
 }
