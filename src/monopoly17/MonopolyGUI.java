@@ -36,17 +36,18 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  */
 public class MonopolyGUI extends JFrame {
     private Monopoly monopoly;
-    private ArrayList<PlayerGUI> playersGUI;
+    private ArrayList<PlayerGUI> playersGUI;                            // List of player token positions
     private LinkedList<Player> playersList;                             // The list of players
+    private Boolean isDouble = false;
     private int currentPlayerOrder;
     private int currentSquareNumber;
-    private Boolean isDouble = false;
     private int doubles = 0;
 
     private GameBoardGUI gameBoardGUI;
     private DiceGUI die1;
     private DiceGUI die2;
 
+    // Landing game panel
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
@@ -61,7 +62,7 @@ public class MonopolyGUI extends JFrame {
     private JPanel messagePanel;
     private Font playerFont;
 
-    // Visuals and Buttons for monopolyPanel
+    // Gameplay panel
     private JPanel playerAssetsPanel;
     private JLayeredPane rightLayeredPane;
     private JLayeredPane leftLayeredPane;
@@ -97,7 +98,7 @@ public class MonopolyGUI extends JFrame {
         this.monopoly = new Monopoly();
         this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();
-        this.monopoly.play();        // Determines the winners and losers
+        this.monopoly.play();                               // Determines the winners and losers
         displayGUI();
     }
 
@@ -162,6 +163,7 @@ public class MonopolyGUI extends JFrame {
         setupPlayerStatusWindow();
         setupConsoleLog();
         setupMonopolyButtons();
+        JOptionPane.showMessageDialog(null, "Game has been loaded");
     }
 
     /**
