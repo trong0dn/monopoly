@@ -247,7 +247,7 @@ public class MonopolyGUI extends JFrame {
         titleBackground.add(title);
 
         // Player initialization label
-        JLabel message = new JLabel("Enter Player name in text box then click Add Player (2-6 players)");
+        JLabel message = new JLabel("Enter Player name then click Add Player (2-6 players)");
         messagePanel.add(message);
 
         switchPanels.add(startPanel, "StartPanel");
