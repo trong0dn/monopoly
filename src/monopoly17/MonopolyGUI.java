@@ -950,10 +950,7 @@ public class MonopolyGUI extends JFrame {
             if (currentSquare instanceof Taxes) {
                 infoConsole.append("Taxes: You landed on " + currentSquare.name() +
                         "\nTax: $" + ((Taxes) currentSquare).getTax());
-                buttonPayRent.setEnabled(true);
-                buttonRollDice.setEnabled(false);
-                buttonNextTurn.setEnabled(false);
-                buttonBuy.setEnabled(false);
+                handleTaxSquare();
             } else if(currentSquare instanceof Jail) {
                 handleJail(currentPlayer, currentSquare, diceValue);
             } else {
@@ -988,6 +985,16 @@ public class MonopolyGUI extends JFrame {
         buttonBuy.setEnabled(false);
         buttonPayBail.setEnabled(false);
         buttonNextTurn.setEnabled(true);
+    }
+
+    /**
+     * Handles button logic for GUI when player interacts with Tax square.
+     */
+    private void handleTaxSquare() {
+        buttonPayRent.setEnabled(true);
+        buttonRollDice.setEnabled(false);
+        buttonNextTurn.setEnabled(false);
+        buttonBuy.setEnabled(false);
     }
 
     /**
