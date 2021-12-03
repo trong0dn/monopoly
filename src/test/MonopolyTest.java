@@ -5,11 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-import static monopoly17.MonopolyGUI.*;
 import static org.junit.Assert.*;
 
 /**
@@ -118,4 +113,15 @@ public class MonopolyTest {
         Assert.assertEquals(SquareInfo.SQUARE_10.getPosition(), humanPlayer.getPosition());
     }
 
+    /**
+     * Check whether the game is imported and export contents are the same.
+     */
+    @Test
+    public void testExportAndImportGame() {
+        monopoly.exportGame(monopoly);
+        Monopoly importedMonopoly = monopoly.importGame();
+
+        Assert.assertEquals(monopoly.getPlayers(), importedMonopoly.getPlayers());
+        Assert.assertEquals(monopoly.getPlayerGUI(), importedMonopoly.getPlayerGUI());
+    }
 }
