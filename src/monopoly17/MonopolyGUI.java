@@ -1,5 +1,5 @@
 /*
-Milestone 3
+Milestone 4
 
 Group 17:
 Trong Nguyen 100848232
@@ -10,7 +10,7 @@ Elisha Catherasoo 101148507
 Professor: Babak Esfandiari
 TA: Michael Vezina
 
-Due: 11/22/2021
+Due: 12/06/2021
  */
 
 package monopoly17;
@@ -22,11 +22,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.Objects;
 
 import static monopoly17.GameBoard.BOARD_SIZE;
 import static monopoly17.Monopoly.MAX_PLAYERS;
@@ -37,14 +35,9 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class MonopolyGUI extends JFrame {
-    private static final String FILENAME = "monopoly17.txt";
-    private static final int MONOPOLY_IDX = 0;
-    private static final int PLAYER_GUI_IDX = 1;
-    private static final int PLAYER_LIST_IDX = 2;
-
     private Monopoly monopoly;
     private ArrayList<PlayerGUI> playersGUI;
-    private LinkedList<Player> playersList;                       // The list of players
+    private LinkedList<Player> playersList;                             // The list of players
     private int currentPlayerOrder;
     private int currentSquareNumber;
     private Boolean isDouble = false;
@@ -67,13 +60,13 @@ public class MonopolyGUI extends JFrame {
     private JButton addCPUPlayer;
     private JTextField playerNameInput;
     private JPanel playerNameList;
-    private Font playerFont;
     private JPanel titleBackground;
     private JPanel messagePanel;
+    private Font playerFont;
 
     // Visuals and Buttons for monopolyPanel
-    private JLayeredPane rightLayeredPane;
     private JPanel playerAssetsPanel;
+    private JLayeredPane rightLayeredPane;
     private JLayeredPane leftLayeredPane;
     private JTextArea panelPlayerTextArea;
     private final CardLayout cardLayout = new CardLayout();
@@ -105,7 +98,7 @@ public class MonopolyGUI extends JFrame {
         initPanelComponents();
         setupSwitchPanel();
         this.monopoly = new Monopoly();
-        this.playersGUI = new ArrayList<>();
+        this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();
         this.monopoly.play();        // Determines the winners and losers
         displayGUI();
@@ -142,61 +135,30 @@ public class MonopolyGUI extends JFrame {
      * Export the Saved game file.
      * @param actionEvent   ActionEvent
      */
-    private void saveGame(ActionEvent actionEvent) {
-        ArrayList<Object> arrayList = new ArrayList<>();
-        arrayList.add(MONOPOLY_IDX, monopoly);
-        arrayList.add(PLAYER_GUI_IDX, playersGUI);
-        arrayList.add(PLAYER_LIST_IDX, playersList);
-
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(arrayList);
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void saveGame(ActionEvent actionEvent) {
+        monopoly.exportGame(monopoly);
         JOptionPane.showMessageDialog(null, "Game has been saved");
-    }
-
-    /**
-     * Import the Saved contents of a file.
-     * @return  ArrayList<Object>
-     */
-    @SuppressWarnings("unchecked")
-    private ArrayList<Object> importGame() {
-        try {
-            FileInputStream fileInputStream = new FileInputStream(FILENAME);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            return (ArrayList<Object>) objectInputStream.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     /**
      * Load the current game play state.
      * @param actionEvent   ActionEvent
      */
-    private void loadGame(ActionEvent actionEvent) {
-        setGame(Objects.requireNonNull(importGame()));
+    public void loadGame(ActionEvent actionEvent) {
+        setGame(monopoly.importGame());
     }
 
     /**
      * Set the current game play state.
-     * @param arrayList     ArrayList<Object>
+     * @param newMonopoly Monopoly
      */
-    @SuppressWarnings("unchecked")
-    private void setGame(ArrayList<Object> arrayList) {
+    public void setGame(Monopoly newMonopoly) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
-        for (int i = 0; i < arrayList.size(); i++) {
-            arrayList.set(i, arrayList.get(i));
-        }
-        this.monopoly = (Monopoly) arrayList.get(MONOPOLY_IDX);
-        this.playersGUI = (ArrayList<PlayerGUI>) arrayList.get(PLAYER_GUI_IDX);
-        this.playersList = (LinkedList<Player>) arrayList.get(PLAYER_LIST_IDX);
+
+        this.monopoly = newMonopoly;
+        this.playersGUI = monopoly.getPlayerGUI();
+        this.playersList = monopoly.getPlayers();
 
         setupBoard();
         setupDice();
@@ -335,7 +297,7 @@ public class MonopolyGUI extends JFrame {
         usVersionButton.addActionListener(this::usVersionButton);
         ukVersionButton.addActionListener(this::ukVersionButton);
         addPlayer.addActionListener(this::addPlayerButton);
-        addCPUPlayer.addActionListener(this::addPlayerButton);
+        addCPUPlayer.addActionListener(this::addCPUPlayerButton);
         playButton.addActionListener(this::playButton);
     }
 
@@ -515,6 +477,23 @@ public class MonopolyGUI extends JFrame {
         if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
             // Make the panel to get the username
             Player newPlayer = new HumanPlayer(playerNameInput.getText());
+            addNewPlayerPanel(newPlayer);
+        } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
+            JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
+        }
+        else {
+            JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
+        }
+    }
+
+    /**
+     * Create a JButton for adding a new CPU Player.
+     * @param actionEvent ActionEvent
+     */
+    private void addCPUPlayerButton(ActionEvent actionEvent) {
+        if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
+            // Make the panel to get the username
+            Player newPlayer = new CPUPlayer(playerNameInput.getText());
             addNewPlayerPanel(newPlayer);
         } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
             JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
@@ -741,14 +720,14 @@ public class MonopolyGUI extends JFrame {
         cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
         infoConsole.append("It's now player "+ playersList.get(currentPlayerIndex - 1).name() +"'s turn!\n");
 
-        handleCPUNextTurn();
+        handleCPUTurn();
         updatePlayerStatusTextArea();
     }
 
     /**
      * Handles when it is the CPU Player's next turn.
      */
-    private void handleCPUNextTurn() {
+    private void handleCPUTurn() {
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
         if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
             buttonRunCPU.setEnabled(true);
@@ -868,9 +847,9 @@ public class MonopolyGUI extends JFrame {
      * @param actionEvent ActionEvent
      */
     private void buttonRunCPU(ActionEvent actionEvent) {
-        handleCPUButtons();
         rollDiceLogic();
         handleCPUSquare();
+        handleCPUButtons();
     }
 
     /**
@@ -1120,7 +1099,7 @@ public class MonopolyGUI extends JFrame {
     /**
      * Display the game.
      */
-    public void displayGUI() {
+    private void displayGUI() {
         // Frame does not close immediately when trying to quit
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {

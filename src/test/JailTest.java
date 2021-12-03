@@ -18,7 +18,7 @@ public class JailTest {
     @Before
     public void setUp() {
         visitingJail = new Jail(SquareInfo.SQUARE_10.getPosition(), SquareInfo.SQUARE_10.getName(), Jail.JailType.JUST_VISITING);
-        inJail = new Jail(SquareInfo.SQUARE_40.getPosition(), SquareInfo.SQUARE_40.getName(), Jail.JailType.IN_JAIL);
+        inJail = new Jail(SquareInfo.SQUARE_10.getPosition(), SquareInfo.SQUARE_10.getName(), Jail.JailType.IN_JAIL);
         gotoJail = new Jail(SquareInfo.SQUARE_30.getPosition(), SquareInfo.SQUARE_30.getName(),Jail.JailType.GOTO_JAIL);
     }
 
@@ -32,14 +32,14 @@ public class JailTest {
     @Test
     public void testPosition() {
         Assert.assertEquals(visitingJail.position(), SquareInfo.SQUARE_10.getPosition());
-        Assert.assertEquals(inJail.position(), SquareInfo.SQUARE_40.getPosition());
+        Assert.assertEquals(inJail.position(), SquareInfo.SQUARE_10.getPosition());
         Assert.assertEquals(gotoJail.position(), SquareInfo.SQUARE_30.getPosition());
     }
 
     @Test
     public void testName() {
         Assert.assertEquals(visitingJail.name(), SquareInfo.SQUARE_10.getName());
-        Assert.assertEquals(inJail.name(), SquareInfo.SQUARE_40.getName());
+        Assert.assertEquals(inJail.name(), SquareInfo.SQUARE_10.getName());
         Assert.assertEquals(gotoJail.name(), SquareInfo.SQUARE_30.getName());
     }
 
