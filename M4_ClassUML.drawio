@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-12-03T19:00:42.379Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="HPSZP32qEAKJJ-zc2cXy" version="15.8.8" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2021-12-03T19:02:32.845Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="6H9w8eQx_MDxkSmboMgy" version="15.8.8" type="github" pages="5">
   <diagram id="9SsBPt5f3ULlJmDV1aBo" name="ClassUML">
     <mxGraphModel dx="6806" dy="1158" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -2789,7 +2789,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="5ZDj9Q71snL7Ewq-eP8N" name="SequenceUML_4">
-    <mxGraphModel dx="1186" dy="673" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1504" dy="681" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="sMr9pjwS4rFsDyO3m7Ci-0" />
         <mxCell id="sMr9pjwS4rFsDyO3m7Ci-1" parent="sMr9pjwS4rFsDyO3m7Ci-0" />
@@ -2836,7 +2836,7 @@
             <mxPoint x="235" y="180.00000000000006" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="IW4YDF6VKL9LcbP7UP5C-5" value="setGame(arrayList)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="sMr9pjwS4rFsDyO3m7Ci-1" edge="1">
+        <mxCell id="IW4YDF6VKL9LcbP7UP5C-5" value="setGame(m)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="sMr9pjwS4rFsDyO3m7Ci-1" edge="1">
           <mxGeometry x="-0.1545" y="30" width="80" relative="1" as="geometry">
             <mxPoint x="246" y="375" as="sourcePoint" />
             <mxPoint x="260" y="395" as="targetPoint" />
@@ -2988,7 +2988,7 @@
         <mxCell id="gpEvXKvhgTccjZYIAsRg-0" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="sMr9pjwS4rFsDyO3m7Ci-1" vertex="1">
           <mxGeometry x="445" y="270" width="20" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="gpEvXKvhgTccjZYIAsRg-1" value="&lt;b&gt;&lt;u&gt;:GameBoardGUI&lt;/u&gt;&lt;/b&gt;" style="html=1;align=center;" parent="sMr9pjwS4rFsDyO3m7Ci-1" vertex="1">
+        <mxCell id="gpEvXKvhgTccjZYIAsRg-1" value="&lt;b&gt;&lt;u&gt;m:Monopoly&lt;/u&gt;&lt;/b&gt;" style="html=1;align=center;" parent="sMr9pjwS4rFsDyO3m7Ci-1" vertex="1">
           <mxGeometry x="400" y="130" width="110" height="50" as="geometry" />
         </mxCell>
         <mxCell id="gpEvXKvhgTccjZYIAsRg-2" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" parent="sMr9pjwS4rFsDyO3m7Ci-1" source="gpEvXKvhgTccjZYIAsRg-0" target="gpEvXKvhgTccjZYIAsRg-1" edge="1">
@@ -3009,7 +3009,7 @@
             <mxPoint x="443" y="279.9999999999999" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="gpEvXKvhgTccjZYIAsRg-5" value="arrayList" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" parent="sMr9pjwS4rFsDyO3m7Ci-1" edge="1">
+        <mxCell id="gpEvXKvhgTccjZYIAsRg-5" value="m" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" parent="sMr9pjwS4rFsDyO3m7Ci-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="442" y="319.9999999999999" as="sourcePoint" />
             <mxPoint x="246" y="319.9999999999999" as="targetPoint" />
