@@ -552,7 +552,7 @@ public class MonopolyGUI extends JFrame {
      */
     private void startButton(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
-        cl.show(switchPanels, "PlayerInitializePanel");
+        cl.show(switchPanels, "VersionsPanel");
     }
 
     /**
