@@ -33,8 +33,6 @@ public class MonopolyTest {
     private Square goToJail;
     private Square inJail;
 
-    private ArrayList<Object> arrayList;
-
     @Before
     public void setUp() {
         monopoly = new Monopoly();
@@ -45,21 +43,6 @@ public class MonopolyTest {
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
         goToJail = new Jail(SquareInfo.SQUARE_30.getPosition(), SquareInfo.SQUARE_30.getName(), Jail.JailType.GOTO_JAIL);
         inJail = new Jail(SquareInfo.SQUARE_10.getPosition(), SquareInfo.SQUARE_10.getName(), Jail.JailType.IN_JAIL);
-
-        ArrayList<PlayerGUI> playersGUI = new ArrayList<>();
-        PlayerGUI playerGUI1 = new PlayerGUI(Color.RED, "Tester1");
-        PlayerGUI playerGUI2 = new PlayerGUI(Color.BLUE, "Tester2");
-        playersGUI.add(playerGUI1);
-        playersGUI.add(playerGUI2);
-
-        LinkedList<Player> playersList = new LinkedList<>();
-        playersList.add(humanPlayer);
-        playersList.add(humanPlayer2);
-
-        arrayList = new ArrayList<>();
-        arrayList.add(MONOPOLY_IDX, monopoly);
-        arrayList.add(PLAYER_GUI_IDX, playersGUI);
-        arrayList.add(PLAYER_LIST_IDX, playersList);
     }
 
     /**
@@ -135,23 +118,4 @@ public class MonopolyTest {
         Assert.assertEquals(SquareInfo.SQUARE_10.getPosition(), humanPlayer.getPosition());
     }
 
-    /**
-     * Check whether the game is imported and export contents are the same.
-     */
-    @Test
-    @SuppressWarnings("unchecked")
-    public void testExportAndImportGame() {
-        monopoly.exportGame(arrayList);
-        ArrayList<PlayerGUI> exportG = (ArrayList<PlayerGUI>) arrayList.get(PLAYER_GUI_IDX);
-        LinkedList<Player> exportP = (LinkedList<Player>) arrayList.get(PLAYER_LIST_IDX);
-
-        ArrayList<Object> imported = monopoly.importGame();
-        ArrayList<PlayerGUI> importG = (ArrayList<PlayerGUI>) imported.get(PLAYER_GUI_IDX);
-        LinkedList<Player> importP = (LinkedList<Player>) imported.get(PLAYER_LIST_IDX);
-
-        assertEquals(exportG.get(0).getPlayer().name(), importG.get(0).getPlayer().name());
-        assertEquals(exportP.get(0).name(), importP.get(0).name());
-        assertEquals(exportG.get(1).getPlayer().name(), importG.get(1).getPlayer().name());
-        assertEquals(exportP.get(1).name(), importP.get(1).name());
-    }
 }

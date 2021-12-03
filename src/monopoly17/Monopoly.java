@@ -23,13 +23,26 @@ public class Monopoly implements Serializable {
         this.isBankrupt = false;
         gameState = new GameState();
         gameState.players = new LinkedList<>();
+        gameState.playersGUI = new ArrayList<>();
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
     }
 
+    /**
+     * Get the list of Players in the game state.
+     * @return  LinkedList<Player>
+     */
     public LinkedList<Player> getPlayers() {
         return gameState.players;
+    }
+
+    /**
+     * Get the playerGUI, tokens on the game board in the game state.
+     * @return  ArrayList<PlayerGUI>
+     */
+    public ArrayList<PlayerGUI> getPlayerGUI() {
+        return gameState.playersGUI;
     }
 
     /**
@@ -412,13 +425,13 @@ public class Monopoly implements Serializable {
 
     /**
      * Export the game state using serialization.
-     * @param arrayList ArrayList<Object>
+     * @param monopoly Monopoly
      */
-    public void exportGame(ArrayList<Object> arrayList) {
+    public void exportGame(Monopoly monopoly) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(arrayList);
+            objectOutputStream.writeObject(monopoly);
             objectOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -427,14 +440,13 @@ public class Monopoly implements Serializable {
 
     /**
      * Import the saved contents of the game file.
-     * @return  ArrayList<Object>
+     * @return Monopoly
      */
-    @SuppressWarnings("unchecked")
-    public ArrayList<Object> importGame() {
+    public Monopoly importGame() {
         try {
             FileInputStream fileInputStream = new FileInputStream(FILENAME);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            return (ArrayList<Object>) objectInputStream.readObject();
+            return (Monopoly) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

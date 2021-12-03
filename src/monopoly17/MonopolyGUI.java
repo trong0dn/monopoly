@@ -25,7 +25,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.Objects;
 
 import static monopoly17.GameBoard.BOARD_SIZE;
 import static monopoly17.Monopoly.MAX_PLAYERS;
@@ -36,10 +35,6 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
 public class MonopolyGUI extends JFrame {
-    public static final int MONOPOLY_IDX = 0;
-    public static final int PLAYER_GUI_IDX = 1;
-    public static final int PLAYER_LIST_IDX = 2;
-
     private Monopoly monopoly;
     private ArrayList<PlayerGUI> playersGUI;
     private LinkedList<Player> playersList;                             // The list of players
@@ -100,7 +95,7 @@ public class MonopolyGUI extends JFrame {
         initPanelComponents();
         setupSwitchPanel();
         this.monopoly = new Monopoly();
-        this.playersGUI = new ArrayList<>();
+        this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();
         this.monopoly.play();        // Determines the winners and losers
         displayGUI();
@@ -137,13 +132,7 @@ public class MonopolyGUI extends JFrame {
      * @param actionEvent   ActionEvent
      */
     public void saveGame(ActionEvent actionEvent) {
-        ArrayList<Object> arrayList = new ArrayList<>();
-        arrayList.add(MONOPOLY_IDX, monopoly);
-        arrayList.add(PLAYER_GUI_IDX, playersGUI);
-        arrayList.add(PLAYER_LIST_IDX, playersList);
-
-        monopoly.exportGame(arrayList);
-
+        monopoly.exportGame(monopoly);
         JOptionPane.showMessageDialog(null, "Game has been saved");
     }
 
@@ -152,23 +141,20 @@ public class MonopolyGUI extends JFrame {
      * @param actionEvent   ActionEvent
      */
     public void loadGame(ActionEvent actionEvent) {
-        setGame(Objects.requireNonNull(monopoly.importGame()));
+        setGame(monopoly.importGame());
     }
 
     /**
      * Set the current game play state.
-     * @param arrayList     ArrayList<Object>
+     * @param newMonopoly Monopoly
      */
-    @SuppressWarnings("unchecked")
-    public void setGame(ArrayList<Object> arrayList) {
+    public void setGame(Monopoly newMonopoly) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
-        for (int i = 0; i < arrayList.size(); i++) {
-            arrayList.set(i, arrayList.get(i));
-        }
-        this.monopoly = (Monopoly) arrayList.get(MONOPOLY_IDX);
-        this.playersGUI = (ArrayList<PlayerGUI>) arrayList.get(PLAYER_GUI_IDX);
-        this.playersList = (LinkedList<Player>) arrayList.get(PLAYER_LIST_IDX);
+
+        this.monopoly = newMonopoly;
+        this.playersGUI = monopoly.getPlayerGUI();
+        this.playersList = monopoly.getPlayers();
 
         setupBoard();
         setupDice();
