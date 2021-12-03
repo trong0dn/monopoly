@@ -28,7 +28,7 @@ public class JSONLanguages {
     }
 
     public Map getSquare0() {
-        square1values = ((Map) jo.get("square0"));
+        square0values = ((Map) jo.get("square0"));
         return square0values;
     }
 
