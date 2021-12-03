@@ -537,7 +537,7 @@ public class MonopolyGUI extends JFrame {
 
         setupBoard();
         setupDice();
-        setupPlayerToken();
+        initPlayerToken();
         setupPlayerStatusWindow();
         setupConsoleLog();
         setupMonopolyButtons();
@@ -546,7 +546,7 @@ public class MonopolyGUI extends JFrame {
     /**
      * Give each player their own color.
      */
-    private void setupPlayerToken() {
+    private void initPlayerToken() {
         PlayerGUI playerGUI = null;
         for (int i = 0; i < playersList.size(); i++) {
             playerGUI = new PlayerGUI(playerTokenColors[i], playersList.get(i).name());
