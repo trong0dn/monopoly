@@ -3,15 +3,14 @@ package monopoly17;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.io.Serializable;
 
 /**
  * This class represents the GUI for the dice.
  * @author Trong Nguyen
  */
-public class DiceGUI extends JPanel implements Serializable {
-    RollDice rollDice = new RollDice();
-    int faceValue;
+public class DiceGUI extends JPanel {
+    private final RollDice rollDice = new RollDice();
+    private int faceValue;
 
     /**
      * Constructor for DiceGUI.

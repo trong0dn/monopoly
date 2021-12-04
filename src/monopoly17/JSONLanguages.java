@@ -9,17 +9,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 public class JSONLanguages {
+    JSONObject jo;
+    private static Map square0values;
     private static Map square1values;
 
     public JSONLanguages(String file) {
         try {
             Object obj = new JSONParser().parse(new FileReader("src/versions/" + file));
-
-            JSONObject jo = (JSONObject) obj;
-
-            square1values = ((Map) jo.get("square1"));
-
-            System.out.println(square1values.get("name"));
+            jo = (JSONObject) obj;
 
         } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
@@ -28,5 +25,15 @@ public class JSONLanguages {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public Map getSquare0() {
+        square0values = ((Map) jo.get("square0"));
+        return square0values;
+    }
+
+    public Map getSquare1() {
+        square1values = ((Map) jo.get("square1"));
+        return square1values;
     }
 }
