@@ -34,6 +34,7 @@ public class MonopolyInitGUI extends JFrame {
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
 
+    private String[] versions;
     private JComboBox versionsList;
 
     private LinkedList<Player> playersList;                             // The list of players
@@ -108,7 +109,7 @@ public class MonopolyInitGUI extends JFrame {
         messagePanel = new JPanel();
         chooseVersionPanel = new JPanel();
 
-        String[] versions = {"UK", "US"};
+        versions = new String[]{"UK", "US"};
         versionsList = new JComboBox(versions);
         versionsList.setSelectedIndex(0);
 
