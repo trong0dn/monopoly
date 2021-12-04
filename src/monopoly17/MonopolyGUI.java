@@ -20,15 +20,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
 import static monopoly17.GameBoard.BOARD_SIZE;
-import static monopoly17.Monopoly.MAX_PLAYERS;
-import static monopoly17.Monopoly.MIN_PLAYERS;
 
 /**
  * This class represents the Monopoly GUI.
@@ -46,27 +42,6 @@ public class MonopolyGUI extends JPanel {
     private GameBoardGUI gameBoardGUI;
     private DiceGUI die1;
     private DiceGUI die2;
-
-    /*
-    // Landing game panel
-    private JPanel playerInitPanel;                                     // Panel for making the players
-    private JPanel startPanel;                                          // Panel for the main starting page
-    private JPanel versionsPanel;
-    private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
-    private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
-    private JButton startButton;
-    private JButton usVersionButton;
-    private JButton ukVersionButton;
-    private JButton playButton;
-    private JButton addPlayer;
-    private JButton addCPUPlayer;
-    private JTextField playerNameInput;
-    private JPanel playerNameList;
-    private JPanel titleBackground;
-    private JPanel messagePanel;
-    private Font playerFont;
-
-     */
 
     // Gameplay panel
     private JPanel playerAssetsPanel;
@@ -98,11 +73,6 @@ public class MonopolyGUI extends JPanel {
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
-        //initFrame();
-        //initPanelComponents();
-        //setupSwitchPanel();
-        //setupPanel();
-
         this.monopoly = new Monopoly();
         this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();
@@ -164,9 +134,8 @@ public class MonopolyGUI extends JPanel {
 
     /**
      * Export the Saved game file.
-     * @param actionEvent   ActionEvent
      */
-    public void saveGame(ActionEvent actionEvent) {
+    public void saveGame() {
         monopoly.setCurrentPlayerOrder(currentPlayerOrder);
         monopoly.setCurrentSquareNumber(currentSquareNumber);
         monopoly.exportGame(monopoly);
@@ -175,21 +144,10 @@ public class MonopolyGUI extends JPanel {
     }
 
     /**
-     * Load the current game play state.
-     * @param actionEvent   ActionEvent
-     */
-    public void loadGame(ActionEvent actionEvent) {
-        setGame(monopoly.importGame());
-    }
-
-    /**
      * Set the current game play state.
      * @param newMonopoly Monopoly
      */
     public MonopolyGUI setGame(Monopoly newMonopoly) {
-        //CardLayout cl = (CardLayout) (switchPanels.getLayout());
-        //cl.show(switchPanels, "MonopolyPanel");
-
         this.monopoly = newMonopoly;
         this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();
@@ -225,11 +183,8 @@ public class MonopolyGUI extends JPanel {
 
     /**
      * Creates a new game.
-     * @param actionEvent   ActionEvent
      */
-    public void newGame(ActionEvent actionEvent) {
-        //CardLayout cl = (CardLayout) (switchPanels.getLayout());
-        //cl.show(switchPanels, "StartPanel");
+    public void newGame() {
         this.monopoly = new Monopoly();
         this.playersGUI = new ArrayList<>();
         this.playersList = new LinkedList<>();
@@ -237,198 +192,7 @@ public class MonopolyGUI extends JPanel {
         this.currentSquareNumber = 0;
         isDouble = false;
         doubles = 0;
-        //initFrame();
-        //initPanelComponents();
-        //setupSwitchPanel();
     }
-
-    /*
-     * Initialize the components in the panels.
-     *
-    private void initPanelComponents() {
-        startButton = new JButton("Start Game");
-        usVersionButton = new JButton("US Version");
-        ukVersionButton = new JButton("UK Version");
-        playButton = new JButton("Play Game!");
-        addPlayer = new JButton("Add Player");
-        addCPUPlayer = new JButton("Add CPU Player");
-        playerNameInput = new JTextField("");
-        playerNameList = new JPanel(new GridLayout(0,2));
-        playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
-        titleBackground = new JPanel();
-        messagePanel = new JPanel();
-    }
-
-     */
-
-    /*
-     * Set up the panels in the switch panel.
-     *
-    private void setupSwitchPanel() {
-        Font font = new Font("Lucida Grande", Font.BOLD, 60);
-
-        titleBackground.setPreferredSize(new Dimension(450, 90));
-        titleBackground.setBackground(Color.RED);
-
-        setupPanels();
-        setupLayouts();
-
-        // Starting page label
-        JLabel title = new JLabel("MONOPOLY!");
-        title.setFont(font);
-        title.setOpaque(true);
-        title.setBackground(Color.RED);
-        title.setForeground(Color.WHITE);
-        titleBackground.add(title);
-
-        // Player initialization label
-        JLabel message = new JLabel("Enter Player name then click Add Player (2-6 players)");
-        messagePanel.add(message);
-
-        switchPanels.add(startPanel, "StartPanel");
-        switchPanels.add(versionsPanel, "VersionsPanel");
-        switchPanels.add(playerInitPanel, "PlayerInitializePanel");
-        switchPanels.add(monopolyPanel, "MonopolyPanel");
-
-        this.add(switchPanels);
-    }
-
-     */
-
-    /*
-     * Set up the panels.
-     *
-    private void setupPanel() {
-        this.setBounds(100, 100, 450, 300);
-        this.setSize(1080,740);
-
-        startPanel.setSize(new Dimension(250, 250));
-        startPanel.setBackground(new Color(50, 255, 155));
-        startPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
-
-        versionsPanel.setSize(new Dimension(250, 250));
-        versionsPanel.setBackground(new Color(50, 255, 155));
-        versionsPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
-
-        playerInitPanel.setSize(new Dimension(250, 250));
-        playerInitPanel.setBackground(new Color(50, 255, 155));
-        playerInitPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
-
-        monopolyPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        monopolyPanel.setLayout(null);
-        monopolyPanel.setSize(new Dimension(250, 250));
-        monopolyPanel.setBackground(Color.white);
-
-        playerNameList.setPreferredSize(new Dimension(400, 240));
-        playerNameList.setBackground(Color.RED);
-
-        setupButtons();
-    }
-
-     */
-
-    /*
-     * Set up the buttons not in the game.
-     *
-    private void setupButtons() {
-        startButton.setPreferredSize(new Dimension(175, 50));
-        playerNameInput.setPreferredSize(new Dimension(175, 50));
-        addPlayer.setPreferredSize(new Dimension(175, 50));
-        addCPUPlayer.setPreferredSize(new Dimension(175, 50));
-        playButton.setPreferredSize(new Dimension(175, 50));
-        usVersionButton.setPreferredSize(new Dimension(175, 50));
-        ukVersionButton.setPreferredSize(new Dimension(175, 50));
-        playButton.setEnabled(false);
-
-        startButton.addActionListener(this::startAction);
-        addPlayer.addActionListener(this::addPlayerAction);
-        addCPUPlayer.addActionListener(this::addPlayerAction);
-        playButton.addActionListener(this::playAction);
-        usVersionButton.addActionListener(this::usVersionButton);
-        ukVersionButton.addActionListener(this::ukVersionButton);
-    }
-
-     */
-
-    /*
-     * Set up the layouts used.
-     *
-    private void setupLayouts() {
-        GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
-        gbagConstraintsTitle.gridx = 1;
-        gbagConstraintsTitle.gridy = 1;
-        gbagConstraintsTitle.insets = new Insets(0, 0, 20, 0);
-
-        GridBagConstraints gbagConstraintsStartButton = new GridBagConstraints();
-        gbagConstraintsStartButton.gridx = 1;
-        gbagConstraintsStartButton.gridy = 2;
-        gbagConstraintsStartButton.insets = new Insets(40, 0, 0, 0);
-
-        GridBagConstraints gbagConstraintsPlayerNameList = new GridBagConstraints();
-        gbagConstraintsPlayerNameList.gridx = 1;
-        gbagConstraintsPlayerNameList.gridy = 1;
-        gbagConstraintsPlayerNameList.gridwidth = 2;
-        gbagConstraintsPlayerNameList.gridheight = 7;
-        gbagConstraintsPlayerNameList.insets = new Insets(0, 0, 10, 0);
-
-        GridBagConstraints gbagConstraintsPlayerNameInput = new GridBagConstraints();
-        gbagConstraintsPlayerNameInput.gridx = 1;
-        gbagConstraintsPlayerNameInput.gridy = 8;
-        gbagConstraintsPlayerNameInput.gridwidth = 2;
-        gbagConstraintsPlayerNameInput.insets = new Insets(5, 0, 10, 0);
-
-        GridBagConstraints gbagConstraintsAddPlayerButton = new GridBagConstraints();
-        gbagConstraintsAddPlayerButton.gridx = 1;
-        gbagConstraintsAddPlayerButton.gridy = 9;
-        gbagConstraintsAddPlayerButton.gridwidth = 1;
-        gbagConstraintsAddPlayerButton.insets = new Insets(0, 15, 20, 0);
-
-        GridBagConstraints gbagConstraintsAddCPUPlayerButton = new GridBagConstraints();
-        gbagConstraintsAddCPUPlayerButton.gridx = 2;
-        gbagConstraintsAddCPUPlayerButton.gridy = 9;
-        gbagConstraintsAddCPUPlayerButton.gridwidth = 2;
-        gbagConstraintsAddCPUPlayerButton.insets = new Insets(0, 0, 20, 0);
-
-        GridBagConstraints gbagConstraintsPlayButton = new GridBagConstraints();
-        gbagConstraintsPlayButton.gridx = 1;
-        gbagConstraintsPlayButton.gridy = 10;
-        gbagConstraintsPlayButton.gridwidth = 2;
-        gbagConstraintsPlayButton.insets = new Insets(20, 0, 0, 0);
-
-        GridBagConstraints gbagConstraintsMessage = new GridBagConstraints();
-        gbagConstraintsMessage.gridx = 1;
-        gbagConstraintsMessage.gridy = 12;
-        gbagConstraintsMessage.gridwidth = 2;
-        gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
-
-        GridBagConstraints gbagConstraintUsVersion = new GridBagConstraints();
-        gbagConstraintUsVersion.gridx = 1;
-        gbagConstraintUsVersion.gridy = 0;
-        gbagConstraintUsVersion.gridwidth = 2;
-        gbagConstraintUsVersion.insets = new Insets(20, 0, 10, 0);
-
-        GridBagConstraints gbagConstraintUkVersion = new GridBagConstraints();
-        gbagConstraintUkVersion.gridx = 1;
-        gbagConstraintUkVersion.gridy = 1;
-        gbagConstraintUkVersion.gridwidth = 2;
-        gbagConstraintUkVersion.insets = new Insets(10, 0, 20, 0);
-
-        // Add the buttons, panels and labels to the frame
-        startPanel.add(titleBackground, gbagConstraintsTitle);
-        startPanel.add(startButton, gbagConstraintsStartButton);
-
-        versionsPanel.add(usVersionButton, gbagConstraintUsVersion);
-        versionsPanel.add(ukVersionButton, gbagConstraintUkVersion);
-
-        playerInitPanel.add(playerNameList, gbagConstraintsPlayerNameList);
-        playerInitPanel.add(playerNameInput, gbagConstraintsPlayerNameInput);
-        playerInitPanel.add(addPlayer, gbagConstraintsAddPlayerButton);
-        playerInitPanel.add(addCPUPlayer, gbagConstraintsAddCPUPlayerButton);
-        playerInitPanel.add(playButton, gbagConstraintsPlayButton);
-        playerInitPanel.add(messagePanel, gbagConstraintsMessage);
-    }
-
-     */
 
     /**
      * Set up the layout for the board.
@@ -1127,30 +891,4 @@ public class MonopolyGUI extends JPanel {
             infoConsole.append("Bail out of Jail for $50 by pressing Pay Bail");
         }
     }
-
-    /*
-     * Display the game.
-     *
-    private void displayGUI() {
-        // Frame does not close immediately when trying to quit
-        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we) {
-                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?")
-                        == JOptionPane.OK_OPTION) {
-                    setVisible(false);
-                    dispose();
-                }
-            }
-        });
-        this.setVisible(true);
-    }
-    */
-
-    /*
-    public static void main(String[] args) {
-        new MonopolyGUI();
-    }
-     */
 }
