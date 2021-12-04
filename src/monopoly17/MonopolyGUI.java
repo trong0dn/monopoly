@@ -143,8 +143,6 @@ public class MonopolyGUI extends JFrame {
         monopoly.setCurrentPlayerOrder(currentPlayerOrder);
         monopoly.setCurrentSquareNumber(currentSquareNumber);
         monopoly.exportGame(monopoly);
-        System.out.println(currentPlayerOrder);
-        System.out.println(currentSquareNumber);
 
         JOptionPane.showMessageDialog(null, "Game has been saved");
     }
