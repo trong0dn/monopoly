@@ -85,6 +85,20 @@ public class HumanPlayer implements Player, Serializable {
     }
 
     /**
+     * Get the property based on the name.
+     * @param propName  String
+     * @return          Property
+     */
+    public Property getProperty(String propName) {
+        for(Square prop: properties){
+            if (propName.equals(prop.name())){
+                return (Property) prop;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Get the name of the player.
      * @return  String
      */

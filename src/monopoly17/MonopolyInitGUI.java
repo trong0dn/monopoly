@@ -32,7 +32,7 @@ public class MonopolyInitGUI extends JFrame {
 
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
-    private JPanel versionsPanel;
+    //private JPanel versionsPanel;
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
 
@@ -68,7 +68,7 @@ public class MonopolyInitGUI extends JFrame {
         this.setTitle("MONOPOLY");
         playerInitPanel = new JPanel(new GridBagLayout());
         startPanel = new JPanel(new GridBagLayout());
-        versionsPanel = new JPanel(new GridBagLayout());
+        //versionsPanel = new JPanel(new GridBagLayout());
         monopolyPanel = new JPanel();
 
         this.setBounds(100, 100, 450, 300);
@@ -188,7 +188,7 @@ public class MonopolyInitGUI extends JFrame {
         messagePanel.setBackground(new Color(50, 200, 155));
 
         switchPanels.add(startPanel, "StartPanel");
-        switchPanels.add(versionsPanel, "VersionsPanel");
+        //switchPanels.add(versionsPanel, "VersionsPanel");
         switchPanels.add(playerInitPanel, "PlayerInitializePanel");
         switchPanels.add(monopolyPanel, "MonopolyPanel");
 
@@ -203,9 +203,9 @@ public class MonopolyInitGUI extends JFrame {
         startPanel.setBackground(new Color(50, 255, 155));
         startPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
 
-        versionsPanel.setSize(new Dimension(250, 250));
-        versionsPanel.setBackground(new Color(50, 255, 155));
-        versionsPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
+        //versionsPanel.setSize(new Dimension(250, 250));
+        //versionsPanel.setBackground(new Color(50, 255, 155));
+        //versionsPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
 
         playerInitPanel.setSize(new Dimension(250, 250));
         playerInitPanel.setBackground(new Color(50, 255, 155));
