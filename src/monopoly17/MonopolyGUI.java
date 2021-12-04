@@ -84,14 +84,14 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonPayBail;
 
     private final Color[] playerTokenColors = {
-        Color.RED,
-        Color.BLUE,
-        Color.GREEN,
-        Color.ORANGE,
-        Color.YELLOW,
-        Color.MAGENTA,
-        Color.GRAY,
-        Color.PINK
+            Color.RED,
+            Color.BLUE,
+            Color.GREEN,
+            Color.ORANGE,
+            Color.YELLOW,
+            Color.MAGENTA,
+            Color.GRAY,
+            Color.PINK
     };
 
     /**
@@ -871,30 +871,37 @@ public class MonopolyGUI extends JPanel {
         JPanel panel = new JPanel(new GridLayout(0, 4));
         for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()) {
             Property property;
-            if (sq instanceof Property) {
+            if (sq instanceof Property && ((Property) sq).isMonopoly()) {
                 property = (Property) sq;
-                if (property.isMonopoly()) {
-                    JButton propButton = new JButton(property.name());
-                    // Press the button to get a house for the property selected
-                    propButton.addActionListener(e-> {
-                        boolean purchased = monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
-                        if (purchased) {
-                            infoConsole.setText("Bought House for $" + property.getHouseCost());
-                            if (property.getBuildings() == 5) {
-                                infoConsole.append("\nYou have a hotel for " + property.name());
-                            } else {
-                                infoConsole.append("\nYou have " + property.getBuildings() + " houses for " + property.name());
-                            }
-                        } else {
-                            infoConsole.setText("You can't afford anymore houses for " + property.name());
-                        }
-                        updatePlayerStatusTextArea();
-                    });
-                    panel.add(propButton);
-                }
+                JButton propButton = new JButton(property.name());
+                // Press the button to get a house for the property selected
+                propButton.addActionListener(this::propButtonAction);
+                panel.add(propButton);
             }
         }
         JOptionPane.showMessageDialog(rightLayeredPane, panel, "Current houses you can purchase", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    /**
+     * Allows the user to buy a house for the property they select.
+     * @param actionEvent   ActionEvent
+     */
+    private void propButtonAction(ActionEvent actionEvent) {
+        String propName = ((JButton)actionEvent.getSource()).getText();
+        Property property = playersGUI.get(currentPlayerOrder).getPlayer().getProperty(propName);
+
+        boolean purchased = monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
+        if (purchased) {
+            infoConsole.setText("Bought House for $" + property.getHouseCost());
+            if (property.getBuildings() == 5) {
+                infoConsole.append("\nYou have a hotel for " + property.name());
+            } else {
+                infoConsole.append("\nYou have " + property.getBuildings() + " houses for " + property.name());
+            }
+        } else {
+            infoConsole.setText("You can't afford anymore houses for " + property.name());
+        }
+        updatePlayerStatusTextArea();
     }
 
     /**

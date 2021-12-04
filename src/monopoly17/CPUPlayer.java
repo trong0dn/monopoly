@@ -204,7 +204,7 @@ public class CPUPlayer implements Player, Serializable {
     @Override
     public Property getProperty(String propName) {
         for(Square prop: properties){
-            if (propName.equals(prop.name())){
+            if(propName.equals(prop.name())) {
                 return (Property) prop;
             }
         }
