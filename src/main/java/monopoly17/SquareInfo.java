@@ -49,6 +49,7 @@ public enum SquareInfo {
     private final int position;
     private final String name;
 
+
     /**
      * Constructor for SquareInfo.
      * @param position  int
