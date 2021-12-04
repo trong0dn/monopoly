@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
-/*
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
@@ -36,7 +36,4 @@ public class JSONLanguages {
         square1values = ((Map) jo.get("square1"));
         return square1values;
     }
-
-
 }
-*/
