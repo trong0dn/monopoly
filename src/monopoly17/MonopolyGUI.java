@@ -225,7 +225,7 @@ public class MonopolyGUI extends JPanel {
      * Creates a new game.
      * @param actionEvent   ActionEvent
      */
-    private void newGame(ActionEvent actionEvent) {
+    public void newGame(ActionEvent actionEvent) {
         //CardLayout cl = (CardLayout) (switchPanels.getLayout());
         //cl.show(switchPanels, "StartPanel");
         this.monopoly = new Monopoly();

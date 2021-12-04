@@ -82,16 +82,33 @@ public class MonopolyInitGUI extends JFrame {
         JMenuItem loadMenuItem = new JMenuItem("Load Game");
         JMenuItem newMenuItem = new JMenuItem("New Game");
 
-        //saveMenuItem.addActionListener(monopolyGUI::saveGame);
-        //loadMenuItem.addActionListener(this::loadGame);
-        //newMenuItem.addActionListener(monopolyGUI::newGame);
-        //newMenuItem.addActionListener(this::newGameInit);
+        saveMenuItem.addActionListener(monopolyGUI::saveGame);
+        loadMenuItem.addActionListener(monopolyGUI::loadGame);
+        newMenuItem.addActionListener(monopolyGUI::newGame);
+        newMenuItem.addActionListener(this::newGameInit);
 
         menu.add(saveMenuItem);
         menu.add(loadMenuItem);
         menu.add(newMenuItem);
         menuBar.add(menu);
         this.setJMenuBar(menuBar);
+    }
+
+    /**
+     * Creates a new game.
+     * @param actionEvent   ActionEvent
+     */
+    private void newGameInit(ActionEvent actionEvent) {
+        CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        cl.show(switchPanels, "StartPanel");
+
+        while (!playersList.isEmpty()) {
+            playersList.removeFirst();
+        }
+
+        initFrame();
+        initPanelComponents();
+        setupSwitchPanel();
     }
 
     /**
