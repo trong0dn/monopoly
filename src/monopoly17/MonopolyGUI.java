@@ -109,8 +109,6 @@ public class MonopolyGUI extends JPanel {
      * Set up the monopoly board components.
      */
     public void setupMonopolyBoard() {
-        this.currentPlayerOrder = monopoly.getCurrentPlayerOrder();
-        this.playersGUI = monopoly.getPlayerGUI();
         setupBoard();
         setupDice();
         initPlayerToken();
