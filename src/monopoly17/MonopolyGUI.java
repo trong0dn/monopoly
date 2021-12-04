@@ -113,10 +113,16 @@ public class MonopolyGUI extends JPanel {
         setupMonopolyButtons();
     }
 
+    /**
+     * Make a new ArrayList of playersGUI.
+     */
     public void emptyPlayersGUI() {
         this.playersGUI = new ArrayList<>();
     }
 
+    /**
+     * Make a new LinkedList of playersList.
+     */
     public void emptyPlayersList() {
         this.playersList = new LinkedList<>();
     }
@@ -129,10 +135,18 @@ public class MonopolyGUI extends JPanel {
         playersList.addAll(players);
     }
 
+    /**
+     * Set isDouble value.
+     * @param bool  boolean
+     */
     public void setIsDouble(boolean bool) {
         this.isDouble = bool;
     }
 
+    /**
+     * Set the number of doubles.
+     * @param doubles   int
+     */
     public void setDoubles(int doubles) {
         this.doubles = doubles;
     }
@@ -216,34 +230,66 @@ public class MonopolyGUI extends JPanel {
     }
      */
 
+    /**
+     * Get the current player order.
+     * @return  int
+     */
     public int getCurrentPlayerOrder(){
         return this.currentPlayerOrder;
     }
 
+    /**
+     * Get the current square number.
+     * @return  int
+     */
     public int getCurrentSquareNumber() {
         return this.currentSquareNumber;
     }
 
+    /**
+     * Get the player assets panel.
+     * @return  JPanel
+     */
     public JPanel getPlayerAssetsPanel() {
         return this.playerAssetsPanel;
     }
 
+    /**
+     * Set the monopoly game.
+     * @param monopoly  Monopoly
+     */
     public void setMonopoly(Monopoly monopoly) {
         this.monopoly = monopoly;
     }
 
+    /**
+     * Set the players GUI.
+     * @param playerGUIS    PlayerGUI
+     */
     public void setPlayersGUI(ArrayList<PlayerGUI> playerGUIS) {
         this.playersGUI = playerGUIS;
     }
 
+    /**
+     * Set the players list.
+     * @param players   LinkedList<Player>
+     */
     public void setPlayersList(LinkedList<Player> players) {
         this.playersList = players;
     }
 
+    /**
+     * Set the current player order.
+     * @param playerOrder   int
+     */
     public void setCurrentPlayerOrder(int playerOrder) {
         this.currentPlayerOrder = playerOrder;
     }
 
+    /**
+     * Set the current square oder.
+     * @param squareNumber  int
+     */
     public void setCurrentSquareNumber(int squareNumber) {
         this.currentSquareNumber = squareNumber;
     }

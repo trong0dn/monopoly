@@ -51,6 +51,9 @@ public class MonopolyInitGUI extends JFrame {
             Color.PINK
     };
 
+    /**
+     * Initialize MonopolyInitGUI
+     */
     public MonopolyInitGUI() {
         playersList = new LinkedList<>();
 
