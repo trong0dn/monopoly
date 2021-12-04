@@ -1,0 +1,318 @@
+{
+  "currency": "$",
+  "square0" : {
+    "name": "GO"
+  },
+  "square1" : {
+    "name": "MEDITERRANEAN AVENUE",
+    "rent": "2",
+    "oneHouse": "10",
+    "twoHouse": "30",
+    "threeHouse": "90",
+    "fourHouse": "160",
+    "hotel": "250",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square2" : {
+    "name": "COMMUNITY CHEST"
+  },
+  "square3" : {
+    "name": "BALTIC AVENUE",
+    "rent": "4",
+    "oneHouse": "20",
+    "twoHouse": "60",
+    "threeHouse": "180",
+    "fourHouse": "320",
+    "hotel": "450",
+    "propertyCost": "60",
+    "houses": "50"
+  },
+  "square4" : {
+    "name": "INCOME TAX"
+  },
+  "square5" : {
+    "name": "READING RAILROAD"
+  },
+  "square6" : {
+    "name": "ORIENTAL AVENUE",
+    "rent": "6",
+    "oneHouse": "30",
+    "twoHouse": "90",
+    "threeHouse": "270",
+    "fourHouse": "400",
+    "hotel": "550",
+    "propertyCost": "100",
+    "houses": "50"
+  },
+  "square7" : {
+    "name": "CHANCE"
+  },
+  "square8" : {
+    "name": "VERMONT AVENUE",
+    "rent": "6",
+    "oneHouse": "30",
+    "twoHouse": "90",
+    "threeHouse": "270",
+    "fourHouse": "400",
+    "hotel": "550",
+    "propertyCost": "100",
+    "houses": "50"
+  },
+  "square9" : {
+    "name": "CONNECTICUT AVENUE",
+    "rent": "6",
+    "oneHouse": "30",
+    "twoHouse": "90",
+    "threeHouse": "270",
+    "fourHouse": "400",
+    "hotel": "550",
+    "propertyCost": "120",
+    "houses": "50"
+  },
+  "square10" : {
+    "name": "JUST VISITING"
+  },
+  "square11" : {
+    "name": "ST. CHARLES PLACE",
+    "rent": "10",
+    "oneHouse": "50",
+    "twoHouse": "150",
+    "threeHouse": "450",
+    "fourHouse": "625",
+    "hotel": "750",
+    "propertyCost": "140",
+    "houses": "100"
+  },
+  "square12" : {
+    "name": "ELECTRIC COMPANY"
+  },
+  "square13" : {
+    "name": "STATES AVENUE",
+    "rent": "10",
+    "oneHouse": "50",
+    "twoHouse": "150",
+    "threeHouse": "450",
+    "fourHouse": "625",
+    "hotel": "750",
+    "propertyCost": "140",
+    "houses": "100"
+  },
+  "square14" : {
+    "name": "VIRGINIA AVENUE",
+    "rent": "10",
+    "oneHouse": "50",
+    "twoHouse": "150",
+    "threeHouse": "450",
+    "fourHouse": "625",
+    "hotel": "750",
+    "propertyCost": "160",
+    "houses": "100"
+  },
+  "square15" : {
+    "name": "PENNSYLVANIA RAILROAD"
+  },
+  "square16" : {
+    "name": "ST. JAMES PLACE",
+    "rent": "14",
+    "oneHouse": "70",
+    "twoHouse": "200",
+    "threeHouse": "550",
+    "fourHouse": "750",
+    "hotel": "750",
+    "propertyCost": "180",
+    "houses": "100"
+  },
+  "square17" : {
+    "name": "COMMUNITY CHEST"
+  },
+  "square18" : {
+    "name": "TENNESSEE AVENUE",
+    "rent": "14",
+    "oneHouse": "70",
+    "twoHouse": "200",
+    "threeHouse": "550",
+    "fourHouse": "750",
+    "hotel": "750",
+    "propertyCost": "180",
+    "houses": "100"
+  },
+  "square19" : {
+    "name": "NEW YORK AVENUE",
+    "rent": "16",
+    "oneHouse": "80",
+    "twoHouse": "220",
+    "threeHouse": "600",
+    "fourHouse": "800",
+    "hotel": "10000",
+    "propertyCost": "200",
+    "houses": "100"
+  },
+  "square20" : {
+    "name": "FREE PARKING"
+  },
+  "square21" : {
+    "name": "KENTUCKY AVENUE",
+    "rent": "18",
+    "oneHouse": "90",
+    "twoHouse": "250",
+    "threeHouse": "700",
+    "fourHouse": "875",
+    "hotel": "1050",
+    "propertyCost": "220",
+    "houses": "150"
+  },
+  "square22" : {
+    "name": "CHANCE"
+  },
+  "square23" : {
+    "name": "INDIANA AVENUE",
+    "rent": "18",
+    "oneHouse": "90",
+    "twoHouse": "250",
+    "threeHouse": "700",
+    "fourHouse": "875",
+    "hotel": "1050",
+    "propertyCost": "220",
+    "houses": "150"
+  },
+  "square24" : {
+    "name": "ILLINOIS AVENUE",
+    "rent": "20",
+    "oneHouse": "100",
+    "twoHouse": "300",
+    "threeHouse": "750",
+    "fourHouse": "925",
+    "hotel": "1100",
+    "propertyCost": "260",
+    "houses": "10"
+  },
+  "square25" : {
+    "name": "B. & O. RAILROAD"
+  },
+  "square26" : {
+    "name": "ATLANTIC AVENUE",
+    "rent": "22",
+    "oneHouse": "110",
+    "twoHouse": "330",
+    "threeHouse": "800",
+    "fourHouse": "975",
+    "hotel": "1150",
+    "propertyCost": "260",
+    "houses": "150"
+  },
+  "square27" : {
+    "name": "VENTNOR AVENUE",
+    "rent": "22",
+    "oneHouse": "110",
+    "twoHouse": "330",
+    "threeHouse": "800",
+    "fourHouse": "975",
+    "hotel": "1150",
+    "propertyCost": "280",
+    "houses": "150"
+  },
+  "square28" : {
+    "name": "WATER WORKS"
+  },
+  "square29" : {
+    "name": "MARVIN GARDENS",
+    "rent": "24",
+    "oneHouse": "120",
+    "twoHouse": "360",
+    "threeHouse": "850",
+    "fourHouse": "1025",
+    "hotel": "1200",
+    "propertyCost": "280",
+    "houses": "150"
+  },
+  "square30" : {
+    "name": "GO TO JAIL"
+  },
+  "square31" : {
+    "name": "PACIFIC AVENUE",
+    "rent": "26",
+    "oneHouse": "130",
+    "twoHouse": "390",
+    "threeHouse": "900",
+    "fourHouse": "1100",
+    "hotel": "1250",
+    "propertyCost": "300",
+    "houses": "200"
+  },
+  "square32" : {
+    "name": "NORTH CAROLINA AVENUE",
+    "rent": "26",
+    "oneHouse": "130",
+    "twoHouse": "390",
+    "threeHouse": "900",
+    "fourHouse": "1100",
+    "hotel": "1250",
+    "propertyCost": "300",
+    "houses": "200"
+  },
+  "square33" : {
+    "name": "COMMUNITY CHEST"
+  },
+  "square34" : {
+    "name": "PENNSYLVANIA AVENUE",
+    "rent": "26",
+    "oneHouse": "130",
+    "twoHouse": "390",
+    "threeHouse": "900",
+    "fourHouse": "1100",
+    "hotel": "1250",
+    "propertyCost": "320",
+    "houses": "200"
+  },
+  "square35" : {
+    "name": "SHORT LINE"
+  },
+  "square36" : {
+    "name": "CHANCE"
+  },
+  "square37" : {
+    "name": "PARK PLACE",
+    "rent": "35",
+    "oneHouse": "175",
+    "twoHouse": "500",
+    "threeHouse": "1100",
+    "fourHouse": "1300",
+    "hotel": "1500",
+    "propertyCost": "350",
+    "houses": "200"
+  },
+  "square38" : {
+    "name": "SUPER TAX"
+  },
+  "square39" : {
+    "name":"BOARDWALK",
+    "rent": "35",
+    "oneHouse": "175",
+    "twoHouse": "500",
+    "threeHouse": "1100",
+    "fourHouse": "1300",
+    "hotel": "1500",
+    "propertyCost": "400",
+    "houses": "200"
+  },
+  "square40" : {
+    "name": "IN JAIL"
+  },
+  "railroads" : {
+    "propertyCost": "200",
+    "one": "25",
+    "two": "50",
+    "three": "100",
+    "four": "200"
+  },
+  "utilities" : {
+    "propertyCost": "150",
+    "one": "4",
+    "two": "10"
+  },
+  "taxes" : {
+    "income_tax": "200",
+    "super_tax": "100"
+  }
+}
