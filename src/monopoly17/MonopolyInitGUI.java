@@ -465,11 +465,20 @@ public class MonopolyInitGUI extends JFrame {
         this.monopoly = new Monopoly();
 
         monopolyGUI.emptyPlayersGUI();
+
+        while (!playersList.isEmpty()) {
+            playersList.removeFirst();
+        }
+
         monopolyGUI.emptyPlayersList();
         monopolyGUI.setCurrentPlayerOrder(0);
         monopolyGUI.setCurrentSquareNumber(0);
         monopolyGUI.setIsDouble(false);
         monopolyGUI.setDoubles(0);
+
+        initPanelComponents();
+        setupSwitchPanel();
+        setupPanels();
     }
 
     /**
