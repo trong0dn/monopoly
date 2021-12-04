@@ -14,6 +14,7 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
 
 public class MonopolyInitGUI extends JFrame {
     private MonopolyGUI monopolyGUI = new MonopolyGUI();
+    private Monopoly monopoly = new Monopoly();
 
     private JButton startButton;
     private JButton usVersionButton;
@@ -83,9 +84,9 @@ public class MonopolyInitGUI extends JFrame {
         JMenuItem newMenuItem = new JMenuItem("New Game");
 
         saveMenuItem.addActionListener(monopolyGUI::saveGame);
-        loadMenuItem.addActionListener(monopolyGUI::loadGame);
+        loadMenuItem.addActionListener(this::loadGame);
         newMenuItem.addActionListener(monopolyGUI::newGame);
-        newMenuItem.addActionListener(this::newGameInit);
+        newMenuItem.addActionListener(this::newGameFrame);
 
         menu.add(saveMenuItem);
         menu.add(loadMenuItem);
@@ -95,12 +96,31 @@ public class MonopolyInitGUI extends JFrame {
     }
 
     /**
+     * Load the current game play state.
+     * @param actionEvent   ActionEvent
+     */
+    public void loadGame(ActionEvent actionEvent) {
+        monopolyGUI.setGame(monopoly.importGame());
+        setGameFrame();
+    }
+
+    /**
+     * Set game panel.
+     */
+    private void setGameFrame() {
+        CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        cl.show(switchPanels, "MonopolyPanel");
+    }
+
+    /**
      * Creates a new game.
      * @param actionEvent   ActionEvent
      */
-    private void newGameInit(ActionEvent actionEvent) {
+    private void newGameFrame(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "StartPanel");
+
+        monopolyGUI = new MonopolyGUI();
 
         while (!playersList.isEmpty()) {
             playersList.removeFirst();

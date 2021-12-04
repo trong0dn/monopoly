@@ -174,13 +174,15 @@ public class MonopolyGUI extends JPanel {
         JOptionPane.showMessageDialog(null, "Game has been saved");
     }
 
-    /**
+    /*
      * Load the current game play state.
      * @param actionEvent   ActionEvent
-     */
+     *
     public void loadGame(ActionEvent actionEvent) {
         setGame(monopoly.importGame());
     }
+
+     */
 
     /**
      * Set the current game play state.
@@ -646,6 +648,7 @@ public class MonopolyGUI extends JPanel {
     public void initPlayerToken() {
         PlayerGUI playerGUI = null;
         for (int i = 0; i < playersList.size(); i++) {
+
             playerGUI = new PlayerGUI(playerTokenColors[i], playersList.get(i).name());
             playersGUI.add(playerGUI);
             leftLayeredPane.add(playerGUI, Integer.valueOf(1));
