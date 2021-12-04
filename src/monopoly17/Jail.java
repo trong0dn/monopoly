@@ -1,16 +1,18 @@
 package monopoly17;
 
+import java.io.Serializable;
+
 /**
  * This class represents the jail square tile on the board game.
  * @author Elisha Catherasoo & Trong Nguyen
  */
-public class Jail implements Square {
+public class Jail implements Square, Serializable {
     private final int position;
     private final String name;
     private final JailType type;
 
     /**
-     * Initialize Jail,
+     * Initialize Jail.
      * @param position int
      * @param name     String
      * @param type     JailType

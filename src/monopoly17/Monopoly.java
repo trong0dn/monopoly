@@ -1,26 +1,14 @@
 package monopoly17;
-/*
-Milestone 3
 
-Group 17:
-Trong Nguyen 100848232
-Francisco De Grano 101147447
-Ibrahim Almalki 101142978
-Elisha Catherasoo 101148507
-
-Professor: Babak Esfandiari
-TA: Michael Vezina
-
-Due: 11/22/2021
- */
-
+import java.io.*;
 import java.util.*;
 
 /**
  * This class represents the user interface for the Monopoly board game.
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
-public class Monopoly {
+public class Monopoly implements Serializable {
+    public static final String FILENAME = "monopoly17.txt";
     private final RollDice rollDice;
     private final GameState gameState;
     private boolean isBankrupt;
@@ -35,9 +23,44 @@ public class Monopoly {
         this.isBankrupt = false;
         gameState = new GameState();
         gameState.players = new LinkedList<>();
+        gameState.playersGUI = new ArrayList<>();
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
+        gameState.currentPlayerOrder = 0;
+        gameState.currentSquareNumber = 0;
+    }
+
+    /**
+     * Get the list of Players in the game state.
+     * @return  LinkedList<Player>
+     */
+    public LinkedList<Player> getPlayers() {
+        return gameState.players;
+    }
+
+    /**
+     * Get the playerGUI, tokens on the game board in the game state.
+     * @return  ArrayList<PlayerGUI>
+     */
+    public ArrayList<PlayerGUI> getPlayerGUI() {
+        return gameState.playersGUI;
+    }
+
+    public int getCurrentPlayerOrder() {
+        return gameState.currentPlayerOrder;
+    }
+
+    public int getCurrentSquareNumber() {
+        return gameState.currentSquareNumber;
+    }
+
+    public void setCurrentPlayerOrder(int i) {
+        gameState.currentPlayerOrder = i;
+    }
+
+    public void setCurrentSquareNumber(int i) {
+        gameState.currentSquareNumber = i;
     }
 
     /**
@@ -72,10 +95,10 @@ public class Monopoly {
         }
     }
 
-    /**
-     * Initializes game starting conditions with players. Required only for text-based system.
+    /*
+      Initializes game starting conditions with players. Required only for text-based system.
      */
-    public void initializePlayers(Input input) {
+    /*public void initializePlayers(Input input) {
         System.out.println("~~~Welcome to MONOPOLY!~~~");
         // Ask user for number of players participating
         System.out.println("How many players would like to play?");
@@ -98,12 +121,13 @@ public class Monopoly {
         for (Player p: gameState.players) {
             System.out.println(">>> " + p.name());
         }
-    }
+    }*/
 
-    /**
-     * Game logic for when it is a player's turn.
+
+    /*
+      Game logic for when it is a player's turn. Required only for text-based system.
      */
-    public void turn() {
+    /*public void turn() {
         System.out.println("----It's " + gameState.currentPlayer.name() + "'s turn----");
         int countRollDoubles = 0;
         while (true) {
@@ -146,7 +170,7 @@ public class Monopoly {
             }
         }
         System.out.println();
-    }
+    }*/
 
     /**
      * Prints the state of the players name, current balance and their properties owned.
@@ -237,7 +261,7 @@ public class Monopoly {
         }
 
         boolean noMoney = false;
-        System.out.println("Would you like to purchase " + square.name() + " for $" + cost + " (Yes/No)?");
+        System.out.println("You have purchase " + square.name() + " for $" + cost);
         gameState.decisionState = DecisionState.BUY_PROPERTY;
         if (player.getMoney() < cost) {
             noMoney = true;
@@ -415,5 +439,35 @@ public class Monopoly {
      */
     public boolean isBankrupt() {
         return isBankrupt;
+    }
+
+    /**
+     * Export the game state using serialization.
+     * @param monopoly Monopoly
+     */
+    public void exportGame(Monopoly monopoly) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(monopoly);
+            objectOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Import the saved contents of the game file.
+     * @return Monopoly
+     */
+    public Monopoly importGame() {
+        try {
+            FileInputStream fileInputStream = new FileInputStream(FILENAME);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            return (Monopoly) objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

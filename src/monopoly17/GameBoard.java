@@ -1,10 +1,12 @@
 package monopoly17;
 
+import java.io.Serializable;
+
 /**
  * This class represents the game board.
  * @author Elisha Catherasoo & Trong Nguyen
  */
-public class GameBoard {
+public class GameBoard implements Serializable {
     public static final int BOARD_SIZE = 40;
     private final Square[] board; // representation of the game board
 
@@ -705,7 +707,7 @@ public class GameBoard {
     }
 
     /**
-     * Setup "Sqaure 39" tile on the board.
+     * Setup "Square 39" tile on the board.
      * @return  Square
      */
     public Square square39() {

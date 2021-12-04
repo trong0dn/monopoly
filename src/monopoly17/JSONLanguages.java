@@ -1,31 +1,39 @@
 package monopoly17;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Map;
+
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
+import org.json.simple.parser.*;
 
 public class JSONLanguages {
+    JSONObject jo;
+    private static Map square0values;
+    private static Map square1values;
 
-    public void languageDict(){
-        JSONObject uk = new JSONObject();
-        uk.put(0, "GO");
-        uk.put(1, "Old Kent");
-        uk.put(2, "Community Chest");
-        uk.put(3, "White Chapel");
-        uk.put(4, "incomeTax");
-        uk.put(5, "Kings Cross");
-        uk.put(6, "Angel Islington");
-        uk.put(7, "Chance");
-        uk.put(8, "Euston");
-        uk.put(9, "Pentonville");
-        uk.put(10, "Just Visiting");
-        uk.put(11, "Pentonville");
-        uk.put(12, "Pentonville");
+    public JSONLanguages(String file) {
+        try {
+            Object obj = new JSONParser().parse(new FileReader("src/versions/" + file));
+            jo = (JSONObject) obj;
 
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
-    public static void main(String[] args) {
-        JSONObject obj = new JSONObject();
-        obj.put("name", "sonoo");
-        obj.put("age", 27);
-        obj.put("salary", 600000);
-        System.out.print(obj);
+
+    public Map getSquare0() {
+        square0values = ((Map) jo.get("square0"));
+        return square0values;
+    }
+
+    public Map getSquare1() {
+        square1values = ((Map) jo.get("square1"));
+        return square1values;
     }
 }

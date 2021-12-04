@@ -1,10 +1,12 @@
 package monopoly17;
 
+import java.io.Serializable;
+
 /**
  * This class represents all the utility square tiles on the game board.
  * @author Trong Nguyen & Elisha Catherasoo
  */
-public class Utility implements Square {
+public class Utility implements Square, Serializable {
     private final int COST = 150;
     private final int position;
     private final String name;

@@ -4,14 +4,17 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.io.Serializable;
+
+import static monopoly17.GameBoard.BOARD_SIZE;
 
 /**
  * This class every square GUI.
  * @author Trong Nguyen
  */
 public class SquareGUI extends JPanel {
-    private final String squareName;
-    private final int squareNum;
+    private String squareName;
+    private int squareNum;
     private static int total = 0;
 
     /**
@@ -60,6 +63,7 @@ public class SquareGUI extends JPanel {
             };
         }
         GameBoard gameBoard = new GameBoard();
+        squareNum %= BOARD_SIZE;
         // See the full name of the property, it's cost, and it's rent
         if (gameBoard.square(squareNum) instanceof Property || gameBoard.square(squareNum) instanceof Railroad){
             labelName.setToolTipText("<html>" + squareName + "<br>" + "Cost: $"

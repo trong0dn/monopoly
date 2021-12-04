@@ -9,8 +9,8 @@ import java.awt.*;
  * @author Trong Nguyen
  */
 public class DiceGUI extends JPanel {
-    RollDice rollDice = new RollDice();
-    int faceValue;
+    private final RollDice rollDice = new RollDice();
+    private int faceValue;
 
     /**
      * Constructor for DiceGUI.

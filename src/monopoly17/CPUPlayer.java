@@ -1,5 +1,6 @@
 package monopoly17;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -9,7 +10,7 @@ import static monopoly17.GameBoard.BOARD_SIZE;
  * This class represents the CPU player of this game.
  * @author Ibrahim Almalki & Trong Nguyen
  */
-public class CPUPlayer implements Player {
+public class CPUPlayer implements Player, Serializable {
     private final Collection<Square> properties;
     private final String playerName;
     private int money;
