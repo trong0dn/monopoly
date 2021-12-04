@@ -35,6 +35,8 @@ public class MonopolyInitGUI extends JFrame {
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
 
+    private JComboBox versionsList;
+
     private LinkedList<Player> playersList;                             // The list of players
 
     private final Color[] playerTokenColors = {
@@ -139,6 +141,18 @@ public class MonopolyInitGUI extends JFrame {
         playerFont = new Font("Lucida Grande", Font.PLAIN, 20);
         titleBackground = new JPanel();
         messagePanel = new JPanel();
+
+        String[] versions = {"UK", "US"};
+        versionsList = new JComboBox(versions);
+        versionsList.setSelectedIndex(0);
+
+        // Center items on drop-down list
+        DefaultListCellRenderer listRenderer;
+        listRenderer = new DefaultListCellRenderer();
+        listRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
+        versionsList.setRenderer(listRenderer);
+
+        versionsList.setPreferredSize(new Dimension(75, 25));
     }
 
     /**
@@ -260,9 +274,15 @@ public class MonopolyInitGUI extends JFrame {
         gbagConstraintsAddCPUPlayerButton.gridwidth = 2;
         gbagConstraintsAddCPUPlayerButton.insets = new Insets(0, 0, 20, 0);
 
+        GridBagConstraints gbagConstraintsVersionsMenu = new GridBagConstraints();
+        gbagConstraintsVersionsMenu.gridx = 1;
+        gbagConstraintsVersionsMenu.gridy = 10;
+        gbagConstraintsVersionsMenu.gridwidth = 2;
+        gbagConstraintsVersionsMenu.insets = new Insets(20, 0, 0, 0);
+
         GridBagConstraints gbagConstraintsPlayButton = new GridBagConstraints();
         gbagConstraintsPlayButton.gridx = 1;
-        gbagConstraintsPlayButton.gridy = 10;
+        gbagConstraintsPlayButton.gridy = 11;
         gbagConstraintsPlayButton.gridwidth = 2;
         gbagConstraintsPlayButton.insets = new Insets(20, 0, 0, 0);
 
@@ -272,29 +292,32 @@ public class MonopolyInitGUI extends JFrame {
         gbagConstraintsMessage.gridwidth = 2;
         gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
 
-        GridBagConstraints gbagConstraintUsVersion = new GridBagConstraints();
-        gbagConstraintUsVersion.gridx = 1;
-        gbagConstraintUsVersion.gridy = 0;
-        gbagConstraintUsVersion.gridwidth = 2;
-        gbagConstraintUsVersion.insets = new Insets(20, 0, 10, 0);
+        //GridBagConstraints gbagConstraintUsVersion = new GridBagConstraints();
+        //gbagConstraintUsVersion.gridx = 1;
+        //gbagConstraintUsVersion.gridy = 0;
+        //gbagConstraintUsVersion.gridwidth = 2;
+        //gbagConstraintUsVersion.insets = new Insets(20, 0, 10, 0);
 
-        GridBagConstraints gbagConstraintUkVersion = new GridBagConstraints();
-        gbagConstraintUkVersion.gridx = 1;
-        gbagConstraintUkVersion.gridy = 1;
-        gbagConstraintUkVersion.gridwidth = 2;
-        gbagConstraintUkVersion.insets = new Insets(10, 0, 20, 0);
+        //GridBagConstraints gbagConstraintUkVersion = new GridBagConstraints();
+        //gbagConstraintUkVersion.gridx = 1;
+        //gbagConstraintUkVersion.gridy = 1;
+        //gbagConstraintUkVersion.gridwidth = 2;
+        //gbagConstraintUkVersion.insets = new Insets(10, 0, 20, 0);
+
+
 
         // Add the buttons, panels and labels to the frame
         startPanel.add(titleBackground, gbagConstraintsTitle);
         startPanel.add(startButton, gbagConstraintsStartButton);
 
-        versionsPanel.add(usVersionButton, gbagConstraintUsVersion);
-        versionsPanel.add(ukVersionButton, gbagConstraintUkVersion);
+        //versionsPanel.add(usVersionButton, gbagConstraintUsVersion);
+        //versionsPanel.add(ukVersionButton, gbagConstraintUkVersion);
 
         playerInitPanel.add(playerNameList, gbagConstraintsPlayerNameList);
         playerInitPanel.add(playerNameInput, gbagConstraintsPlayerNameInput);
         playerInitPanel.add(addPlayer, gbagConstraintsAddPlayerButton);
         playerInitPanel.add(addCPUPlayer, gbagConstraintsAddCPUPlayerButton);
+        playerInitPanel.add(versionsList, gbagConstraintsVersionsMenu);
         playerInitPanel.add(playButton, gbagConstraintsPlayButton);
         playerInitPanel.add(messagePanel, gbagConstraintsMessage);
     }
@@ -348,7 +371,7 @@ public class MonopolyInitGUI extends JFrame {
      */
     private void startButton(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
-        cl.show(switchPanels, "VersionsPanel");
+        cl.show(switchPanels, "PlayerInitializePanel");
     }
 
     /**
@@ -378,9 +401,7 @@ public class MonopolyInitGUI extends JFrame {
         cl.show(switchPanels, "MonopolyPanel");
 
         monopolyGUI.setPlayers(playersList);
-
         monopolyGUI.setupMonopolyBoard();
-
         monopolyPanel.add(monopolyGUI);
     }
 
