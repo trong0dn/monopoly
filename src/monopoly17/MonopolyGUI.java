@@ -850,13 +850,13 @@ public class MonopolyGUI extends JFrame {
     private void runCPUAction(ActionEvent actionEvent) {
         rollDiceLogic();
         handleCPUSquare();
-        handleCPUButtons();
+        handleButtons();
     }
 
     /**
      * Handles the button logic during CPU Player's turn.
      */
-    private void handleCPUButtons() {
+    private void handleButtons() {
         buttonRunCPU.setEnabled(false);
         buttonRollDice.setEnabled(false);
         buttonBuyHouse.setEnabled(false);
@@ -919,14 +919,7 @@ public class MonopolyGUI extends JFrame {
         infoConsole.setText("You paid $50 to get out of jail\n");
         infoConsole.append("You are now out of Jail!");
 
-        buttonRunCPU.setEnabled(false);
-        buttonRollDice.setEnabled(false);
-        buttonBuyHouse.setEnabled(false);
-        buttonPayRent.setEnabled(false);
-        buttonBuy.setEnabled(false);
-        buttonPayBail.setEnabled(false);
-        buttonNextTurn.setEnabled(true);
-
+        handleButtons();
         updatePlayerStatusTextArea();
     }
 
@@ -996,7 +989,7 @@ public class MonopolyGUI extends JFrame {
             if (currentSquare instanceof Taxes) {
                 infoConsole.append("Taxes: You landed on " + currentSquare.name() +
                         "\nTax: $" + ((Taxes) currentSquare).getTax());
-                handleTaxSquare();
+                handleButtonsSpecialSquares();
             } else if(currentSquare instanceof Jail) {
                 handleJail(currentPlayer, currentSquare, diceValue);
             } else {
@@ -1021,29 +1014,6 @@ public class MonopolyGUI extends JFrame {
     }
 
     /**
-     * Handles button logic for GUI when player interacts with Jail.
-     */
-    private void handleButtonsGoToJail() {
-        buttonRunCPU.setEnabled(false);
-        buttonRollDice.setEnabled(false);
-        buttonBuyHouse.setEnabled(false);
-        buttonPayRent.setEnabled(false);
-        buttonBuy.setEnabled(false);
-        buttonPayBail.setEnabled(false);
-        buttonNextTurn.setEnabled(true);
-    }
-
-    /**
-     * Handles button logic for GUI when player interacts with Tax square.
-     */
-    private void handleTaxSquare() {
-        buttonPayRent.setEnabled(true);
-        buttonRollDice.setEnabled(false);
-        buttonNextTurn.setEnabled(false);
-        buttonBuy.setEnabled(false);
-    }
-
-    /**
      * Handles GUI when a player interacts with Jail square.
      * @param currentPlayer     PlayerGUI
      * @param currentSquare     Square
@@ -1051,7 +1021,7 @@ public class MonopolyGUI extends JFrame {
      */
     private void handleJail(PlayerGUI currentPlayer, Square currentSquare, int diceValue) {
         if(((Jail) currentSquare).getType() == Jail.JailType.GOTO_JAIL) {
-            handleButtonsGoToJail();
+            handleButtons();
             infoConsole.setText("You have landed on:\n" + currentSquare.name());
             infoConsole.append("\nYou are now in Jail.");
             updateJailTurn(currentPlayer, currentSquare, diceValue);
