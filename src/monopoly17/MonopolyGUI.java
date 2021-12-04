@@ -96,9 +96,9 @@ public class MonopolyGUI extends JPanel {
         //initPanelComponents();
         //setupSwitchPanel();
         this.monopoly = new Monopoly();
-        //this.playersGUI = monopoly.getPlayerGUI();
+        this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();
-        //this.currentPlayerOrder = monopoly.getCurrentPlayerOrder();
+        this.currentPlayerOrder = monopoly.getCurrentPlayerOrder();
         this.currentSquareNumber = monopoly.getCurrentSquareNumber();
         this.isDouble = monopoly.isBankrupt();
         this.monopoly.play();                               // Determines the winners and losers
@@ -109,7 +109,6 @@ public class MonopolyGUI extends JPanel {
      * Set up the monopoly board components.
      */
     public void setupMonopolyBoard() {
-        //this.playersList = monopoly.getPlayers();
         this.currentPlayerOrder = monopoly.getCurrentPlayerOrder();
         this.playersGUI = monopoly.getPlayerGUI();
         setupBoard();
