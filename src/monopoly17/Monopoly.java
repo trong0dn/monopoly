@@ -47,18 +47,34 @@ public class Monopoly implements Serializable {
         return gameState.playersGUI;
     }
 
+    /**
+     * Get the current player order.
+     * @return  int
+     */
     public int getCurrentPlayerOrder() {
         return gameState.currentPlayerOrder;
     }
 
+    /**
+     * Get the current square number.
+     * @return  int
+     */
     public int getCurrentSquareNumber() {
         return gameState.currentSquareNumber;
     }
 
+    /**
+     * Set the current player order.
+     * @param i int
+     */
     public void setCurrentPlayerOrder(int i) {
         gameState.currentPlayerOrder = i;
     }
 
+    /**
+     * Set the current square number.
+     * @param i int
+     */
     public void setCurrentSquareNumber(int i) {
         gameState.currentSquareNumber = i;
     }

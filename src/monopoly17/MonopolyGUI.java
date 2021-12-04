@@ -1,12 +1,15 @@
 /*
 Milestone 4
+
 Group 17:
 Trong Nguyen 100848232
 Francisco De Grano 101147447
 Ibrahim Almalki 101142978
 Elisha Catherasoo 101148507
+
 Professor: Babak Esfandiari
 TA: Michael Vezina
+
 Due: 12/06/2021
  */
 
@@ -17,11 +20,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
 import static monopoly17.GameBoard.BOARD_SIZE;
+import static monopoly17.Monopoly.MAX_PLAYERS;
+import static monopoly17.Monopoly.MIN_PLAYERS;
 
 /**
  * This class represents the Monopoly GUI.
@@ -40,23 +47,26 @@ public class MonopolyGUI extends JPanel {
     private DiceGUI die1;
     private DiceGUI die2;
 
+    /*
     // Landing game panel
-    //private JPanel playerInitPanel;                                     // Panel for making the players
-    //private JPanel startPanel;                                          // Panel for the main starting page
-    //private JPanel versionsPanel;
-    //private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
-    //private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
-    //private JButton startButton;
-    //private JButton usVersionButton;
-    //private JButton ukVersionButton;
-    //private JButton playButton;
-    //private JButton addPlayer;
-    //private JButton addCPUPlayer;
-    //private JTextField playerNameInput;
-    //private JPanel playerNameList;
-    //private JPanel titleBackground;
-    //private JPanel messagePanel;
-    //private Font playerFont;
+    private JPanel playerInitPanel;                                     // Panel for making the players
+    private JPanel startPanel;                                          // Panel for the main starting page
+    private JPanel versionsPanel;
+    private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
+    private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
+    private JButton startButton;
+    private JButton usVersionButton;
+    private JButton ukVersionButton;
+    private JButton playButton;
+    private JButton addPlayer;
+    private JButton addCPUPlayer;
+    private JTextField playerNameInput;
+    private JPanel playerNameList;
+    private JPanel titleBackground;
+    private JPanel messagePanel;
+    private Font playerFont;
+
+     */
 
     // Gameplay panel
     private JPanel playerAssetsPanel;
@@ -74,23 +84,25 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonPayBail;
 
     private final Color[] playerTokenColors = {
-            Color.RED,
-            Color.BLUE,
-            Color.GREEN,
-            Color.ORANGE,
-            Color.YELLOW,
-            Color.MAGENTA,
-            Color.GRAY,
-            Color.PINK
+        Color.RED,
+        Color.BLUE,
+        Color.GREEN,
+        Color.ORANGE,
+        Color.YELLOW,
+        Color.MAGENTA,
+        Color.GRAY,
+        Color.PINK
     };
 
     /**
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
-        //initPanel();
+        //initFrame();
         //initPanelComponents();
         //setupSwitchPanel();
+        //setupPanel();
+
         this.monopoly = new Monopoly();
         this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();
@@ -114,20 +126,6 @@ public class MonopolyGUI extends JPanel {
     }
 
     /**
-     * Make a new ArrayList of playersGUI.
-     */
-    public void emptyPlayersGUI() {
-        this.playersGUI = new ArrayList<>();
-    }
-
-    /**
-     * Make a new LinkedList of playersList.
-     */
-    public void emptyPlayersList() {
-        this.playersList = new LinkedList<>();
-    }
-
-    /**
      * Set the players list.
      * @param players    LinkedList<Player>
      */
@@ -135,61 +133,43 @@ public class MonopolyGUI extends JPanel {
         playersList.addAll(players);
     }
 
-    /**
-     * Set isDouble value.
-     * @param bool  boolean
-     */
-    public void setIsDouble(boolean bool) {
-        this.isDouble = bool;
-    }
-
-    /**
-     * Set the number of doubles.
-     * @param doubles   int
-     */
-    public void setDoubles(int doubles) {
-        this.doubles = doubles;
-    }
-
     /*
      * Initialize the frame and it's panels.
      *
-    private void initPanel() {
-        //this.setTitle("MONOPOLY");
-        //playerInitPanel = new JPanel(new GridBagLayout());
-        //startPanel = new JPanel(new GridBagLayout());
-        //versionsPanel = new JPanel(new GridBagLayout());
-        //monopolyPanel = new JPanel();
+    private void initFrame() {
+        this.setTitle("MONOPOLY");
+        playerInitPanel = new JPanel(new GridBagLayout());
+        startPanel = new JPanel(new GridBagLayout());
+        versionsPanel = new JPanel(new GridBagLayout());
+        monopolyPanel = new JPanel();
 
-        //JMenuBar menuBar = new JMenuBar();
-        //JMenu menu = new JMenu("Menu");
-        //JMenuItem saveMenuItem = new JMenuItem("Save Game");
-        //JMenuItem loadMenuItem = new JMenuItem("Load Game");
-        //JMenuItem newMenuItem = new JMenuItem("New Game");
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("Menu");
+        JMenuItem saveMenuItem = new JMenuItem("Save Game");
+        JMenuItem loadMenuItem = new JMenuItem("Load Game");
+        JMenuItem newMenuItem = new JMenuItem("New Game");
 
-        //saveMenuItem.addActionListener(this::saveGame);
-        //loadMenuItem.addActionListener(this::loadGame);
-        //newMenuItem.addActionListener(this::newGame);
+        saveMenuItem.addActionListener(this::saveGame);
+        loadMenuItem.addActionListener(this::loadGame);
+        newMenuItem.addActionListener(this::newGame);
 
-        //menu.add(saveMenuItem);
-        //menu.add(loadMenuItem);
-        //menu.add(newMenuItem);
-        //menuBar.add(menu);
-        //this.setJMenuBar(menuBar);
+        menu.add(saveMenuItem);
+        menu.add(loadMenuItem);
+        menu.add(newMenuItem);
+        menuBar.add(menu);
+        this.setJMenuBar(menuBar);
     }
 
      */
 
-    /*
+    /**
      * Export the Saved game file.
      * @param actionEvent   ActionEvent
-     *
+     */
     public void saveGame(ActionEvent actionEvent) {
         monopoly.setCurrentPlayerOrder(currentPlayerOrder);
         monopoly.setCurrentSquareNumber(currentSquareNumber);
         monopoly.exportGame(monopoly);
-        System.out.println(currentPlayerOrder);
-        System.out.println(currentSquareNumber);
 
         JOptionPane.showMessageDialog(null, "Game has been saved");
     }
@@ -197,7 +177,7 @@ public class MonopolyGUI extends JPanel {
     /**
      * Load the current game play state.
      * @param actionEvent   ActionEvent
-     *
+     */
     public void loadGame(ActionEvent actionEvent) {
         setGame(monopoly.importGame());
     }
@@ -205,10 +185,10 @@ public class MonopolyGUI extends JPanel {
     /**
      * Set the current game play state.
      * @param newMonopoly Monopoly
-     *
-    public void setGame(Monopoly newMonopoly) {
-        CardLayout cl = (CardLayout) (monopolyInitGUI.getSwitchPanels().getLayout());
-        cl.show(monopolyInitGUI.getSwitchPanels(), "MonopolyPanel");
+     */
+    public MonopolyGUI setGame(Monopoly newMonopoly) {
+        //CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        //cl.show(switchPanels, "MonopolyPanel");
 
         this.monopoly = newMonopoly;
         this.playersGUI = monopoly.getPlayerGUI();
@@ -227,71 +207,8 @@ public class MonopolyGUI extends JPanel {
         cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
 
         JOptionPane.showMessageDialog(null, "Game has been loaded");
-    }
-     */
 
-    /**
-     * Get the current player order.
-     * @return  int
-     */
-    public int getCurrentPlayerOrder(){
-        return this.currentPlayerOrder;
-    }
-
-    /**
-     * Get the current square number.
-     * @return  int
-     */
-    public int getCurrentSquareNumber() {
-        return this.currentSquareNumber;
-    }
-
-    /**
-     * Get the player assets panel.
-     * @return  JPanel
-     */
-    public JPanel getPlayerAssetsPanel() {
-        return this.playerAssetsPanel;
-    }
-
-    /**
-     * Set the monopoly game.
-     * @param monopoly  Monopoly
-     */
-    public void setMonopoly(Monopoly monopoly) {
-        this.monopoly = monopoly;
-    }
-
-    /**
-     * Set the players GUI.
-     * @param playerGUIS    PlayerGUI
-     */
-    public void setPlayersGUI(ArrayList<PlayerGUI> playerGUIS) {
-        this.playersGUI = playerGUIS;
-    }
-
-    /**
-     * Set the players list.
-     * @param players   LinkedList<Player>
-     */
-    public void setPlayersList(LinkedList<Player> players) {
-        this.playersList = players;
-    }
-
-    /**
-     * Set the current player order.
-     * @param playerOrder   int
-     */
-    public void setCurrentPlayerOrder(int playerOrder) {
-        this.currentPlayerOrder = playerOrder;
-    }
-
-    /**
-     * Set the current square oder.
-     * @param squareNumber  int
-     */
-    public void setCurrentSquareNumber(int squareNumber) {
-        this.currentSquareNumber = squareNumber;
+        return this;
     }
 
     /**
@@ -306,13 +223,13 @@ public class MonopolyGUI extends JPanel {
         }
     }
 
-    /*
+    /**
      * Creates a new game.
      * @param actionEvent   ActionEvent
-     *
-    private void newGame(ActionEvent actionEvent) {
-        CardLayout cl = (CardLayout) (monopolyInitGUI.getSwitchPanels().getLayout());
-        cl.show(monopolyInitGUI.getSwitchPanels(), "StartPanel");
+     */
+    public void newGame(ActionEvent actionEvent) {
+        //CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        //cl.show(switchPanels, "StartPanel");
         this.monopoly = new Monopoly();
         this.playersGUI = new ArrayList<>();
         this.playersList = new LinkedList<>();
@@ -320,12 +237,10 @@ public class MonopolyGUI extends JPanel {
         this.currentSquareNumber = 0;
         isDouble = false;
         doubles = 0;
-        //initPanel();
+        //initFrame();
         //initPanelComponents();
         //setupSwitchPanel();
     }
-
-     */
 
     /*
      * Initialize the components in the panels.
@@ -383,7 +298,7 @@ public class MonopolyGUI extends JPanel {
     /*
      * Set up the panels.
      *
-    private void setupPanels() {
+    private void setupPanel() {
         this.setBounds(100, 100, 450, 300);
         this.setSize(1080,740);
 
@@ -685,7 +600,9 @@ public class MonopolyGUI extends JPanel {
         cl.show(switchPanels, "VersionsPanel");
     }
 
-    /**
+     */
+
+    /*
      * Makes Monopoly use the US version.
      * @param actionEvent ActionEvent
      *
@@ -694,7 +611,9 @@ public class MonopolyGUI extends JPanel {
         cl.show(switchPanels, "PlayerInitializePanel");
     }
 
-    /**
+     */
+
+    /*
      * Makes Monopoly use the US version.
      * @param actionEvent ActionEvent
      *
@@ -703,7 +622,9 @@ public class MonopolyGUI extends JPanel {
         cl.show(switchPanels, "PlayerInitializePanel");
     }
 
-    /**
+     */
+
+    /*
      * Play the game after making all the players.
      * @param actionEvent ActionEvent
      *
@@ -727,6 +648,7 @@ public class MonopolyGUI extends JPanel {
     public void initPlayerToken() {
         PlayerGUI playerGUI = null;
         for (int i = 0; i < playersList.size(); i++) {
+
             playerGUI = new PlayerGUI(playerTokenColors[i], playersList.get(i).name());
             playersGUI.add(playerGUI);
             leftLayeredPane.add(playerGUI, Integer.valueOf(1));
@@ -783,7 +705,6 @@ public class MonopolyGUI extends JPanel {
 
         for (int i = 0; i < playersList.size(); i++) {
             JPanel playerStatusPanel = playerStatusPanel(i+1, playerTokenColors[i]);
-
             playerAssetsPanel.add(playerStatusPanel, String.valueOf(i));
         }
 
@@ -862,6 +783,7 @@ public class MonopolyGUI extends JPanel {
      * Handles when it is the CPU Player's next turn.
      */
     private void handleCPUTurn() {
+        PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
         if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
             buttonRunCPU.setEnabled(true);
             buttonRollDice.setEnabled(false);
@@ -873,7 +795,10 @@ public class MonopolyGUI extends JPanel {
         buttonPayRent.setEnabled(false);
         buttonBuy.setEnabled(false);
         buttonBuyHouse.setEnabled(false);
-        buttonPayBail.setEnabled(false);
+
+        if (currentPlayer.getPlayer().getJailTurns() > 0) {
+            buttonPayBail.setEnabled(true);
+        }
         buttonPayBail.setEnabled(false);
     }
 
@@ -946,37 +871,30 @@ public class MonopolyGUI extends JPanel {
         JPanel panel = new JPanel(new GridLayout(0, 4));
         for (Square sq : playersGUI.get(currentPlayerOrder).getPlayer().properties()) {
             Property property;
-            if (sq instanceof Property && ((Property) sq).isMonopoly()) {
+            if (sq instanceof Property) {
                 property = (Property) sq;
-                JButton propButton = new JButton(property.name());
-                // Press the button to get a house for the property selected
-                propButton.addActionListener(this::propButtonAction);
-                panel.add(propButton);
+                if (property.isMonopoly()) {
+                    JButton propButton = new JButton(property.name());
+                    // Press the button to get a house for the property selected
+                    propButton.addActionListener(e-> {
+                        boolean purchased = monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
+                        if (purchased) {
+                            infoConsole.setText("Bought House for $" + property.getHouseCost());
+                            if (property.getBuildings() == 5) {
+                                infoConsole.append("\nYou have a hotel for " + property.name());
+                            } else {
+                                infoConsole.append("\nYou have " + property.getBuildings() + " houses for " + property.name());
+                            }
+                        } else {
+                            infoConsole.setText("You can't afford anymore houses for " + property.name());
+                        }
+                        updatePlayerStatusTextArea();
+                    });
+                    panel.add(propButton);
                 }
             }
-        JOptionPane.showMessageDialog(rightLayeredPane, panel, "Current houses you can purchase", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    /**
-     * Allows the user to buy a house for the property they select.
-     * @param actionEvent   ActionEvent
-     */
-    private void propButtonAction(ActionEvent actionEvent) {
-        String propName = ((JButton)actionEvent.getSource()).getText();
-        Property property = playersGUI.get(currentPlayerOrder).getPlayer().getProperty(propName);
-
-        boolean purchased = monopoly.buyHouses(playersGUI.get(currentPlayerOrder).getPlayer(), property);
-        if (purchased) {
-            infoConsole.setText("Bought House for $" + property.getHouseCost());
-            if (property.getBuildings() == 5) {
-                infoConsole.append("\nYou have a hotel for " + property.name());
-            } else {
-                infoConsole.append("\nYou have " + property.getBuildings() + " houses for " + property.name());
-            }
-        } else {
-            infoConsole.setText("You can't afford anymore houses for " + property.name());
         }
-        updatePlayerStatusTextArea();
+        JOptionPane.showMessageDialog(rightLayeredPane, panel, "Current houses you can purchase", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -986,13 +904,13 @@ public class MonopolyGUI extends JPanel {
     private void runCPUAction(ActionEvent actionEvent) {
         rollDiceLogic();
         handleCPUSquare();
-        onlyNextTurnButton();
+        handleButtons();
     }
 
     /**
      * Handles the button logic during CPU Player's turn.
      */
-    private void onlyNextTurnButton() {
+    private void handleButtons() {
         buttonRunCPU.setEnabled(false);
         buttonRollDice.setEnabled(false);
         buttonBuyHouse.setEnabled(false);
@@ -1055,8 +973,7 @@ public class MonopolyGUI extends JPanel {
         infoConsole.setText("You paid $50 to get out of jail\n");
         infoConsole.append("You are now out of Jail!");
 
-        onlyNextTurnButton();
-
+        handleButtons();
         updatePlayerStatusTextArea();
     }
 
@@ -1126,7 +1043,7 @@ public class MonopolyGUI extends JPanel {
             if (currentSquare instanceof Taxes) {
                 infoConsole.append("Taxes: You landed on " + currentSquare.name() +
                         "\nTax: $" + ((Taxes) currentSquare).getTax());
-                handleTaxSquare();
+                handleButtonsSpecialSquares();
             } else if(currentSquare instanceof Jail) {
                 handleJail(currentPlayer, currentSquare, diceValue);
             } else {
@@ -1151,23 +1068,6 @@ public class MonopolyGUI extends JPanel {
     }
 
     /**
-     * Handles button logic for GUI when player interacts with Jail.
-     */
-    private void handleButtonsGoToJail() {
-        onlyNextTurnButton();
-    }
-
-    /**
-     * Handles button logic for GUI when player interacts with Tax square.
-     */
-    private void handleTaxSquare() {
-        buttonPayRent.setEnabled(true);
-        buttonRollDice.setEnabled(false);
-        buttonNextTurn.setEnabled(false);
-        buttonBuy.setEnabled(false);
-    }
-
-    /**
      * Handles GUI when a player interacts with Jail square.
      * @param currentPlayer     PlayerGUI
      * @param currentSquare     Square
@@ -1175,7 +1075,7 @@ public class MonopolyGUI extends JPanel {
      */
     private void handleJail(PlayerGUI currentPlayer, Square currentSquare, int diceValue) {
         if(((Jail) currentSquare).getType() == Jail.JailType.GOTO_JAIL) {
-            handleButtonsGoToJail();
+            handleButtons();
             infoConsole.setText("You have landed on:\n" + currentSquare.name());
             infoConsole.append("\nYou are now in Jail.");
             updateJailTurn(currentPlayer, currentSquare, diceValue);
@@ -1246,10 +1146,11 @@ public class MonopolyGUI extends JPanel {
         });
         this.setVisible(true);
     }
+    */
 
+    /*
     public static void main(String[] args) {
         new MonopolyGUI();
     }
-
      */
 }

@@ -31,6 +31,7 @@ public class MonopolyInitGUI extends JFrame {
 
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
+    private JPanel versionsPanel;
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
 
@@ -70,6 +71,7 @@ public class MonopolyInitGUI extends JFrame {
         this.setTitle("MONOPOLY");
         playerInitPanel = new JPanel(new GridBagLayout());
         startPanel = new JPanel(new GridBagLayout());
+        versionsPanel = new JPanel(new GridBagLayout());
         monopolyPanel = new JPanel();
 
         this.setBounds(100, 100, 450, 300);
@@ -81,9 +83,10 @@ public class MonopolyInitGUI extends JFrame {
         JMenuItem loadMenuItem = new JMenuItem("Load Game");
         JMenuItem newMenuItem = new JMenuItem("New Game");
 
-        saveMenuItem.addActionListener(this::saveGame);
+        saveMenuItem.addActionListener(monopolyGUI::saveGame);
         loadMenuItem.addActionListener(this::loadGame);
-        newMenuItem.addActionListener(this::newGame);
+        newMenuItem.addActionListener(monopolyGUI::newGame);
+        newMenuItem.addActionListener(this::newGameFrame);
 
         menu.add(saveMenuItem);
         menu.add(loadMenuItem);
@@ -93,12 +96,53 @@ public class MonopolyInitGUI extends JFrame {
     }
 
     /**
+     * Load the current game play state.
+     * @param actionEvent   ActionEvent
+     */
+    public void loadGame(ActionEvent actionEvent) {
+        //setGameFrame();
+        monopolyGUI = monopolyGUI.setGame(monopoly.importGame());
+        monopolyPanel.removeAll();
+
+        monopolyPanel.add(monopolyGUI);
+
+        setGameFrame();
+    }
+
+    /**
+     * Set game panel.
+     */
+    private void setGameFrame() {
+        CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        cl.show(switchPanels, "MonopolyPanel");
+    }
+
+    /**
+     * Creates a new game.
+     * @param actionEvent   ActionEvent
+     */
+    private void newGameFrame(ActionEvent actionEvent) {
+        CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        cl.show(switchPanels, "StartPanel");
+
+        monopolyGUI = new MonopolyGUI();
+
+        while (!playersList.isEmpty()) {
+            playersList.removeFirst();
+        }
+
+        initFrame();
+        initPanelComponents();
+        setupSwitchPanel();
+    }
+
+    /**
      * Initialize the components in the panels.
      */
     private void initPanelComponents() {
         startButton = new JButton("Start Game");
-        usVersionButton = new JButton("US Version");
-        ukVersionButton = new JButton("UK Version");
+        //usVersionButton = new JButton("US Version");
+        //ukVersionButton = new JButton("UK Version");
         playButton = new JButton("Play Game!");
         addPlayer = new JButton("Add Player");
         addCPUPlayer = new JButton("Add CPU Player");
@@ -148,11 +192,12 @@ public class MonopolyInitGUI extends JFrame {
         chooseVersionPanel.setBackground(new Color(50, 200, 155));
 
         // Player initialization label
-        JLabel message = new JLabel("Enter Player name in text box then click Add Player (2-6 players)");
+        JLabel message = new JLabel("Enter Player name then click Add Player (2-6 players)");
         messagePanel.add(message);
         messagePanel.setBackground(new Color(50, 200, 155));
 
         switchPanels.add(startPanel, "StartPanel");
+        switchPanels.add(versionsPanel, "VersionsPanel");
         switchPanels.add(playerInitPanel, "PlayerInitializePanel");
         switchPanels.add(monopolyPanel, "MonopolyPanel");
 
@@ -163,9 +208,16 @@ public class MonopolyInitGUI extends JFrame {
      * Set up the panels.
      */
     private void setupPanels() {
+        this.setBounds(100, 100, 450, 300);
+        this.setSize(1080,740);
+
         startPanel.setSize(new Dimension(250, 250));
         startPanel.setBackground(new Color(50, 255, 155));
         startPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
+
+        versionsPanel.setSize(new Dimension(250, 250));
+        versionsPanel.setBackground(new Color(50, 255, 155));
+        versionsPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
 
         playerInitPanel.setSize(new Dimension(250, 250));
         playerInitPanel.setBackground(new Color(50, 255, 155));
@@ -191,16 +243,16 @@ public class MonopolyInitGUI extends JFrame {
         addPlayer.setPreferredSize(new Dimension(175, 50));
         addCPUPlayer.setPreferredSize(new Dimension(175, 50));
         playButton.setPreferredSize(new Dimension(175, 50));
-        usVersionButton.setPreferredSize(new Dimension(175, 50));
-        ukVersionButton.setPreferredSize(new Dimension(175, 50));
+        //usVersionButton.setPreferredSize(new Dimension(175, 50));
+        //ukVersionButton.setPreferredSize(new Dimension(175, 50));
         playButton.setEnabled(false);
 
-        startButton.addActionListener(this::startButton);
-        usVersionButton.addActionListener(this::usVersionButton);
-        ukVersionButton.addActionListener(this::ukVersionButton);
+        startButton.addActionListener(this::startAction);
         addPlayer.addActionListener(this::addPlayerAction);
         addCPUPlayer.addActionListener(this::addPlayerAction);
-        playButton.addActionListener(this::playButton);
+        playButton.addActionListener(this::playAction);
+        //usVersionButton.addActionListener(this::usVersionButton);
+        //ukVersionButton.addActionListener(this::ukVersionButton);
     }
 
     /**
@@ -239,7 +291,7 @@ public class MonopolyInitGUI extends JFrame {
         GridBagConstraints gbagConstraintsAddCPUPlayerButton = new GridBagConstraints();
         gbagConstraintsAddCPUPlayerButton.gridx = 2;
         gbagConstraintsAddCPUPlayerButton.gridy = 9;
-        gbagConstraintsAddCPUPlayerButton.gridwidth = 1;
+        gbagConstraintsAddCPUPlayerButton.gridwidth = 2;
         gbagConstraintsAddCPUPlayerButton.insets = new Insets(0, 0, 20, 0);
 
         GridBagConstraints gbagConstraintsChooseVersions = new GridBagConstraints();
@@ -260,18 +312,57 @@ public class MonopolyInitGUI extends JFrame {
         gbagConstraintsMessage.gridwidth = 2;
         gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
 
+        /*
+        GridBagConstraints gbagConstraintUsVersion = new GridBagConstraints();
+        gbagConstraintUsVersion.gridx = 1;
+        gbagConstraintUsVersion.gridy = 0;
+        gbagConstraintUsVersion.gridwidth = 2;
+        gbagConstraintUsVersion.insets = new Insets(20, 0, 10, 0);
+
+        GridBagConstraints gbagConstraintUkVersion = new GridBagConstraints();
+        gbagConstraintUkVersion.gridx = 1;
+        gbagConstraintUkVersion.gridy = 1;
+        gbagConstraintUkVersion.gridwidth = 2;
+        gbagConstraintUkVersion.insets = new Insets(10, 0, 20, 0);
+
+         */
+
         // Add the buttons, panels and labels to the frame
         startPanel.add(titleBackground, gbagConstraintsTitle);
         startPanel.add(startButton, gbagConstraintsStartButton);
+
+        //versionsPanel.add(usVersionButton, gbagConstraintUsVersion);
+        //versionsPanel.add(ukVersionButton, gbagConstraintUkVersion);
 
         playerInitPanel.add(playerNameList, gbagConstraintsPlayerNameList);
         playerInitPanel.add(playerNameInput, gbagConstraintsPlayerNameInput);
         playerInitPanel.add(addPlayer, gbagConstraintsAddPlayerButton);
         playerInitPanel.add(addCPUPlayer, gbagConstraintsAddCPUPlayerButton);
         playerInitPanel.add(chooseVersionPanel, gbagConstraintsChooseVersions);
-        //playerInitPanel.add(versionsList, gbagConstraintsVersionsMenu);
         playerInitPanel.add(playButton, gbagConstraintsPlayButton);
         playerInitPanel.add(messagePanel, gbagConstraintsMessage);
+    }
+
+    /**
+     * Create a JButton for adding a new Player.
+     * @param actionEvent ActionEvent
+     */
+    private void addPlayerAction(ActionEvent actionEvent) {
+        if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
+            // Make the panel to get the username
+            Player newPlayer;
+            if (actionEvent.getActionCommand().equals("Add Player")) {
+                newPlayer = new HumanPlayer(playerNameInput.getText());
+            } else {
+                newPlayer = new CPUPlayer(playerNameInput.getText());
+            }
+            addNewPlayerPanel(newPlayer);
+        } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
+            JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
+        }
+        else {
+            JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
+        }
     }
 
     /**
@@ -321,15 +412,15 @@ public class MonopolyInitGUI extends JFrame {
      * This will change to the player initialization panel.
      * @param actionEvent ActionEvent
      */
-    private void startButton(ActionEvent actionEvent) {
+    private void startAction(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "PlayerInitializePanel");
     }
 
-    /**
+    /*
      * Makes Monopoly use the US version.
      * @param actionEvent ActionEvent
-     */
+     *
     private void usVersionButton(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "PlayerInitializePanel");
@@ -338,118 +429,25 @@ public class MonopolyInitGUI extends JFrame {
     /**
      * Makes Monopoly use the US version.
      * @param actionEvent ActionEvent
-     */
+     *
     private void ukVersionButton(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "PlayerInitializePanel");
     }
 
+     */
+
     /**
      * Play the game after making all the players.
      * @param actionEvent ActionEvent
      */
-    private void playButton(ActionEvent actionEvent) {
+    private void playAction(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
 
         monopolyGUI.setPlayers(playersList);
         monopolyGUI.setupMonopolyBoard();
         monopolyPanel.add(monopolyGUI);
-    }
-
-    /**
-     * Create a JButton for adding a new Player.
-     * @param actionEvent ActionEvent
-     */
-    private void addPlayerAction(ActionEvent actionEvent) {
-        if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
-            // Make the panel to get the username
-            Player newPlayer;
-            if (actionEvent.getActionCommand().equals("Add Player")) {
-                newPlayer = new HumanPlayer(playerNameInput.getText());
-            } else {
-                newPlayer = new CPUPlayer(playerNameInput.getText());
-            }
-            addNewPlayerPanel(newPlayer);
-        } else if (!playerNameInput.getText().matches(".*\\w.*")) { // if the text box is empty/all whitespace
-            JOptionPane.showMessageDialog(playerInitPanel, "Type a name in the text box!");
-        }
-        else {
-            JOptionPane.showMessageDialog(playerInitPanel, "You can't have more than 6 players.\nPress Play Game!");
-        }
-    }
-
-    /**
-     * Export the Saved game file.
-     * @param actionEvent   ActionEvent
-     */
-    public void saveGame(ActionEvent actionEvent) {
-        monopoly.setCurrentPlayerOrder(monopolyGUI.getCurrentPlayerOrder());
-        monopoly.setCurrentSquareNumber(monopolyGUI.getCurrentSquareNumber());
-        monopoly.exportGame(monopoly);
-        System.out.println(monopolyGUI.getCurrentPlayerOrder());
-        System.out.println(monopolyGUI.getCurrentSquareNumber());
-
-        JOptionPane.showMessageDialog(null, "Game has been saved");
-    }
-
-    /**
-     * Load the current game play state.
-     * @param actionEvent   ActionEvent
-     */
-    public void loadGame(ActionEvent actionEvent) {
-        setGame(monopoly.importGame());
-    }
-
-    /**
-     * Set the current game play state.
-     * @param newMonopoly Monopoly
-     */
-    public void setGame(Monopoly newMonopoly) {
-        CardLayout cl = (CardLayout) (switchPanels.getLayout());
-        cl.show(switchPanels, "MonopolyPanel");
-
-        monopolyGUI.setMonopoly(newMonopoly);
-        monopolyGUI.setPlayersGUI(monopoly.getPlayerGUI());
-        monopolyGUI.setPlayersList(monopoly.getPlayers());
-        monopolyGUI.setCurrentPlayerOrder(monopoly.getCurrentPlayerOrder());
-        monopolyGUI.setCurrentSquareNumber(monopoly.getCurrentSquareNumber());
-
-        monopolyGUI.setupBoard();
-        monopolyGUI.setupDice();
-        monopolyGUI.setPlayerTokens();
-        monopolyGUI.setupPlayerStatusWindow();
-        monopolyGUI.setupConsoleLog();
-        monopolyGUI.setupMonopolyButtons();
-
-        CardLayout cardLayout = (CardLayout) monopolyGUI.getPlayerAssetsPanel().getLayout();
-        cardLayout.show(monopolyGUI.getPlayerAssetsPanel(), String.valueOf(monopoly.getCurrentPlayerOrder()));
-
-        JOptionPane.showMessageDialog(null, "Game has been loaded");
-    }
-
-    /**
-     * Creates a new game.
-     * @param actionEvent   ActionEvent
-     */
-    void newGame(ActionEvent actionEvent) {
-        CardLayout cl = (CardLayout) (switchPanels.getLayout());
-        cl.show(switchPanels, "StartPanel");
-        this.monopoly = new Monopoly();
-
-        monopolyGUI.emptyPlayersGUI();
-
-        playersList = new LinkedList<>();
-
-        monopolyGUI.emptyPlayersList();
-        monopolyGUI.setCurrentPlayerOrder(0);
-        monopolyGUI.setCurrentSquareNumber(0);
-        monopolyGUI.setIsDouble(false);
-        monopolyGUI.setDoubles(0);
-
-        initPanelComponents();
-        setupSwitchPanel();
-        setupPanels();
     }
 
     /**
