@@ -34,7 +34,7 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  * This class represents the Monopoly GUI.
  * @author Trong Nguyen, Francisco De Grano, Ibrahim Almalki, & Elisha Catherasoo
  */
-public class MonopolyGUI extends JFrame {
+public class MonopolyGUI extends JPanel {
     private Monopoly monopoly;
     private ArrayList<PlayerGUI> playersGUI;                            // List of player token positions
     private LinkedList<Player> playersList;                             // The list of players
@@ -47,6 +47,7 @@ public class MonopolyGUI extends JFrame {
     private DiceGUI die1;
     private DiceGUI die2;
 
+    /*
     // Landing game panel
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
@@ -64,6 +65,8 @@ public class MonopolyGUI extends JFrame {
     private JPanel titleBackground;
     private JPanel messagePanel;
     private Font playerFont;
+
+     */
 
     // Gameplay panel
     private JPanel playerAssetsPanel;
@@ -95,9 +98,11 @@ public class MonopolyGUI extends JFrame {
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
-        initFrame();
-        initPanelComponents();
-        setupSwitchPanel();
+        //initFrame();
+        //initPanelComponents();
+        //setupSwitchPanel();
+        //setupPanel();
+
         this.monopoly = new Monopoly();
         this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();
@@ -105,12 +110,32 @@ public class MonopolyGUI extends JFrame {
         this.currentSquareNumber = monopoly.getCurrentSquareNumber();
         this.isDouble = monopoly.isBankrupt();
         this.monopoly.play();                               // Determines the winners and losers
-        displayGUI();
+        //displayGUI();
     }
 
     /**
-     * Initialize the frame and it's panels.
+     * Set up the monopoly board components.
      */
+    public void setupMonopolyBoard() {
+        setupBoard();
+        setupDice();
+        initPlayerToken();
+        setupPlayerStatusWindow();
+        setupConsoleLog();
+        setupMonopolyButtons();
+    }
+
+    /**
+     * Set the players list.
+     * @param players    LinkedList<Player>
+     */
+    public void setPlayers(LinkedList<Player> players) {
+        playersList.addAll(players);
+    }
+
+    /*
+     * Initialize the frame and it's panels.
+     *
     private void initFrame() {
         this.setTitle("MONOPOLY");
         playerInitPanel = new JPanel(new GridBagLayout());
@@ -134,6 +159,8 @@ public class MonopolyGUI extends JFrame {
         menuBar.add(menu);
         this.setJMenuBar(menuBar);
     }
+
+     */
 
     /**
      * Export the Saved game file.
@@ -160,8 +187,8 @@ public class MonopolyGUI extends JFrame {
      * @param newMonopoly Monopoly
      */
     public void setGame(Monopoly newMonopoly) {
-        CardLayout cl = (CardLayout) (switchPanels.getLayout());
-        cl.show(switchPanels, "MonopolyPanel");
+        //CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        //cl.show(switchPanels, "MonopolyPanel");
 
         this.monopoly = newMonopoly;
         this.playersGUI = monopoly.getPlayerGUI();
@@ -199,8 +226,8 @@ public class MonopolyGUI extends JFrame {
      * @param actionEvent   ActionEvent
      */
     private void newGame(ActionEvent actionEvent) {
-        CardLayout cl = (CardLayout) (switchPanels.getLayout());
-        cl.show(switchPanels, "StartPanel");
+        //CardLayout cl = (CardLayout) (switchPanels.getLayout());
+        //cl.show(switchPanels, "StartPanel");
         this.monopoly = new Monopoly();
         this.playersGUI = new ArrayList<>();
         this.playersList = new LinkedList<>();
@@ -208,14 +235,14 @@ public class MonopolyGUI extends JFrame {
         this.currentSquareNumber = 0;
         isDouble = false;
         doubles = 0;
-        initFrame();
-        initPanelComponents();
-        setupSwitchPanel();
+        //initFrame();
+        //initPanelComponents();
+        //setupSwitchPanel();
     }
 
-    /**
+    /*
      * Initialize the components in the panels.
-     */
+     *
     private void initPanelComponents() {
         startButton = new JButton("Start Game");
         usVersionButton = new JButton("US Version");
@@ -230,9 +257,11 @@ public class MonopolyGUI extends JFrame {
         messagePanel = new JPanel();
     }
 
-    /**
-     * Set up the panels in the switch panel.
      */
+
+    /*
+     * Set up the panels in the switch panel.
+     *
     private void setupSwitchPanel() {
         Font font = new Font("Lucida Grande", Font.BOLD, 60);
 
@@ -262,10 +291,12 @@ public class MonopolyGUI extends JFrame {
         this.add(switchPanels);
     }
 
-    /**
-     * Set up the panels.
      */
-    private void setupPanels() {
+
+    /*
+     * Set up the panels.
+     *
+    private void setupPanel() {
         this.setBounds(100, 100, 450, 300);
         this.setSize(1080,740);
 
@@ -292,9 +323,11 @@ public class MonopolyGUI extends JFrame {
         setupButtons();
     }
 
-    /**
-     * Set up the buttons not in the game.
      */
+
+    /*
+     * Set up the buttons not in the game.
+     *
     private void setupButtons() {
         startButton.setPreferredSize(new Dimension(175, 50));
         playerNameInput.setPreferredSize(new Dimension(175, 50));
@@ -313,9 +346,11 @@ public class MonopolyGUI extends JFrame {
         ukVersionButton.addActionListener(this::ukVersionButton);
     }
 
-    /**
-     * Set up the layouts used.
      */
+
+    /*
+     * Set up the layouts used.
+     *
     private void setupLayouts() {
         GridBagConstraints gbagConstraintsTitle = new GridBagConstraints();
         gbagConstraintsTitle.gridx = 1;
@@ -391,12 +426,16 @@ public class MonopolyGUI extends JFrame {
         playerInitPanel.add(messagePanel, gbagConstraintsMessage);
     }
 
+     */
+
     /**
      * Set up the layout for the board.
      */
-    private void setupBoard() {
-        monopolyPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        monopolyPanel.setLayout(null);
+    public void setupBoard() {
+        this.setBorder(new EmptyBorder(5, 5, 5, 5));
+        this.setLayout(null);
+        this.setSize(new Dimension(1080,740));
+        this.setBackground(Color.white);
 
         // Add right panel
         rightLayeredPane = new JLayeredPane();
@@ -404,12 +443,12 @@ public class MonopolyGUI extends JFrame {
         rightLayeredPane.setBorder(new LineBorder(new Color(0, 0, 0)));
         rightLayeredPane.setBounds(680, 5, 430, 670);
         rightLayeredPane.setLayout(null);
-        monopolyPanel.add(rightLayeredPane);
+        this.add(rightLayeredPane);
 
         leftLayeredPane = new JLayeredPane();
         leftLayeredPane.setBorder(new LineBorder(new Color(0, 0, 0)));
         leftLayeredPane.setBounds(5, 5, 670, 670);
-        monopolyPanel.add(leftLayeredPane);
+        this.add(leftLayeredPane);
 
         // Add game board to right panel
         gameBoardGUI = new GameBoardGUI(5,5,670,670);
@@ -420,7 +459,7 @@ public class MonopolyGUI extends JFrame {
     /**
      * Set up the dice positions.
      */
-    private void setupDice() {
+    public void setupDice() {
         die1 = new DiceGUI(350, 450, 40, 40);
         leftLayeredPane.add(die1, Integer.valueOf(1));
 
@@ -431,7 +470,7 @@ public class MonopolyGUI extends JFrame {
     /**
      * Set up the positions of the buttons.
      */
-    private void setupMonopolyButtons() {
+    public void setupMonopolyButtons() {
         // Add roll dice button
         buttonRollDice = new JButton("Roll Dice");
         buttonRollDice.addActionListener(this::rollDiceAction);
@@ -481,10 +520,10 @@ public class MonopolyGUI extends JFrame {
         rightLayeredPane.add(buttonPayBail);
     }
 
-    /**
+    /*
      * Create a JButton for adding a new Player.
      * @param actionEvent ActionEvent
-     */
+     *
     private void addPlayerAction(ActionEvent actionEvent) {
         if (playersList.size() < MAX_PLAYERS && playerNameInput.getText().matches(".*\\w.*")) {
             // Make the panel to get the username
@@ -503,10 +542,12 @@ public class MonopolyGUI extends JFrame {
         }
     }
 
-    /**
+     */
+
+    /*
      * Creates a panel to display the players added to the game.
      * @param newPlayer     Player
-     */
+     *
     private void addNewPlayerPanel(Player newPlayer) {
         playersList.add(newPlayer);
         JLabel playerNumber = new JLabel();
@@ -546,37 +587,45 @@ public class MonopolyGUI extends JFrame {
         playerNameInput.setText("");
     }
 
-    /**
+     */
+
+    /*
      * This will change to the player initialization panel.
      * @param actionEvent ActionEvent
-     */
+     *
     private void startAction(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "VersionsPanel");
     }
 
-    /**
+     */
+
+    /*
      * Makes Monopoly use the US version.
      * @param actionEvent ActionEvent
-     */
+     *
     private void usVersionButton(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "PlayerInitializePanel");
     }
 
-    /**
+     */
+
+    /*
      * Makes Monopoly use the US version.
      * @param actionEvent ActionEvent
-     */
+     *
     private void ukVersionButton(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "PlayerInitializePanel");
     }
 
-    /**
+     */
+
+    /*
      * Play the game after making all the players.
      * @param actionEvent ActionEvent
-     */
+     *
     private void playAction(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
@@ -589,10 +638,12 @@ public class MonopolyGUI extends JFrame {
         setupMonopolyButtons();
     }
 
+     */
+
     /**
      * Give each player their own color.
      */
-    private void initPlayerToken() {
+    public void initPlayerToken() {
         PlayerGUI playerGUI = null;
         for (int i = 0; i < playersList.size(); i++) {
             playerGUI = new PlayerGUI(playerTokenColors[i], playersList.get(i).name());
@@ -606,7 +657,7 @@ public class MonopolyGUI extends JFrame {
     /**
      * Gives the players instructions.
      */
-    private void setupConsoleLog() {
+    public void setupConsoleLog() {
         JPanel consolePanel = new JPanel();
         consolePanel.setBounds(80, 300, 250, 100);
         consolePanel.setBackground(Color.BLACK);
@@ -644,7 +695,7 @@ public class MonopolyGUI extends JFrame {
     /**
      * Gives each player their own distinct color.
      */
-    private void setupPlayerStatusWindow() {
+    public void setupPlayerStatusWindow() {
         playerAssetsPanel = new JPanel();
         playerAssetsPanel.setBounds(80, 40, 250, 250);
         playerAssetsPanel.setLayout(cardLayout);
@@ -1074,9 +1125,9 @@ public class MonopolyGUI extends JFrame {
         }
     }
 
-    /**
+    /*
      * Display the game.
-     */
+     *
     private void displayGUI() {
         // Frame does not close immediately when trying to quit
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -1092,8 +1143,11 @@ public class MonopolyGUI extends JFrame {
         });
         this.setVisible(true);
     }
+    */
 
+    /*
     public static void main(String[] args) {
         new MonopolyGUI();
     }
+     */
 }
