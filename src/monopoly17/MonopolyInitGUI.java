@@ -466,9 +466,7 @@ public class MonopolyInitGUI extends JFrame {
 
         monopolyGUI.emptyPlayersGUI();
 
-        while (!playersList.isEmpty()) {
-            playersList.removeFirst();
-        }
+        playersList = new LinkedList<>();
 
         monopolyGUI.emptyPlayersList();
         monopolyGUI.setCurrentPlayerOrder(0);
