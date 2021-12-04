@@ -80,7 +80,6 @@ public class MonopolyGUI extends JPanel {
         this.currentSquareNumber = monopoly.getCurrentSquareNumber();
         this.isDouble = monopoly.isBankrupt();
         this.monopoly.play();                               // Determines the winners and losers
-        //displayGUI();
     }
 
     /**
@@ -110,7 +109,6 @@ public class MonopolyGUI extends JPanel {
         monopoly.setCurrentPlayerOrder(currentPlayerOrder);
         monopoly.setCurrentSquareNumber(currentSquareNumber);
         monopoly.exportGame(monopoly);
-
         JOptionPane.showMessageDialog(null, "Game has been saved");
     }
 
@@ -119,6 +117,7 @@ public class MonopolyGUI extends JPanel {
      * @param newMonopoly Monopoly
      */
     public MonopolyGUI setGame(Monopoly newMonopoly) {
+        this.newGame();
         this.monopoly = newMonopoly;
         this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();

@@ -100,11 +100,10 @@ public class MonopolyInitGUI extends JFrame {
      * @param actionEvent   ActionEvent
      */
     public void loadGame(ActionEvent actionEvent) {
-        monopolyGUI = monopolyGUI.setGame(monopoly.importGame());
+        monopolyGUI = new MonopolyGUI();
         monopolyPanel.removeAll();
-
+        monopolyGUI = monopolyGUI.setGame(monopoly.importGame());
         monopolyPanel.add(monopolyGUI);
-
         setGameFrame();
     }
 
