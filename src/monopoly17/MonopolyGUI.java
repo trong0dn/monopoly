@@ -17,15 +17,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
 import static monopoly17.GameBoard.BOARD_SIZE;
-import static monopoly17.Monopoly.MAX_PLAYERS;
-import static monopoly17.Monopoly.MIN_PLAYERS;
 
 /**
  * This class represents the Monopoly GUI.
@@ -820,7 +816,6 @@ public class MonopolyGUI extends JPanel {
      * Handles when it is the CPU Player's next turn.
      */
     private void handleCPUTurn() {
-        PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
         if (playersList.get(currentPlayerOrder) instanceof CPUPlayer) {
             buttonRunCPU.setEnabled(true);
             buttonRollDice.setEnabled(false);
@@ -832,10 +827,7 @@ public class MonopolyGUI extends JPanel {
         buttonPayRent.setEnabled(false);
         buttonBuy.setEnabled(false);
         buttonBuyHouse.setEnabled(false);
-
-        if (currentPlayer.getPlayer().getJailTurns() > 0) {
-            buttonPayBail.setEnabled(true);
-        }
+        buttonPayBail.setEnabled(false);
         buttonPayBail.setEnabled(false);
     }
 
@@ -948,13 +940,13 @@ public class MonopolyGUI extends JPanel {
     private void runCPUAction(ActionEvent actionEvent) {
         rollDiceLogic();
         handleCPUSquare();
-        handleCPUButtons();
+        onlyNextTurnButton();
     }
 
     /**
      * Handles the button logic during CPU Player's turn.
      */
-    private void handleCPUButtons() {
+    private void onlyNextTurnButton() {
         buttonRunCPU.setEnabled(false);
         buttonRollDice.setEnabled(false);
         buttonBuyHouse.setEnabled(false);
@@ -1017,13 +1009,7 @@ public class MonopolyGUI extends JPanel {
         infoConsole.setText("You paid $50 to get out of jail\n");
         infoConsole.append("You are now out of Jail!");
 
-        buttonRunCPU.setEnabled(false);
-        buttonRollDice.setEnabled(false);
-        buttonBuyHouse.setEnabled(false);
-        buttonPayRent.setEnabled(false);
-        buttonBuy.setEnabled(false);
-        buttonPayBail.setEnabled(false);
-        buttonNextTurn.setEnabled(true);
+        onlyNextTurnButton();
 
         updatePlayerStatusTextArea();
     }
@@ -1122,13 +1108,7 @@ public class MonopolyGUI extends JPanel {
      * Handles button logic for GUI when player interacts with Jail.
      */
     private void handleButtonsGoToJail() {
-        buttonRunCPU.setEnabled(false);
-        buttonRollDice.setEnabled(false);
-        buttonBuyHouse.setEnabled(false);
-        buttonPayRent.setEnabled(false);
-        buttonBuy.setEnabled(false);
-        buttonPayBail.setEnabled(false);
-        buttonNextTurn.setEnabled(true);
+        onlyNextTurnButton();
     }
 
     /**
