@@ -84,7 +84,9 @@ public class MonopolyInitGUI extends JFrame {
         JMenuItem newMenuItem = new JMenuItem("New Game");
 
         saveMenuItem.addActionListener(monopolyGUI::saveGame);
+        //loadMenuItem.addActionListener(this::setGameFrame);
         loadMenuItem.addActionListener(this::loadGame);
+        //loadMenuItem.addActionListener(this::setGameFrame);
         newMenuItem.addActionListener(monopolyGUI::newGame);
         newMenuItem.addActionListener(this::newGameFrame);
 
@@ -100,7 +102,12 @@ public class MonopolyInitGUI extends JFrame {
      * @param actionEvent   ActionEvent
      */
     public void loadGame(ActionEvent actionEvent) {
-        monopolyGUI.setGame(monopoly.importGame());
+        //setGameFrame();
+        monopolyGUI = monopolyGUI.setGame(monopoly.importGame());
+        monopolyPanel.removeAll();
+
+        monopolyPanel.add(monopolyGUI);
+
         setGameFrame();
     }
 

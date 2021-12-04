@@ -174,21 +174,19 @@ public class MonopolyGUI extends JPanel {
         JOptionPane.showMessageDialog(null, "Game has been saved");
     }
 
-    /*
+    /**
      * Load the current game play state.
      * @param actionEvent   ActionEvent
-     *
+     */
     public void loadGame(ActionEvent actionEvent) {
         setGame(monopoly.importGame());
     }
-
-     */
 
     /**
      * Set the current game play state.
      * @param newMonopoly Monopoly
      */
-    public void setGame(Monopoly newMonopoly) {
+    public MonopolyGUI setGame(Monopoly newMonopoly) {
         //CardLayout cl = (CardLayout) (switchPanels.getLayout());
         //cl.show(switchPanels, "MonopolyPanel");
 
@@ -209,12 +207,14 @@ public class MonopolyGUI extends JPanel {
         cardLayout.show(playerAssetsPanel, String.valueOf(currentPlayerOrder));
 
         JOptionPane.showMessageDialog(null, "Game has been loaded");
+
+        return this;
     }
 
     /**
      * Update player token to loaded position.
      */
-    private void setPlayerTokens() {
+    public void setPlayerTokens() {
         PlayerGUI playerGUI;
         for (PlayerGUI gui : playersGUI) {
             playerGUI = gui;
