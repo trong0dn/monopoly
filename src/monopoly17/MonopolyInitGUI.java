@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static monopoly17.Monopoly.MAX_PLAYERS;
@@ -32,7 +31,6 @@ public class MonopolyInitGUI extends JFrame {
 
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
-    //private JPanel versionsPanel;
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
 
@@ -71,7 +69,6 @@ public class MonopolyInitGUI extends JFrame {
         this.setTitle("MONOPOLY");
         playerInitPanel = new JPanel(new GridBagLayout());
         startPanel = new JPanel(new GridBagLayout());
-        //versionsPanel = new JPanel(new GridBagLayout());
         monopolyPanel = new JPanel();
 
         this.setBounds(100, 100, 450, 300);
@@ -92,42 +89,6 @@ public class MonopolyInitGUI extends JFrame {
         menu.add(newMenuItem);
         menuBar.add(menu);
         this.setJMenuBar(menuBar);
-    }
-
-    /**
-     * Get the starting panel.
-     * @return  JPanel
-     */
-    public JPanel getStartPanel() {
-        return startPanel;
-    }
-
-    /**
-     * Get the player initialization panel.
-     * @return JPanel
-     */
-    private JPanel getPlayerInitPanel() {
-        return playerInitPanel;
-    }
-
-    /**
-     * Get the list of players.
-     * @return  JPanel
-     */
-    private LinkedList<Player> getPlayersList() {
-        return playersList;
-    }
-
-    /**
-     * Get the monopoly panel.
-     * @return  JPanel
-     */
-    public JPanel getMonopolyPanel() {
-        return monopolyPanel;
-    }
-
-    public JPanel getSwitchPanels() {
-        return switchPanels;
     }
 
     /**
@@ -191,7 +152,6 @@ public class MonopolyInitGUI extends JFrame {
         messagePanel.setBackground(new Color(50, 200, 155));
 
         switchPanels.add(startPanel, "StartPanel");
-        //switchPanels.add(versionsPanel, "VersionsPanel");
         switchPanels.add(playerInitPanel, "PlayerInitializePanel");
         switchPanels.add(monopolyPanel, "MonopolyPanel");
 
@@ -205,10 +165,6 @@ public class MonopolyInitGUI extends JFrame {
         startPanel.setSize(new Dimension(250, 250));
         startPanel.setBackground(new Color(50, 255, 155));
         startPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
-
-        //versionsPanel.setSize(new Dimension(250, 250));
-        //versionsPanel.setBackground(new Color(50, 255, 155));
-        //versionsPanel.setBorder(new LineBorder(Color.WHITE, 10, true));
 
         playerInitPanel.setSize(new Dimension(250, 250));
         playerInitPanel.setBackground(new Color(50, 255, 155));
@@ -302,18 +258,6 @@ public class MonopolyInitGUI extends JFrame {
         gbagConstraintsMessage.gridy = 12;
         gbagConstraintsMessage.gridwidth = 2;
         gbagConstraintsMessage.insets = new Insets(40, 0, 0, 0);
-
-        //GridBagConstraints gbagConstraintUsVersion = new GridBagConstraints();
-        //gbagConstraintUsVersion.gridx = 1;
-        //gbagConstraintUsVersion.gridy = 0;
-        //gbagConstraintUsVersion.gridwidth = 2;
-        //gbagConstraintUsVersion.insets = new Insets(20, 0, 10, 0);
-
-        //GridBagConstraints gbagConstraintUkVersion = new GridBagConstraints();
-        //gbagConstraintUkVersion.gridx = 1;
-        //gbagConstraintUkVersion.gridy = 1;
-        //gbagConstraintUkVersion.gridwidth = 2;
-        //gbagConstraintUkVersion.insets = new Insets(10, 0, 20, 0);
 
         // Add the buttons, panels and labels to the frame
         startPanel.add(titleBackground, gbagConstraintsTitle);
