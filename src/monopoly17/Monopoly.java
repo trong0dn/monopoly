@@ -27,6 +27,8 @@ public class Monopoly implements Serializable {
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
+        gameState.currentPlayerOrder = 0;
+        gameState.currentSquareNumber = 0;
     }
 
     /**
@@ -43,6 +45,22 @@ public class Monopoly implements Serializable {
      */
     public ArrayList<PlayerGUI> getPlayerGUI() {
         return gameState.playersGUI;
+    }
+
+    public int getCurrentPlayerOrder() {
+        return gameState.currentPlayerOrder;
+    }
+
+    public int getCurrentSquareNumber() {
+        return gameState.currentSquareNumber;
+    }
+
+    public void setCurrentPlayerOrder(int i) {
+        gameState.currentPlayerOrder = i;
+    }
+
+    public void setCurrentSquareNumber(int i) {
+        gameState.currentSquareNumber = i;
     }
 
     /**
@@ -84,7 +102,6 @@ public class Monopoly implements Serializable {
         System.out.println("~~~Welcome to MONOPOLY!~~~");
         // Ask user for number of players participating
         System.out.println("How many players would like to play?");
-
         int numPlayers = input.inputInt();
         while (numPlayers < MIN_PLAYERS || numPlayers > MAX_PLAYERS) {
             System.out.println("Try Again! You must have a min of 2 and max of 6 players: ");
@@ -99,7 +116,6 @@ public class Monopoly implements Serializable {
         }
         // Print all the player names
         System.out.println("\nThere are: " + numPlayers + " players, with the usernames: ");
-
         for (Player p: gameState.players) {
             System.out.println(">>> " + p.name());
         }
@@ -143,7 +159,6 @@ public class Monopoly implements Serializable {
             System.out.println("1) Pass my turn.");
             System.out.println("2) Player Statistics.");
             int choice = gameState.currentPlayer.inputInt(gameState);
-
             // Switch-case for more additional player options
             switch (choice) {
                 case (1) -> playerAction = false;
@@ -251,10 +266,10 @@ public class Monopoly implements Serializable {
                     + gameState.currentPlayer.getMoney());
         }
         //if (player.inputBool(gameState)) {
-            if (!noMoney) {
-                player.exchangeMoney(-1 * cost);
-                buyProperty(player, square);
-            }
+        if (!noMoney) {
+            player.exchangeMoney(-1 * cost);
+            buyProperty(player, square);
+        }
         //}
     }
 

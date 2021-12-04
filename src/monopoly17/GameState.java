@@ -14,4 +14,6 @@ public class GameState implements Serializable {
     public ArrayList<PlayerGUI> playersGUI;
     public GameBoard gameBoard;
     public Player currentPlayer;
+    public int currentPlayerOrder;
+    public int currentSquareNumber;
 }

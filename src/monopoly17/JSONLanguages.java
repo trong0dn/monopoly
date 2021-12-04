@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 public class JSONLanguages {
-    JSONObject jo;
+    private JSONObject jo;
     private static Map square0values;
     private static Map square1values;
 
