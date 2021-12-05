@@ -220,6 +220,7 @@ public class GameBoard implements Serializable {
         return new Inactive(SquareInfo.SQUARE_0.getPosition(), JsonParse.parseJSON(0, String.valueOf(this.versions )));
 
         //return new Inactive(SquareInfo.SQUARE_0.getPosition(), SquareInfo.SQUARE_0.getName());
+        // Dont forget to do other squares
     }
 
     /**
