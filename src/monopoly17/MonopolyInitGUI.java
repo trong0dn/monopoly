@@ -13,8 +13,7 @@ import static monopoly17.Monopoly.MAX_PLAYERS;
 import static monopoly17.Monopoly.MIN_PLAYERS;
 
 public class MonopolyInitGUI extends JFrame {
-    private MonopolyGUI monopolyGUI = new MonopolyGUI();
-    private Monopoly monopoly = new Monopoly();
+    private MonopolyGUI monopolyGUI;
 
     private JButton startButton;
     private JButton playButton;
@@ -44,6 +43,7 @@ public class MonopolyInitGUI extends JFrame {
      * Initialize MonopolyInitGUI
      */
     public MonopolyInitGUI() {
+        monopolyGUI = new MonopolyGUI();
         playersList = new LinkedList<>();
         playerTokenColors = monopolyGUI.playerTokenColors;
         initFrame();
@@ -88,6 +88,7 @@ public class MonopolyInitGUI extends JFrame {
      * @param actionEvent   ActionEvent
      */
     public void loadGame(ActionEvent actionEvent) {
+        Monopoly monopoly = new Monopoly();
         monopolyGUI = new MonopolyGUI();
         monopolyPanel.removeAll();
         monopolyGUI = monopolyGUI.setGame(monopoly.importGame());
