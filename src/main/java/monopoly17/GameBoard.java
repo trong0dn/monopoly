@@ -235,7 +235,7 @@ public class GameBoard implements Serializable {
         int hotel = 250;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(SquareInfo.SQUARE_1.getPosition(), SquareInfo.SQUARE_1.getName(),
+        return new Property(SquareInfo.SQUARE_1.getPosition(),JsonParse.parseJSON(1, String.valueOf(this.versions )) ,
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
