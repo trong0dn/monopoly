@@ -9,11 +9,13 @@ import java.io.Serializable;
 public class GameBoard implements Serializable {
     public static final int BOARD_SIZE = 40;
     private final Square[] board; // representation of the game board
+    Versions versions;
 
     /**
      * Constructor for GameBoard.
      */
     public GameBoard() {
+        this.versions = Versions.US;
         this.board = new Square[BOARD_SIZE];
         for (int i = 0; i < BOARD_SIZE; i++) {
             board[i] = makeSquare(i);
@@ -21,6 +23,11 @@ public class GameBoard implements Serializable {
         groupProperties();
         groupRailroads();
         groupUtilities();
+
+    }
+
+    public void setLanguage(Versions version){
+        this.versions = version;
     }
 
     /**
@@ -210,7 +217,9 @@ public class GameBoard implements Serializable {
      * @return  Square
      */
     public Square square0() {
-        return new Inactive(SquareInfo.SQUARE_0.getPosition(), SquareInfo.SQUARE_0.getName());
+        return new Inactive(SquareInfo.SQUARE_0.getPosition(), JsonParse.parseJSON(0, String.valueOf(this.versions )));
+
+        //return new Inactive(SquareInfo.SQUARE_0.getPosition(), SquareInfo.SQUARE_0.getName());
     }
 
     /**
@@ -226,7 +235,7 @@ public class GameBoard implements Serializable {
         int hotel = 250;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(SquareInfo.SQUARE_1.getPosition(), SquareInfo.SQUARE_1.getName(),
+        return new Property(SquareInfo.SQUARE_1.getPosition(),JsonParse.parseJSON(1, String.valueOf(this.versions )) ,
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
