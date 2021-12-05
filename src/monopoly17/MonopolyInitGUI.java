@@ -14,6 +14,7 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
 
 public class MonopolyInitGUI extends JFrame {
     private MonopolyGUI monopolyGUI;
+    private LinkedList<Player> playersList;                             // The list of players
 
     private JButton startButton;
     private JButton playButton;
@@ -24,20 +25,16 @@ public class MonopolyInitGUI extends JFrame {
     private JPanel titleBackground;
     private JPanel messagePanel;
     private JPanel chooseVersionPanel;
-    private Font playerFont;
-
     private JPanel playerInitPanel;                                     // Panel for making the players
     private JPanel startPanel;                                          // Panel for the main starting page
     private JPanel versionsPanel;
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
+    private final Color[] playerTokenColors;
+    private Font playerFont;
 
     private String[] versions;
     private JComboBox versionsList;
-
-    private LinkedList<Player> playersList;                             // The list of players
-
-    Color[] playerTokenColors;
 
     /**
      * Initialize MonopolyInitGUI
