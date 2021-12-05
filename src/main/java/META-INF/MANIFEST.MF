@@ -1,3 +1,2 @@
 Manifest-Version: 1.0
-Main-Class: monopoly17.MonopolyGUI
-
+Main-Class: monopoly17.MonopolyInitGUI
