@@ -1,5 +1,3 @@
-package test;
-
 import monopoly17.*;
 import org.junit.Assert;
 import org.junit.Before;

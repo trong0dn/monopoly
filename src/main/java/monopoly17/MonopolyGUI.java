@@ -42,6 +42,7 @@ public class MonopolyGUI extends JPanel {
     private GameBoardGUI gameBoardGUI;
     private DiceGUI die1;
     private DiceGUI die2;
+    private Versions version;
 
     // Gameplay panel
     private JPanel playerAssetsPanel;
