@@ -39,6 +39,7 @@ public class MonopolyGUI extends JPanel {
     private int currentSquareNumber;
     private int doubles = 0;
 
+    // GameBoard panel
     private GameBoardGUI gameBoardGUI;
     private DiceGUI die1;
     private DiceGUI die2;
@@ -186,7 +187,7 @@ public class MonopolyGUI extends JPanel {
         leftLayeredPane.setBounds(5, 5, 670, 670);
         this.add(leftLayeredPane);
 
-        // Add game board to right panel
+        // Add game board to left panel
         gameBoardGUI = new GameBoardGUI(5,5,670,670);
         gameBoardGUI.setBackground(new Color(50, 255, 155));
         leftLayeredPane.add(gameBoardGUI, Integer.valueOf(0));
@@ -489,7 +490,7 @@ public class MonopolyGUI extends JPanel {
                 property = (Property) sq;
                 JButton propButton = new JButton(property.name());
                 // Press the button to get a house for the property selected
-                propButton.addActionListener(this::propButtonAction);
+                propButton.addActionListener(this::propertyButtonAction);
                 panel.add(propButton);
             }
         }
@@ -500,7 +501,7 @@ public class MonopolyGUI extends JPanel {
      * Allows the user to buy a house for the property they select.
      * @param actionEvent   ActionEvent
      */
-    private void propButtonAction(ActionEvent actionEvent) {
+    private void propertyButtonAction(ActionEvent actionEvent) {
         String propName = ((JButton)actionEvent.getSource()).getText();
         Property property = playersGUI.get(currentPlayerOrder).getPlayer().getProperty(propName);
 

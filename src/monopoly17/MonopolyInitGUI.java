@@ -12,15 +12,24 @@ import java.util.LinkedList;
 import static monopoly17.Monopoly.MAX_PLAYERS;
 import static monopoly17.Monopoly.MIN_PLAYERS;
 
+/**
+ * This class represents the Monopoly frame and the panels used to initialize the game.
+ * @author Elisha Catherasoo, Trong Nguyen
+ */
 public class MonopolyInitGUI extends JFrame {
     private MonopolyGUI monopolyGUI;
     private LinkedList<Player> playersList;                             // The list of players
 
+    // JButtons
     private JButton startButton;
     private JButton playButton;
     private JButton addPlayer;
     private JButton addCPUPlayer;
+
+    //TextField
     private JTextField playerNameInput;
+
+    //JPanels
     private JPanel playerNameList;
     private JPanel titleBackground;
     private JPanel messagePanel;
@@ -30,6 +39,7 @@ public class MonopolyInitGUI extends JFrame {
     private JPanel versionsPanel;
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
+
     private final Color[] playerTokenColors;
     private Font playerFont;
 
@@ -71,7 +81,7 @@ public class MonopolyInitGUI extends JFrame {
         saveMenuItem.addActionListener(actionEvent1 -> monopolyGUI.saveGame());
         loadMenuItem.addActionListener(this::loadGame);
         newMenuItem.addActionListener(actionEvent -> monopolyGUI.newGame());
-        newMenuItem.addActionListener(this::newGameFrame);
+        newMenuItem.addActionListener(this::newGamePanel);
 
         menu.add(saveMenuItem);
         menu.add(loadMenuItem);
@@ -90,13 +100,13 @@ public class MonopolyInitGUI extends JFrame {
         monopolyPanel.removeAll();
         monopolyGUI = monopolyGUI.setGame(monopoly.importGame());
         monopolyPanel.add(monopolyGUI);
-        setGameFrame();
+        setGamePanel();
     }
 
     /**
      * Set game panel.
      */
-    private void setGameFrame() {
+    private void setGamePanel() {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
     }
@@ -105,7 +115,7 @@ public class MonopolyInitGUI extends JFrame {
      * Creates a new game.
      * @param actionEvent   ActionEvent
      */
-    private void newGameFrame(ActionEvent actionEvent) {
+    private void newGamePanel(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "StartPanel");
 
@@ -134,18 +144,6 @@ public class MonopolyInitGUI extends JFrame {
         titleBackground = new JPanel();
         messagePanel = new JPanel();
         chooseVersionPanel = new JPanel();
-
-        versions = new String[]{"UK", "US"};
-        versionsList = new JComboBox(versions);
-        versionsList.setSelectedIndex(0);
-
-        // Center items on drop-down list
-        DefaultListCellRenderer listRenderer;
-        listRenderer = new DefaultListCellRenderer();
-        listRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
-        versionsList.setRenderer(listRenderer);
-
-        versionsList.setPreferredSize(new Dimension(75, 25));
     }
 
     /**
@@ -167,6 +165,19 @@ public class MonopolyInitGUI extends JFrame {
         title.setBackground(Color.RED);
         title.setForeground(Color.WHITE);
         titleBackground.add(title);
+
+        // drop-down list of versions
+        versions = new String[]{"UK", "US"};
+        versionsList = new JComboBox(versions);
+        versionsList.setSelectedIndex(0);
+
+        // Center items on drop-down list
+        DefaultListCellRenderer listRenderer;
+        listRenderer = new DefaultListCellRenderer();
+        listRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
+        versionsList.setRenderer(listRenderer);
+
+        versionsList.setPreferredSize(new Dimension(75, 25));
 
         JLabel chooseVersion = new JLabel("Choose Monopoly version: ");
         chooseVersionPanel.add(chooseVersion);
