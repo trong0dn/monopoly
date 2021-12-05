@@ -69,8 +69,18 @@ public class ParseTest {
         Assert.assertEquals("READING RAILROAD", JsonParse.parseJSON(5, String.valueOf(this.versions)));
         Assert.assertEquals("JUST VISITING", JsonParse.parseJSON(10, String.valueOf(this.versions)));
         Assert.assertEquals("ELECTRIC COMPANY", JsonParse.parseJSON(12, String.valueOf(this.versions)));
-
     }
+
+    @Test
+    public void testPosition(){
+        Assert.assertEquals(1, SquareInfo.SQUARE_1.getPosition());
+        Assert.assertEquals(2, SquareInfo.SQUARE_2.getPosition());
+        Assert.assertEquals(4, SquareInfo.SQUARE_4.getPosition());
+        Assert.assertEquals(5, SquareInfo.SQUARE_5.getPosition());
+        Assert.assertEquals(10, SquareInfo.SQUARE_10.getPosition());
+        Assert.assertEquals(12, SquareInfo.SQUARE_12.getPosition());
+    }
+
 
 
 
