@@ -12,7 +12,7 @@ import java.util.Map;
 public class JsonParse {
 
     /**
-     * @param position the key, position of th esquare
+     * @param position the key, position of the square
      * @param version the language wanted
      * @return String, the name of the property
      */
