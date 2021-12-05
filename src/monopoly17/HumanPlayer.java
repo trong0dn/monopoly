@@ -10,7 +10,6 @@ import static monopoly17.GameBoard.BOARD_SIZE;
  * @author Francisco De Grano & Ibrahim Almalki
  */
 public class HumanPlayer implements Player, Serializable {
-    // private final Input input;
     private final Collection<Square> properties;
     private final String playerName;
     private int money;
