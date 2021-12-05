@@ -25,9 +25,7 @@ public class GameBoardGUI extends JPanel {
         this.setBorder(new LineBorder(Color.BLACK));
         this.setBounds(x, y, width, height);
         this.language = Versions.US;
-        //this.gameBoard = new GameBoard(language);
         this.setLayout(null);
-        //initializeSquarePanels();
     }
 
     public void setVersion(Versions language){

@@ -39,14 +39,6 @@ public class GameBoard implements Serializable {
         groupUtilities();
     }
 
-    public void setLanguage(Versions version){
-        this.versions = version;
-    }
-
-    public Versions getLanguage() {
-        return versions;
-    }
-
     /**
      * Get the size of the number of square tiles on the game board.
      * @return  int
