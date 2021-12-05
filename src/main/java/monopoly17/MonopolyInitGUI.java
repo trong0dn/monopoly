@@ -19,6 +19,8 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
 public class MonopolyInitGUI extends JFrame {
     private MonopolyGUI monopolyGUI;
     private LinkedList<Player> playersList;                             // The list of players
+    private Versions version;
+    private GameBoardGUI gameBoardGUI;
 
     // JButton
     private JButton startButton;
@@ -40,7 +42,7 @@ public class MonopolyInitGUI extends JFrame {
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
 
-    private final Color[] playerTokenColors;
+    private Color[] playerTokenColors;
     private Font playerFont;
 
     private String[] versions;
@@ -396,9 +398,24 @@ public class MonopolyInitGUI extends JFrame {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
 
+        if(versionsList.getSelectedIndex() == 0) {
+            version = Versions.UK;
+        } else {
+            version = Versions.US;
+        }
+
+        gameBoardGUI = new GameBoardGUI(5,5,670,670);
+        gameBoardGUI.setBackground(new Color(50, 255, 155));
+        gameBoardGUI.setVersion(version);
+
         monopolyGUI.setPlayers(playersList);
+        monopolyGUI.setGameBoardGUI(gameBoardGUI);
+
         monopolyGUI.setupMonopolyBoard();
+
+
         monopolyPanel.add(monopolyGUI);
+
     }
 
     /**

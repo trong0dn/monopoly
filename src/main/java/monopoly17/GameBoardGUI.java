@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author Trong Nguyen
  */
 public class GameBoardGUI extends JPanel {
-    private final GameBoard gameBoard;
+    private GameBoard gameBoard;
     Versions language;
 
     /**
@@ -24,17 +24,20 @@ public class GameBoardGUI extends JPanel {
     public GameBoardGUI(int x, int y, int width, int height) {
         this.setBorder(new LineBorder(Color.BLACK));
         this.setBounds(x, y, width, height);
-        this.gameBoard = new GameBoard();
+        this.language = Versions.US;
+        //this.gameBoard = new GameBoard(language);
         this.setLayout(null);
-        initializeSquarePanels();
+        //initializeSquarePanels();
     }
 
     public void setVersion(Versions language){
-        gameBoard.setLanguage(language);
+        this.gameBoard = new GameBoard(language);
+        this.language = language;
+        initializeSquarePanels();
     }
 
-    public String getVersion(){
-        return String.valueOf(this.language);
+    public Versions getVersion(){
+        return language;
     }
 
     /**
