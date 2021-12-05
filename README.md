@@ -135,6 +135,14 @@ the previously saved game session.
 
 #### International Version Customization
 
+Using Jackson JSON parsing, we were able to store the unique names of 
+the square contents to a JSON file which stores a specific version of
+the game. Different JSON files represent the contents specific to
+various internation or customized editions of the game with changes to
+the name of the squares. We updated the GUI to display options for 
+selecting a game version of choosing, which updates the version of the 
+game state accordingly.
+
 ------------------------------------------------------------------------
 ### Version 3.0
 
