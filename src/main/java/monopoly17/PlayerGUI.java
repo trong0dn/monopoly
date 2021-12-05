@@ -66,6 +66,10 @@ public class PlayerGUI extends JPanel implements Serializable {
         this.setLocation((15+this.playerNumber*5+xLocationsOfPlayer[targetSquare]), yLocationsOfPlayer[targetSquare]);
     }
 
+    /**
+     * Move the player to a specific position.
+     * @param position      int
+     */
     public void moveTo(int position) {
         currentSquareNumber = position;
 

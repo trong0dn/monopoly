@@ -106,4 +106,11 @@ public interface Player {
      * @return          int
      */
     int getJailTurns();
+
+    /**
+     * Get the property based on the name.
+     * @param propName  String
+     * @return          Property
+     */
+    Property getProperty(String propName);
 }

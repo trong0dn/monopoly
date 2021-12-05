@@ -10,7 +10,6 @@ import static monopoly17.GameBoard.BOARD_SIZE;
  * @author Francisco De Grano & Ibrahim Almalki
  */
 public class HumanPlayer implements Player, Serializable {
-    // private final Input input;
     private final Collection<Square> properties;
     private final String playerName;
     private int money;
@@ -199,5 +198,20 @@ public class HumanPlayer implements Player, Serializable {
     @Override
     public int getJailTurns() {
         return this.jailTurns;
+    }
+
+    /**
+     * Get the property based on the name.
+     * @param propName  String
+     * @return          Property
+     */
+    @Override
+    public Property getProperty(String propName) {
+        for(Square prop: properties){
+            if(propName.equals(prop.name())) {
+                return (Property) prop;
+            }
+        }
+        return null;
     }
 }

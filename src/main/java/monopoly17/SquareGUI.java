@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.io.Serializable;
 
 import static monopoly17.GameBoard.BOARD_SIZE;
 
@@ -13,7 +12,7 @@ import static monopoly17.GameBoard.BOARD_SIZE;
  * @author Trong Nguyen
  */
 public class SquareGUI extends JPanel {
-    private String squareName;
+    private final String squareName;
     private int squareNum;
     private static int total = 0;
 
