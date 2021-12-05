@@ -29,10 +29,18 @@ public class GameBoardGUI extends JPanel {
         initializeSquarePanels();
     }
 
+    /**
+     * Sets the international version.
+     * @param language  Versions, the enum of the international version
+     */
     public void setVersion(Versions language){
         gameBoard.setLanguage(language);
     }
 
+    /**
+     * Get the Veriosn enum and change to string.
+     * @return the string value of the Versions enum
+     */
     public String getVersion(){
         return String.valueOf(this.language);
     }

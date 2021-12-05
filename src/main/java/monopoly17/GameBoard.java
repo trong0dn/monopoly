@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * This class represents the game board.
- * @author Elisha Catherasoo & Trong Nguyen
+ * @author Elisha Catherasoo & Trong Nguyen & Ibrahim Almalki
  */
 public class GameBoard implements Serializable {
     public static final int BOARD_SIZE = 40;
@@ -26,6 +26,10 @@ public class GameBoard implements Serializable {
 
     }
 
+    /**
+     * Sets the international version.
+     * @param version  Versions, the enum of the international version
+     */
     public void setLanguage(Versions version){
         this.versions = version;
     }
