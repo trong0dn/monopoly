@@ -37,8 +37,10 @@ monopoly17 package:
 * Inactive.java
 * Input.java
 * Jail.java
+* JsonParse.java
 * Monopoly.java
 * MonopolyGUI.java
+* MonopolyInitGUI.java
 * Player.java
 * PlayerGUI.java
 * Property.java
@@ -50,6 +52,12 @@ monopoly17 package:
 * Taxes.java
 * Utility.java
 
+
+International Verions:
+* UK.json
+* US.json
+
+
 test package:
 * HumanPlayerTest.java
 * JailTest.java
@@ -60,7 +68,7 @@ test package:
 * UtiliyTest.java
 
 Execution source:
-* monopoly17.MonopolyGUI
+* monopoly17.MonopolyInitGUI
 
 The application is supported with various documentation and diagrams 
 upon deliverable:
@@ -70,7 +78,7 @@ upon deliverable:
 * M4_Group17-SequenceUML_1.drawio.pdf 
 	(Sequence UML for Saving Game State)
 * M4_Group17-SequenceUML_2.drawio.pdf 
-	(Sequence UML for xxx)
+	(Sequence UML for New Game)
 * M4_Group17-SequenceUML_3.drawio.pdf 
 	(Sequence UML for xxx)
 * M4_Group17-SequenceUML_4.drawio.pdf 
