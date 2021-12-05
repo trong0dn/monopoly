@@ -18,7 +18,7 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  */
 public class MonopolyInitGUI extends JFrame {
     private MonopolyGUI monopolyGUI;
-    private final LinkedList<Player> playersList;                             // The list of players
+    private LinkedList<Player> playersList;                             // The list of players
 
     // JButtons
     private JButton startButton;
