@@ -1,5 +1,3 @@
-package test;
-
 import monopoly17.SquareInfo;
 import monopoly17.Taxes;
 import org.junit.Before;

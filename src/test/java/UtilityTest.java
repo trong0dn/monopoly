@@ -1,5 +1,3 @@
-package test;
-
 import monopoly17.HumanPlayer;
 import monopoly17.Player;
 import monopoly17.SquareInfo;

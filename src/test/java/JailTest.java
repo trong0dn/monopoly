@@ -1,5 +1,3 @@
-package test;
-
 import monopoly17.Jail;
 import monopoly17.SquareInfo;
 import org.junit.Assert;
