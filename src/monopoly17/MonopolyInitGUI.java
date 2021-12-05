@@ -18,7 +18,7 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  */
 public class MonopolyInitGUI extends JFrame {
     private MonopolyGUI monopolyGUI;
-    private LinkedList<Player> playersList;                             // The list of players
+    private final LinkedList<Player> playersList;                             // The list of players
 
     // JButtons
     private JButton startButton;
@@ -44,7 +44,7 @@ public class MonopolyInitGUI extends JFrame {
     private Font playerFont;
 
     private String[] versions;
-    private JComboBox versionsList;
+    private JComboBox<String> versionsList;
 
     /**
      * Initialize MonopolyInitGUI
@@ -168,7 +168,7 @@ public class MonopolyInitGUI extends JFrame {
 
         // drop-down list of versions
         versions = new String[]{"UK", "US"};
-        versionsList = new JComboBox(versions);
+        versionsList = new JComboBox<>(versions);
         versionsList.setSelectedIndex(0);
 
         // Center items on drop-down list
