@@ -68,7 +68,7 @@ upon deliverable:
 * M4_Group17-ClassUML.drawio.pdf (Class UML diagram)
 * M4_Group17-Documentation.pdf	(Documentation)
 * M4_Group17-SequenceUML_1.drawio.pdf 
-	(Sequence UML for xxx)
+	(Sequence UML for Saving Game State)
 * M4_Group17-SequenceUML_2.drawio.pdf 
 	(Sequence UML for xxx)
 * M4_Group17-SequenceUML_3.drawio.pdf 
