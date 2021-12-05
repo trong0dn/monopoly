@@ -58,7 +58,7 @@ public class MonopolyGUI extends JPanel {
     private JButton buttonRunCPU;
     private JButton buttonPayBail;
 
-    private final Color[] playerTokenColors = {
+    public final Color[] playerTokenColors = {
         Color.RED,
         Color.BLUE,
         Color.GREEN,
@@ -142,7 +142,7 @@ public class MonopolyGUI extends JPanel {
     /**
      * Update player token to loaded position.
      */
-    public void setPlayerTokens() {
+    private void setPlayerTokens() {
         PlayerGUI playerGUI;
         for (PlayerGUI gui : playersGUI) {
             playerGUI = gui;
