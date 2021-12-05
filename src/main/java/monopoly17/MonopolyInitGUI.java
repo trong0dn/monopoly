@@ -20,7 +20,7 @@ public class MonopolyInitGUI extends JFrame {
     private MonopolyGUI monopolyGUI;
     private LinkedList<Player> playersList;                             // The list of players
 
-    // JButtons
+    // JButton
     private JButton startButton;
     private JButton playButton;
     private JButton addPlayer;
@@ -29,7 +29,7 @@ public class MonopolyInitGUI extends JFrame {
     //TextField
     private JTextField playerNameInput;
 
-    //JPanels
+    //JPanel
     private JPanel playerNameList;
     private JPanel titleBackground;
     private JPanel messagePanel;
