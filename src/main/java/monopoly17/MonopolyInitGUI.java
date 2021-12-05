@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
+import java.util.Objects;
 
 import static monopoly17.Monopoly.MAX_PLAYERS;
 import static monopoly17.Monopoly.MIN_PLAYERS;
@@ -18,7 +19,9 @@ import static monopoly17.Monopoly.MIN_PLAYERS;
  */
 public class MonopolyInitGUI extends JFrame {
     private MonopolyGUI monopolyGUI;
-    private LinkedList<Player> playersList;                             // The list of players
+    private GameBoardGUI gameBoardGUI;
+    private LinkedList<Player> playersList;// The list of players
+    private Versions version;
 
     // JButton
     private JButton startButton;
@@ -396,10 +399,25 @@ public class MonopolyInitGUI extends JFrame {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "MonopolyPanel");
 
+        if (Objects.equals(versionsList.getSelectedItem(), "US")){
+            version = Versions.US;
+        }else{
+            version = Versions.UK;
+        }
+        gameBoardGUI = new GameBoardGUI(5,5,670,670);
+        gameBoardGUI.setBackground(new Color(50, 255, 155));
+        gameBoardGUI.setVersion(version);
+        System.out.println(version);
+
+
+        monopolyGUI.setGameBoardGUI(gameBoardGUI);
         monopolyGUI.setPlayers(playersList);
         monopolyGUI.setupMonopolyBoard();
         monopolyPanel.add(monopolyGUI);
+
     }
+
+
 
     /**
      * Display the game.

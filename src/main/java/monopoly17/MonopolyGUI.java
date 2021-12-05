@@ -39,6 +39,7 @@ public class MonopolyGUI extends JPanel {
     private int currentSquareNumber;
     private int doubles = 0;
 
+
     // GameBoard panel
     private GameBoardGUI gameBoardGUI;
     private DiceGUI die1;
@@ -89,7 +90,7 @@ public class MonopolyGUI extends JPanel {
      * Set up the monopoly board components.
      */
     public void setupMonopolyBoard() {
-        setupBoard();
+        //setupBoard();
         setupDice();
         initPlayerToken();
         setupPlayerStatusWindow();
@@ -103,6 +104,11 @@ public class MonopolyGUI extends JPanel {
      */
     public void setPlayers(LinkedList<Player> players) {
         playersList.addAll(players);
+    }
+
+    public void setGameBoardGUI(GameBoardGUI gameBoardGUI){
+        this.gameBoardGUI = gameBoardGUI;
+
     }
 
     /**
