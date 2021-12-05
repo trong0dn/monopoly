@@ -37,6 +37,7 @@ monopoly17 package:
 * Inactive.java
 * Input.java
 * Jail.java
+* JsonParse.java
 * Monopoly.java
 * MonopolyGUI.java
 * Player.java
@@ -49,6 +50,12 @@ monopoly17 package:
 * SquareInfo.java
 * Taxes.java
 * Utility.java
+
+
+International Verions:
+* UK.json
+* US.json
+
 
 test package:
 * HumanPlayerTest.java
