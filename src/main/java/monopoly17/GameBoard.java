@@ -23,11 +23,20 @@ public class GameBoard implements Serializable {
         groupProperties();
         groupRailroads();
         groupUtilities();
-
     }
 
-    public void setLanguage(Versions version){
+    /**
+     * Constructor for GameBoard.
+     */
+    public GameBoard(Versions version) {
         this.versions = version;
+        this.board = new Square[BOARD_SIZE];
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            board[i] = makeSquare(i);
+        }
+        groupProperties();
+        groupRailroads();
+        groupUtilities();
     }
 
     /**

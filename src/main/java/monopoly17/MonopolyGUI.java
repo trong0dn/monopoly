@@ -44,8 +44,6 @@ public class MonopolyGUI extends JPanel {
     private DiceGUI die1;
     private DiceGUI die2;
 
-    private Versions version;
-
     // Gameplay panel
     private JPanel playerAssetsPanel;
     private JLayeredPane rightLayeredPane;
@@ -83,6 +81,7 @@ public class MonopolyGUI extends JPanel {
         this.currentSquareNumber = monopoly.getCurrentSquareNumber();
         this.isDouble = monopoly.isBankrupt();
         this.monopoly.play();                               // Determines the winners and losers
+        this.leftLayeredPane = new JLayeredPane();
     }
 
     /**
@@ -184,15 +183,18 @@ public class MonopolyGUI extends JPanel {
         rightLayeredPane.setLayout(null);
         this.add(rightLayeredPane);
 
-        leftLayeredPane = new JLayeredPane();
+        //leftLayeredPane = new JLayeredPane();
         leftLayeredPane.setBorder(new LineBorder(new Color(0, 0, 0)));
         leftLayeredPane.setBounds(5, 5, 670, 670);
         this.add(leftLayeredPane);
 
         // Add game board to left panel
-        gameBoardGUI = new GameBoardGUI(5,5,670,670);
         gameBoardGUI.setBackground(new Color(50, 255, 155));
         leftLayeredPane.add(gameBoardGUI, Integer.valueOf(0));
+    }
+
+    public void setGameBoardGUI(GameBoardGUI gui) {
+        this.gameBoardGUI = gui;
     }
 
     /**
