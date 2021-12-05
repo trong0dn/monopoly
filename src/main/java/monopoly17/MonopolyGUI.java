@@ -46,6 +46,7 @@ public class MonopolyGUI extends JFrame {
     private GameBoardGUI gameBoardGUI;
     private DiceGUI die1;
     private DiceGUI die2;
+    private Versions version;
 
     // Landing game panel
     private JPanel playerInitPanel;                                     // Panel for making the players
@@ -80,6 +81,7 @@ public class MonopolyGUI extends JFrame {
     private JButton buttonRunCPU;
     private JButton buttonPayBail;
 
+
     private final Color[] playerTokenColors = {
         Color.RED,
         Color.BLUE,
@@ -95,8 +97,8 @@ public class MonopolyGUI extends JFrame {
      * Constructor for MonopolyGUI.
      */
     public MonopolyGUI() {
-        initFrame();
         initPanelComponents();
+        initFrame();
         setupSwitchPanel();
         this.monopoly = new Monopoly();
         this.playersGUI = monopoly.getPlayerGUI();
@@ -562,6 +564,10 @@ public class MonopolyGUI extends JFrame {
     private void usVersionButton(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "PlayerInitializePanel");
+        if (actionEvent.getActionCommand().equals("US Version")){
+            version = Versions.US;
+
+        }
     }
 
     /**
@@ -571,7 +577,15 @@ public class MonopolyGUI extends JFrame {
     private void ukVersionButton(ActionEvent actionEvent) {
         CardLayout cl = (CardLayout) (switchPanels.getLayout());
         cl.show(switchPanels, "PlayerInitializePanel");
+        if (actionEvent.getActionCommand().equals("UK Version")){
+            version = Versions.UK;
+            gameBoardGUI.setVersion(version);
+            System.out.println(version);
+        }
     }
+
+
+
 
     /**
      * Play the game after making all the players.

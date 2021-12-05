@@ -1,14 +1,21 @@
 package monopoly17;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Map;
 
 
-
+/**
+ * parses the international versions of the game
+ * @author Ibrahim Almalki
+ */
 public class JsonParse {
 
+    /**
+     * @param position the key, position of th esquare
+     * @param version the language wanted
+     * @return
+     */
     public static String parseJSON(int  position, String version) {
         String pos = String.valueOf(position);
         try {
@@ -29,12 +36,6 @@ public class JsonParse {
     }
 
 
-
-    public static void main(String[] args) throws IOException {
-        JsonParse j = new JsonParse();
-        System.out.print(j.parseJSON(30, "UK"));
-
-    }
 
 }
 
