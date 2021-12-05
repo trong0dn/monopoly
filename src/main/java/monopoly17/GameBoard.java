@@ -1,6 +1,7 @@
 package monopoly17;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * This class represents the game board.
@@ -236,7 +237,7 @@ public class GameBoard implements Serializable {
         int hotel = 250;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(SquareInfo.SQUARE_1.getPosition(),JsonParse.parseJSON(1, String.valueOf(this.versions )) ,
+        return new Property(SquareInfo.SQUARE_1.getPosition(),JsonParse.parseJSON(1, String.valueOf(this.versions )),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
@@ -245,7 +246,9 @@ public class GameBoard implements Serializable {
      * @return  Square
      */
     public Square square2() {
-        return new Inactive(SquareInfo.SQUARE_2.getPosition(), SquareInfo.SQUARE_2.getName());
+
+        return new Inactive(SquareInfo.SQUARE_2.getPosition(), JsonParse.parseJSON(2, String.valueOf(this.versions)));
+        // return new Inactive(SquareInfo.SQUARE_2.getPosition(), SquareInfo.SQUARE_2.getName());
     }
 
     /**
@@ -261,8 +264,10 @@ public class GameBoard implements Serializable {
         int hotel = 450;
         int propertyCost = 60;
         int houses = 50;
-        return new Property(SquareInfo.SQUARE_3.getPosition(), SquareInfo.SQUARE_3.getName(),
+
+        return new Property(SquareInfo.SQUARE_3.getPosition(), JsonParse.parseJSON(3, String.valueOf(this.versions)),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
+
     }
 
     /**
@@ -270,7 +275,9 @@ public class GameBoard implements Serializable {
      * @return  Square
      */
     public Square square4() {
-        return new Taxes(SquareInfo.SQUARE_4.getPosition(), SquareInfo.SQUARE_4.getName());
+        // Check if correct
+        return new Taxes(SquareInfo.SQUARE_4.getPosition(), Objects.requireNonNull(JsonParse.parseJSON(4, String.valueOf(this.versions))));
+
     }
 
     /**
@@ -278,7 +285,8 @@ public class GameBoard implements Serializable {
      * @return  Square
      */
     public Square square5() {
-        return new Railroad(SquareInfo.SQUARE_5.getPosition(), SquareInfo.SQUARE_5.getName());
+        return new Railroad(SquareInfo.SQUARE_5.getPosition(), JsonParse.parseJSON(5, String.valueOf(this.versions)));
+
     }
 
     /**
@@ -294,7 +302,7 @@ public class GameBoard implements Serializable {
         int hotel = 550;
         int propertyCost = 100;
         int houses = 50;
-        return new Property(SquareInfo.SQUARE_6.getPosition(), SquareInfo.SQUARE_6.getName(),
+        return new Property(SquareInfo.SQUARE_6.getPosition(), JsonParse.parseJSON(6, String.valueOf(this.versions)),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
@@ -303,7 +311,8 @@ public class GameBoard implements Serializable {
      * @return  Square
      */
     public Square square7() {
-        return new Inactive(SquareInfo.SQUARE_7.getPosition(), SquareInfo.SQUARE_7.getName());
+        return new Inactive(SquareInfo.SQUARE_7.getPosition(), JsonParse.parseJSON(7, String.valueOf(this.versions)));
+
     }
 
     /**
@@ -319,7 +328,7 @@ public class GameBoard implements Serializable {
         int hotel = 550;
         int propertyCost = 100;
         int houses = 50;
-        return new Property(SquareInfo.SQUARE_8.getPosition(), SquareInfo.SQUARE_8.getName(),
+        return new Property(SquareInfo.SQUARE_8.getPosition(), JsonParse.parseJSON(8, String.valueOf(this.versions)),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
@@ -336,7 +345,7 @@ public class GameBoard implements Serializable {
         int hotel = 550;
         int propertyCost = 120;
         int houses = 50;
-        return new Property(SquareInfo.SQUARE_9.getPosition(), SquareInfo.SQUARE_9.getName(),
+        return new Property(SquareInfo.SQUARE_9.getPosition(), JsonParse.parseJSON(9, String.valueOf(this.versions)),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
@@ -345,7 +354,7 @@ public class GameBoard implements Serializable {
      * @return  Square
      */
     public Square square10() {
-        return new Jail(SquareInfo.SQUARE_10.getPosition(), SquareInfo.SQUARE_10.getName(), Jail.JailType.JUST_VISITING);
+        return new Jail(SquareInfo.SQUARE_10.getPosition(), JsonParse.parseJSON(10, String.valueOf(this.versions)), Jail.JailType.JUST_VISITING);
     }
 
     /**
@@ -361,7 +370,7 @@ public class GameBoard implements Serializable {
         int hotel = 750;
         int propertyCost = 140;
         int houses = 100;
-        return new Property(SquareInfo.SQUARE_11.getPosition(), SquareInfo.SQUARE_11.getName(),
+        return new Property(SquareInfo.SQUARE_11.getPosition(), JsonParse.parseJSON(11, String.valueOf(this.versions)),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
     }
 
@@ -370,7 +379,7 @@ public class GameBoard implements Serializable {
      * @return  Square
      */
     public Square square12() {
-        return new Utility(SquareInfo.SQUARE_12.getPosition(), SquareInfo.SQUARE_12.getName());
+        return new Utility(SquareInfo.SQUARE_12.getPosition(), JsonParse.parseJSON(12, String.valueOf(this.versions)));
     }
 
     /**
