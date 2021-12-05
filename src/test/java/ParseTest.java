@@ -6,11 +6,6 @@ import org.junit.Test;
 
 import java.util.Objects;
 
-import static org.junit.Assert.*;
-/*
-    helpful link https://mkyong.com/java/jsonassert-how-to-unit-test-json-data/
- */
-
 /**
  * Test class for parsing for International Languages.
  *
@@ -39,30 +34,29 @@ public class ParseTest {
 
     @Before
     public void init(){
-        // Property Sq.1 (Property)
+        //Property      Sq.1    (Property)
         property = new Property(SquareInfo.SQUARE_1.getPosition(),JsonParse.parseJSON(1, String.valueOf(this.versions)),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
 
-        // Community Sq.2 (Inactive)
+        //Community     Sq.2    (Inactive)
         inactive = new Inactive(SquareInfo.SQUARE_2.getPosition(), JsonParse.parseJSON(2, String.valueOf(this.versions)));
 
-        // Income Tax Sq.4 (TAXES)
+        //Income Tax    Sq.4    (TAXES)
         taxes = new Taxes(SquareInfo.SQUARE_4.getPosition(),
                 Objects.requireNonNull(JsonParse.parseJSON(4, String.valueOf(this.versions))));
 
-        // Railroad
+        //Railroad      Sq.5    (Railroad)
         railroad = new Railroad(SquareInfo.SQUARE_5.getPosition(), JsonParse.parseJSON(5, String.valueOf(this.versions)));
 
-        // Jail
+        //Jail          Sq.10   (Jail)
         jail = new Jail(SquareInfo.SQUARE_10.getPosition(), JsonParse.parseJSON(10, String.valueOf(this.versions)), Jail.JailType.JUST_VISITING);
 
-        //Utility
+        //Utility       Sq.12   (Utility)
         utility = new Utility(SquareInfo.SQUARE_12.getPosition(), JsonParse.parseJSON(12, String.valueOf(this.versions)));
     }
 
     @Test
     public void testName(){
-
         Assert.assertEquals("MEDITERRANEAN AVENUE", JsonParse.parseJSON(1, String.valueOf(this.versions)));
         Assert.assertEquals("COMMUNITY CHEST", JsonParse.parseJSON(2, String.valueOf(this.versions)));
         Assert.assertEquals("INCOME TAX", JsonParse.parseJSON(4, String.valueOf(this.versions)));
@@ -80,8 +74,5 @@ public class ParseTest {
         Assert.assertEquals(10, SquareInfo.SQUARE_10.getPosition());
         Assert.assertEquals(12, SquareInfo.SQUARE_12.getPosition());
     }
-
-
-
 
 }
