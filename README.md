@@ -37,6 +37,7 @@ monopoly17 package:
 * Inactive.java
 * Input.java
 * Jail.java
+* JsonParse.java
 * Monopoly.java
 * MonopolyGUI.java
 * Player.java
@@ -49,6 +50,12 @@ monopoly17 package:
 * SquareInfo.java
 * Taxes.java
 * Utility.java
+
+
+International Verions:
+* UK.json
+* US.json
+
 
 test package:
 * HumanPlayerTest.java
@@ -68,7 +75,7 @@ upon deliverable:
 * M4_Group17-ClassUML.drawio.pdf (Class UML diagram)
 * M4_Group17-Documentation.pdf	(Documentation)
 * M4_Group17-SequenceUML_1.drawio.pdf 
-	(Sequence UML for xxx)
+	(Sequence UML for Saving Game State)
 * M4_Group17-SequenceUML_2.drawio.pdf 
 	(Sequence UML for xxx)
 * M4_Group17-SequenceUML_3.drawio.pdf 
@@ -134,6 +141,14 @@ file. The GUI enabled the user to select a load menu item which restores
 the previously saved game session.
 
 #### International Version Customization
+
+Using Jackson JSON parsing, we were able to store the unique names of 
+the square contents to a JSON file which stores a specific version of
+the game. Different JSON files represent the contents specific to
+various internation or customized editions of the game with changes to
+the name of the squares. We updated the GUI to display options for 
+selecting a game version of choosing, which updates the version of the 
+game state accordingly.
 
 ------------------------------------------------------------------------
 ### Version 3.0
