@@ -620,7 +620,7 @@ public class MonopolyGUI extends JPanel {
         isDouble = die1.getFaceValue() == die2.getFaceValue();
         int diceValue = die1.getFaceValue() + die2.getFaceValue();
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-        Square currentSquare = this.gameBoardGUI.getSquare(SquareInfo.SQUARE_10.getPosition()); // If in Jail
+        Square currentSquare = this.gameBoardGUI.getSquare(10); // If in Jail
 
         if (currentPlayer.getPlayer().getJailTurns() == 0) {
             currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % BOARD_SIZE;
@@ -637,7 +637,7 @@ public class MonopolyGUI extends JPanel {
         infoConsole.setText(""); // Player did not pass go
 
         // Pass Go
-        if (currentSquareNumber < SquareInfo.SQUARE_12.getPosition() && prevSquare < SquareInfo.SQUARE_0.getPosition()) {
+        if (currentSquareNumber < 12 && prevSquare < 0) {
             infoConsole.setText("You passed Go! You get $200!\n");
         }
         handleSquareGUI(currentPlayer, currentSquare, diceValue);

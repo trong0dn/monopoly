@@ -7,6 +7,8 @@ import java.io.Serializable;
  * @author Elisha Catherasoo & Trong Nguyen
  */
 public class Jail implements Square, Serializable {
+    public static final int IN_JAIL = 10;
+    public static final int GOTO_JAIL = 30;
     private final int position;
     private final String name;
     private final JailType type;

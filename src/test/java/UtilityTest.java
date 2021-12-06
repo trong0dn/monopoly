@@ -1,7 +1,4 @@
-import monopoly17.HumanPlayer;
-import monopoly17.Player;
-import monopoly17.SquareInfo;
-import monopoly17.Utility;
+import monopoly17.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
@@ -19,12 +16,12 @@ public class UtilityTest {
 
     @Before
     public void SetUp() {
-        electricUtility = new Utility(SquareInfo.SQUARE_12.getPosition(), SquareInfo.SQUARE_12.getName());
-        waterUtility = new Utility(SquareInfo.SQUARE_28.getPosition(), SquareInfo.SQUARE_28.getName());
+        electricUtility = new Utility(Utility.ELECTRIC_POSITION, JsonParse.parseJSON(Utility.ELECTRIC_POSITION, "UK"));
+        waterUtility = new Utility(Utility.WATER_POSITION, JsonParse.parseJSON(Utility.WATER_POSITION, "UK"));
 
         player = new HumanPlayer("Tester");
-        ownedElectricUtility = new Utility(SquareInfo.SQUARE_12.getPosition(), SquareInfo.SQUARE_12.getName());
-        ownedWaterUtility = new Utility(SquareInfo.SQUARE_28.getPosition(), SquareInfo.SQUARE_28.getName());
+        ownedElectricUtility = new Utility(Utility.ELECTRIC_POSITION, JsonParse.parseJSON(Utility.ELECTRIC_POSITION, "UK"));
+        ownedWaterUtility = new Utility(Utility.WATER_POSITION, JsonParse.parseJSON(Utility.WATER_POSITION, "UK"));
 
         ownedElectricUtility.purchase(player);
         ownedWaterUtility.purchase(player);
@@ -35,14 +32,14 @@ public class UtilityTest {
 
     @Test
     public void testPosition() {
-        Assert.assertEquals(electricUtility.position(),SquareInfo.SQUARE_12.getPosition());
-        Assert.assertEquals(waterUtility .position(),SquareInfo.SQUARE_28.getPosition());
+        Assert.assertEquals(electricUtility.position(), Utility.ELECTRIC_POSITION);
+        Assert.assertEquals(waterUtility .position(), Utility.WATER_POSITION);
     }
 
     @Test
     public void testName() {
-        Assert.assertEquals(electricUtility.name(), SquareInfo.SQUARE_12.getName());
-        Assert.assertEquals(waterUtility.name(), SquareInfo.SQUARE_28.getName());
+        Assert.assertEquals(electricUtility.name(), JsonParse.parseJSON(Utility.ELECTRIC_POSITION, "UK"));
+        Assert.assertEquals(waterUtility.name(), JsonParse.parseJSON(Utility.WATER_POSITION, "UK"));
     }
 
     @Test

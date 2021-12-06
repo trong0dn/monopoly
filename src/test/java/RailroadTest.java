@@ -1,7 +1,4 @@
-import monopoly17.HumanPlayer;
-import monopoly17.Player;
-import monopoly17.Railroad;
-import monopoly17.SquareInfo;
+import monopoly17.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,10 +15,10 @@ public class RailroadTest {
 
     @Before
     public void setUp() {
-        rA = new Railroad(SquareInfo.SQUARE_5.getPosition(), SquareInfo.SQUARE_5.getName());
-        rB = new Railroad(SquareInfo.SQUARE_15.getPosition(), SquareInfo.SQUARE_15.getName());
-        rC = new Railroad(SquareInfo.SQUARE_25.getPosition(), SquareInfo.SQUARE_25.getName());
-        rD = new Railroad(SquareInfo.SQUARE_35.getPosition(), SquareInfo.SQUARE_35.getName());
+        rA = new Railroad(Railroad.RAILROAD_A_POSITION, JsonParse.parseJSON(Railroad.RAILROAD_A_POSITION, "UK"));
+        rB = new Railroad(Railroad.RAILROAD_B_POSITION, JsonParse.parseJSON(Railroad.RAILROAD_B_POSITION, "UK"));
+        rC = new Railroad(Railroad.RAILROAD_C_POSITION, JsonParse.parseJSON(Railroad.RAILROAD_C_POSITION, "UK"));
+        rD = new Railroad(Railroad.RAILROAD_D_POSITION, JsonParse.parseJSON(Railroad.RAILROAD_D_POSITION, "UK"));
 
         rA.setGroup(rB, rC, rD);
         rB.setGroup(rA, rC, rD);
@@ -31,18 +28,18 @@ public class RailroadTest {
 
     @Test
     public void testPosition() {
-        Assert.assertEquals(rA.position(), SquareInfo.SQUARE_5.getPosition());
-        Assert.assertEquals(rB.position(), SquareInfo.SQUARE_15.getPosition());
-        Assert.assertEquals(rC.position(), SquareInfo.SQUARE_25.getPosition());
-        Assert.assertEquals(rD.position(), SquareInfo.SQUARE_35.getPosition());
+        Assert.assertEquals(rA.position(), Railroad.RAILROAD_A_POSITION);
+        Assert.assertEquals(rB.position(), Railroad.RAILROAD_B_POSITION);
+        Assert.assertEquals(rC.position(), Railroad.RAILROAD_C_POSITION);
+        Assert.assertEquals(rD.position(), Railroad.RAILROAD_D_POSITION);
     }
 
     @Test
     public void testName() {
-        Assert.assertEquals(rA.name(), SquareInfo.SQUARE_5.getName());
-        Assert.assertEquals(rB.name(), SquareInfo.SQUARE_15.getName());
-        Assert.assertEquals(rC.name(), SquareInfo.SQUARE_25.getName());
-        Assert.assertEquals(rD.name(), SquareInfo.SQUARE_35.getName());
+        Assert.assertEquals(rA.name(), JsonParse.parseJSON(Railroad.RAILROAD_A_POSITION, "UK"));
+        Assert.assertEquals(rB.name(), JsonParse.parseJSON(Railroad.RAILROAD_B_POSITION, "UK"));
+        Assert.assertEquals(rC.name(), JsonParse.parseJSON(Railroad.RAILROAD_C_POSITION, "UK"));
+        Assert.assertEquals(rD.name(), JsonParse.parseJSON(Railroad.RAILROAD_D_POSITION, "UK"));
     }
 
     @Test

@@ -29,8 +29,8 @@ public class GameBoardGUI extends JPanel {
     }
 
     /**
-     * Set the version of the gameboard.
-     * @param language  Versions
+     * Sets the international version.
+     * @param language  Versions, the enum of the international version
      */
     public void setVersion(Versions language){
         this.gameBoard = new GameBoard(language);
@@ -39,8 +39,8 @@ public class GameBoardGUI extends JPanel {
     }
 
     /**
-     * Get the version of the gameboard.
-     * @return          Versions
+     * Get the Veriosn enum and change to string.
+     * @return the string value of the Versions enum
      */
     public Versions getVersion(){
         return language;

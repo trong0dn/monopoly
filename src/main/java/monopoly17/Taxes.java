@@ -7,6 +7,8 @@ import java.io.Serializable;
  * @author Trong Nguyen & Elisha Catherasoo
  */
 public class Taxes implements Square, Serializable {
+    public static final int INCOME_TAX_POSITION = 4;
+    public static final int SUPER_TAX_POSITION = 38;
     public static final int FIX_INCOME_TAX = 200;
     public static final int FIX_SUPER_TAX = 100;
 
@@ -23,7 +25,7 @@ public class Taxes implements Square, Serializable {
     public Taxes(int position, String name) {
         this.position = position;
         this.name = name;
-        if (name.equals(SquareInfo.SQUARE_4.getName())) {
+        if (name.equals(JsonParse.parseJSON(INCOME_TAX_POSITION, "UK"))) {
             fixTax = FIX_INCOME_TAX;        // Pay 200
             varTax = 0.1;                   // Pay 10% of total money
         } else {

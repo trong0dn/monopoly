@@ -7,6 +7,8 @@ import java.io.Serializable;
  * @author Trong Nguyen & Elisha Catherasoo
  */
 public class Utility implements Square, Serializable {
+    public static final int ELECTRIC_POSITION = 12;
+    public static final int WATER_POSITION = 28;
     private final int COST = 150;
     private final int position;
     private final String name;

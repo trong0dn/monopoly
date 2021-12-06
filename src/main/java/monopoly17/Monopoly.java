@@ -360,7 +360,7 @@ public class Monopoly implements Serializable {
      */
     private void goToJail(Player player) {
         System.out.println("Go to Jail!");
-        player.moveTo(SquareInfo.SQUARE_10.getPosition());
+        player.moveTo(10);
         player.addJailTurn();
     }
 
