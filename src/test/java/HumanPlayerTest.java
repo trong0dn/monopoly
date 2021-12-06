@@ -22,10 +22,6 @@ public class HumanPlayerTest {
     private final Square oldKent = new Property(position, "OLD KENT ROAD",
                             rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
 
-    private int position2;
-    private final Square whitechapel = new Property(position2, "WHITECHAPEL ROAD",
-            4, 20, 60, 180, 320, 450, 60, 50);
-
     /**
      * Test the player name is returned correctly.
      */
