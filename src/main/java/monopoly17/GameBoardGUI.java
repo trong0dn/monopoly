@@ -28,12 +28,20 @@ public class GameBoardGUI extends JPanel {
         this.setLayout(null);
     }
 
+    /**
+     * Set the version of the gameboard.
+     * @param language  Versions
+     */
     public void setVersion(Versions language){
         this.gameBoard = new GameBoard(language);
         this.language = language;
         initializeSquarePanels();
     }
 
+    /**
+     * Get the version of the gameboard.
+     * @return          Versions
+     */
     public Versions getVersion(){
         return language;
     }
