@@ -1,5 +1,5 @@
 import monopoly17.Jail;
-import monopoly17.SquareInfo;
+import monopoly17.JsonParse;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,9 +15,9 @@ public class JailTest {
 
     @Before
     public void setUp() {
-        visitingJail = new Jail(SquareInfo.SQUARE_10.getPosition(), SquareInfo.SQUARE_10.getName(), Jail.JailType.JUST_VISITING);
-        inJail = new Jail(SquareInfo.SQUARE_10.getPosition(), SquareInfo.SQUARE_10.getName(), Jail.JailType.IN_JAIL);
-        gotoJail = new Jail(SquareInfo.SQUARE_30.getPosition(), SquareInfo.SQUARE_30.getName(),Jail.JailType.GOTO_JAIL);
+        visitingJail = new Jail(Jail.IN_JAIL, JsonParse.parseJSON(Jail.IN_JAIL, "UK"), Jail.JailType.JUST_VISITING);
+        inJail = new Jail(Jail.IN_JAIL, JsonParse.parseJSON(Jail.IN_JAIL, "UK"), Jail.JailType.IN_JAIL);
+        gotoJail = new Jail(Jail.GOTO_JAIL, JsonParse.parseJSON(Jail.GOTO_JAIL, "UK"),Jail.JailType.GOTO_JAIL);
     }
 
     @Test
@@ -29,16 +29,16 @@ public class JailTest {
 
     @Test
     public void testPosition() {
-        Assert.assertEquals(visitingJail.position(), SquareInfo.SQUARE_10.getPosition());
-        Assert.assertEquals(inJail.position(), SquareInfo.SQUARE_10.getPosition());
-        Assert.assertEquals(gotoJail.position(), SquareInfo.SQUARE_30.getPosition());
+        Assert.assertEquals(visitingJail.position(), Jail.IN_JAIL);
+        Assert.assertEquals(inJail.position(), Jail.IN_JAIL);
+        Assert.assertEquals(gotoJail.position(), Jail.GOTO_JAIL);
     }
 
     @Test
     public void testName() {
-        Assert.assertEquals(visitingJail.name(), SquareInfo.SQUARE_10.getName());
-        Assert.assertEquals(inJail.name(), SquareInfo.SQUARE_10.getName());
-        Assert.assertEquals(gotoJail.name(), SquareInfo.SQUARE_30.getName());
+        Assert.assertEquals(visitingJail.name(), JsonParse.parseJSON(Jail.IN_JAIL, "UK"));
+        Assert.assertEquals(inJail.name(), JsonParse.parseJSON(Jail.IN_JAIL, "UK"));
+        Assert.assertEquals(gotoJail.name(), JsonParse.parseJSON(Jail.GOTO_JAIL, "UK"));
     }
 
     @Test

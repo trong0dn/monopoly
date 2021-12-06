@@ -13,7 +13,7 @@ public class MonopolyTest {
     private Monopoly monopoly;
     private Player humanPlayer;
     private HumanPlayer humanPlayer2;
-    int position;
+    int position = 1;
     int rent = 2;
     int oneHouse = 10;
     int twoHouse = 30;
@@ -32,10 +32,10 @@ public class MonopolyTest {
         humanPlayer = new HumanPlayer("Tester1");
         humanPlayer2 = new HumanPlayer("Tester2");
 
-        oldKent = new Property(position, SquareInfo.SQUARE_1.getName(),
+        oldKent = new Property(position, JsonParse.parseJSON(position, "UK"),
                 rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
-        goToJail = new Jail(SquareInfo.SQUARE_30.getPosition(), SquareInfo.SQUARE_30.getName(), Jail.JailType.GOTO_JAIL);
-        inJail = new Jail(SquareInfo.SQUARE_10.getPosition(), SquareInfo.SQUARE_10.getName(), Jail.JailType.IN_JAIL);
+        goToJail = new Jail(Jail.GOTO_JAIL, JsonParse.parseJSON(Jail.GOTO_JAIL, "UK"), Jail.JailType.GOTO_JAIL);
+        inJail = new Jail(Jail.IN_JAIL, JsonParse.parseJSON(Jail.IN_JAIL, "UK"), Jail.JailType.IN_JAIL);
     }
 
     /**
@@ -96,9 +96,9 @@ public class MonopolyTest {
      */
     @Test
     public void testGoToJail() {
-        humanPlayer.moveTo(SquareInfo.SQUARE_30.getPosition());
+        humanPlayer.moveTo(Jail.GOTO_JAIL);
         monopoly.handleSquare(humanPlayer, goToJail, 0);
-        Assert.assertEquals(SquareInfo.SQUARE_10.getPosition(), humanPlayer.getPosition());
+        Assert.assertEquals(Jail.IN_JAIL, humanPlayer.getPosition());
     }
 
     /**
@@ -106,9 +106,9 @@ public class MonopolyTest {
      */
     @Test
     public void testInJail() {
-        humanPlayer.moveTo(SquareInfo.SQUARE_10.getPosition());
+        humanPlayer.moveTo(Jail.IN_JAIL);
         monopoly.handleSquare(humanPlayer, inJail, 0);
-        Assert.assertEquals(SquareInfo.SQUARE_10.getPosition(), humanPlayer.getPosition());
+        Assert.assertEquals(Jail.IN_JAIL, humanPlayer.getPosition());
     }
 
     /**

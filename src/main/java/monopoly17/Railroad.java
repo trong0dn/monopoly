@@ -7,6 +7,10 @@ import java.io.Serializable;
  * @author Trong Nguyen & Elisha Catherasoo
  */
 public class Railroad implements Square, Serializable {
+    public static final int RAILROAD_A_POSITION = 5;
+    public static final int RAILROAD_B_POSITION = 15;
+    public static final int RAILROAD_C_POSITION = 25;
+    public static final int RAILROAD_D_POSITION = 35;
     private final int COST = 200;
     private final int position;
     private final String name;

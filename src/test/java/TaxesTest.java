@@ -1,10 +1,13 @@
-import monopoly17.SquareInfo;
+import monopoly17.JsonParse;
 import monopoly17.Taxes;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
 
-import static monopoly17.Taxes.*;
+import java.util.Objects;
+
+import static monopoly17.Taxes.FIX_INCOME_TAX;
+import static monopoly17.Taxes.FIX_SUPER_TAX;
 
 /**
  * Testing Taxes class.
@@ -16,8 +19,8 @@ public class TaxesTest {
 
     @Before
     public void setUp() {
-        incomeTaxes = new Taxes(SquareInfo.SQUARE_4.getPosition(), SquareInfo.SQUARE_4.getName());
-        superTaxes = new Taxes(SquareInfo.SQUARE_38.getPosition(), SquareInfo.SQUARE_38.getName());
+        incomeTaxes = new Taxes(Taxes.INCOME_TAX_POSITION, Objects.requireNonNull(JsonParse.parseJSON(Taxes.INCOME_TAX_POSITION, "UK")));
+        superTaxes = new Taxes(Taxes.SUPER_TAX_POSITION, Objects.requireNonNull(JsonParse.parseJSON(Taxes.SUPER_TAX_POSITION, "UK")));
     }
 
     @Test
@@ -32,14 +35,14 @@ public class TaxesTest {
 
     @Test
     public void testPosition() {
-        Assert.assertEquals(incomeTaxes.position(), SquareInfo.SQUARE_4.getPosition());
-        Assert.assertEquals(superTaxes.position(), SquareInfo.SQUARE_38.getPosition());
+        Assert.assertEquals(incomeTaxes.position(), Taxes.INCOME_TAX_POSITION);
+        Assert.assertEquals(superTaxes.position(), Taxes.SUPER_TAX_POSITION);
     }
 
     @Test
     public void testName() {
-        Assert.assertEquals(incomeTaxes.name(), SquareInfo.SQUARE_4.getName());
-        Assert.assertEquals(superTaxes.name(), SquareInfo.SQUARE_38.getName());
+        Assert.assertEquals(incomeTaxes.name(), JsonParse.parseJSON(Taxes.INCOME_TAX_POSITION, "UK"));
+        Assert.assertEquals(superTaxes.name(), JsonParse.parseJSON(Taxes.SUPER_TAX_POSITION, "UK"));
     }
 
     @Test
