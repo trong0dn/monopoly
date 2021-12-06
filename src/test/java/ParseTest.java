@@ -21,14 +21,14 @@ public class ParseTest {
     private int propertyCost = 60;
     private int houses = 50;
 
-    Versions versions = Versions.US;
+    private Versions versions = Versions.US;
 
-    Property property;
-    Inactive inactive;
-    Taxes taxes;
-    Railroad railroad;
-    Jail jail;
-    Utility utility;
+    private Property property;
+    private Inactive inactive;
+    private Taxes taxes;
+    private Railroad railroad;
+    private Jail jail;
+    private Utility utility;
 
     /**
      * Set up the squares before each test.
