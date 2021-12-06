@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class GameBoardGUI extends JPanel {
     private GameBoard gameBoard;
-    Versions language;
+    private Versions language;
 
     /**
      * Constructor for GameBoardGUI.

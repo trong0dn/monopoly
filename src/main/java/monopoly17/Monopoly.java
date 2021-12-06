@@ -80,10 +80,18 @@ public class Monopoly implements Serializable {
         gameState.currentSquareNumber = i;
     }
 
+    /**
+     * Get the game board view.
+     * @return  GameBoardGUI
+     */
     public GameBoardGUI getGameBoardGUI() {
         return this.gameState.gameBoardGUI;
     }
 
+    /**
+     * Set teh game board view.
+     * @param gameBoardGUI  GameBoardGUI
+     */
     public void setGameBoardGUI(GameBoardGUI gameBoardGUI) {
         this.gameState.gameBoardGUI = gameBoardGUI;
     }
@@ -360,7 +368,7 @@ public class Monopoly implements Serializable {
      */
     private void goToJail(Player player) {
         System.out.println("Go to Jail!");
-        player.moveTo(10);
+        player.moveTo(Jail.IN_JAIL);
         player.addJailTurn();
     }
 

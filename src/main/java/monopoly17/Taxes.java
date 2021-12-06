@@ -25,7 +25,7 @@ public class Taxes implements Square, Serializable {
     public Taxes(int position, String name) {
         this.position = position;
         this.name = name;
-        if (name.equals(JsonParse.parseJSON(INCOME_TAX_POSITION, "UK"))) {
+        if (name.equals(JsonParse.parseJSON(INCOME_TAX_POSITION, String.valueOf(Versions.UK)))) {
             fixTax = FIX_INCOME_TAX;        // Pay 200
             varTax = 0.1;                   // Pay 10% of total money
         } else {
