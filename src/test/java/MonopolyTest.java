@@ -26,6 +26,9 @@ public class MonopolyTest {
     private Square goToJail;
     private Square inJail;
 
+    /**
+     * Set up Monopoly and some squares before each test.
+     */
     @Before
     public void setUp() {
         monopoly = new Monopoly();
