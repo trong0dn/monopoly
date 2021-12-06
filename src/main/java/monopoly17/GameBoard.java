@@ -65,19 +65,7 @@ public class GameBoard implements Serializable {
         return board[position];
     }
 
-    /**
-     * Downcast all square that is a property.
-     * @param name  String, property name
-     * @return      Property
-     */
-    private Property property(String name) {
-        for (Square sq : board) {
-            if (sq instanceof Property && sq.name().equals(name)) {
-                return (Property) sq;
-            }
-        }
-        return null;
-    }
+
 
     /**
      * Create the square if the position is being occupied.
