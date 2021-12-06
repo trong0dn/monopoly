@@ -91,8 +91,6 @@ public class MonopolyInitGUI extends JFrame {
         menu.add(newMenuItem);
         menuBar.add(menu);
         this.setJMenuBar(menuBar);
-
-        saveMenuItem.setEnabled(false);
     }
 
     /**
@@ -415,9 +413,6 @@ public class MonopolyInitGUI extends JFrame {
         monopolyGUI.setupMonopolyBoard();
         monopolyGUI.setGameBoardGUI(gameBoardGUI);
         monopolyPanel.add(monopolyGUI);
-
-        saveMenuItem.setEnabled(true);
-        loadMenuItem.setEnabled(false);
     }
 
     /**
