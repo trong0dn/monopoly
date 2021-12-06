@@ -24,6 +24,7 @@ public class Monopoly implements Serializable {
         gameState = new GameState();
         gameState.players = new LinkedList<>();
         gameState.playersGUI = new ArrayList<>();
+        gameState.gameBoardGUI = new GameBoardGUI(5,5,670,670);
         gameState.decisionState = DecisionState.NONE;
         gameState.gameBoard = new GameBoard();
         gameState.currentPlayer = null;
@@ -77,6 +78,14 @@ public class Monopoly implements Serializable {
      */
     public void setCurrentSquareNumber(int i) {
         gameState.currentSquareNumber = i;
+    }
+
+    public GameBoardGUI getGameBoardGUI() {
+        return this.gameState.gameBoardGUI;
+    }
+
+    public void setGameBoardGUI(GameBoardGUI gameBoardGUI) {
+        this.gameState.gameBoardGUI = gameBoardGUI;
     }
 
     /**

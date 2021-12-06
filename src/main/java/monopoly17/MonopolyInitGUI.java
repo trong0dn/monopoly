@@ -404,18 +404,13 @@ public class MonopolyInitGUI extends JFrame {
             version = Versions.US;
         }
 
-        gameBoardGUI = new GameBoardGUI(5,5,670,670);
-        gameBoardGUI.setBackground(new Color(50, 255, 155));
+        gameBoardGUI = monopolyGUI.getGameBoardGUI();
         gameBoardGUI.setVersion(version);
-
         monopolyGUI.setPlayers(playersList);
         monopolyGUI.setGameBoardGUI(gameBoardGUI);
-
         monopolyGUI.setupMonopolyBoard();
-
-
+        monopolyGUI.setGameBoardGUI(gameBoardGUI);
         monopolyPanel.add(monopolyGUI);
-
     }
 
     /**

@@ -12,6 +12,7 @@ public class GameState implements Serializable {
     public Monopoly.DecisionState decisionState;
     public LinkedList<Player> players;
     public ArrayList<PlayerGUI> playersGUI;
+    public GameBoardGUI gameBoardGUI;
     public GameBoard gameBoard;
     public Player currentPlayer;
     public int currentPlayerOrder;

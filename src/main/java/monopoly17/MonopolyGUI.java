@@ -79,6 +79,7 @@ public class MonopolyGUI extends JPanel {
         this.playersList = monopoly.getPlayers();
         this.currentPlayerOrder = monopoly.getCurrentPlayerOrder();
         this.currentSquareNumber = monopoly.getCurrentSquareNumber();
+        this.gameBoardGUI = monopoly.getGameBoardGUI();
         this.isDouble = monopoly.isBankrupt();
         this.monopoly.play();                               // Determines the winners and losers
         this.leftLayeredPane = new JLayeredPane();
@@ -104,12 +105,17 @@ public class MonopolyGUI extends JPanel {
         playersList.addAll(players);
     }
 
+    public GameBoardGUI getGameBoardGUI() {
+        return this.gameBoardGUI;
+    }
+
     /**
      * Export the Saved game file.
      */
     public void saveGame() {
         monopoly.setCurrentPlayerOrder(currentPlayerOrder);
         monopoly.setCurrentSquareNumber(currentSquareNumber);
+        monopoly.setGameBoardGUI(gameBoardGUI);
         monopoly.exportGame(monopoly);
         JOptionPane.showMessageDialog(null, "Game has been saved");
     }
@@ -121,6 +127,7 @@ public class MonopolyGUI extends JPanel {
     public MonopolyGUI setGame(Monopoly newMonopoly) {
         this.newGame();
         this.monopoly = newMonopoly;
+        this.gameBoardGUI = monopoly.getGameBoardGUI();
         this.playersGUI = monopoly.getPlayerGUI();
         this.playersList = monopoly.getPlayers();
         this.currentPlayerOrder = monopoly.getCurrentPlayerOrder();
@@ -160,6 +167,7 @@ public class MonopolyGUI extends JPanel {
         this.monopoly = new Monopoly();
         this.playersGUI = new ArrayList<>();
         this.playersList = new LinkedList<>();
+        this.gameBoardGUI = new GameBoardGUI(5,5,670,670);
         this.currentPlayerOrder = 0;
         this.currentSquareNumber = 0;
         isDouble = false;
