@@ -80,10 +80,18 @@ public class Monopoly implements Serializable {
         gameState.currentSquareNumber = i;
     }
 
+    /**
+     * Get the GameBoardGUI.
+     * @return  GameBoardGUI
+     */
     public GameBoardGUI getGameBoardGUI() {
         return this.gameState.gameBoardGUI;
     }
 
+    /**
+     * Set the GameBoardGUI
+     * @param gameBoardGUI  GameBoardGUI
+     */
     public void setGameBoardGUI(GameBoardGUI gameBoardGUI) {
         this.gameState.gameBoardGUI = gameBoardGUI;
     }
@@ -368,6 +376,7 @@ public class Monopoly implements Serializable {
     /**
      * Method for leaving jail, if the player is in jail on their turn.
      * @param player    Player
+     * @return          int
      */
     public int leaveJail(Player player) {
         System.out.println("You have paid Bail!");

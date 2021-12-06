@@ -122,7 +122,8 @@ public class MonopolyGUI extends JPanel {
 
     /**
      * Set the current game play state.
-     * @param newMonopoly Monopoly
+     * @param newMonopoly   Monopoly
+     * @return              MonopolyGUI
      */
     public MonopolyGUI setGame(Monopoly newMonopoly) {
         this.newGame();
@@ -201,6 +202,10 @@ public class MonopolyGUI extends JPanel {
         leftLayeredPane.add(gameBoardGUI, Integer.valueOf(0));
     }
 
+    /**
+     * Set the GameBoardGUI.
+     * @param gui       GameBoardGUI
+     */
     public void setGameBoardGUI(GameBoardGUI gui) {
         this.gameBoardGUI = gui;
     }
