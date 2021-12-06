@@ -76,11 +76,11 @@ upon deliverable:
 * M4_Group17-ClassUML.drawio.pdf (Class UML diagram)
 * M4_Group17-Documentation.pdf	(Documentation)
 * M4_Group17-SequenceUML_1.drawio.pdf 
-	(Sequence UML for xxx)
+	(Sequence UML for User Saves the Current Game State)
 * M4_Group17-SequenceUML_2.drawio.pdf 
-	(Sequence UML for New Game)
+	(Sequence UML for User Selects New Game)
 * M4_Group17-SequenceUML_3.drawio.pdf 
-	(Sequence UML for xxx)
+	(Sequence UML for Loading International Version)
 * M4_Group17-SequenceUML_4.drawio.pdf 
 	(Sequence UML for User Loads Saved Game)
 
