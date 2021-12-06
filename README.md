@@ -48,15 +48,12 @@ monopoly17 package:
 * RollDice.java
 * Square.java
 * SquareGUI.java
-* SquareInfo.java
 * Taxes.java
 * Utility.java
 
-
-International Verions:
+verison package:
 * UK.json
 * US.json
-
 
 test package:
 * HumanPlayerTest.java
@@ -76,11 +73,11 @@ upon deliverable:
 * M4_Group17-ClassUML.drawio.pdf (Class UML diagram)
 * M4_Group17-Documentation.pdf	(Documentation)
 * M4_Group17-SequenceUML_1.drawio.pdf 
-	(Sequence UML for xxx)
+	(Sequence UML for User Saves the Current Game State)
 * M4_Group17-SequenceUML_2.drawio.pdf 
-	(Sequence UML for New Game)
+	(Sequence UML for User Selects New Game)
 * M4_Group17-SequenceUML_3.drawio.pdf 
-	(Sequence UML for xxx)
+	(Sequence UML for Loading International Version)
 * M4_Group17-SequenceUML_4.drawio.pdf 
 	(Sequence UML for User Loads Saved Game)
 
@@ -93,13 +90,23 @@ This program has been tested for Windows 10 and Mac OS Big Sur v11.5.2
 ## Dependencies 
 
 The application should work with the most recent version of Java 
-programming language update with JDK 16.0.2. 
-
-No other supplementary libraries with modular dependencies are required 
-to run this application.
+programming language update with JDK 17.0.1. 
 
 Monopoly17 has been compiled by a more recent version of the Java 
 Runtime (class file version 60.0).
+
+Required External Libraries:
+* JDK 
+	- openjdk-17.0.1
+* JUnit4
+	- hamcrest-core-1.3
+	- junit-4.13.1
+* Maven 
+	- jackson-annotations-2.13.0
+	- jackson-core-2.13.0
+	- jackson-databind-2.13.0
+	- junit-4.13.1
+	- hamcrest-core-1.3
 
 ------------------------------------------------------------------------
 ## Configurations 

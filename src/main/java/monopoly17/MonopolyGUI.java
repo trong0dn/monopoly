@@ -105,6 +105,10 @@ public class MonopolyGUI extends JPanel {
         playersList.addAll(players);
     }
 
+    /**
+     * Get the game board GUI.
+     * @return  GameBoardGUI
+     */
     public GameBoardGUI getGameBoardGUI() {
         return this.gameBoardGUI;
     }
@@ -203,11 +207,11 @@ public class MonopolyGUI extends JPanel {
     }
 
     /**
-     * Set the GameBoardGUI.
-     * @param gui       GameBoardGUI
+     * Set game board GUI.
+     * @param gameBoardGUI   GameBoardGUI
      */
-    public void setGameBoardGUI(GameBoardGUI gui) {
-        this.gameBoardGUI = gui;
+    public void setGameBoardGUI(GameBoardGUI gameBoardGUI) {
+        this.gameBoardGUI = gameBoardGUI;
     }
 
     /**
@@ -625,7 +629,7 @@ public class MonopolyGUI extends JPanel {
         isDouble = die1.getFaceValue() == die2.getFaceValue();
         int diceValue = die1.getFaceValue() + die2.getFaceValue();
         PlayerGUI currentPlayer = this.playersGUI.get(currentPlayerOrder);
-        Square currentSquare = this.gameBoardGUI.getSquare(10); // If in Jail
+        Square currentSquare = this.gameBoardGUI.getSquare(Jail.IN_JAIL); // If in Jail
 
         if (currentPlayer.getPlayer().getJailTurns() == 0) {
             currentSquareNumber = (this.playersGUI.get(currentPlayerOrder).getCurrentSquareNumber() + diceValue) % BOARD_SIZE;

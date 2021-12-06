@@ -10,20 +10,13 @@ import java.util.Objects;
 public class GameBoard implements Serializable {
     public static final int BOARD_SIZE = 40;
     private final Square[] board; // representation of the game board
-    Versions versions;
+    private final Versions versions;
 
     /**
-     * Constructor for GameBoard.
+     * Default constructor for GameBoard.
      */
     public GameBoard() {
-        this.versions = Versions.US;
-        this.board = new Square[BOARD_SIZE];
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            board[i] = makeSquare(i);
-        }
-        groupProperties();
-        groupRailroads();
-        groupUtilities();
+        this(Versions.US);
     }
 
     /**
@@ -64,8 +57,6 @@ public class GameBoard implements Serializable {
     public Square square(int position) {
         return board[position];
     }
-
-
 
     /**
      * Create the square if the position is being occupied.
