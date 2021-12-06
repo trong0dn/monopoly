@@ -40,6 +40,11 @@ public class MonopolyInitGUI extends JFrame {
     private JPanel monopolyPanel;                                       // Panel for the actual Monopoly game
     private final JPanel switchPanels = new JPanel(new CardLayout());   // Used for switching between panels
 
+    //Menu items
+    private JMenuItem saveMenuItem;
+    private JMenuItem loadMenuItem;
+    private JMenuItem newMenuItem;
+
     private final Color[] playerTokenColors;
     private Font playerFont;
     private JComboBox<String> versionsList;
@@ -72,9 +77,9 @@ public class MonopolyInitGUI extends JFrame {
 
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
-        JMenuItem saveMenuItem = new JMenuItem("Save Game");
-        JMenuItem loadMenuItem = new JMenuItem("Load Game");
-        JMenuItem newMenuItem = new JMenuItem("New Game");
+        saveMenuItem = new JMenuItem("Save Game");
+        loadMenuItem = new JMenuItem("Load Game");
+        newMenuItem = new JMenuItem("New Game");
 
         saveMenuItem.addActionListener(actionEvent1 -> monopolyGUI.saveGame());
         loadMenuItem.addActionListener(this::loadGame);
@@ -86,6 +91,8 @@ public class MonopolyInitGUI extends JFrame {
         menu.add(newMenuItem);
         menuBar.add(menu);
         this.setJMenuBar(menuBar);
+
+        saveMenuItem.setEnabled(false);
     }
 
     /**
@@ -408,6 +415,9 @@ public class MonopolyInitGUI extends JFrame {
         monopolyGUI.setupMonopolyBoard();
         monopolyGUI.setGameBoardGUI(gameBoardGUI);
         monopolyPanel.add(monopolyGUI);
+
+        saveMenuItem.setEnabled(true);
+        loadMenuItem.setEnabled(false);
     }
 
     /**
