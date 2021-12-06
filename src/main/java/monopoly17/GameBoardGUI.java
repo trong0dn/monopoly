@@ -40,7 +40,7 @@ public class GameBoardGUI extends JPanel {
 
     /**
      * Get the Veriosn enum and change to string.
-     * @return the string value of the Versions enum
+     * @return  Versions, the string value of the Versions enum
      */
     public Versions getVersion(){
         return language;

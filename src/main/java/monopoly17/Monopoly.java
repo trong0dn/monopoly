@@ -89,7 +89,7 @@ public class Monopoly implements Serializable {
     }
 
     /**
-     * Set teh game board view.
+     * Set the game board view.
      * @param gameBoardGUI  GameBoardGUI
      */
     public void setGameBoardGUI(GameBoardGUI gameBoardGUI) {
@@ -376,6 +376,7 @@ public class Monopoly implements Serializable {
     /**
      * Method for leaving jail, if the player is in jail on their turn.
      * @param player    Player
+     * @return          int
      */
     public int leaveJail(Player player) {
         System.out.println("You have paid Bail!");

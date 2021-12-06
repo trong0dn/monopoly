@@ -8,11 +8,14 @@ import org.junit.Test;
  * @author Trong Nguyen
  */
 public class RailroadTest {
-    Railroad rA;
-    Railroad rB;
-    Railroad rC;
-    Railroad rD;
+    private Railroad rA;
+    private Railroad rB;
+    private Railroad rC;
+    private Railroad rD;
 
+    /**
+     * Set up the railroads before each test.
+     */
     @Before
     public void setUp() {
         rA = new Railroad(Railroad.RAILROAD_A_POSITION, JsonParse.parseJSON(Railroad.RAILROAD_A_POSITION, "UK"));
@@ -26,6 +29,9 @@ public class RailroadTest {
         rD.setGroup(rA, rB, rC);
     }
 
+    /**
+     * Test the position of the railroads.
+     */
     @Test
     public void testPosition() {
         Assert.assertEquals(rA.position(), Railroad.RAILROAD_A_POSITION);
@@ -34,6 +40,9 @@ public class RailroadTest {
         Assert.assertEquals(rD.position(), Railroad.RAILROAD_D_POSITION);
     }
 
+    /**
+     * Test the name of the railroads.
+     */
     @Test
     public void testName() {
         Assert.assertEquals(rA.name(), JsonParse.parseJSON(Railroad.RAILROAD_A_POSITION, "UK"));
@@ -42,6 +51,9 @@ public class RailroadTest {
         Assert.assertEquals(rD.name(), JsonParse.parseJSON(Railroad.RAILROAD_D_POSITION, "UK"));
     }
 
+    /**
+     * Test if the railroads are ownable.
+     */
     @Test
     public void testIsOwnable() {
         Assert.assertTrue(rA.isOwnable());
@@ -50,6 +62,9 @@ public class RailroadTest {
         Assert.assertTrue(rD.isOwnable());
     }
 
+    /**
+     * Test if the railroads are owned.
+     */
     @Test
     public void testIsOwned() {
         Player player = new HumanPlayer("Tester");
@@ -60,6 +75,9 @@ public class RailroadTest {
         Assert.assertFalse(rD.isOwned());
     }
 
+    /**
+     * Test the cost of the railroads.
+     */
     @Test
     public void testCost() {
         Assert.assertEquals(rA.cost(), 200);
@@ -68,6 +86,9 @@ public class RailroadTest {
         Assert.assertEquals(rD.cost(), 200);
     }
 
+    /**
+     * Test the rent of the railroads.
+     */
     @Test
     public void testRent() {
         Player player = new HumanPlayer("Tester");
@@ -78,6 +99,9 @@ public class RailroadTest {
         Assert.assertEquals(rD.rent(0), 25);
     }
 
+    /**
+     * Test the owner of the railroads.
+     */
     @Test
     public void testOwner() {
         Player player = new HumanPlayer("Tester");

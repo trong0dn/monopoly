@@ -126,7 +126,8 @@ public class MonopolyGUI extends JPanel {
 
     /**
      * Set the current game play state.
-     * @param newMonopoly Monopoly
+     * @param newMonopoly   Monopoly
+     * @return              MonopolyGUI
      */
     public MonopolyGUI setGame(Monopoly newMonopoly) {
         this.newGame();
