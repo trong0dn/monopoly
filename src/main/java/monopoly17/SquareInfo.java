@@ -5,8 +5,6 @@ package monopoly17;
  * @author Trong Nguyen
  */
 public enum SquareInfo {
-
-
     SQUARE_0(0, "GO"),
     SQUARE_1(1, "OLD KENT ROAD"),
     SQUARE_2(2, "COMMUNITY CHEST"),
