@@ -8,10 +8,10 @@ import org.junit.Test;
  * @author Trong Nguyen
  */
 public class RailroadTest {
-    Railroad rA;
-    Railroad rB;
-    Railroad rC;
-    Railroad rD;
+    private Railroad rA;
+    private Railroad rB;
+    private Railroad rC;
+    private Railroad rD;
 
     /**
      * Set up the railroads before each test.

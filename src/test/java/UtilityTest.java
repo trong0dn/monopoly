@@ -8,11 +8,11 @@ import org.junit.Assert;
  * @author Trong Nguyen
  */
 public class UtilityTest {
-    Utility electricUtility;
-    Utility waterUtility;
-    Utility ownedElectricUtility;
-    Utility ownedWaterUtility;
-    Player player;
+    private Utility electricUtility;
+    private Utility waterUtility;
+    private Utility ownedElectricUtility;
+    private Utility ownedWaterUtility;
+    private Player player;
 
     /**
      * Set up the Utility squares before each test.

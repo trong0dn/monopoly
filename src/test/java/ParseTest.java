@@ -12,14 +12,14 @@ import java.util.Objects;
  */
 public class ParseTest {
     // For Sq.1
-    int rent = 2;
-    int oneHouse = 10;
-    int twoHouse = 30;
-    int threeHouse = 90;
-    int fourHouse = 160;
-    int hotel = 250;
-    int propertyCost = 60;
-    int houses = 50;
+    private int rent = 2;
+    private int oneHouse = 10;
+    private int twoHouse = 30;
+    private int threeHouse = 90;
+    private int fourHouse = 160;
+    private int hotel = 250;
+    private int propertyCost = 60;
+    private int houses = 50;
 
     Versions versions = Versions.US;
 

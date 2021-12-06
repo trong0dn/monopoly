@@ -11,18 +11,18 @@ import org.junit.Assert;
 public class HumanPlayerTest {
     private final HumanPlayer humanPlayer = new HumanPlayer("Tester");
     private int position;
-    int rent = 2;
-    int oneHouse = 10;
-    int twoHouse = 30;
-    int threeHouse = 90;
-    int fourHouse = 160;
-    int hotel = 250;
-    int propertyCost = 60;
-    int houses = 50;
+    private int rent = 2;
+    private int oneHouse = 10;
+    private int twoHouse = 30;
+    private int threeHouse = 90;
+    private int fourHouse = 160;
+    private int hotel = 250;
+    private int propertyCost = 60;
+    private int houses = 50;
     private final Square oldKent = new Property(position, "OLD KENT ROAD",
                             rent, oneHouse, twoHouse, threeHouse, fourHouse, hotel, propertyCost, houses);
 
-    int position2;
+    private int position2;
     private final Square whitechapel = new Property(position2, "WHITECHAPEL ROAD",
             4, 20, 60, 180, 320, 450, 60, 50);
 
