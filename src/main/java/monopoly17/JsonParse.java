@@ -2,33 +2,40 @@ package monopoly17;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 /**
- * Parses the international versions of the game
+ * Parses the international versions of the game.
  * @author Ibrahim Almalki
+ * Modified by Trong Nguyen
  */
 public class JsonParse {
     /**
      * JSON parsing method.
-     * @param position the key, position of the square
-     * @param version the language wanted
-     * @return String, the name of the property
+     * @param position      key, position of the square
+     * @param version       international version of the game
+     * @return String       name of the property
      */
     public static String parseJSON(int  position, String version) {
         String pos = String.valueOf(position);
-        String pathJSON = "src/main/java/versions/"+version+".json";
-        File fileJSON = new File(pathJSON);
         ObjectMapper mapper = new ObjectMapper();
-        String outputJSON = null;
         Map<?, ?> map;
+        String filepathJSON = "/versions/" + version + ".json";
+        String outputJSON = null;
 
         try {
-            map = mapper.readValue(fileJSON, Map.class);
-            outputJSON = (String) map.get(pos);
-
+            InputStream inputStream = JsonParse.class.getResourceAsStream(filepathJSON);
+            assert inputStream != null;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)); {
+                String contents = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+                map = mapper.readValue(contents, Map.class);
+                outputJSON = (String) map.get(pos);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
