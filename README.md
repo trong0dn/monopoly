@@ -6,10 +6,10 @@ Date: Dec. 6th, 2021
 ## Contact Information
 
 ### Contact Name:		
-* Trong Nguyen - 100848232
-* Francisco De Grano - 101147447
-* Ibrahim Almalki - 101142978
-* Elisha Catherasoo - 101148507
+* Trong Nguyen
+* Francisco De Grano
+* Ibrahim Almalki
+* Elisha Catherasoo
 
 ### Affiliation: 		
 - Carleton University - Systems and Computer Engineering
