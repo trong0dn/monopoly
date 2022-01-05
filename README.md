@@ -21,7 +21,7 @@ Date: Dec. 6th, 2021
 ![Monopoly](https://user-images.githubusercontent.com/55768917/142789708-f3411433-8c5e-487d-9292-2fc26081c0db.gif)
 
 - Monopoly17 is a reproduction of the simplified version of the classic 
-board game Monoopoly. This release is a text-based and in a graphical 
+board game Monopoly. This release is a text-based and in a graphical 
 user-interface playable version of the game built on Java using Swing.
 
 Source code file dependencies:
